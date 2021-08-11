@@ -1,7 +1,7 @@
 <!-- AUTOMATICALLY GENERATED FILE - DO NOT DIRECTLY EDIT!
 
 Direct edits will be gone after next CI build.
-By: gk@axgk (Wed Aug 11 11:07:32 2021)
+By: gk@axgk (Wed Aug 11 11:15:07 2021)
 Command Line (see duties.py):
 
     /home/gk/miniconda3/envs/blog_py39/bin/doc pre_process \
@@ -26,7 +26,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 This project adheres to [CalVer Versioning](http://calver.org) ![](https://img.shields.io/badge/calver-YYYY.M.D-22bfda.svg).
 
-## Unrealeased
-
-<small>[Compare with latest](https://github.com/AXGKl/blog/compare/45bc18a6ab9ed9d2ac280ae113899a55ee4d827c...HEAD)</small>
+## [2021.8.11](https://github.com/AXGKl/blog/releases/tag/2021.8.11)
+<small>[Compare with first commit](https://github.com/AXGKl/blog/compare/45bc18a6ab9ed9d2ac280ae113899a55ee4d827c...2021.8.11)</small>
 
