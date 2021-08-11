@@ -1,7 +1,7 @@
 <!-- AUTOMATICALLY GENERATED FILE - DO NOT DIRECTLY EDIT!
 
 Direct edits will be gone after next CI build.
-By: gk@axgk (Wed Aug 11 15:35:13 2021)
+By: gk@axgk (Wed Aug 11 15:36:56 2021)
 Command Line (see duties.py):
 
     /home/gk/miniconda3/envs/blog_py39/bin/doc pre_process \
@@ -30,6 +30,7 @@ This project adheres to [CalVer Versioning](http://calver.org) ![](https://img.s
 <small>[Compare with 2021.8.12](https://github.com/AXGKl/blog/compare/2021.8.12...2021.9.0)</small>
 
 ### Features
+- Rewordign ([7a6ad14](https://github.com/AXGKl/blog/commit/7a6ad14eb6e08823a2ec00852c8d633d973234c0) by Gunther Klessinger).
 - Added content from previous attemtps ([dda22bf](https://github.com/AXGKl/blog/commit/dda22bf07d89d6488f304a1d1e9b726c22b61665) by Gunther Klessinger).
 
 
