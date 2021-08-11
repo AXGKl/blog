@@ -28,10 +28,19 @@ nav:
     - Apps: ll/apps/apps.md
     - Gimp: ll/gimp/gimp.md
     - Vim: ll/vim/vim.md
+    - Emacs: ll/emacs/emacs.md
     - Suckless:
       - About: ll/sl/about.md
       - dwm: ll/sl/dwm.md
+      - st: ll/sl/st.md
+      - Statusbar Fun:
+        - Chapter1: ll/sl/status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar.md
+        - Chapter2: ll/sl/status_bar_fun/2021.05.24_dwm_status_2_never_call_xsession_within_dwm.md
+        - Chapter3: ll/sl/status_bar_fun/2021.05.24_dwm_status_3_xfce4_panel_in_dwm.md
+        - Chapter4: ll/sl/status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor.md
+
   - Videos And Tutorials: inet/videos.md
+  - Logbook: logbook.md
 
       
   - About:

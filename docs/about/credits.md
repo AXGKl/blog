@@ -1,6 +1,7 @@
 !!! note "Specical Thanks"
 
-    - https://github.com/pawamoy  
+    - https://github.com/dbrattli
+    - https://github.com/pawamoy    
 
 
 {!CREDITS.md!}

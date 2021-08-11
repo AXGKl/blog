@@ -13,6 +13,8 @@ tree ~/.config/dwm/patches
 The statusbar is from myself, [got accepted](https://dwm.suckless.org/patches/xfce4-panel/) by the
 suckless guys as official patch (hooray). 
 
+![](https://dwm.suckless.org/patches/xfce4-panel/dwm_xfce4-panel.png)
+
 I made it because
 
 - I wanted a systray but the official [systray patch](https://dwm.suckless.org/patches/systray/) is
@@ -26,6 +28,7 @@ It works by simple starting the panel as a normal window - but detecting it by w
 right position, plus preventing it showing up in the tag indicators and at cyclewindow actions.
 See the diff [here](https://dwm.suckless.org/patches/xfce4-panel/).
 
+[Here](status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar.md) is a description of the ride towards it...
 
 ## Hacking DWM: Xephyr
 
@@ -49,7 +52,7 @@ Only things not working
 - picom - but this you can test anyway nicely outside, did not dig into getting it up
 - xfce4-panel - unless I kill it outside before starting xnest:
 
-![](img/xnest.gif)
+[![](img/xnest.gif)](img/xnest.gif)
 
 
 ## Drag and Drop
@@ -61,7 +64,7 @@ which you need all the time in the age of web based services.
 [xdotool/scrot](https://unix.stackexchange.com/a/557100/123121) hack of mine:
 
 
-![](img/drag_into.gif)
+[![](img/drag_into.gif)](img/drag_into.gif)
 
 Here the script:
 ```bash lp 
@@ -100,9 +103,13 @@ Solution: I simply use thick borders and have them black for the non active wind
 
 I.e. there are actually no gaps - but the illusion is given.
 
-![](img/dwmgaps.png)
+[![](img/dwmgaps.png)](img/dwmgaps.png)
 
 
+## Misc Tips
+
+- On a fresh xfce spin fedora use `lxappearance` for gtk theming.
+- Mouse cursor size: .Xresources -> Xcursor.size 40
 
 
 ## Config
@@ -112,6 +119,8 @@ For varying shortcuts I don't recompile dwm but use sxhkdrc:
 ```bash lp 
 bat -f /home/gk/.config/sxhkd/sxhkdrc
 ```
+
+
 
 
 
