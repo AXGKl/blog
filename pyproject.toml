@@ -1,0 +1,118 @@
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.pyright]
+#python = "/home/gk/miniconda/envs/tools/bin/python"
+##venvPath = "/home/gk/repos/terminal_markdown_viewer"
+##venv = ".venv"
+##extraPaths = ["/home/gk/miniconda3/envs/tools/lib/python3.8/site-packages"]
+#verboseOutput = true
+include = ["src"]
+# pythonVersion = "3.8"
+pythonPlatform = "Linux"
+executionEnvironments = [{ root = "src" }]
+
+[tool.poetry]
+name = "blog"
+version = "2021.8.7"
+description = "AXGK blog"
+authors = ["Gunther Klessinger <g_kle_ss_inger_wo_undersc@gmx.de>"]
+license = "BSD 2-Clause Simplified License"
+readme = "README.md"
+repository = "https://github.com/AXGKl/blog"
+homepage = "https://github.com/AXGKl/blog"
+keywords = []
+#packages = [ { include = "mdv", from = "src" } ]
+include = [
+    "README.md",
+    "pyproject.toml"
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+axblack = "^20201010"
+# one of last versions with site-packages/black.py - overridden by axblack:
+#black = "18.6b4"
+# comes with the whole mkdocs suite:
+docutools = "^2021.7.31"
+# TODO: accept v5 once https://github.com/wemake-services/wemake-python-styleguide/issues/1584 is resolved
+isort = {version = "<5", extras = ["pyproject"]}
+jinja2-cli = "^0.7.0"
+structlog = "*"
+
+# [tool.poetry.scripts]
+# mdv = "mdv.v1:run"
+# mdv2 = "mdv.cli:main"
+
+[tool.black]
+line-length = 90
+exclude = "tests/fixtures"
+
+[tool.isort]
+line_length = 90
+not_skip = "__init__.py"
+multi_line_output = 3
+force_single_line = false
+balanced_wrapping = true
+default_section = "THIRDPARTY"
+include_trailing_comma = true
+
+[tool.flakehell]
+format = "colored"
+max_line_length = 132
+show_source = false
+exclude = ["tests/fixtures"]
+# create baseline first for legacy code:https://wemake-python-stylegui.de/en/latest/pages/usage/integrations/flakehell.html
+
+[tool.flakehell.plugins]
+"*" = [
+    "+*",
+    "-RST*",  # we write docstrings in markdown, not rst
+    "-A001",  # redundant with W0622 (builtin override), which is more precise about line number
+    "-D105",  # missing docstring in magic method
+    "-D212",  # multi-line docstring summary should start at the first line
+    "-E203",  # whitespace before ‘:’ (incompatible with Black)
+    "-F821",  # redundant with E0602 (undefined variable)
+    "-Q000",  # black already deals with quoting
+    "-S101",  # use of assert
+    "-W503",  # line break before binary operator (incompatible with Black)
+    "-C0103", # two-lowercase-letters variable DO conform to snake_case naming style
+    "-C0116",  # redunant with D102 (missing docstring)
+    "-C0301",  # line too long
+    "-R0902",  # too many instance attributes
+    "-R0903",  # too few public methods
+    "-R0904",  # too many public methods
+    "-R0912",  # too many branches
+    "-R0913",  # too many methods
+    "-R0914",  # too many local variables
+    "-R0915",  # too many statements
+    "-W0212",  # redundant with WPS437 (access to protected attribute)
+    "-W0611",  # redundant with F401 (unused import)
+    "-W1203",  # lazy formatting for logging calls
+    "-WPS305",  # f-strings
+    "-WPS110",  # common variable names (too annoying)
+    "-WPS125",  # redundant with W0622 (builtin override), which is more precise about line number
+    "-WPS201",  # too many imports
+    "-WPS202",  # too many module members
+    "-WPS210",  # too many local variables
+    "-WPS211",  # too many arguments
+    "-WPS213",  # too many expressions
+    "-WPS214",  # too many methods
+    "-WPS220",  # too deep nesting
+    "-WPS223",  # too many elif branches
+    "-WPS226",  # string over-use: can't disable it per file?
+    "-WPS230",  # too many public instance attributes
+    "-WPS306",  # too cumbersome, asks to write class A(object)
+    "-WPS317",  # multi-line paramaters (incompatible with Black)
+    "-WPS322",  # multi-line strings (incompatible with attributes docstrings)
+    "-WPS326",  # implicit string concatenation
+    "-WPS336",  # explicit string concatenation
+    "-WPS402",  # nosa overuse
+    "-WPS412",  # __init__ modules with logic
+    "-WPS428",  # statement with no effect (not compatible with attribute docstrings)
+    "-WPS433",  # redundant with C0415 (not top-level import)
+    "-WPS529",  # implicit dict.get usage (generally false-positive)
+]

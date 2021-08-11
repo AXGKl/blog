@@ -1,0 +1,109 @@
+site_name: "AXGK Blog"
+site_description: "Random Thoughts"
+site_url: "https://AXGKl.github.io/blog/"
+repo_url: "https://github.com/AXGKl/blog"
+repo_name: "AXGKl/blog"
+
+
+
+copyright: |
+  Copyright &copy; Gunther Klessinger
+
+#
+nav:
+  - Overview: index.md
+  - CloudTech:
+    - DNSMasq: cloud/dnsmasq/index.md
+    - Kubernetes:
+      - Notes: cloud/k8s/index.md
+      - First App: cloud/k8s/hello_app_1/index.md
+    - Terraform:
+      - About: cloud/terraform/index.md
+      - Basic Operation: cloud/terraform/resource_creation.md
+      - TF And Ansible: cloud/terraform/ansible.md
+      - Kubernetes: cloud/terraform/k8s/index.md
+      - K8s hands on: cloud/terraform/k8s/k8s_on_do.md
+  - LinuxLocal:
+    - Distros: ll/distro.md
+    - Apps: ll/apps/apps.md
+    - Gimp: ll/gimp/gimp.md
+    - Vim: ll/vim/vim.md
+    - Suckless:
+      - About: ll/sl/about.md
+      - dwm: ll/sl/dwm.md
+  - Videos And Tutorials: inet/videos.md
+
+      
+  - About:
+    - Changelog: about/changelog.md
+    - Credits: about/credits.md
+
+theme:
+  features:
+      - navigation.instant
+      - navigation.top
+  name: material
+  custom_dir: docs/lcd
+  icon:
+    logo: material/book-open-page-variant
+  palette:
+    scheme: preference
+    primary: orange
+    accent: deep purple
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - tabs
+    #- toc.autohide
+
+
+markdown_extensions:
+   - admonition
+   - attr_list
+   - markdown_include.include
+   - pymdownx.emoji
+   - pymdownx.magiclink
+   - pymdownx.superfences
+   - pymdownx.tabbed
+   - pymdownx.tasklist
+   - pymdownx.details
+   - markdown.extensions.tables
+   - markdown.extensions.footnotes
+   - markdown.extensions.md_in_html:
+   - pymdownx.superfences:
+       preserve_tabs: true
+       custom_fences:
+         - name: mermaid
+           class: mermaid
+           format: !!python/name:pymdownx.superfences.fence_code_format
+   - toc:
+       permalink: "¤"
+   - pymdownx.snippets:
+       base_path: theme/src/_snippets
+
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/AXGKl/
+    - icon: fontawesome/brands/skype
+      link: https://join.skype.com/krSNYZqvEmJm
+extra_css:
+  - assets/css/xterm.min.css
+extra_javascript:
+  - javascript/tables.js
+  - assets/javascript/tablesort.min.js
+  - assets/javascript/Rx.min.js
+  - assets/javascript/xterm.4.9.0.min.js
+  - assets/javascript/xterm-addon-fit.min.js
+  - assets/javascript/xterm-addon-search.min.js
+  - assets/javascript/lc.js
+  - assets/javascript/fa_all.js
+  - assets/pymdownx-extras/extra-uml-30be4556.js
+
+plugins:
+  - search
+  - macros:
+       j2_variable_start_string: '<{'
+       j2_variable_end_string: '}>'
