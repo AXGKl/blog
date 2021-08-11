@@ -1,24 +1,9 @@
-```page lp session=hello
+```page lp session=mysql
 ```
 
-# A First Hello World Python App Run on K8s
+# Adding a Database
 
- We create a hello world app, which we containerize, then deploy on k8s.
-
-!!! note
-
-    There are thousands of "better" tutorials regarding how to do this already out there since long.
-    But you have to start somewhere and I wanted an automatically[^1] reproducable baseline, for the more
-    complex things, we'll eventually address in other tutorials around here.
-
-!!! tip "kubernetes playground"
-    
-    If you can't install a cloud kubernetes server you can test most of the stuff below using this
-    playground: https://labs.play-with-k8s.com/
-
-[^1]: All the code in this tutorial is run by a markdown preprocessor.
-
-First example is stateless:
+Lets connect a database 
 
 ## Requirements
 

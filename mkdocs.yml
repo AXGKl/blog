@@ -15,29 +15,30 @@ nav:
   - CloudTech:
     - DNSMasq: cloud/dnsmasq/index.md
     - Kubernetes:
-      - Notes: cloud/k8s/index.md
-      - First App: cloud/k8s/hello_app_1/index.md
+      - Notes     : cloud/k8s/index.md
+      - First App : cloud/k8s/1_hello_app/index.md
+      - With DB   : cloud/k8s/2_hello_mysql/index.md
     - Terraform:
-      - About: cloud/terraform/index.md
-      - Basic Operation: cloud/terraform/resource_creation.md
-      - TF And Ansible: cloud/terraform/ansible.md
-      - Kubernetes: cloud/terraform/k8s/index.md
-      - K8s hands on: cloud/terraform/k8s/k8s_on_do.md
+      - About           : cloud/terraform/index.md
+      - Basic Operation : cloud/terraform/resource_creation.md
+      - TF And Ansible  : cloud/terraform/ansible.md
+      - Kubernetes      : cloud/terraform/k8s/index.md
+      - K8s hands on    : cloud/terraform/k8s/k8s_on_do.md
   - LinuxLocal:
-    - Distros: ll/distro.md
-    - Apps: ll/apps/apps.md
-    - Gimp: ll/gimp/gimp.md
-    - Vim: ll/vim/vim.md
-    - Emacs: ll/emacs/emacs.md
+    - Distros : ll/distro.md
+    - Apps    : ll/apps/apps.md
+    - Gimp    : ll/gimp/gimp.md
+    - Vim     : ll/vim/vim.md
+    - Emacs   : ll/emacs/emacs.md
     - Suckless:
-      - About: ll/sl/about.md
-      - dwm: ll/sl/dwm.md
-      - st: ll/sl/st.md
+      - About : ll/sl/about.md
+      - dwm   : ll/sl/dwm.md
+      - st    : ll/sl/st.md
       - Statusbar Fun:
-        - Chapter1: ll/sl/status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar.md
-        - Chapter2: ll/sl/status_bar_fun/2021.05.24_dwm_status_2_never_call_xsession_within_dwm.md
-        - Chapter3: ll/sl/status_bar_fun/2021.05.24_dwm_status_3_xfce4_panel_in_dwm.md
-        - Chapter4: ll/sl/status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor.md
+        - The Problem       : ll/sl/status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar.md
+        - XFCE              : ll/sl/status_bar_fun/2021.05.24_dwm_status_2_never_call_xsession_within_dwm.md
+        - XFCE Panel in DWM : ll/sl/status_bar_fun/2021.05.24_dwm_status_3_xfce4_panel_in_dwm.md
+        - CPU Monitor       : ll/sl/status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor.md
 
   - Videos And Tutorials: inet/videos.md
   - Logbook: logbook.md
