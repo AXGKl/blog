@@ -46,10 +46,10 @@ We use Digitial Ocean(DO) as cloud provider, AWS is well documented.
     <xterm />
     
         $ type doctl terraform kubectl podman pass            
-        doctl is hashed (/usr/local/bin/doctl)  
-        terraform is hashed (/usr/local/bin/terraform)                                  
-        kubectl is hashed (/usr/local/bin/kubectl)                                      
-        podman is hashed (/usr/bin/podman)      
+        doctl is /usr/local/bin/doctl           
+        terraform is /usr/local/bin/terraform   
+        kubectl is /usr/local/bin/kubectl       
+        podman is /usr/bin/podman               
         pass is /usr/bin/pass
         $ pass show DO/pat | head -c 5                        
         7ba23
@@ -470,70 +470,72 @@ Create it:
         
         [1mPlan:[0m[39m[49m 2 to add, 0 to change, 0 to destroy.                                      
         [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Creating...[0m[39m[49m                 
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [10s elapsed][0m[39m[49m                    
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [20s elapsed][0m[39m[49m                    
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [30s elapsed][0m[39m[49m                    
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [40s elapsed][0m[39m[49m                    
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [50s elapsed][0m[39m[49m                    
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [1m0s elapsed][0m[39m[49m                   
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [1m10s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [1m20s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [1m30s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [1m40s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [1m50s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [2m0s elapsed][0m[39m[49m                   
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [2m10s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [2m20s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [2m30s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [2m40s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [2m50s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [3m0s elapsed][0m[39m[49m                   
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [3m10s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [3m20s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [3m30s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [3m40s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [3m50s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [4m0s elapsed][0m[39m[49m                   
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [4m10s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [4m20s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [4m30s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [4m40s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [4m50s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [5m0s elapsed][0m[39m[49m                   
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [5m10s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [5m20s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [5m30s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [5m40s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [5m50s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [6m0s elapsed][0m[39m[49m                   
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [6m10s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [6m20s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [6m30s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [6m40s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [6m50s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [7m0s elapsed][0m[39m[49m                   
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [7m10s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [7m20s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [7m30s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [7m40s elapsed][0m[39m[49m                  
-        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Creation complete after 7m43s [id=c8d707ee-e897-48a6-8c03-81f53bb66315][0m[39m[49m     
-        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Creating...[0m[39m[49m                                           
-        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [10s elapsed][0m[39m[49m                       
-        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [20s elapsed][0m[39m[49m                       
-        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [30s elapsed][0m[39m[49m                       
-        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [40s elapsed][0m[39m[49m                       
-        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [50s elapsed][0m[39m[49m                       
-        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [1m0s elapsed][0m[39m[49m                      
-        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [1m10s elapsed][0m[39m[49m                     
-        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [1m20s elapsed][0m[39m[49m                     
-        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [1m30s elapsed][0m[39m[49m                     
-        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Creation complete after 1m31s [id=570843a6-fd87-4483-9e31-44a2727b7388][0m[39m[49m        
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [10s elapsed][0m[39m[49m 
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [20s elapsed][0m[39m[49m 
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [30s elapsed][0m[39m[49m 
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [40s elapsed][0m[39m[49m 
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [50s elapsed][0m[39m[49m 
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [1m0s elapsed]
+        digitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [1m10s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [1m20s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [1m30s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [1m40s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [1m50s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [2m0s elapsed]
+        digitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [2m10s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [2m20s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [2m30s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [2m40s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [2m50s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [3m0s elapsed]
+        digitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [3m10s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [3m20s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [3m30s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [3m40s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [3m50s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [4m0s elapsed]
+        digitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [4m10s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [4m20s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [4m30s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [4m40s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [4m50s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [5m0s elapsed]
+        digitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [5m10s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [5m20s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [5m30s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [5m40s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [5m50s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [6m0s elapsed]
+        digitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [6m10s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [6m20s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [6m30s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [6m40s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [6m50s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [7m0s elapsed]
+        digitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [7m10s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Still creating... [7m20s elapsed][0m[39m[49m                    
+        [1mdigitalocean_kubernetes_cluster.kubernetes_cluster: Creation complete after 7m23s [id=f87c35a9-2545-4d28-a982-c42a70deb997][0m[39m[49m   
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Creating...[0m[39m[49m                        
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [10s elapsed][0m[39m[49m    
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [20s elapsed][0m[39m[49m    
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [30s elapsed][0m[39m[49m    
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [40s elapsed][0m[39m[49m    
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [50s elapsed][0m[39m[49m    
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [1m0s elapsed][0m[39m[49m   
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [1m10s elapsed][0m[39m[49m  
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [1m20s elapsed][0m[39m[49m  
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [1m30s elapsed][0m[39m[49m  
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [1m40s elapsed][0m[39m[49m  
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [1m50s elapsed][0m[39m[49m  
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [2m0s elapsed][0m[39m[49m   
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Still creating... [2m10s elapsed][0m[39m[49m  
+        [1mdigitalocean_kubernetes_node_pool.app_node_pool: Creation complete after 2m11s [id=92d20dac-14c4-4d70-86fd-6885b4152215][0m[39m[49m      
         
-        [1m[32mApply complete! Resources: 2 added, 0 changed, 0 destroyed.[0m[39m[49m                                            
+        [1m[32mApply complete! Resources: 2 added, 0 changed, 0 destroyed.[0m[39m[49m                         
         
-        real    9m15.960s        
-        user    0m1.665s         
-        sys     0m0.322s
+        real    9m35.042s    
+        user    0m1.750s     
+        sys     0m0.345s
     
     
 
@@ -563,16 +565,16 @@ Should be done in a few minutes. Large variations, I saw between 5 and 15 minute
     
     <xterm />
     
-        $ doctl kubernetes cluster kubeconfig save "$clustername"                    
-        [32mNotice[39m: Adding cluster credentials to kubeconfig file found in "/home/gk/.kube/config"                 
+        $ doctl kubernetes cluster kubeconfig save "$clustername" 
+        [32mNotice[39m: Adding cluster credentials to kubeconfig file found in "/home/gk/.kube/config"                   
         [32mNotice[39m: Setting current-context to do-fra1-tf-do-cluster-d1
-        $ kubectl cluster-info                                                       
-        [32mKubernetes control plane[39m is running at [33mhttps://c8d707ee-e897-48a6-8c03-81f53bb66315.k8s.ondigitalocean.com[39m                      
-        [32mCoreDNS[39m is running at [33mhttps://c8d707ee-e897-48a6-8c03-81f53bb66315.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy[39m       
+        $ kubectl cluster-info                                    
+        [32mKubernetes control plane[39m is running at [33mhttps://f87c35a9-2545-4d28-a982-c42a70deb997.k8s.ondigitalocean.com[39m                    
+        [32mCoreDNS[39m is running at [33mhttps://f87c35a9-2545-4d28-a982-c42a70deb997.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy[39m                     
         
         To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-        $ k cluster-info dump | wc -l                             # hf ;-)                                     
-        13850                    
+        $ k cluster-info dump | wc -l                             # hf ;-)                  
+        18346                
         $ 
     
     
@@ -587,12 +589,12 @@ work "only" with one.
 <!-- id: 5f0194057674c1687fd6b6f37d1b78f4 -->
 <xterm />
 
-    $ k get nodes            
-    NAME                 STATUS     ROLES    AGE     VERSION                                               
-    app-pool-84uox       NotReady   <none>   8s      v1.21.2                                               
-    app-pool-84uoy       NotReady   <none>   3s      v1.21.2                                               
-    default-pool-84ux8   Ready      <none>   3m24s   v1.21.2                                               
-    default-pool-84uxu   Ready      <none>   4m57s   v1.21.2
+    $ k get nodes   
+    NAME                 STATUS   ROLES    AGE     VERSION                              
+    app-pool-849ri       Ready    <none>   51s     v1.21.2                              
+    app-pool-849rv       Ready    <none>   33s     v1.21.2                              
+    default-pool-849j0   Ready    <none>   3m43s   v1.21.2                              
+    default-pool-849j1   Ready    <none>   4m41s   v1.21.2
 
 
 <!-- id: 5f0194057674c1687fd6b6f37d1b78f4 -->
@@ -621,11 +623,11 @@ is:
     
     <xterm />
     
-        $ podman login "$(pass show reg/domain)" -u $(pass show reg/user) -p "$(pass show reg/passw)"         
+        $ podman login "$(pass show reg/domain)" -u $(pass show reg/user) -p "$(pass show reg/passw)"       
         Login Succeeded!
-        $ fn=$XDG_RUNTIME_DIR/containers/auth.json # podman's location. docker: elsewhere                      
+        $ fn=$XDG_RUNTIME_DIR/containers/auth.json # podman's location. docker: elsewhere   
         $ 
-        $ k create secret generic regcred --from-file=".dockerconfigjson=$fn"  --type=kubernetes.io/dockerconfigjson                    
+        $ k create secret generic regcred --from-file=".dockerconfigjson=$fn"  --type=kubernetes.io/dockerconfigjson                                  
         secret/regcred created
     
     
