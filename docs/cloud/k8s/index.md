@@ -12,6 +12,20 @@ Extensive subject. Small collection of notes for basic usage patterns below.
         is not supported [out of the box](https://github.com/evanlucas/fish-kubectl-completions) by kubectl.
 
         See https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#enable-shell-autocompletion
+
+        !!! tip "add on demand"
+
+            If you *not regularly* work with kubectl I would *not* source the completion funcs within
+            your shell profile, i.e. pump them into any shell process - but rather source it on demand, i.e.
+            through an alias or function overload:
+
+            ```console
+            [gk@axgk ~]$ set -a; env | wc -l; source <(kubectl completion bash); env | wc -l; set +a
+            68
+            13022
+            ```
+            As said, it is a big tool...
+
     
     === "Comparison: zsh vs. bash" 
         
@@ -77,20 +91,58 @@ Extensive subject. Small collection of notes for basic usage patterns below.
         Linux web-1 4.19.0-17-amd64 #1 SMP Debian 4.19.194-2 (2021-06-21) x86_64 x86_64 x86_64 GNU/Linux
         ```
 
+    === "`logs`"
+
+        the stdout stream viewer of pods:
+
+        ```console
+        ~/repos/blog/t/cl/D/k8s/hello_app master ?4 ❯ kubectl get pods
+        NAME                            READY   STATUS             RESTARTS   AGE
+        hello2-d646c6dc4-zvklb          1/1     Running            0          22m
+        hello2-mysql-7bfb675994-m777v   0/1     CrashLoopBackOff   9          22m
+
+        ~/repos/blog/t/cl/D/k8s/hello_app master ?4 ❯ kubectl logs --follow hello2-mysql-7bfb675994-m777v
+        2021-08-16 14:38:40+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.35-1debian10 started.
+        2021-08-16 14:38:40+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+        2021-08-16 14:38:40+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.35-1debian10 started.
+        2021-08-16 14:38:40+00:00 [Note] [Entrypoint]: Initializing database files
+        2021-08-16T14:38:40.187932Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+        2021-08-16T14:38:40.189022Z 0 [ERROR] --initialize specified but the data directory has files in it. Aborting.
+        2021-08-16T14:38:40.189052Z 0 [ERROR] Aborting
+        ```
 
 ## Troubleshooting
 
 
 !!! hint "Problems"
 
+    === "MySQL won't start"
+        
+        - Description: On ext4 the mysql5.7 images [refuses](https://stackoverflow.com/a/66027830/4583360) to start due to non empty dir otherwise.
+        - Resolution:
+
+        ```yaml
+                 spec:
+                   containers:
+                   - image: mysql:5.7
+                     name: mysql
+                     args:
+                     - "--ignore-db-dir=lost+found"
+                     env:
+                     - name: MYSQL_ROOT_HOST
+                       value: "%" 
+                       (...)
+
+        ```
+
     === "`ErrImagePull`"
 
         - Description: At `k get pods` output.
         - Resolution: Check `k describe pod frontend`. In my case it was a an auth problem at the private registry, needed add the registry secret.
           
-        ```
-          >       imagePullSecrets:
-          >       - name: regcred
+        ```yaml
+                 imagePullSecrets:
+                 - name: regcred
         ```
 
 
@@ -198,9 +250,9 @@ Extensive subject. Small collection of notes for basic usage patterns below.
         or:
 
         ```
-        kubectl delete pod --all / pod-name
-        kubectl delete pvc --all / pvc-name
-        kubectl delete pv --all / pv-name
+        kubectl delete pvc --all # or pvc-name
+        kubectl delete pod --all # / pod-name
+        kubectl delete pv --all  # / pv-name
         ```
 
 

@@ -155,7 +155,7 @@ run() if __name__ == '__main__' else 0
 
 
 ```docker lp mode=make_file fn=Dockerfile
-FROM         python:3.8
+FROM         docker.io/python:3.8
 MAINTAINER   gk
 RUN          mkdir -p /app
 WORKDIR      /app
@@ -183,6 +183,7 @@ wget --retry-connrefused http://localhost:28001/stop -O - # lp: asserts=PATH
 ```bash lp 
 git add server.py Dockerfile environ
 git commit -am 'feat: First version of hello world server'
+git tag $ver || true
 ```
 
 ### Push to (Private) Registry
@@ -265,12 +266,12 @@ sleep 1
 k get service frontend
 ```
 
-On DO the loadbalancer needs a minute when you first configure one, on a *new* k8s cluster (`k describe service frontend` shows details).
+On DO the loadbalancer needs a few minutes when you first configure one, on a *new* k8s cluster (`k describe service frontend` shows details).
 
 Let's wait until up:
 
 ```bash lp
-while true; do sleep 2; k get service frontend | grep pending || break; done # lp: timeout=200
+while true; do sleep 2; k get service frontend | grep pending || break; done # lp: timeout=600
 k -o json get service frontend | jq .
 ip=$(k -o json get service frontend | jq -r .status.loadBalancer.ingress[0].ip)
 ```
