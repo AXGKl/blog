@@ -1,51 +1,37 @@
-#!/usr/bin/env bash
-# Lacking proper Makefile skills
-
-set -e
+# vim: ft=bash
+M="\x1b[1;32m"
+O="\x1b[0m"
+T1="\x1b[48;5;255;38;5;0m"
+T2="\x1b[48;5;124;38;5;255m"
 
 TERMINAL="${TERMINAL:-st}"
 
-here="$(
-    cd $(dirname "$0")
-    pwd
-)"
+nfo() { test -z "$2" && echo -e "${M}$*$O" || h1 "$@"; }
+h1()  { local a="$1" && shift && echo -e "$T1 $a $T2 $* $O"; }
+sh()  { nfo "$@" && "$@"; }
 
-cd "$here"
+help() {
+    funcs()   { local a="func" && grep "${a}tion" ./make | grep " {" | sed -e "s/${a}tion/- /g" | sed -e 's/{//g' | sort; }
+    aliases() { local a="## Function" && grep -A 30 "$a Aliases:" ./make | grep -B 30 'make()' | grep -v make; }
+    local doc="
+    # Repo Maintenance Functions
 
-set -a
-source ./makevars
-set +a
+    ## Usage: ./make <function> [args]
 
-funcs() {
-    local a="func"
-    grep "${a}tion" ./make | grep " {" | sed -e "s/${a}tion/- /g" | sed -e 's/{//g' | sort
-}
-aliases() {
-    set -x
-    local a="## Function"
-    set +x
-    grep -A 30 "$a Aliases:" ./make | grep -B 30 'main()' | grep -v main
-}
+    ## Functions:
+    $(funcs)
 
-doc="
-# Repo Maintenance Functions
-
-## Usage: ./make <function> [args]
-
-## Functions:
-$(funcs)
-
-$(aliases)
-"
-
-sh() {
-    echo -e "\x1b[48;5;255;38;5;0m Running: \x1b[48;5;124;38;5;255m $* \x1b[0m"
-    "$@"
-}
-
-exit_help() {
+    $(aliases)
+    "
+    doc="$(echo "$doc" | sed -e 's/    //g')"
     echo -e "$doc"
-    exit 1
+}
+
+activate_venv() {
+    # must be set in environ:
+    test "$CONDA_PREFIX" = "${conda_env:-x}" && return 0
+    nfo Activating "$conda_env"
+    conda activate "$conda_env"
 }
 
 set_version() {
@@ -56,13 +42,18 @@ set_version() {
             return 0
         }
     fi
-    echo "Say ./make release <version>"
-    exit 1
+    nfo "Say ./make release <version>"
+    return 1
 }
 
-function tests {
-    test -z "$1" && pytest -xs tests
-    test -n "$1" && pytest "$@"
+# ----------------------------------------------------------------------------------------- Make Functions:
+function docs {
+    echo "making docs"
+}
+
+function docs {
+    docs_regen
+    sh mkdocs build
 }
 
 function docs_regen {
@@ -79,24 +70,25 @@ function docs_regen {
         --lit_prog_evaluation="${lit_prog_eval_match:-md}" \
         --lit_prog_evaluation_timeout=5 \
         --lit_prog_on_err_keep_running=false || exit 1 # fail build on error
-
-}
-
-function docs {
-    sh docs_regen
-    sh mkdocs build
 }
 
 function docs_serve {
-    sh docs_regen
+    docs_regen
     sh mkdocs serve
-    # `doc pp -h` reg. what this does (lp eval on file change):
+}
+
+function tests {
+    test -z "$1" && {
+        sh pytest -xs tests
+        return $?
+    }
+    test -n "$1" && sh pytest "$@"
 }
 
 function release {
     version="${1:-}"
-    test -z "$version" && set_version
-    echo "New Version = $version"
+    test -z "$version" && { set_version || return 1; }
+    nfo "New Version = $version"
     sh poetry version "$version"
     sh docs
     sh git add pyproject.toml -f CHANGELOG.md
@@ -108,20 +100,26 @@ function release {
 }
 
 ## Function Aliases:
-ds() { docs_serve "$@"; }
-t() { tests "$@"; }
+d()   { docs "$@"; }
+ds()  { docs_serve "$@"; }
 rel() { release "$@"; }
+t()   { tests "$@"; }
 
-main() {
-    test -z "$POETRY_ACTIVE" && {
-        poetry shell
-        $0 "$@"
-        exit $?
+make() {
+    test -z "$1" && {
+        help
+        return
     }
-    if [[ -z "$1" || "${1:-}" == "-h" ]]; then exit_help; fi
-    func="$1"
+    local f="$1"
+    type $f >/dev/null 2>/dev/null || {
+        help
+        return
+    }
     shift
-    $func "$@"
+    $f "$@" || {
+        nfo "ERR" $f
+        return 1
+    }
 }
 
-main "$@"
+activate_venv || nfo "Cannot activate $\conda_env"
