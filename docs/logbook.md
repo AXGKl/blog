@@ -1,10 +1,8 @@
 # Logbook
 
 
-### `kmcaster`: Best screenkey recorder
+### [`kmcaster`](https://github.com/DaveJarvis/kmcaster/): Best screenkey recorder
 [2021-08-17 11:11] 
-
-[This](https://github.com/DaveJarvis/kmcaster/)
 
 
 ### openjdk install
@@ -127,7 +125,8 @@ Sound: Remove pipewire like described by fedora - then removed old .config/pulse
 ### Nvim: Appimage 
 [2021-02-11 12:36] 
 
-nvim: Do not install the package mgr version - the app image (from their github) works perfect:
+nvim: Do not install the package mgr version on a stable distro, nvims' dev speed is crazy (e.g.
+lua support) - the app image (from their github) works perfect.
 
     /home/gk/inst/nvim.appimage README.md
 

@@ -16,6 +16,7 @@ nav:
     - DNSMasq: cloud/dnsmasq/index.md
     - Kubernetes:
       - Notes     : cloud/k8s/index.md
+      - Notes     : cloud/k8s/k9s/k9s.md
       - First App : cloud/k8s/1_hello_app/index.md
       - With DB   : cloud/k8s/2_hello_mysql/index.md
     - Terraform:

@@ -36,6 +36,14 @@ nodes when you hit `s`:
         namespace: default
 ```
 
+## Skins
+
+As [described](https://github.com/derailed/k9s/tree/master/skins) in the docs
+
+!!! hint
+    You can have different skins per cluster!
+
+
 ## Resources
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wG8KCwDAhnw?start=100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
