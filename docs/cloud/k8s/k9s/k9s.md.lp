@@ -36,6 +36,21 @@ nodes when you hit `s`:
         namespace: default
 ```
 
+## Port Forwards
+One cool feature is to be able to set up port forwards from your localhost into any exposed port:
+`SHIFT-F` on a pod, then this comes up:
+
+![](img/pf.png)
+
+!!! tip
+    `:pf` shows all active forwards.
+
+## Benchmarks
+
+- Install the [hey](https://github.com/rakyll/hey) benchmark tool.
+- Then `ctrl-l` in the portforwards view and you get a benchmark (configurable like [so](https://k9scli.io/topics/bench/)).
+
+
 ## Skins
 
 As [described](https://github.com/derailed/k9s/tree/master/skins) in the docs
@@ -46,6 +61,8 @@ As [described](https://github.com/derailed/k9s/tree/master/skins) in the docs
 
 ## Resources
 
+<table><tr><td>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wG8KCwDAhnw?start=100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+</td><td>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/boaW9odvRCc?start=100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</td></tr></table>

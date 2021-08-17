@@ -684,22 +684,23 @@ Dashboard says:
 
 
         <!-- id: 62f43f6f857b3ba713d9805bdcc17490 -->
-        ```bash
-        $ for i in 1 2; do wget -qt1T1 http://$ip:28001/err -O /dev/null; done
-        ```
-        
-        
-        ```bash
-        $ sleep 2
-        ```
-        
-        
-        ```bash
-        $ k get pods    
-        NAME                       READY   STATUS    RESTARTS   AGE                         
-        frontend-9d9756598-tgkxj   1/1     Running   1          14m                         
-        frontend-9d9756598-w2dck   1/1     Running   1          14m
-        ```
+                ```bash
+                $ for i in 1 2; do wget -qt1T1 http://$ip:28001/err -O /dev/null; done
+                ```
+                
+                
+                ```bash
+                $ sleep 2
+                ```
+                
+                
+                ```bash
+                $ k get pods    
+                NAME                       READY   STATUS    RESTARTS   AGE                         
+                frontend-9d9756598-tgkxj   1/1     Running   1          14m                         
+                frontend-9d9756598-w2dck   1/1     Running   1          14m
+                ```
+               
         <!-- id: 62f43f6f857b3ba713d9805bdcc17490 -->
 
     === "Backoff Behaviour"
