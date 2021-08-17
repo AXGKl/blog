@@ -1,7 +1,7 @@
 <!-- AUTOMATICALLY GENERATED FILE - DO NOT DIRECTLY EDIT!
 
 Direct edits will be gone after next CI build.
-By: gk@axgk (Wed Aug 18 01:12:20 2021)
+By: gk@axgk (Wed Aug 18 01:21:45 2021)
 Command Line (see duties.py):
 
     /home/gk/miniconda3/envs/blog_py39/bin/doc pre_process \
@@ -34,6 +34,7 @@ This project adheres to [CalVer Versioning](http://calver.org) ![](https://img.s
 - K9s link ([b89f0bd](https://github.com/AXGKl/blog/commit/b89f0bdc06808a53b92e652f8c292b2bfe396e2d) by Gunther Klessinger).
 
 ### Features
+- New make system ([b7957bc](https://github.com/AXGKl/blog/commit/b7957bc58e91142a087ff35346eb5c4f0ffca90d) by Gunther Klessinger).
 - K9s ([55967b6](https://github.com/AXGKl/blog/commit/55967b6dd9dcc4674b98c386cf17ae3f815477f3) by Gunther Klessinger).
 - Mysql deploy fully on k8s ([f9e30d6](https://github.com/AXGKl/blog/commit/f9e30d680ac329b25024111a28cf64a86de31d7a) by Gunther Klessinger).
 
