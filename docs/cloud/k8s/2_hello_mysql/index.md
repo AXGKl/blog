@@ -1,6 +1,6 @@
 
 
-# Adding a Database
+# Stateful App With MySQL Database
 
 Lets connect a database to our [hello app](../1_hello_app/), i.e. we need a Stateful Set.
 
@@ -8,7 +8,7 @@ Lets connect a database to our [hello app](../1_hello_app/), i.e. we need a Stat
 
 We require the app from [last chapter](../1_hello_app/):
 
-<!-- id: 3632cc1f13b17bc925f036ac8c72719d -->
+<!-- id: 1e36edf2f174f4c02372408a11c40ef6 -->
 
 === "Cmd"
     
@@ -25,14 +25,14 @@ We require the app from [last chapter](../1_hello_app/):
     
     <xterm />
     
-        $ git ls-files  
-        Dockerfile           
-        environ              
+        $ git ls-files           
+        Dockerfile               
+        environ                  
         server.py
-        $ git tag       
-        0.2                  
+        $ git tag                
+        0.2                      
         0.3
-        $ sed -i 's/0.2/0.3/' environ # version now 0.3                                     
+        $ sed -i 's/0.2/0.3/' environ # version now 0.3    
         $ 
         $ source ./environ
         $ rm -f *.yaml
@@ -40,7 +40,7 @@ We require the app from [last chapter](../1_hello_app/):
     
 
 
-<!-- id: 3632cc1f13b17bc925f036ac8c72719d -->
+<!-- id: 1e36edf2f174f4c02372408a11c40ef6 -->
 
 ## Server App
 
@@ -60,10 +60,10 @@ First we need a mysql server:
     
     <xterm />
     
-        $ ( p images | grep mysql | grep 5.7 || p pull docker.io/library/mysql:5.7 )   
+        $ ( p images | grep mysql | grep 5.7 || p pull docker.io/library/mysql:5.7 ) 
         docker.io/library/mysql                                  [1m[31m5.7[0m[39m[49m         8cf62[1m[31m507[0m[39m[49m0931  3 weeks ago   454 MB
-        $ p run -d -e MYSQL_ROOT_HOST='%' -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=db -p3306:3306 --rm -ti mysql:5.7                           
-        fe57e9ada3e9e32ab39b38c1ce5df37cb5a3a3bac0721a08b565538e94aa9a87
+        $ p run -d -e MYSQL_ROOT_HOST='%' -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=db -p3306:3306 --rm -ti mysql:5.7             
+        ae4eebc46b6fd78074d9586f68a1e891f58d2a1a951a90bcfdb404458a12e975
     
     
 
@@ -154,9 +154,9 @@ CMD          ["python", "server.py"]
     
     <xterm />
     
-        $ p rmi -f $namespace/$app                                
+        $ p rmi -f $namespace/$app                                                   
         Untagged: localhost/devapps/hello_app:0.3
-        $ p build --quiet -t $app  .                              
+        $ p build --quiet -t $app  .                                                 
         603b3f682f1e101453ca517ab5bd9f9d45a60b7825f80ff21df899abc91c5f84
         $ p tag "$app:latest" "$namespace/$app:$ver"
     
@@ -172,19 +172,19 @@ CMD          ["python", "server.py"]
 <xterm />
 
     $ hostip="$(ip addr show |grep 'inet ' | grep -v 127 | head -n 1 | cut -d t -f2 | cut -db -f1 | cut -d'/' -f1 | xargs)"
-    $ echo $hostip  
+    $ echo $hostip           
     10.0.0.84
-    $ p run -d -ti --rm -p 28001:28001 -e dbuser=root -e dbpass=secret -e dbname=db -e dbhost=$hostip $namespace/$app:$ver                        
-    9cc17283d1e7cb8ec8018d94c372dde0d3f24474fcbab1a6eaf067ce09536beb
-    $ ( while true; do sleep 1; wget -q http://127.0.0.1:28001/initdb -O - && break; done )             
+    $ p run -d -ti --rm -p 28001:28001 -e dbuser=root -e dbpass=secret -e dbname=db -e dbhost=$hostip $namespace/$app:$ver          
+    6b28f15292eefdc92fda8c1bee52207c47299a4958f42b72bef717309fb140af
+    $ ( while true; do sleep 1; wget -q http://127.0.0.1:28001/initdb -O - && break; done )               
     {"result": "{'Tables_in_db': 'items'}"}
     wget -q http://127.0.0.1:28001/show/brian -O - | jq . # lp: asserts=brian and result
-    $ wget -q http://127.0.0.1:28001/show/brian -O - | jq .   
-    [1m{[0m[39m[49m                    
-    [1m  [34m"result"[39m: {[0m[39m[49m        
-    [1m    [34m"name"[39m: [0m[32m[49m"brian"[1m[39m,[0m[39m[49m 
-    [1m    [34m"age"[39m: [0m[39m[49m42        
-    [1m  }[0m[39m[49m                  
+    $ wget -q http://127.0.0.1:28001/show/brian -O - | jq .                      
+    [1m{[0m[39m[49m                        
+    [1m  [34m"result"[39m: {[0m[39m[49m            
+    [1m    [34m"name"[39m: [0m[32m[49m"brian"[1m[39m,[0m[39m[49m     
+    [1m    [34m"age"[39m: [0m[39m[49m42            
+    [1m  }[0m[39m[49m                      
     [1m}[0m[39m[49m
 
 
@@ -212,8 +212,8 @@ Cleanup:
     <xterm />
     
         $ wget -q http://127.0.0.1:28001/kill/0
-        $ ( p ps | grep mysqld | cut -d' ' -f1 | xargs podman stop; echo stopped )     
-        fe57e9ada3e9         
+        $ ( p ps | grep mysqld | cut -d' ' -f1 | xargs podman stop; echo stopped )   
+        ae4eebc46b6f                                    
         stopped
     
     
@@ -237,14 +237,14 @@ Cleanup:
     
     <xterm />
     
-        $ git commit -am 'feat: mysql connection'                 
-        On branch master     
-        Untracked files:     
-          (use "git add <file>..." to include in what will be committed)                    
-                [31menv[39m          
+        $ git commit -am 'feat: mysql connection'                             
+        On branch master                                
+        Untracked files:                                
+          (use "git add <file>..." to include in what will be committed)                                
+                [31menv[39m                                     
         
         nothing added to commit but untracked files present (use "git add" to track)
-        $ git tag $ver  
+        $ git tag $ver        
         fatal: tag '0.3' already exists
     
     
@@ -270,10 +270,10 @@ Cleanup:
     
     <xterm />
     
-        $ p login "$(pass show reg/domain)" -u $(pass show reg/user) -p "$(pass show reg/passw)"            
+        $ p login "$(pass show reg/domain)" -u $(pass show reg/user) -p "$(pass show reg/passw)"                                                                              
         Login Succeeded!
         $ r="docker://$(pass show reg/domain)/docker-internal/$namespace"
-        $ p push --quiet --authfile=$fn_reg_auth $namespace/$app:$ver "$r/$app:$ver" && echo success        
+        $ p push --quiet --authfile=$fn_reg_auth $namespace/$app:$ver "$r/$app:$ver" && echo success                                                                          
         success
     
     
@@ -312,15 +312,15 @@ Again we deploy the app using K8s' solely. First a secret "generator", configure
     
     <xterm />
     
-        $ cat <<EOF >./kustomization.yaml         
-        > secretGenerator:   
-        > - name: mysql-pass 
-        >   literals:        
-        >   - password=myk8ssecret                
-        > resources:         
-        >   - mysql-deployment.yaml               
-        >   - hello2-deployment.yaml              
-        > EOF                
+        $ cat <<EOF >./kustomization.yaml               
+        > secretGenerator:                              
+        > - name: mysql-pass                            
+        >   literals:                                   
+        >   - password=myk8ssecret                      
+        > resources:                                    
+        >   - mysql-deployment.yaml                     
+        >   - hello2-deployment.yaml                    
+        > EOF                                           
         $ 
     
     
@@ -415,79 +415,79 @@ Again we deploy the app using K8s' solely. First a secret "generator", configure
     
     <xterm />
     
-        $ cat <<EOF >./mysql-deployment.yaml      
-        > apiVersion: v1     
-        > kind: Service      
-        > metadata:          
-        >   name: hello2-mysql                    
-        >   labels:          
-        >     app: hello2    
-        > spec:              
-        >   ports:           
-        >     - port: 3306   
-        >   selector:        
-        >     app: hello2    
-        >     tier: mysql    
-        >   clusterIP: None  
-        > ---                
-        > apiVersion: v1     
-        > kind: PersistentVolumeClaim             
-        > metadata:          
-        >   name: mysql-pv-claim                  
-        >   labels:          
-        >     app: hello2    
-        > spec:              
-        >   accessModes:     
-        >     - ReadWriteOnce
-        >   resources:       
-        >     requests:      
-        >       storage: 5Gi 
-        > ---                
-        > apiVersion: apps/v1
-        > kind: Deployment   
-        > metadata:          
-        >   name: hello2-mysql                    
-        >   labels:          
-        >     app: hello2    
-        > spec:              
-        >   selector:        
-        >     matchLabels:   
-        >       app: hello2  
-        >       tier: mysql  
-        >   strategy:        
-        >     type: Recreate 
-        >   template:        
-        >     metadata:      
-        >       labels:      
-        >         app: hello2
-        >         tier: mysql
-        >     spec:          
-        >       containers:  
-        >       - image: mysql:5.7                
-        >         name: mysql
-        >         args:      
-        >         - "--ignore-db-dir=lost+found"  
-        >         env:       
-        >         - name: MYSQL_ROOT_HOST         
-        >           value: "%"                    
-        >         - name: MYSQL_DATABASE          
-        >           value: "db"                   
-        >         - name: MYSQL_ROOT_PASSWORD     
-        >           valueFrom:                    
-        >             secretKeyRef:               
-        >               name: mysql-pass          
-        >               key: password             
-        >         ports:     
-        >         - containerPort: 3306           
-        >           name: mysql                   
-        >         volumeMounts:                   
-        >         - name: mysql-persistent-storage                                          
-        >           mountPath: /var/lib/mysql     
-        >       volumes:     
-        >       - name: mysql-persistent-storage  
-        >         persistentVolumeClaim:          
-        >           claimName: mysql-pv-claim     
-        > EOF                
+        $ cat <<EOF >./mysql-deployment.yaml            
+        > apiVersion: v1                                
+        > kind: Service                                 
+        > metadata:                                     
+        >   name: hello2-mysql                          
+        >   labels:                                     
+        >     app: hello2                               
+        > spec:                                         
+        >   ports:                                      
+        >     - port: 3306                              
+        >   selector:                                   
+        >     app: hello2                               
+        >     tier: mysql                               
+        >   clusterIP: None                             
+        > ---                                           
+        > apiVersion: v1                                
+        > kind: PersistentVolumeClaim                   
+        > metadata:                                     
+        >   name: mysql-pv-claim                        
+        >   labels:                                     
+        >     app: hello2                               
+        > spec:                                         
+        >   accessModes:                                
+        >     - ReadWriteOnce                           
+        >   resources:                                  
+        >     requests:                                 
+        >       storage: 5Gi                            
+        > ---                                           
+        > apiVersion: apps/v1                           
+        > kind: Deployment                              
+        > metadata:                                     
+        >   name: hello2-mysql                          
+        >   labels:                                     
+        >     app: hello2                               
+        > spec:                                         
+        >   selector:                                   
+        >     matchLabels:                              
+        >       app: hello2                             
+        >       tier: mysql                             
+        >   strategy:                                   
+        >     type: Recreate                            
+        >   template:                                   
+        >     metadata:                                 
+        >       labels:                                 
+        >         app: hello2                           
+        >         tier: mysql                           
+        >     spec:                                     
+        >       containers:                             
+        >       - image: mysql:5.7                      
+        >         name: mysql                           
+        >         args:                                 
+        >         - "--ignore-db-dir=lost+found"        
+        >         env:                                  
+        >         - name: MYSQL_ROOT_HOST               
+        >           value: "%"                          
+        >         - name: MYSQL_DATABASE                
+        >           value: "db"                         
+        >         - name: MYSQL_ROOT_PASSWORD           
+        >           valueFrom:                          
+        >             secretKeyRef:                     
+        >               name: mysql-pass                
+        >               key: password                   
+        >         ports:                                
+        >         - containerPort: 3306                 
+        >           name: mysql                         
+        >         volumeMounts:                         
+        >         - name: mysql-persistent-storage      
+        >           mountPath: /var/lib/mysql           
+        >       volumes:                                
+        >       - name: mysql-persistent-storage        
+        >         persistentVolumeClaim:                
+        >           claimName: mysql-pv-claim           
+        > EOF                                           
         $ 
     
     
@@ -574,67 +574,67 @@ Again we deploy the app using K8s' solely. First a secret "generator", configure
     
     <xterm />
     
-        $ cat <<EOF >./hello2-deployment.yaml     
-        > apiVersion: v1     
-        > kind: Service      
-        > metadata:          
-        >   name: hello2     
-        >   labels:          
-        >     app: hello2    
-        >     tier: frontend 
-        > spec:              
-        >   type: LoadBalancer                    
-        >   ports:           
-        >     - port: 28001  
-        >   selector:        
-        >     app: hello2    
-        >     tier: frontend 
-        > ---                
-        > apiVersion: apps/v1
-        > kind: Deployment   
-        > metadata:          
-        >   name: hello2     
-        >   labels:          
-        >     app: hello2    
-        > spec:              
-        >   selector:        
-        >     matchLabels:   
-        >       app: hello2  
-        >       tier: frontend                    
-        >   strategy:        
-        >     type: Recreate 
-        >   template:        
-        >     metadata:      
-        >       labels:      
-        >         app: hello2
-        >         tier: frontend                  
-        >     spec:          
-        >       imagePullSecrets:                 
-        >       - name: regcred                   
-        >       containers:  
-        >       - name: hello2                    
-        >         image: $(pass show reg/domain)/docker-internal/$namespace/$app:$ver       
-        >         imagePullPolicy: Always         
-        >         env:       
-        >         - name: dbuser                  
-        >           value: "root"                 
-        >         - name: dbpass                  
-        >           valueFrom:                    
-        >             secretKeyRef:               
-        >               name: mysql-pass          
-        >               key: password             
-        >         - name: dbhost                  
-        >           value: "hello2-mysql"         
-        >         - name: dbname                  
-        >           value: "db"                   
-        >         ports:     
-        >         - containerPort: 28001          
-        >           name: hello2                  
-        >         resources: 
-        >           requests:
-        >             cpu: 100m                   
-        >             memory: 100Mi               
-        > EOF                
+        $ cat <<EOF >./hello2-deployment.yaml           
+        > apiVersion: v1                                
+        > kind: Service                                 
+        > metadata:                                     
+        >   name: hello2                                
+        >   labels:                                     
+        >     app: hello2                               
+        >     tier: frontend                            
+        > spec:                                         
+        >   type: LoadBalancer                          
+        >   ports:                                      
+        >     - port: 28001                             
+        >   selector:                                   
+        >     app: hello2                               
+        >     tier: frontend                            
+        > ---                                           
+        > apiVersion: apps/v1                           
+        > kind: Deployment                              
+        > metadata:                                     
+        >   name: hello2                                
+        >   labels:                                     
+        >     app: hello2                               
+        > spec:                                         
+        >   selector:                                   
+        >     matchLabels:                              
+        >       app: hello2                             
+        >       tier: frontend                          
+        >   strategy:                                   
+        >     type: Recreate                            
+        >   template:                                   
+        >     metadata:                                 
+        >       labels:                                 
+        >         app: hello2                           
+        >         tier: frontend                        
+        >     spec:                                     
+        >       imagePullSecrets:                       
+        >       - name: regcred                         
+        >       containers:                             
+        >       - name: hello2                          
+        >         image: $(pass show reg/domain)/docker-internal/$namespace/$app:$ver                   
+        >         imagePullPolicy: Always               
+        >         env:                                  
+        >         - name: dbuser                        
+        >           value: "root"                       
+        >         - name: dbpass                        
+        >           valueFrom:                          
+        >             secretKeyRef:                     
+        >               name: mysql-pass                
+        >               key: password                   
+        >         - name: dbhost                        
+        >           value: "hello2-mysql"               
+        >         - name: dbname                        
+        >           value: "db"                         
+        >         ports:                                
+        >         - containerPort: 28001                
+        >           name: hello2                        
+        >         resources:                            
+        >           requests:                           
+        >             cpu: 100m                         
+        >             memory: 100Mi                     
+        > EOF                                           
         $ 
     
     
@@ -657,13 +657,13 @@ Now we apply all, with the -k switch, for the kustomize.yaml:
     
     <xterm />
     
-        $ kubectl apply -k ./                                     
-        secret/mysql-pass-2f9464chcc created      
-        service/hello2 created                    
-        service/hello2-mysql created              
-        persistentvolumeclaim/mysql-pv-claim created                                        
-        deployment.apps/hello2 created            
-        deployment.apps/hello2-mysql created
+        $ kubectl apply -k ./ 
+        secret/mysql-pass-2f9464chcc unchanged          
+        service/hello2 unchanged                        
+        service/hello2-mysql unchanged                  
+        persistentvolumeclaim/mysql-pv-claim unchanged  
+        deployment.apps/hello2 unchanged                
+        deployment.apps/hello2-mysql unchanged
     
     
 
@@ -676,67 +676,67 @@ then wait for the loadbalancer and fetch the public IP:
 <xterm />
 
     time while true; do sleep 2; k get service hello2 | grep pending >/dev/null || break; done # lp: timeout=600
-    $ time while true; do sleep 2; k get service hello2 | grep pending >/dev/null || break; done        
+    $ time while true; do sleep 2; k get service hello2 | grep pending >/dev/null || break; done                                                                          
     
-    real    5m11.844s    
-    user    0m14.178s    
-    sys     0m7.050s
-    $ k -o json get service hello2 | jq .                     
-    [1m{[0m[39m[49m                    
-    [1m  [34m"apiVersion"[39m: [0m[32m[49m"v1"[1m[39m,
-      [34m"kind"[39m: [0m[32m[49m"Service"[1m[39m,[0m[39m[49m 
-    [1m  [34m"metadata"[39m: {[0m[39m[49m      
-    [1m    [34m"annotations"[39m: {[0m[39m[49m 
-    [1m      [34m"kubectl.kubernetes.io/last-applied-configuration"[39m: [0m[32m[49m"{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"hello2\",\"tier\":\"frontend\"},\"name\":\"hello2\",\"namespace\":\"default\"},\"spec\":{\"ports\":[{\"port\":28001}],\"selector\":{\"app\":\"hello2\",\"tier\":\"frontend\"},\"type\":\"LoadBalancer\"}}\n"[1m[39m,[0m[39m[49m               
-    [1m      [34m"kubernetes.digitalocean.com/load-balancer-id"[39m: [0m[32m[49m"5fbac3f6-95a0-42a5-9eb5-8946e296fcbe"[39m             
-    [1m    },[0m[39m[49m               
-    [1m    [34m"creationTimestamp"[39m: [0m[32m[49m"2021-08-16T16:42:00Z"[1m[39m,[0m[39m[49m                                    
-    [1m    [34m"finalizers"[39m: [[0m[39m[49m  
-    [1m      [0m[32m[49m"service.kubernetes.io/load-balancer-cleanup"[39m                                 
-    [1m    ],[0m[39m[49m               
-    [1m    [34m"labels"[39m: {[0m[39m[49m      
-    [1m      [34m"app"[39m: [0m[32m[49m"hello2"[1m[39m,[0m[39m[49m                    
-    [1m      [34m"tier"[39m: [0m[32m[49m"frontend"[39m                  
-    [1m    },[0m[39m[49m               
-    [1m    [34m"name"[39m: [0m[32m[49m"hello2"[1m[39m,
-        [34m"namespace"[39m: [0m[32m[49m"default"[1m[39m,[0m[39m[49m               
-    [1m    [34m"resourceVersion"[39m: [0m[32m[49m"33249"[1m[39m,[0m[39m[49m           
-    [1m    [34m"uid"[39m: [0m[32m[49m"3bd9089a-0b1f-48b5-a4f3-4ebd968c2304"[39m                                   
-    [1m  },[0m[39m[49m                 
-    [1m  [34m"spec"[39m: {[0m[39m[49m          
-    [1m    [34m"clusterIP"[39m: [0m[32m[49m"10.245.36.236"[1m[39m,[0m[39m[49m         
-    [1m    [34m"clusterIPs"[39m: [[0m[39m[49m  
-    [1m      [0m[32m[49m"10.245.36.236"
-    [1m[39m    ],[0m[39m[49m               
-    [1m    [34m"externalTrafficPolicy"[39m: [0m[32m[49m"Cluster"[1m[39m,[0m[39m[49m   
-    [1m    [34m"ipFamilies"[39m: [[0m[39m[49m  
-    [1m      [0m[32m[49m"IPv4"[39m         
-    [1m    ],[0m[39m[49m               
-    [1m    [34m"ipFamilyPolicy"[39m: [0m[32m[49m"SingleStack"[1m[39m,[0m[39m[49m      
-    [1m    [34m"ports"[39m: [[0m[39m[49m       
-    [1m      {[0m[39m[49m              
-    [1m        [34m"nodePort"[39m: [0m[39m[49m31575[1m,[0m[39m[49m                
-    [1m        [34m"port"[39m: [0m[39m[49m28001[1m,[0m[39m[49m                    
-    [1m        [34m"protocol"[39m: [0m[32m[49m"TCP"[1m[39m,[0m[39m[49m                
-    [1m        [34m"targetPort"[39m: [0m[39m[49m28001               
-    [1m      }[0m[39m[49m              
-    [1m    ],[0m[39m[49m               
-    [1m    [34m"selector"[39m: {[0m[39m[49m    
-    [1m      [34m"app"[39m: [0m[32m[49m"hello2"[1m[39m,[0m[39m[49m                    
-    [1m      [34m"tier"[39m: [0m[32m[49m"frontend"[39m                  
-    [1m    },[0m[39m[49m               
-    [1m    [34m"sessionAffinity"[39m: [0m[32m[49m"None"[1m[39m,[0m[39m[49m            
-    [1m    [34m"type"[39m: [0m[32m[49m"LoadBalancer"[39m                
-    [1m  },[0m[39m[49m                 
-    [1m  [34m"status"[39m: {[0m[39m[49m        
-    [1m    [34m"loadBalancer"[39m: {
-          [34m"ingress"[39m: [[0m[39m[49m   
-    [1m        {[0m[39m[49m            
-    [1m          [34m"ip"[39m: [0m[32m[49m"68.183.241.206"[39m          
-    [1m        }[0m[39m[49m            
-    [1m      ][0m[39m[49m              
-    [1m    }[0m[39m[49m                
-    [1m  }[0m[39m[49m                  
+    real    0m2.130s                                
+    user    0m0.052s                                
+    sys     0m0.036s
+    $ k -o json get service hello2 | jq .                                 
+    [1m{[0m[39m[49m                                               
+    [1m  [34m"apiVersion"[39m: [0m[32m[49m"v1"[1m[39m,[0m[39m[49m                           
+    [1m  [34m"kind"[39m: [0m[32m[49m"Service"[1m[39m,[0m[39m[49m                            
+    [1m  [34m"metadata"[39m: {[0m[39m[49m                                 
+    [1m    [34m"annotations"[39m: {[0m[39m[49m                            
+    [1m      [34m"kubectl.kubernetes.io/last-applied-configuration"[39m: [0m[32m[49m"{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"hello2\",\"tier\":\"frontend\"},\"name\":\"hello2\",\"namespace\":\"default\"},\"spec\":{\"ports\":[{\"port\":28001}],\"selector\":{\"app\":\"hello2\",\"tier\":\"frontend\"},\"type\":\"LoadBalancer\"}}\n"[1m[39m,[0m[39m[49m                     
+    [1m      [34m"kubernetes.digitalocean.com/load-balancer-id"[39m: [0m[32m[49m"5ff78870-218c-4a61-a6ad-e3a669618e94"[39m    
+    [1m    },[0m[39m[49m                                          
+    [1m    [34m"creationTimestamp"[39m: [0m[32m[49m"2021-08-17T09:33:46Z"[1m[39m,
+        [34m"finalizers"[39m: [[0m[39m[49m                             
+    [1m      [0m[32m[49m"service.kubernetes.io/load-balancer-cleanup"[39m                                             
+    [1m    ],[0m[39m[49m                                          
+    [1m    [34m"labels"[39m: {[0m[39m[49m                                 
+    [1m      [34m"app"[39m: [0m[32m[49m"hello2"[1m[39m,[0m[39m[49m                          
+    [1m      [34m"tier"[39m: [0m[32m[49m"frontend"[39m                        
+    [1m    },[0m[39m[49m                                          
+    [1m    [34m"name"[39m: [0m[32m[49m"hello2"[1m[39m,[0m[39m[49m                           
+    [1m    [34m"namespace"[39m: [0m[32m[49m"default"[1m[39m,[0m[39m[49m                     
+    [1m    [34m"resourceVersion"[39m: [0m[32m[49m"142545"[1m[39m,[0m[39m[49m                
+    [1m    [34m"uid"[39m: [0m[32m[49m"eaa8b74a-f491-4fb0-a629-ff13bc2a827a"[39m                                               
+    [1m  },[0m[39m[49m                                            
+    [1m  [34m"spec"[39m: {[0m[39m[49m                                     
+    [1m    [34m"clusterIP"[39m: [0m[32m[49m"10.245.241.244"[1m[39m,[0m[39m[49m              
+    [1m    [34m"clusterIPs"[39m: [[0m[39m[49m                             
+    [1m      [0m[32m[49m"10.245.241.244"[39m                          
+    [1m    ],[0m[39m[49m                                          
+    [1m    [34m"externalTrafficPolicy"[39m: [0m[32m[49m"Cluster"[1m[39m,[0m[39m[49m         
+    [1m    [34m"ipFamilies"[39m: [[0m[39m[49m                             
+    [1m      [0m[32m[49m"IPv4"[39m                                    
+    [1m    ],[0m[39m[49m                                          
+    [1m    [34m"ipFamilyPolicy"[39m: [0m[32m[49m"SingleStack"[1m[39m,[0m[39m[49m            
+    [1m    [34m"ports"[39m: [[0m[39m[49m                                  
+    [1m      {[0m[39m[49m                                         
+    [1m        [34m"nodePort"[39m: [0m[39m[49m32106[1m,[0m[39m[49m                      
+    [1m        [34m"port"[39m: [0m[39m[49m28001[1m,[0m[39m[49m                          
+    [1m        [34m"protocol"[39m: [0m[32m[49m"TCP"[1m[39m,[0m[39m[49m                      
+    [1m        [34m"targetPort"[39m: [0m[39m[49m28001                     
+    [1m      }[0m[39m[49m                                         
+    [1m    ],[0m[39m[49m                                          
+    [1m    [34m"selector"[39m: {[0m[39m[49m                               
+    [1m      [34m"app"[39m: [0m[32m[49m"hello2"[1m[39m,[0m[39m[49m                          
+    [1m      [34m"tier"[39m: [0m[32m[49m"frontend"[39m                        
+    [1m    },[0m[39m[49m                                          
+    [1m    [34m"sessionAffinity"[39m: [0m[32m[49m"None"[1m[39m,[0m[39m[49m                  
+    [1m    [34m"type"[39m: [0m[32m[49m"LoadBalancer"[39m                      
+    [1m  },[0m[39m[49m                                            
+    [1m  [34m"status"[39m: {[0m[39m[49m                                   
+    [1m    [34m"loadBalancer"[39m: {[0m[39m[49m                           
+    [1m      [34m"ingress"[39m: [[0m[39m[49m                              
+    [1m        {[0m[39m[49m                                       
+    [1m          [34m"ip"[39m: [0m[32m[49m"67.207.72.117"[39m                 
+    [1m        }[0m[39m[49m                                       
+    [1m      ][0m[39m[49m                                         
+    [1m    }[0m[39m[49m                                           
+    [1m  }[0m[39m[49m                                             
     [1m}[0m[39m[49m
     $ ip=$(k -o json get service hello2 | jq -r .status.loadBalancer.ingress[0].ip)
 
@@ -749,40 +749,40 @@ All environ settings are in the app container:
 <!-- id: 72f9a9663483e992059aa351337dbd5e -->
 <xterm />
 
-    $ wget -q http://$ip:28001/env -O - | jq .                
-    [1m{[0m[39m[49m                    
-    [1m  [34m"at"[39m: [0m[39m[49m1629132438.6064708[1m,[0m[39m[49m               
-    [1m  [34m"env"[39m: {[0m[39m[49m           
-    [1m    [34m"PATH"[39m: [0m[32m[49m"/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"[1m[39m,[0m[39m[49m               
-    [1m    [34m"HOSTNAME"[39m: [0m[32m[49m"hello2-d646c6dc4-nlgbm"[1m[39m,[0m[39m[49m 
-    [1m    [34m"LANG"[39m: [0m[32m[49m"C.UTF-8"[1m[39m,[0m[39m[49m                    
-    [1m    [34m"GPG_KEY"[39m: [0m[32m[49m"E3FF2839C048B25C084DEBE9B26995E310250568"[1m[39m,[0m[39m[49m                          
-    [1m    [34m"PYTHON_VERSION"[39m: [0m[32m[49m"3.8.11"[1m[39m,[0m[39m[49m           
-    [1m    [34m"PYTHON_PIP_VERSION"[39m: [0m[32m[49m"21.2.3"[1m[39m,[0m[39m[49m       
-    [1m    [34m"PYTHON_GET_PIP_URL"[39m: [0m[32m[49m"https://github.com/pypa/get-pip/raw/c20b0cfd643cd4a19246ccf204e2997af70f6b21/public/get-pip.py"[1m[39m,[0m[39m[49m   
-    [1m    [34m"PYTHON_GET_PIP_SHA256"[39m: [0m[32m[49m"fa6f3fb93cce234cd4e8dd2beb54a51ab9c247653b52855a48dd44e6b21ff28b"[1m[39m,[0m[39m[49m         
-    [1m    [34m"APP_ENV"[39m: [0m[32m[49m"development"[1m[39m,[0m[39m[49m             
-    [1m    [34m"dbuser"[39m: [0m[32m[49m"root"[1m[39m,
-        [34m"dbpass"[39m: [0m[32m[49m"myk8ssecret"[1m[39m,[0m[39m[49m              
-    [1m    [34m"dbhost"[39m: [0m[32m[49m"hello2-mysql"[1m[39m,[0m[39m[49m             
-    [1m    [34m"dbname"[39m: [0m[32m[49m"db"[1m[39m,[0m[39m[49m  
-    [1m    [34m"KUBERNETES_SERVICE_PORT_HTTPS"[39m: [0m[32m[49m"443"[1m[39m,[0m[39m[49m                                         
-    [1m    [34m"KUBERNETES_PORT_443_TCP_PORT"[39m: [0m[32m[49m"443"[1m[39m,
-        [34m"KUBERNETES_PORT_443_TCP"[39m: [0m[32m[49m"tcp://10.245.0.1:443"[1m[39m,[0m[39m[49m                              
-    [1m    [34m"HELLO2_PORT_28001_TCP"[39m: [0m[32m[49m"tcp://10.245.36.236:28001"[1m[39m,[0m[39m[49m                           
-    [1m    [34m"HELLO2_PORT_28001_TCP_PROTO"[39m: [0m[32m[49m"tcp"[1m[39m,[0m[39m[49m 
-    [1m    [34m"KUBERNETES_SERVICE_HOST"[39m: [0m[32m[49m"10.245.0.1"[1m[39m,[0m[39m[49m                                        
-    [1m    [34m"KUBERNETES_SERVICE_PORT"[39m: [0m[32m[49m"443"[1m[39m,[0m[39m[49m     
-    [1m    [34m"KUBERNETES_PORT"[39m: [0m[32m[49m"tcp://10.245.0.1:443"[1m[39m,[0m[39m[49m                                      
-    [1m    [34m"KUBERNETES_PORT_443_TCP_PROTO"[39m: [0m[32m[49m"tcp"[1m[39m,[0m[39m[49m                                         
-    [1m    [34m"HELLO2_SERVICE_PORT"[39m: [0m[32m[49m"28001"[1m[39m,[0m[39m[49m       
-    [1m    [34m"HELLO2_PORT"[39m: [0m[32m[49m"tcp://10.245.36.236:28001"[1m[39m,[0m[39m[49m                                     
-    [1m    [34m"HELLO2_PORT_28001_TCP_PORT"[39m: [0m[32m[49m"28001"[1m[39m,
-        [34m"KUBERNETES_PORT_443_TCP_ADDR"[39m: [0m[32m[49m"10.245.0.1"[1m[39m,[0m[39m[49m                                   
-    [1m    [34m"HELLO2_SERVICE_HOST"[39m: [0m[32m[49m"10.245.36.236"[1m[39m,[0m[39m[49m                                         
-    [1m    [34m"HELLO2_PORT_28001_TCP_ADDR"[39m: [0m[32m[49m"10.245.36.236"[1m[39m,[0m[39m[49m                                  
-    [1m    [34m"HOME"[39m: [0m[32m[49m"/root"[39m  
-    [1m  }[0m[39m[49m                  
+    $ wget -q http://$ip:28001/env -O - | jq .                            
+    [1m{[0m[39m[49m                                               
+    [1m  [34m"at"[39m: [0m[39m[49m1629196739.1266227[1m,[0m[39m[49m                     
+    [1m  [34m"env"[39m: {[0m[39m[49m                                      
+    [1m    [34m"PATH"[39m: [0m[32m[49m"/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"[1m[39m,[0m[39m[49m      
+    [1m    [34m"HOSTNAME"[39m: [0m[32m[49m"hello2-d646c6dc4-zzsmx"[1m[39m,[0m[39m[49m       
+    [1m    [34m"LANG"[39m: [0m[32m[49m"C.UTF-8"[1m[39m,[0m[39m[49m                          
+    [1m    [34m"GPG_KEY"[39m: [0m[32m[49m"E3FF2839C048B25C084DEBE9B26995E310250568"[1m[39m,[0m[39m[49m                                      
+    [1m    [34m"PYTHON_VERSION"[39m: [0m[32m[49m"3.8.11"[1m[39m,[0m[39m[49m                 
+    [1m    [34m"PYTHON_PIP_VERSION"[39m: [0m[32m[49m"21.2.3"[1m[39m,[0m[39m[49m             
+    [1m    [34m"PYTHON_GET_PIP_URL"[39m: [0m[32m[49m"https://github.com/pypa/get-pip/raw/c20b0cfd643cd4a19246ccf204e2997af70f6b21/public/get-pip.py"[1m[39m,[0m[39m[49m                                                                     
+    [1m    [34m"PYTHON_GET_PIP_SHA256"[39m: [0m[32m[49m"fa6f3fb93cce234cd4e8dd2beb54a51ab9c247653b52855a48dd44e6b21ff28b"[1m[39m,
+        [34m"APP_ENV"[39m: [0m[32m[49m"development"[1m[39m,[0m[39m[49m                   
+    [1m    [34m"dbuser"[39m: [0m[32m[49m"root"[1m[39m,[0m[39m[49m                           
+    [1m    [34m"dbpass"[39m: [0m[32m[49m"myk8ssecret"[1m[39m,[0m[39m[49m                    
+    [1m    [34m"dbhost"[39m: [0m[32m[49m"hello2-mysql"[1m[39m,[0m[39m[49m                   
+    [1m    [34m"dbname"[39m: [0m[32m[49m"db"[1m[39m,[0m[39m[49m                             
+    [1m    [34m"HELLO2_PORT_28001_TCP_PROTO"[39m: [0m[32m[49m"tcp"[1m[39m,[0m[39m[49m       
+    [1m    [34m"KUBERNETES_SERVICE_PORT"[39m: [0m[32m[49m"443"[1m[39m,[0m[39m[49m           
+    [1m    [34m"KUBERNETES_PORT_443_TCP_PROTO"[39m: [0m[32m[49m"tcp"[1m[39m,[0m[39m[49m     
+    [1m    [34m"HELLO2_PORT"[39m: [0m[32m[49m"tcp://10.245.241.244:28001"[1m[39m,
+        [34m"HELLO2_PORT_28001_TCP_PORT"[39m: [0m[32m[49m"28001"[1m[39m,[0m[39m[49m      
+    [1m    [34m"KUBERNETES_PORT_443_TCP"[39m: [0m[32m[49m"tcp://10.245.0.1:443"[1m[39m,[0m[39m[49m                                          
+    [1m    [34m"KUBERNETES_PORT_443_TCP_PORT"[39m: [0m[32m[49m"443"[1m[39m,[0m[39m[49m      
+    [1m    [34m"KUBERNETES_PORT_443_TCP_ADDR"[39m: [0m[32m[49m"10.245.0.1"[1m[39m,[0m[39m[49m                                               
+    [1m    [34m"HELLO2_SERVICE_PORT"[39m: [0m[32m[49m"28001"[1m[39m,[0m[39m[49m             
+    [1m    [34m"HELLO2_PORT_28001_TCP"[39m: [0m[32m[49m"tcp://10.245.241.244:28001"[1m[39m,[0m[39m[49m                                      
+    [1m    [34m"KUBERNETES_SERVICE_HOST"[39m: [0m[32m[49m"10.245.0.1"[1m[39m,[0m[39m[49m    
+    [1m    [34m"KUBERNETES_SERVICE_PORT_HTTPS"[39m: [0m[32m[49m"443"[1m[39m,[0m[39m[49m     
+    [1m    [34m"KUBERNETES_PORT"[39m: [0m[32m[49m"tcp://10.245.0.1:443"[1m[39m,[0m[39m[49m  
+    [1m    [34m"HELLO2_SERVICE_HOST"[39m: [0m[32m[49m"10.245.241.244"[1m[39m,[0m[39m[49m    
+    [1m    [34m"HELLO2_PORT_28001_TCP_ADDR"[39m: [0m[32m[49m"10.245.241.244"[1m[39m,[0m[39m[49m                                             
+    [1m    [34m"HOME"[39m: [0m[32m[49m"/root"[39m                             
+    [1m  }[0m[39m[49m                                             
     [1m}[0m[39m[49m
 
 
@@ -793,17 +793,17 @@ And the app works:
 <!-- id: 35fb61130b99033d43b0d19893ef0e8c -->
 <xterm />
 
-    $ wget -q http://$ip:28001/initdb -O - | jq .             
-    [1m{[0m[39m[49m                    
-    [1m  [34m"result"[39m: [0m[32m[49m"{'Tables_in_db': 'items'}"[39m   
+    $ wget -q http://$ip:28001/initdb -O - | jq .                         
+    [1m{[0m[39m[49m                                               
+    [1m  [34m"result"[39m: [0m[32m[49m"{'Tables_in_db': 'items'}"[39m         
     [1m}[0m[39m[49m
     wget -q http://$ip:28001/show/brian -O - | jq . # lp: asserts="brian and result"
-    $ wget -q http://$ip:28001/show/brian -O - | jq .         
-    [1m{[0m[39m[49m                    
-    [1m  [34m"result"[39m: {[0m[39m[49m        
-    [1m    [34m"name"[39m: [0m[32m[49m"brian"[1m[39m,[0m[39m[49m 
-    [1m    [34m"age"[39m: [0m[39m[49m42        
-    [1m  }[0m[39m[49m                  
+    $ wget -q http://$ip:28001/show/brian -O - | jq .                     
+    [1m{[0m[39m[49m                                               
+    [1m  [34m"result"[39m: {[0m[39m[49m                                   
+    [1m    [34m"name"[39m: [0m[32m[49m"brian"[1m[39m,[0m[39m[49m                            
+    [1m    [34m"age"[39m: [0m[39m[49m42                                   
+    [1m  }[0m[39m[49m                                             
     [1m}[0m[39m[49m
 
 
@@ -811,20 +811,15 @@ And the app works:
 
 Delete everything:
 
-<!-- id: 6e1520e098392a3faf37cffefff42354 -->
-<xterm />
-
-    kubectl delete -k ./. # lp: asserts="deployment.apps and deleted"
-    $ kubectl delete -k ./.                                   
-    secret "mysql-pass-2f9464chcc" deleted    
-    service "hello2" deleted                  
-    service "hello2-mysql" deleted            
-    persistentvolumeclaim "mysql-pv-claim" deleted                                      
-    deployment.apps "hello2" deleted          
-    deployment.apps "hello2-mysql" deleted
+<!-- id: 6f2beec7853bb1e1c0eb05fad8243ab0 -->
 
 
-<!-- id: 6e1520e098392a3faf37cffefff42354 -->
+```
+kubectl delete -k ./. # lp: asserts="deployment.apps and deleted"
+```
+
+
+<!-- id: 6f2beec7853bb1e1c0eb05fad8243ab0 -->
 
 
 ## Discussion
@@ -838,10 +833,10 @@ Delete everything:
 - `kubectl delete -k ./.` did always work nicely, removing all, in the right order. 
 - K8s's name resolution is simple: The app could simply connect to the dbhost by `name` attribute of
   the corresponding service deployment.
-- On DO (and I guess on other infra providers as well) they use their internal volume
-  creation means as default K8s "storage class", i.e. when volumes are to be created for Stateful Sets.  
-  Those volumes will survive node failure, [unlike][tut] the `hostPath` based storage class, being
-  set as default on local test clusters (e.g. minicube).   
+- On DO (and I guess on other infra providers as well) they use their internal volume creation means
+  as default K8s "storage class", i.e. when volumes are to be created for Stateful Sets.  Those
+  volumes will survive node failure, [unlike][tut] the `hostPath` based storage class, being set as
+  default on local test clusters (e.g. minicube).   
 
     | DO Dashboard|  K8s Dashboard |
     |-|- |

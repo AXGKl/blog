@@ -1,6 +1,44 @@
 # Logbook
 
+
+### `kmcaster`: Best screenkey recorder
+[2021-08-17 11:11] 
+
+[This](https://github.com/DaveJarvis/kmcaster/)
+
+
+### openjdk install
+[2021-08-17 11:09] 
+
+```console
+sudo yum -y install curl
+curl -O https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz
+tar xvf openjdk-14_linux-x64_bin.tar.gz
+sudo mv jdk-14 /opt/
+```
+
+Unlike [here](https://computingforgeeks.com/install-oracle-java-openjdk-14-on-centosfedora-linux/)
+we don't export set any profiles in /etc/profile.d for this but use it per app like:
+
+`alias screenkeyjs='/opt/jdk-14/bin/java -jar /home/gk/inst/kmcaster.jar -d 60'`
+
+
+### gpg-agent cache timeout
+[2021-08-17 10:34] 
+
+After a fedora security update I got an annoyingly short gpg timeout for the pass utility. Fix:
+
+```bash
+❯ cat /home/gk/.gnupg/gpg-agent.conf
+default-cache-ttl 7200
+```
+
+and `systemctl --user restart gpg-agent`
+
+
 ### Grub: See the system booting
+[2021-08-16 10:34] 
+
 On Fedora34 fiddling with removing `quiet` and `rhgb`, then grub2-mkconfig did not work, guess I was
 "holding it wrong".
 [This](https://docs.fedoraproject.org/en-US/fedora/rawhide/system-administrators-guide/kernel-module-driver-configuration/Working_with_the_GRUB_2_Boot_Loader/) helped, use RedHat's grubby.

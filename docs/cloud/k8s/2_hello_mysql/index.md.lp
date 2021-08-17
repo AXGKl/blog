@@ -1,7 +1,7 @@
 ```page lp session=hello
 ```
 
-# Adding a Database
+# Stateful App With MySQL Database
 
 Lets connect a database to our [hello app](../1_hello_app/), i.e. we need a Stateful Set.
 
@@ -14,7 +14,7 @@ git ls-files # lp: asserts=server.py
 git tag
 sed -i 's/0.2/0.3/' environ # version now 0.3
 source ./environ
-# the old yaml files from last chapter:
+# rm the old yaml files from last chapter:
 rm -f *.yaml
 ```
 
@@ -337,7 +337,7 @@ wget -q http://$ip:28001/show/brian -O - | jq . # lp: asserts="brian and result"
 
 Delete everything:
 
-```bash lp fmt=xt_flat timeout=50
+```bash lp fmt=xt_flat timeout=50 skip_this
 kubectl delete -k ./. # lp: asserts="deployment.apps and deleted"
 ```
 
@@ -353,10 +353,10 @@ kubectl delete -k ./. # lp: asserts="deployment.apps and deleted"
 - `kubectl delete -k ./.` did always work nicely, removing all, in the right order. 
 - K8s's name resolution is simple: The app could simply connect to the dbhost by `name` attribute of
   the corresponding service deployment.
-- On DO (and I guess on other infra providers as well) they use their internal volume
-  creation means as default K8s "storage class", i.e. when volumes are to be created for Stateful Sets.  
-  Those volumes will survive node failure, [unlike][tut] the `hostPath` based storage class, being
-  set as default on local test clusters (e.g. minicube).   
+- On DO (and I guess on other infra providers as well) they use their internal volume creation means
+  as default K8s "storage class", i.e. when volumes are to be created for Stateful Sets.  Those
+  volumes will survive node failure, [unlike][tut] the `hostPath` based storage class, being set as
+  default on local test clusters (e.g. minicube).   
 
     | DO Dashboard|  K8s Dashboard |
     |-|- |

@@ -20,8 +20,9 @@ We use Digitial Ocean(DO) as cloud provider, AWS is well documented.
 - Have local:
     - The cloud provider client (here: `doctl`)
     - The terraform binary
-    - podman or docker (here only for registry logins)
-    - The pass utility if you don't want sensitive values within your command history
+    - podman or docker (here only to configure access to our private registry for k8s, via their
+      auth file they create after login). I.e. only for convenience.
+    - Optional: We use the `pass` utility since we don't want sensitive values being shown
 
 - Have an API token for DO  
 - Optional: Private container registry url with creds
@@ -155,8 +156,8 @@ Should be done in a few minutes. Large variations, I saw between 5 and 15 minute
 ## Configure `kubectl`
 
 !!! note "why?"
-    No matter how much we'll do in terraform or other tools, a configured kubectl is a must - and if it is
-    only to crosscheck.
+    No matter how much we'll do in terraform or other tools, a configured kubectl is simply a must have for clusters you created - and if it is
+    only to [crosscheck](../../k8s/index.md).
 
 ```bash lp assert=Adding timeout=20
 doctl kubernetes cluster kubeconfig save "$clustername" # lp: asserts="Adding cluster"
@@ -166,6 +167,10 @@ k cluster-info dump | wc -l                             # hf ;-)
 
 The first command configures the default cluster for `kubectl`, no need to specify the name then, when you
 work "only" with one.
+
+!!! note
+    Using terraform you do *NOT* necessarily require a local `~/.kube/config` file. You can use the
+    tf k8s provider also [using the token alone](./k8s_provider/do_k8s.md).
 
 
 ```bash lp asserts=app-pool timeout=4 fmt=xt_flat

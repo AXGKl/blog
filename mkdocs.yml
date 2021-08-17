@@ -23,7 +23,9 @@ nav:
       - Basic Operation : cloud/terraform/resource_creation.md
       - TF And Ansible  : cloud/terraform/ansible.md
       - Kubernetes      : cloud/terraform/k8s/index.md
-      - K8s hands on    : cloud/terraform/k8s/k8s_on_do.md
+      - K8s Cluster Infra : cloud/terraform/k8s/k8s_on_do.md
+      - Attaching Using Token Only : cloud/terraform/k8s/k8s_provider/do_k8s.md
+      - The K8s Provider      : cloud/terraform/k8s/k8s_provider/k8s_provider.md
   - LinuxLocal:
     - Distros : ll/distro.md
     - Apps    : ll/apps/apps.md
