@@ -6,7 +6,7 @@ Extensive subject. Small collection of notes for basic usage patterns below.
 
 !!! hint "k9s"
 
-    `kubectl` is nice but have a look at [k9s](./k9s.md) as well!
+    `kubectl` is nice but have a look at [k9s](./k9s/k9s.md) as well!
 
 !!! note "Completion"
     === "About"
