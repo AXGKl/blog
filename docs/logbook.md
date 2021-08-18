@@ -3,6 +3,59 @@
 <!-- all admons: https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks -->
 
 
+
+### zsh: global aliases
+??? success "`ps ax pg foo`, `cat foo pclip`, ..."
+    [2021-08-18 07:17]  
+    Those work within commands:
+    ```bash
+    alias -g pg='| grep -i '
+    alias -g pclip='| xclip -i -selection clipboard'
+    ```
+
+    Then
+
+    ```bash
+    $ cat foo pclip # and you have it in the clipboard
+    $ ps ax pg node
+       1215 ?        Ss     0:00 fusermount -o rw,nosuid,nodev,fsname=portal,auto_unmount,subtype=portal --
+    /run/user/1000/doc
+    ```
+
+
+### zsh: better `type`
+??? success "shows where function is defined"
+    [2021-08-18 07:20]  
+    === "zsh"
+        man zshbuiltins
+
+        ```bash hl_lines="2"    
+        ~/mi/en/b/l/py/si/mkdocs ❯ type gomod
+        gomod is a shell function from /home/gk/.bashrc-personal
+
+        ~/mi/en/b/l/py/si/mkdocs ❯ type -f gomod
+        gomod () {
+            local mod="${1:-os}"
+            local l="$(python -c "import os, $mod;print(os.path.dirname($mod.__file__))")"
+            cd "$l"
+            pwd
+        }
+        ```    
+
+    === "bash"
+        ```bash
+        [gk@axgk mkdocs]$ type gomod
+        gomod is a function
+        gomod ()
+        {
+            local l="$(python -c "import os, $mod;print(os.path.dirname($mod.__file__))")"
+            cd "$l";
+            pwd
+        }
+
+        ```
+        But [where is it defined](https://askubuntu.com/questions/1146269/how-can-i-find-where-certain-bash-function-is-defined)?!
+
 ### [Nuclio](https://nuclio.io/docs/latest/setup/k8s/getting-started-k8s/) FaaS
 ??? question "New kid on the block in FAAS land"
     [2021-08-18 01:14]  
@@ -18,15 +71,17 @@
 
     Do this:
 
-
+    ```vim
         let g:SuperTabDefaultCompletionType = "<c-n>"
         let g:UltiSnipsSnippetsDir = "~/.config/nvim/ultisnips"
         let g:UltiSnipsExpandTrigger="<tab>"
         let g:UltiSnipsJumpForwardTrigger="<tab>"
         let g:UltiSnipsJumpBackwardTrigger="<s-tab>" 
+    ```
 
     instead of:
 
+    ```lua
         use "SirVer/ultisnips"
             config = function()
                 vim.g.UltiSnipsSnippetsDir = "~/.config/nvim/ultisnips"
@@ -34,11 +89,14 @@
                 vim.g.UltiSnipsJumpForwardTrigger = {"<tab>"}
             end
         }
+    ```
 
     and it works like a charm.
 
+    Btw: [good ultisnips tutorial](https://yufanlu.net/2016/10/30/ultisnips/)
+
 ### [`kmcaster`](https://github.com/DaveJarvis/kmcaster/)
-???+ tip "Best screenkey recorder"
+??? tip "Best screenkey recorder"
     [2021-08-17 00:55]  
      ![](img/kmcaster.gif)
 

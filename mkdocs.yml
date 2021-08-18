@@ -4,8 +4,6 @@ site_url: "https://AXGKl.github.io/blog/"
 repo_url: "https://github.com/AXGKl/blog"
 repo_name: "AXGKl/blog"
 
-
-
 copyright: |
   Copyright &copy; Gunther Klessinger
 
@@ -13,88 +11,87 @@ copyright: |
 nav:
   - Overview: index.md
   - CloudTech:
-    - DNSMasq: cloud/dnsmasq/index.md
-    - Kubernetes:
-      - Notes     : cloud/k8s/index.md
-      - K9s Terminal UI : cloud/k8s/k9s/k9s.md
-      - First App : cloud/k8s/1_hello_app/index.md
-      - With DB   : cloud/k8s/2_hello_mysql/index.md
-    - Terraform:
-      - About           : cloud/terraform/index.md
-      - Basic Operation : cloud/terraform/resource_creation.md
-      - TF And Ansible  : cloud/terraform/ansible.md
-      - Kubernetes      : cloud/terraform/k8s/index.md
-      - K8s Cluster Infra : cloud/terraform/k8s/k8s_on_do.md
-      - Attaching Using Token Only : cloud/terraform/k8s/k8s_provider/do_k8s.md
-      - The K8s Provider      : cloud/terraform/k8s/k8s_provider/k8s_provider.md
+      - DNSMasq: cloud/dnsmasq/index.md
+      - Kubernetes:
+          - Notes: cloud/k8s/index.md
+          - K9s Terminal UI: cloud/k8s/k9s/k9s.md
+          - First App: cloud/k8s/1_hello_app/index.md
+          - With DB: cloud/k8s/2_hello_mysql/index.md
+      - Terraform:
+          - About: cloud/terraform/index.md
+          - Basic Operation: cloud/terraform/resource_creation.md
+          - TF And Ansible: cloud/terraform/ansible.md
+          - Kubernetes: cloud/terraform/k8s/index.md
+          - K8s Cluster Infra: cloud/terraform/k8s/k8s_on_do.md
+          - Attaching Using Token Only: cloud/terraform/k8s/k8s_provider/do_k8s.md
+          - The K8s Provider: cloud/terraform/k8s/k8s_provider/k8s_provider.md
   - LinuxLocal:
-    - Distros : ll/distro.md
-    - Apps    : ll/apps/apps.md
-    - Gimp    : ll/gimp/gimp.md
-    - Vim     : ll/vim/vim.md
-    - Emacs   : ll/emacs/emacs.md
-    - Suckless:
-      - About : ll/sl/about.md
-      - dwm   : ll/sl/dwm.md
-      - st    : ll/sl/st.md
-      - Statusbar Fun:
-        - The Problem       : ll/sl/status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar.md
-        - XFCE              : ll/sl/status_bar_fun/2021.05.24_dwm_status_2_never_call_xsession_within_dwm.md
-        - XFCE Panel in DWM : ll/sl/status_bar_fun/2021.05.24_dwm_status_3_xfce4_panel_in_dwm.md
-        - CPU Monitor       : ll/sl/status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor.md
+      - Apps: ll/apps/apps.md
+      - Distros: ll/distro.md
+      - Emacs: ll/emacs/emacs.md
+      - Gimp: ll/gimp/gimp.md
+      - MkDocs: ll/mkdocs/mkdocs.md
+      - Suckless:
+          - About: ll/sl/about.md
+          - dwm: ll/sl/dwm.md
+          - st: ll/sl/st.md
+          - Statusbar Fun:
+              - The Problem: ll/sl/status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar.md
+              - XFCE: ll/sl/status_bar_fun/2021.05.24_dwm_status_2_never_call_xsession_within_dwm.md
+              - XFCE Panel in DWM: ll/sl/status_bar_fun/2021.05.24_dwm_status_3_xfce4_panel_in_dwm.md
+              - CPU Monitor: ll/sl/status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor.md
+      - Vim: ll/vim/vim.md
 
   - Videos And Tutorials: inet/videos.md
   - Logbook: logbook.md
 
-      
   - About:
-    - Changelog: about/changelog.md
-    - Credits: about/credits.md
+      - Changelog: about/changelog.md
+      - Credits: about/credits.md
 
 theme:
   features:
-      - navigation.instant
-      - navigation.top
+    - navigation.instant
+    - navigation.top
+    - navigation.tabs
+    - navigation.expand
   name: material
   custom_dir: docs/lcd
   icon:
     logo: material/book-open-page-variant
   palette:
     scheme: preference
-    primary: orange
+    primary: black
     accent: deep purple
   font:
     text: Roboto
     code: Roboto Mono
-  features:
-    - tabs
     #- toc.autohide
 
-
 markdown_extensions:
-   - admonition
-   - attr_list
-   - markdown_include.include
-   - pymdownx.emoji
-   - pymdownx.magiclink
-   - pymdownx.superfences
-   - pymdownx.tabbed
-   - pymdownx.tasklist
-   - pymdownx.details
-   - markdown.extensions.tables
-   - markdown.extensions.footnotes
-   - markdown.extensions.md_in_html:
-   - pymdownx.superfences:
-       preserve_tabs: true
-       custom_fences:
-         - name: mermaid
-           class: mermaid
-           format: !!python/name:pymdownx.superfences.fence_code_format
-   - toc:
-       permalink: "¤"
-   - pymdownx.snippets:
-       base_path: theme/src/_snippets
-
+  - admonition
+  - attr_list
+  - markdown_include.include
+  - pymdownx.emoji
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.keys
+  - pymdownx.tabbed
+  - pymdownx.tasklist
+  - pymdownx.details
+  - markdown.extensions.tables
+  - markdown.extensions.footnotes
+  - markdown.extensions.md_in_html:
+  - pymdownx.superfences:
+      preserve_tabs: true
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - toc:
+      permalink: "¤"
+  - pymdownx.snippets:
+      base_path: theme/src/_snippets
 
 extra:
   analytics:
@@ -120,6 +117,7 @@ extra_javascript:
 
 plugins:
   - search
+  - tree-title
   - macros:
-       j2_variable_start_string: '<{'
-       j2_variable_end_string: '}>'
+      j2_variable_start_string: "<{"
+      j2_variable_end_string: "}>"

@@ -76,23 +76,4 @@ zsh: sure you want to delete more than 100 files in /home/gk/droid/storage/self/
 
 and you have a clean phone again.
 
-### ZSH: Best *Interactive* Shell
-
-#### Global aliases
-
-```bash
-alias -g pg='| grep -i '
-alias -g pclip='| xclip -i -selection clipboard'
-```
-
-Then
-
-```console
-$ cat foo pclip # and you have it in the clipboard
-$ ps ax pg node
-   1215 ?        Ss     0:00 fusermount -o rw,nosuid,nodev,fsname=portal,auto_unmount,subtype=portal --
-/run/user/1000/doc
- 300617 ?        Ssl    0:03 /usr/bin/node --no-warnings /home/gk/.vim/plugged/coc.nvim/build/index.js
- 3010
-```
 
