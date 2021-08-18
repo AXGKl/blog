@@ -873,7 +873,7 @@ static Key keys[] = {
     /* { Mod4Mask                       , XK_Return , zoom    , { 0                  }}                            , * swap focus when gtk keys swapped*/
     /*{ ControlMask                     , XK_Left   , lasttag , {.i =  1} }                                        , */
     
-       { MODKEY|ShiftMask , XK_1       , togglebar    , { .i = 1 } }                       ,
+       { MODKEY|ShiftMask , XK_1           , togglebar    , { .i = 1 } }                       ,
        { MODKEY|ShiftMask , XK_minus       , setborderpx    , { .i = -1 } }                       ,
        { MODKEY|ShiftMask , XK_equal       , setborderpx    , { .i = +1 } }                       ,
        { ControlMask      , XK_BackSpace   , killclient     , { 0                  }}             ,

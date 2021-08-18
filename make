@@ -47,9 +47,6 @@ set_version() {
 }
 
 # ----------------------------------------------------------------------------------------- Make Functions:
-function docs {
-    echo "making docs"
-}
 
 function docs {
     docs_regen
