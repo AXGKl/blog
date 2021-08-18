@@ -6,14 +6,3 @@
 - For my own private purposes, not yet worth sharing
 
 - May turn into a 'real' tech blog some day
-
-----
-
-{!CHANGELOG.md!}
-<!-- pre_proc_marker -->
-
-
-----
-
-
-Last modified: Wed Aug 18 09:00:45 2021
