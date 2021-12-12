@@ -9,8 +9,7 @@ known ones.
 - [edge](https://blogs.windows.com/msedgedev/2020/10/20/microsoft-edge-dev-linux/) Pretty well
   thought through browser, actually, became my default
 - [k9s](../../cloud/k8s/k9s/k9s.md) Perfect terminal k8s mgmt tool.
-- [lazygit](https://github.com/jesseduffield/lazygit) Perfect terminal git tool. Also for vim: No
-  more fugitive, just open in vim-floatterm
+- [lazygit](https://github.com/jesseduffield/lazygit) Perfect terminal git tool. Also for vim: No more fugitive, just open in vim-floatterm (`,lg` for me).
 - [miniconda](https://docs.conda.io/en/latest/miniconda.html) Tons of disposable distro independent
   apps, not only from the python world. Default python, ruby, npm and java env wrapper, for their
   subsequent tools landscape
@@ -38,9 +37,19 @@ known ones.
 - zsh: Yes. It is better, especialy completion
 
 
+- Google Font Downloader - 1000s of fonts, selectable on UI
+- Obsidian - https://obsidian.md/ - notetaking UI, highly extensible, backrefs like org-roam
 
 
 ## Apropos...
+
+### Lazygit: Intermediate level workflows
+
+- Restore a file you deleted in old commit:
+    1. Move down to the commit list until you see the file (with D: deleted).
+    1. Hit `d` (discard changes to that file)
+
+
 
 ### ADB: Android File Transfer to/from Linux via USB
 
@@ -60,6 +69,8 @@ CQ3001R1EL  device
 
 Then git clone & make this: https://github.com/spion/adbfs-rootless
 
+!!! note
+    On fedora also install: `dnf install fuse-devel`
 
 And mount: ./adbfs ~/droid
 

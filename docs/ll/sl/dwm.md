@@ -1,4 +1,6 @@
-# DWM
+# [DWM](https://www.youtube.com/watch?v=wRh8HQ4ICwE&lc=UgxHaFO8ZVlxiLho0lJ4AaABAg.98UCGD3epEP9RTFb8rSDlu)
+
+[![](./img/nicedwm.png)](https://www.youtube.com/watch?v=RY9yZPNuYYY)
 
 ## Patches
 
@@ -814,6 +816,7 @@ static const Rule rules[] = {
     { "HUD",                  NULL,       NULL,       0,                1,           -1 },
     { "HUDALL",               NULL,       NULL,  (1 << 9) - 1,          1,           -1 },
     { "Firefox",              NULL,       NULL,       0,                0,           -1 },
+    { NULL,                   NULL,       "Skype",    0,                1,           -1 },
 };
 
 /* layout(s) */

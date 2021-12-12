@@ -31,13 +31,14 @@ include = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
+Rx = "^3.2.0"
 
 [tool.poetry.dev-dependencies]
 axblack = "^20201010"
 # one of last versions with site-packages/black.py - overridden by axblack:
 #black = "18.6b4"
 # comes with the whole mkdocs suite:
-docutools = "^2021.7.31"
+docutools = "^2021.10.16"
 # TODO: accept v5 once https://github.com/wemake-services/wemake-python-styleguide/issues/1584 is resolved
 isort = {version = "<5", extras = ["pyproject"]}
 jinja2-cli = "^0.7.0"

@@ -3,6 +3,7 @@ site_description: "Random Thoughts"
 site_url: "https://AXGKl.github.io/blog/"
 repo_url: "https://github.com/AXGKl/blog"
 repo_name: "AXGKl/blog"
+edit_uri: editor:///home/gk/repos/blog/docs
 
 copyright: |
   Copyright &copy; Gunther Klessinger
@@ -12,6 +13,7 @@ nav:
   - Overview: index.md
   - CloudTech:
       - DNSMasq: cloud/dnsmasq/index.md
+      - Github Actions: cloud/ci/github_actions.md
       - Kubernetes:
           - Notes: cloud/k8s/index.md
           - K9s Terminal UI: cloud/k8s/k9s/k9s.md
@@ -30,6 +32,9 @@ nav:
       - Distros: ll/distro.md
       - Emacs: ll/emacs/emacs.md
       - Gimp: ll/gimp/gimp.md
+      - Hardware:
+          - Keyboards General: ll/hw/k860.md
+          - Keyboards Corne: ll/hw/corne.md
       - MkDocs: ll/mkdocs/mkdocs.md
       - Suckless:
           - About: ll/sl/about.md
@@ -40,7 +45,12 @@ nav:
               - XFCE: ll/sl/status_bar_fun/2021.05.24_dwm_status_2_never_call_xsession_within_dwm.md
               - XFCE Panel in DWM: ll/sl/status_bar_fun/2021.05.24_dwm_status_3_xfce4_panel_in_dwm.md
               - CPU Monitor: ll/sl/status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor.md
-      - Vim: ll/vim/vim.md
+      - Vim:
+          - About: ll/vim/vim.md
+          - Ultisnips: ll/vim/ultisnips.md
+      - Fun:
+          - Einstein: ll/fun/einstein.md
+          - UnblockMe: ll/fun/unblockme/index.md
 
   - Videos And Tutorials: inet/videos.md
   - Logbook: logbook.md
@@ -54,9 +64,10 @@ theme:
     - navigation.instant
     - navigation.top
     - navigation.tabs
-    - navigation.expand
+    - navigation.sections
+    - toc.integrate
+      #- navigation.expand
   name: material
-  custom_dir: docs/lcd
   icon:
     logo: material/book-open-page-variant
   palette:
@@ -70,54 +81,51 @@ theme:
 
 markdown_extensions:
   - admonition
-  - attr_list
+  - attr_list # {: style="height: ..."}
+  - footnotes # foo[^1] is ...(start with ^)
+  - meta
   - markdown_include.include
-  - pymdownx.emoji
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.critic:
+      mode: view
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.keys
+  - pymdownx.tilde
   - pymdownx.magiclink
   - pymdownx.superfences
-  - pymdownx.keys
   - pymdownx.tabbed
-  - pymdownx.tasklist
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.details
   - markdown.extensions.tables
   - markdown.extensions.footnotes
   - markdown.extensions.md_in_html:
   - pymdownx.superfences:
       preserve_tabs: true
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
   - toc:
       permalink: "¤"
   - pymdownx.snippets:
-      base_path: theme/src/_snippets
+      base_path:
+        - docs
 
 extra:
-  analytics:
-    provider: google
-    property: !ENV google_analytics_key
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/AXGKl/
-    - icon: fontawesome/brands/skype
-      link: https://join.skype.com/krSNYZqvEmJm
-extra_css:
-  - assets/css/xterm.min.css
-extra_javascript:
-  - javascript/tables.js
-  - assets/javascript/tablesort.min.js
-  - assets/javascript/Rx.min.js
-  - assets/javascript/xterm.4.9.0.min.js
-  - assets/javascript/xterm-addon-fit.min.js
-  - assets/javascript/xterm-addon-search.min.js
-  - assets/javascript/lc.js
-  - assets/javascript/fa_all.js
-  - assets/pymdownx-extras/extra-uml-30be4556.js
+      link: https://github.com/axiros
 
 plugins:
+  # in this order. e.g. md-replace before lp, so that lp can process its results
   - search
-  - tree-title
+  - lcd-blacklist
+  - lcd-md-replace
+  - lcd-lp
+  - lcd-page-tree
+  - lcd-stats
   - macros:
+      j2_block_start_string: "<%{"
+      j2_block_end_string: "}%>"
       j2_variable_start_string: "<{"
       j2_variable_end_string: "}>"

@@ -1,7 +1,7 @@
 <!-- AUTOMATICALLY GENERATED FILE - DO NOT DIRECTLY EDIT!
 
 Direct edits will be gone after next CI build.
-By: gk@axgk (Wed Aug 18 09:00:45 2021)
+By: gk@axgk (Thu Aug 19 13:42:26 2021)
 Command Line (see duties.py):
 
     /home/gk/miniconda3/envs/blog_py39/bin/doc pre_process \
@@ -11,7 +11,6 @@ Command Line (see duties.py):
      --gen_last_modify_date \
      --gen_change_log \
      --gen_change_log_versioning_stanza=calver \
-     --gen_change_log \
      --gen_credits_page \
      --gen_auto_docs \
      --lit_prog_evaluation=md \
@@ -30,6 +29,7 @@ This project adheres to [CalVer Versioning](http://calver.org) ![](https://img.s
 <small>[Compare with 2021.8.18](https://github.com/AXGKl/blog/compare/2021.8.18...2021.9.0)</small>
 
 ### Features
+- Mkdocs page ([9198ccd](https://github.com/AXGKl/blog/commit/9198ccdc17e1390ef6d41cee35d231e75ea250eb) by Gunther Klessinger).
 - Better logs ([d48303b](https://github.com/AXGKl/blog/commit/d48303b1245c73dd3080acaecef450ba111a13d1) by Gunther Klessinger).
 
 

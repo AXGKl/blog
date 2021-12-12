@@ -33,6 +33,21 @@ can help:
    Filessize will explode though, clear, but that would be the case with a print -> sign -> fill out
    / scan cycle as well.
 
+## Layer Merging
+
+Alt-i (Image) -> l (Merge Layers) -> confirm. Do this after copy - paste in place 
+
+## Changing Text on a Scanned PDF
+
+- Needed to change an address but the pdf was just an image.
+- You have to cut and paste the letters and re-assemble them for the new text - but its fast:
+    - Rectangle select -> copy (ctrl-c) -> paste in place, move the letter to destination.
+    - Then merge layers (alt-i, l, confirm)
+    
+
+
+
+
 
 
 

@@ -53,7 +53,29 @@ That's it, any ctrl click is now running the external command, with the pid of s
 
 In the external program we can now do wilder stuff, using pid -> windowid ...
 
+## The Color Emoji Crash
+
+st crashes due to an xft bug, when displaying color Emojis.
+Details from Luke: https://www.youtube.com/watch?v=f9qNXV01yzg
+
+Fix via adding a patch to libxft. 
+
+On Fedora:
 
 
+```bash
+git clone https://gitlab.freedesktop.org/xorg/lib/libxft.git
+cd libxft
+wget https://gitlab.freedesktop.org/xorg/lib/libxft/-/merge_requests/1.patch
+patch -p1 < 1.patch
+sudo dnf install xorg-x11-util-macros
+sh autogen.sh --sysconfdir=/etc --prefix=/usr --mandir=/usr/share/man
+make
+make install
+```
+
+And finally you have your "black female police officer" emoji:
+
+[![./img/emoji.png](./img/emoji.png)](./img/emoji.png)
 
 
