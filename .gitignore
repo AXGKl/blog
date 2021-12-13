@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 docs/cloud/terraform/k8s/clusters/
 docs/cloud/terraform/clusters
+docs/about/credits.md.lp.py
 tmp/
 docs/lcd
 public
