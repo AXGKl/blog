@@ -1,5 +1,8 @@
 # (Neo)Vim
 
+```page lp eval=on_change
+```
+
 After a few intense rounds with emacs and vscode I'm back to vim, specifically NeoVim.
 
 For publishing papers I'd stick to doom emacs and org -> latex -> pdf, but for the rest I'm in vim.
@@ -220,7 +223,7 @@ Here all plugins in my nvim:
 
 
 
-```bash lp lock_page
+```bash lp
 bat -f --terminal-width=200 /home/gk/.config/nvim/lua/plugins.lua
 ```
 
