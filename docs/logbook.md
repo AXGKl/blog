@@ -1,8 +1,15 @@
+---
+hide:
+  - navigation
+---
+
 # Logbook
 
 <!-- all admons: https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks -->
 
+
 ### :web: Hacking On the Wire API
+
 ??? success "Getting the login right"
     [2021-11-02 23:28]  
     The login process in wire's API docs is outdated. Here a working login, with access to all API endpoints:
@@ -93,7 +100,7 @@
     get = lambda pth, **kw: req(pth, meth='get', **kw)
     post = lambda pth, **kw: req(pth, meth='post', **kw)
 
-# some useful endpoints in general:
+    # some useful endpoints in general:
     access = lambda: req('/access')
     self = lambda: get('/self')
     search = lambda q: get('/search/contacts?q=' + q)
@@ -123,7 +130,8 @@
         main()
 
     ```
-### [wire](https://app.wire.com) Conversations to pdf
+### :web: Conversations to pdf in [wire](https://app.wire.com) chat
+
 ??? info "A strange failure"
     [2021-11-02 23:32]  
 
@@ -204,7 +212,7 @@
 
     - `<` instead `cat`: myhosts="$(< /etc/hosts)"
 
-### :st: No more crashes on color emojjs
+### :terminal: ST  No more crashes on color emojjs
 ??? success "Patching libxft"
     [2021-09-09 01:56]  
     Details [here](./ll/sl/st.md)
@@ -288,7 +296,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
 
 
-### Travis: How to enable
+### :gh: Travis: How to enable
 ??? tip "You always need a plan..."
     [2021-09-06 15:09]  
     In their not so new anymore travis.com you need to first select the free plan - not
@@ -302,7 +310,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
     [![./img/ghtrav.png](./img/ghtrav.png)](./img/ghtrav.png)
 
-### :tmux: Best Guide
+### :terminal: tmux: Best Guide
 ??? tip "Very nice and detailed tmux guide"
     [2021-09-04 21:48]  
     https://thevaluable.dev/tmux-config-mouseless/
@@ -405,7 +413,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     [This](https://fedoramagazine.org/recover-your-files-from-btrfs-snapshots/) is a good btrfs resource as well
 
 
-### :nvim: Overriding Specific Colors
+### :vim: Overriding Specific Colors
 ??? success "Keeping the colorscheme, using `hi link`"
     [2021-08-22 10:33]
 
@@ -440,12 +448,12 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
 
 
-### `evtest` for Better Input Tracing
+### :linux: `evtest` for Better Input Tracing
 ??? tip "Better than xev for many use cases"
     [2021-08-21 13:07]  
     See [this](./ll/hw/k860.md)
 
-### :vi: pyright error anlysis
+### :vim: pyright error anlysis
 ??? success "Know the lsp log"
     [2021-08-20 07:09]  
     Pyright consistently ignored the pyproject.toml settings - pyrightconfig.json worked.
@@ -511,7 +519,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     ]
     ```
 
-### :vi: Ultisnips Programmatically Created
+### :vim: Ultisnips Programmatically Created
 ??? success "dynamically creating the ultisnips body itself"
     [2021-08-19 17:38]  
     This is really neat: I can define tags in the environ and ulti shows them to me, per project
@@ -733,13 +741,13 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
 
    
-### :vi: [nginx.vim](https://github.com/chr4/nginx.vim): nginx conf highlighter
+### :vim: [nginx.vim](https://github.com/chr4/nginx.vim): nginx conf highlighter
 ??? tip "Nice syntax highlighter with lua support"
     [2021-08-19 08:29]  
     [![img/nginx.vim.png](img/nginx.vim.png)](img/nginx.vim.png)
 
     
-### poetry plugin entrypoints
+### :python: poetry plugin entrypoints
 ??? danger "How to make them be found"
     [2021-08-18 14:49]  
     Took me a while to find out how to get an entrypoint working which is contained in the repo
@@ -779,7 +787,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     after a new `poetry install` (not update, not required), those python entryponits are, like
     scripts, installed by `poetry install`.
 
-### [vimium-c](https://github.com/gdh1995/vimium-c/wiki) Rocks
+### :vi: :chrome: [vimium-c](https://github.com/gdh1995/vimium-c/wiki) Rocks
 ??? tip "`cd-`: like in shell, `T`"
     [2021-08-18 12:41]  
     The vimium-c guy has strong political [opinions](https://github.com/gdh1995/vimium-c/issues/359). Well maybe he is right, who am I to judge. In any case, his extension is the best "vimifier".
@@ -945,7 +953,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
         ]
         ```
 
-### :zsh: global aliases
+### :terminal: ZSH: global aliases
 ??? success "`ps ax pg foo`, `cat foo pclip`, ..."
     [2021-08-18 07:17]  
     Those work within commands:
@@ -964,7 +972,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     ```
 
 
-### :zsh: better `type`
+### :terminal: ZSH: better `type`
 ??? success "shows where function is defined"
     [2021-08-18 07:20]  
     === "zsh"
@@ -1006,12 +1014,13 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 ??? danger "configure in init.vim not in lua"
     [2021-08-18 00:55]  
     See [ultisnips page](./ll/vim/ultisnips.md)
-### [`kmcaster`](https://github.com/DaveJarvis/kmcaster/)
+
+### :linux: [`kmcaster`](https://github.com/DaveJarvis/kmcaster/)
 ??? tip "Best screenkey recorder"
     [2021-08-17 00:55]  
      ![](img/kmcaster.gif)
 
-### openjdk install
+### :linux: openjdk install
 ??? note "Per App / Non Global"
     [2021-08-17 11:09]
 
@@ -1028,7 +1037,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     `alias screenkeyjs='/opt/jdk-14/bin/java -jar /home/gk/inst/kmcaster.jar -d 60'`
 
 
-### gpg-agent cache timeout
+### :linux: gpg-agent cache timeout
 ??? tip "Avoiding popups every minute"
     [2021-08-17 10:34]
 
@@ -1042,7 +1051,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     and `systemctl --user restart gpg-agent`
 
 
-### Grub: See the system booting
+### :linux: Grub: See the system booting
 ??? tip "Using grubby"
     [2021-08-16 10:34]
 
@@ -1120,7 +1129,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     Solution: Delete the file, all works again: `rm -- -` 
 
 
-### Edge Browser
+### :chrome: Edge Browser
 ??? tip "Meanwhile my default"
     [2021-08-11 12:38]
 
@@ -1129,7 +1138,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     [political](https://blog.mozilla.org/en/mozilla/we-need-more-than-deplatforming/) meanwhile as
     well
 
-### pipewire -> pulse
+### :linux: pipewire -> pulse
 ??? info "Avoid problems with old config / alsamixer is great"
     [2021-05-01 11:37]
 

@@ -25,6 +25,21 @@ Detailled docs here [here](https://squidfunk.github.io/mkdocs-material/reference
         this = 'not'
     ``
     ```
+## Layout
+
+1. Enable `- meta` extension
+1. Add meta data like:
+
+```
+---
+hide:
+  - navigation
+  - toc
+---
+
+# My Page 
+(...)
+```
 
 
 ## Inline

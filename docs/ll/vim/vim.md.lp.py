@@ -351,9 +351,6 @@
                                              '\n'
                                              "if __name__ == '__main__':\n"
                                              '    main()\n'},
- '759fb24ba178bafd77d8693c1f87e4ba': [{'cmd': 'echo $lp_eval',
-                                       'res': '$ echo $lp_eval\n'
-                                              'on_page_change'}],
  '840b9db650b16c3b41bdce540d9060f0': [{'cmd': 'bat -f --terminal-width=200 '
                                               '/home/gk/.config/nvim/lua/plugins.lua',
                                        'res': '$ bat -f --terminal-width=200 '

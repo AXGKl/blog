@@ -64,9 +64,9 @@ theme:
     - navigation.instant
     - navigation.top
     - navigation.tabs
-      #- navigation.sections
+    - navigation.sections
       #- toc.integrate
-      #- navigation.expand
+    - navigation.expand
   name: material
   icon:
     logo: material/book-open-page-variant
