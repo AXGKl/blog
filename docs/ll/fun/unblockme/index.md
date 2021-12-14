@@ -27,7 +27,8 @@ Here all the programs we discuss below:
 - UnblockMe, DFS is [here][umdfs]
 - UnblockMe, BFS, single cell moves is [here][umbfs1]
 - UnblockMe, BFS, multi cell moves is [here][umbfs2]
-- Klotski is [here][klotski]
+- Klotski DFS is [here][klotski_dfs]
+- Klotski BFS is [here][klotski]
 
 
 All the files can be run standalone (make them executable) and require no libs. They have to be edited in their config section, in order to configure new initial board states.
@@ -507,6 +508,7 @@ UnblockMe).
 [umbfs1]: ./unblockme_breadth_first_single_moves.py
 [umbfs2]: ./unblockme.py
 [klotski]: ./klotski.py
+[klotski_dfs]: ./klotski_dfs.py
 
 
 
