@@ -190,7 +190,7 @@ This we do efficiently only by putting the moved piece into an array, e.g.
 ```
 
 where -4 means we moved piece nr 4 left or up (dependend on if it is a horizontal or vertical
-piece), while +4 means right or up. In the example (which is from the above shown board 605) we
+piece), while +4 means right or down. In the example (which is from the above shown board 605) we
 moved piece 
 
 - nr 4 one right
