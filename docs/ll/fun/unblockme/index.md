@@ -1,6 +1,6 @@
 # UnblockMe or: Depth First vs. Breadth First
 
-date: [2021-12-14 11:01] 
+[2021-12-14 11:01] 
 
 During a longer period of illness, which bound me to my bed for a few weeks, gaming on the mobile
 phone became the preferred time killer. Besides chess (which required a bit too much energy, given
