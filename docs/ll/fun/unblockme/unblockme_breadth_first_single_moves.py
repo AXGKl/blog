@@ -27,29 +27,11 @@ Board 605 would be:
 
 ```
 
-## Solving Method: Brute Force
-
-- States are indexed by topleft position of all pieces, e.g. this is one state:
-
-    '122:230:311:403:533:614:731:802:944:1052:1154:'
-
-  (with piece nr 4 at row0, col3 - piece nr 10 at row 5, col 2)
-
-- Loop:
-    a) Committing *first* possible move, which produces new state
-    b) If NO new state can be produced, we undo the last move
-
-    We do not forget state indizes when undoing, so b) will lead to comitting the
-    originally *second* possible move at a) (since the first one won't produce new state)
-
-    If there is also no next possible move, we take back the last but one move (...)
-
-- After any committed move we check if all right of a piece 1 is 0 -> solved then.
+## Solving Method: Brute Force, Breadth First. Only Single Cell Moves
 
 !!! important
 
-    That method will NOT find the *optimal* solution - but will guaranteed find *a*
-    solution - if there is one.
+    That method will find the a solution **close** (due to the single cell moves) to the optimum.
 
 
 [1]: https://play.google.com/store/apps/details?id=com.kiragames.unblockmefree

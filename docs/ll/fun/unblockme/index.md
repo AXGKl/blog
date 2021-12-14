@@ -1,5 +1,7 @@
 # UnblockMe or: Depth First vs. Breadth First
 
+date: [2021-12-14 11:01] 
+
 During a longer period of illness, which bound me to my bed for a few weeks, gaming on the mobile
 phone became the preferred time killer. Besides chess (which required a bit too much energy, given
 my state), I became a big fan of this game:  
@@ -15,7 +17,45 @@ Variations are e.g. this game:
 [![](img/yt2.png)][yt2]
 
 
-When I recovered I was looking into solver algorithms for the game.
+When I somewhat recovered physically, I was looking into solver algorithms for the game.
+
+
+## Source Code
+
+Here all the programs we discuss below:
+
+- UnblockMe, DFS is [here][umdfs]
+- UnblockMe, BFS, single cell moves is [here][umbfs1]
+- UnblockMe, BFS, multi cell moves is [here][umbfs2]
+- Klotski is [here][klotski]
+
+
+All the files can be run standalone (make them executable) and require no libs. They have to be edited in their config section, in order to configure new initial board states.
+
+Example: 
+
+```bash
+# save the file locally, then run:
+~/repos/blog/docs/ll/fun/unblockme❯ ./unblockme.py
+Start State:
+
+23444
+23 56
+21156
+778 6
+  899
+ aabb
+
+next move:  1
+breadth is:  1
+next move:  2
+breadth is:  5
+next move:  3
+breadth is:  14
+(...)
+
+Solved in 32 moves (producing 3288 States). Took 4.68sec.
+```
 
 ## Initial Read
 
@@ -118,7 +158,8 @@ where next_move is like:
 
 #### State Indexing
 
-The algo depends on knowing if a board state had been reached before. 
+The algo depends on knowing if a board state had been reached before, i.e. all reached states have
+to be kept in a set in memory, in a comparable form. 
 
 We simply concat the top left position of the pieces into a string:
 
@@ -138,7 +179,7 @@ which produces states like these:
 
 #### Tree Traversal Path
 
-Also, in order to backtrack, we have to remember the moves we did up to a certain state:
+Also, in order to *backtrack*, we have to remember the moves we did up to a certain state:
 
 This we do efficiently only by putting the moved piece into an array, e.g.
 
@@ -158,6 +199,9 @@ moved piece
 - then 4 one right
 
 (you might already anticipate the major problem with this DFS approach)
+
+When we have to backtrack (undo), we simply move the piece into the opposite direction, switching
+off the state comparison part in `dev move`, via a global `undo_mode` boolean.
 
 !!! note
 
@@ -210,6 +254,9 @@ So we changed to algo to BFS:
 
 No backtracking involved here.
 
+![](img/bfs.png)
+
+
 Sounds simple, is harder.
 
 ### New Ingredients
@@ -255,7 +302,7 @@ Bad:
 
 ![](img/tree.png)
 
-- It is still not perfect:
+##### It is still not perfect
 
 Trying the solution within the real game, we got only 2 stars - well done but not the perfect one
 found - which is 32 and not 38 moves.
@@ -279,9 +326,9 @@ would be only 2 moves to the same state.
 
 Why did it not find that, what prevented it.
 
-Answer (after debugging):
+Answer (after debugging) - check the terminal output of the solution shown above:
 
-- Yes, it did, in move 1 also register the move 9 right
+- In move 1 it did also register the move 9 right
 - Then in move 2 it started with the board in state after 5 down one (and 9 in orig place), found 9
   right and remembered the state
 - Then in move 2 it tried new moves after 9 right first, found 5 down one - and stopped. Since that
@@ -324,24 +371,142 @@ Bad:
 - Yet more CPU, we are at 4.8 sec vs 0.17 DFS) and yet more memory (breadth is even higher)
 
 
+
+## Klotski
+
+### Normal Version
+
+Having the basic algo in place, we tried it on a variant of the game (actually it seems the
+original):
+
+[![](img/klotski.png)](https://www.y8.com/games/klotski)
+
+Big difference to UnblockMe: Pieces can now be moved into *any* direction:
+
+So the main loop basically identical to unblockme's optimal solution bfs:
+
+`lp:show_src delim=main_loopklotski dir=docs/ll/fun lang=python`
+
+
+#### Challenges
+
+But the run time got huge, with a crazy high breadth. We tackled that by using another indexing
+method, where a state is considered identical to another if pieces with only the same dimensions
+reside on the same places - not necessarily with their piece number matching:
+
+```python
+[[2, 3, 0],
+ [1, 1, 0]]
+
+# is considered ident to
+
+[[3, 2, 0],
+ [1, 1, 0]]
+```
+
+The solution to this problem requires 91 moves(!):
+
+![](img/klsol.png)
+
+### Klotski - Hard Version
+
+If this wasn't hard enough, there is also an expert version of the game:
+
+[![](img/klotski_hard.png)](https://www.y8.com/games/klotski) 
+
+Initial board setup varies, had also e.g. this:
+
+```python
+board_hard1 = [
+    [2 , 1, 1, 3, 4, 4],
+    [2 , 1, 1, 5, 6, 6],
+    [7 , 8,10,11,12,13],
+    [7 , 9,10,14,15,16],
+    [17,17,18,19,20,16],
+    [24,24,25,19,21,22],
+    [24,24, 0, 0,23,22],
+    ]
+```
+
+#### Challenges: BFS not feasible
+
+The bfs [code][klotski] code in general did not need any changes, except an adjustment of
+`solved_row`, `solved_col`.
+
+Problem: Computing time was not tolerable. With so many pieces on the board, possibilities to move
+them around, i.e. breadth, exploded:
+
+```
+(...)
+next move:  12
+breadth is:  1893
+board states:  4987
+time 45.87 sec
+next move:  13
+breadth is:  2901
+board states:  7888
+time 74.44 sec
+next move:  14
+breadth is:  4482
+board states:  12370
+time 117.52 sec
+next move:  15
+breadth is:  7062
+board states:  19432
+time 184.78 sec
+(...)
+```
+
+We did not profile and the code is rater inefficient, grown from the pretty fast DFS algo into BFS.
+But an optimization would need orders of magnitude improvement, which I did not go into. I assume I would need
+to change programming language for finding that in bearable time.
+
+Rather I tried DFS with this, in order to see if it also performs. And it did:
+
+Result:
+
+![](img/klotski_hard_dfs.png)
+
+0.4 seconds - unexpectedly fast, after having to interrupt the bfs version for resource problems.
+
+Over 8000 moves is, I assume, an order of magnitude too high, compared to the (unknown) perfect
+solution (remember: the normal version had 91
+for perfect, here we'll have at least 5-10 times as many).
+
+!!! important
+
+    In klotzki expert mode, BFS was not even feasible, while DFS found a solution in less then half a second.
+
+
+
+
+
 ## Summary
 
-For the given class of problems (see also [this one](https://www.y8.com/games/klotski)) DFS is:
+For the given class of problems **DFS** is:
 
 - easier to program
-- light on resources
-- finds a solution guaranteed but that solution will be FAR from the optimal one
+- light on resources, i.e. super fast
+- finds a solution guaranteed.
+- But that solution will be FAR from the optimal one
 
-BFS is pretty resource intense (CPU *and* memory) - but will find the perfect solution, given we
-find really *every* possible move, for a certain step.
-
+**BFS** is *pretty* resource intense (CPU *and* memory) - but will find the *perfect* solution, given we
+consider really *every* possible move, for a certain step (e.g. not just single cell moves in
+UnblockMe).
 
 ![](img/perfect.png){width=400}
+
+
+
 
 
 [yt]: https://www.youtube.com/watch?v=fKMbm-KZaFU
 [yt2]: https://www.youtube.com/watch?v=AXpgFNxXA2k
 
+[umdfs]: ./unblockme_dfs.py
+[umbfs1]: ./unblockme_breadth_first_single_moves.py
+[umbfs2]: ./unblockme.py
+[klotski]: ./klotski.py
 
 
 

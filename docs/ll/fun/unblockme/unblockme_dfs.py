@@ -27,7 +27,7 @@ Board 605 would be:
 
 ```
 
-## Solving Method: Brute Force
+## Solving Method: Brute Force, Depth First
 
 - States are indexed by topleft position of all pieces, e.g. this is one state:
 

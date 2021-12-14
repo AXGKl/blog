@@ -30,8 +30,8 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 ## Gotchas
 
 !!! danger "configure in init.vim not in lua"
+
     [2021-08-18 00:55]  
-    See [ultisnips page](./ll/vim/ultisnips.md)
 
     Drove me crazy that lua based config in packer did only work ...50%, e.g. the second parameter
     never hightlighted, jumps wrong, tab not working. GRR.

@@ -1,40 +1,17 @@
 #!/usr/bin/env python
 """
-# A Solver for the Android game [unblockme][1]
+# A Solver for the game klotski
+
+https://www.y8.com/games/klotski
 
 ## Config
 
 Supply the board's initial state like this:
 
     - Every piece (block) gets a unique number, starting from 1, counting up
-    - The red piece must have nr 1
+    - The big piece to free must have nr 1
     - Empty cells get 0
 
-### Exmple:
-
-Board 605 would be:
-
-```python
-
-    board_605 = [
-        [2 , 3  , 4  , 4  , 4  , 0] ,
-        [2 , 3  , 0  , 5  , 6  , 0] ,
-        [2 , 1  , 1  , 5  , 6  , 0] ,
-        [7 , 7  , 8  , 0  , 6  , 0] ,
-        [0 , 0  , 8  , 9  , 9  , 0] ,
-        [0 , 10 , 10 , 11 , 11 , 0] ,
-    ]
-
-```
-
-## Solving Method: Brute Force, Breadth First. Multi cell moves.
-
-!!! important
-
-    That method will find the *optimal* solution
-
-
-[1]: https://play.google.com/store/apps/details?id=com.kiragames.unblockmefree
 """
 
 
@@ -45,76 +22,41 @@ from time import time
 # fmt:off
 # ------------------------------------------------------------------------------- config
 # piece nr 1 must be the one to free (the red one):
-board_simple = [
-    [4, 0, 2, 0, 3, 3],
-    [4, 0, 2, 0, 0, 5],
-    [1, 1, 0, 7, 0, 5],
-    [0, 0, 0, 7, 0, 5],
-    [0, 0, 0, 0, 0, 0],
-    [6, 6, 6, 0, 0, 0],
+board_1 = [
+    [1, 1, 2, 0],
+    [1, 1, 3, 0],
+    [4, 8, 9,11],
+    [5, 8,10,11],
+    [6, 6, 7, 7],
 ]
 
-board_605 = [
-    [2 , 3  , 4  , 4  , 4  , 0] ,
-    [2 , 3  , 0  , 5  , 6  , 0] ,
-    [2 , 1  , 1  , 5  , 6  , 0] ,
-    [7 , 7  , 8  , 0  , 6  , 0] ,
-    [0 , 0  , 8  , 9  , 9  , 0] ,
-    [0 , 10 , 10 , 11 , 11 , 0] ,
+board_2 = [
+    [2, 1, 1, 3],
+    [2, 1, 1, 3],
+    [4, 6, 6, 9],
+    [4, 7, 8, 9],
+    [5, 0, 0,10],
 ]
 
-# different indexing:
-board_6052 = [
-    [11 , 3  , 4  , 4  , 4  , 0] ,
-    [11 , 3  , 0  , 5  , 6  , 0] ,
-    [11 , 1  , 1  , 5  , 6  , 0] ,
-    [7 , 7  , 8  , 0  , 6  , 0] ,
-    [0 , 0  , 8  , 9  , 9  , 0] ,
-    [0 , 10 , 10 , 2 , 2 , 0] ,
-]
-
-
-board_638 = [
-    [0  , 3  , 4  , 5 , 5 , 5] ,
-    [2  , 3  , 4  , 6 , 0 , 0] ,
-    [2  , 1  , 1  , 6 , 0 , 0] ,
-    [2  , 7  , 7  , 8 , 8 , 9] ,
-    [0  , 0  , 10 , 0 , 0 , 9] ,
-    [11 , 11 , 10 , 0 , 0 , 9] ,
-]
-
-board_3 = [
-    [0  , 2  , 3  , 3 , 6 , 7] ,
-    [0  , 2  , 4  , 5 , 6 , 7] ,
-    [1  , 1  , 4  , 5 , 6 , 8] ,
-    [0  , 9  , 9  ,10 , 0 , 8] ,
-    [0  , 0  , 0  ,10 , 0 , 0] ,
-    [0  , 11 , 11 ,12 ,12 , 0] ,
-]
-
-board_632 = [
-    [2  , 2  , 3  , 0 , 4 , 5] ,
-    [0  , 0  , 3  , 0 , 4 , 5] ,
-    [0  , 0  , 3  , 1 , 1 , 5] ,
-    [9  , 0  , 0  , 7 , 6 , 6] ,
-    [9  , 8  , 8  , 7 , 0 , 0] ,
-    [0  , 0  , 0  , 7 , 0 , 0] ,
-]
-
-board_impossible = [
-    [0  , 3  , 4  , 5 , 5 , 5] ,
-    [2  , 3  , 4  , 6 , 0 , 0] ,
-    [2  , 1  , 1  , 6 , 12,12] ,
-    [2  , 7  , 7  , 8 , 8 , 9] ,
-    [0  , 0  , 10 , 0 , 0 , 9] ,
-    [11 , 11 , 10 , 0 , 0 , 9] ,
-]
+board_hard = [
+    [2 , 1, 1, 3, 4, 4],
+    [2 , 1, 1, 5, 6, 6],
+    [7 , 8,10,11,12,13],
+    [7 , 9,10,14,15,16],
+    [17,17,18,19,20,16],
+    [24,24,25,19,21,22],
+    [24,24, 0, 0,23,22],
+    ]
 
 # fmt:on
 
-board = board_605
-# --------------------------------------------------------------------------- end config
+# piece 1 here and we are done:
+solved_row, solved_col = 3, 1
+# for hard set this:
+solved_row, solved_col = 5, 2
 
+board = board_hard
+# --------------------------------------------------------------------------- end config
 t0 = time()
 
 # printing the board, with bg colors:
@@ -178,83 +120,80 @@ class Piece:
     nr: int = 0
     row: int = 0
     col: int = 0
-    len: int = 0
-    dir: int = vert
+    dim: tuple = ()
 
     def setup(self):
         """Determine vertical or horizontal and set the length"""
         r, c, n = self.row, self.col, self.nr
-        self.dir = vert if (r < len(board) - 1 and board[r + 1][c] == n) else horiz
-        self.set_len()
+        self.set_dimension()
         return self
 
-    def set_len(self):
+    def set_dimension(self):
         """How long is this piece"""
         r, c, n = self.row, self.col, self.nr
         l = 0
-        if self.dir == horiz:
-            while board_by_row_and_col(r, c + l) == n:
-                l += 1
-                self.len = l
+        h = 0
+        while board_by_row_and_col(r, c + l) == n:
+            l += 1
+        while board_by_row_and_col(r + h, c) == n:
+            h += 1
+        self.dim = (h, l)
+        if l == 1 and h == 1:
+            self.ord = 1
+        elif l == 1 and h == 2:
+            self.ord = 2
+        elif l == 2 and h == 1:
+            self.ord = 3
+        elif l == 2 and h == 2:
+            self.ord = 4
 
-        elif self.dir == vert:
-            while board_by_row_and_col(r + l, c) == n:
-                l += 1
-                self.len = l
-
-    def go_left_if_new_state(self, count):
-        """left or up"""
-        if self.dir == vert:
-            return self.move(-count, 0)
-        else:
-            return self.move(0, -count)
-
-    def go_right_if_new_state(self, count):
-        """right or down"""
-        if self.dir == vert:
-            return self.move(count, 0)
-        else:
-            return self.move(0, count)
-
-    def move(self, row_offs, col_offs):
+    def move(self, row_offs, col_offs, count):
         """Returns
         - None if the move is not possible on the board
         - False if the move is not producing new state
         - True if possible and new state
         """
-        # CAN we move?
-        or_, oc = self.row, self.col
-        nr, nc = self.row + row_offs, self.col + col_offs
-        rl, cl = 0, 0
-        if row_offs > 0:
-            rl = self.len - 1
-        elif col_offs > 0:
-            cl = self.len - 1
-        if board_by_row_and_col(nr + rl, nc + cl) != 0:
-            return None
+        d = self.dim
+        if row_offs == 1:
+            # down, count cells:
+            for c in range(count):
+                t = self.row + d[0] + c
+                for col in range(d[1]):
+                    if board_by_row_and_col(t, self.col + col):
+                        return None
+        elif row_offs == -1:
+            # up, count cells:
+            for c in range(count):
+                t = self.row - c - 1
+                for col in range(d[1]):
+                    if board_by_row_and_col(t, self.col + col):
+                        return None
+
+        elif col_offs == 1:
+            # right, count cells:
+            for c in range(count):
+                t = self.col + d[1] + c
+                for row in range(d[0]):
+                    if board_by_row_and_col(self.row + row, t):
+                        return None
+
+        elif col_offs == -1:
+            # left, count cells:
+            for c in range(count):
+                t = self.col - c - 1
+                for row in range(d[0]):
+                    if board_by_row_and_col(self.row + row, t):
+                        return None
         # Try do the move - then check for having new state:
-        self.row, self.col = nr, nc
+        or_, oc = self.row, self.col
+        self.row, self.col = self.row + count * row_offs, self.col + count * col_offs
         if not have_new_state():
             self.row, self.col = or_, oc
             return False
 
-        # are we right/down (-> 1) or left/up (-> -1):
-        is_right_or_down = row_offs + col_offs
-
-        # register the move (our nr with minus if it's left/up, else +):
-        moves.append(self.nr * is_right_or_down)
-        l = ': ' if len(moves) < 10 else ': ...'
-        # print('Move', len(moves), l, ', '.join([str(i) for i in moves[-10:]]))
-
         # set the board accordingly:
         rm_piece(self.nr)
-        try:
-            add_piece(self)
-        except Exception as ex:
-            print('breakpoint set')
-            breakpoint()
-            add_piece(self)
-            keep_ctx = True
+        add_piece(self)
         return True
 
 
@@ -272,13 +211,9 @@ def rm_piece(nr):
 
 def add_piece(p):
     """add a piece"""
-    for i in range(p.len):
-        r, c = p.row, p.col
-        if p.dir == horiz:
-            c += i
-        else:
-            r += i
-        board[r][c] = p.nr
+    for r in range(0, p.dim[0]):
+        for c in range(0, p.dim[1]):
+            board[r + p.row][c + p.col] = p.nr
 
 
 def register_pieces():
@@ -299,11 +234,15 @@ def register_pieces():
 
 def calc_state():
     """get a unique id per board(=pieces) state"""
-    s = ''
+    r = []
     for nr in range(1, len(pieces) + 1):
         p = pieces[nr]
-        row, col = p.row, p.col
-        s += f'{nr}{row}{col}:'
+        row, col, ord = p.row, p.col, p.ord
+        r.append(100 * ord + 10 * row + col)
+    r.sort()
+    return tuple(r)
+
+    s += f'{ord}{row}{col}:'
     return s
 
 
@@ -315,15 +254,12 @@ def have_new_state():
 
 
 def check_solved(prev, piece):
-    """Is all right of piece nr 1 a zero?"""
+    """Is piece 1 at solved position"""
     p = pieces[1]
-    row, col, ln = p.row, p.col, p.len
-    for c in board[row][col + ln :]:
-        if c != 0:
-            return False
-    sec = round(time() - t0, 2)
-    print_solution(prev, piece, sec)
-    sys.exit(0)
+    if p.row == solved_row and p.col == solved_col:
+        sec = round(time() - t0, 2)
+        print_solution(prev, piece, sec)
+        sys.exit(0)
 
 
 clone_state = lambda s: [[k for k in r] for r in s]
@@ -362,12 +298,14 @@ def print_solution(prev, piece, sec):
     print(f'Solved in {lmoves} moves (producing {lstates} States). Took {sec}sec.')
 
 
-# :docs:main_loopbfs
+# :docs:main_loopklotski
 def all_states_one_move_deeper():
     global board
     last_states = tree[-1]
     print('next move: ', len(tree))
     print('breadth is: ', sum([len(k['next_states']) for k in last_states]))
+    print('board states: ', len(states))
+    print('time', round(time() - t0, 2), 'sec')
     next_states = []
     for s in last_states:
         ns = s['next_states']
@@ -375,16 +313,15 @@ def all_states_one_move_deeper():
             state = state['board']
             possbl_mov = []
             for nr in range(1, len(pieces) + 1):
-                # if not nr in (12,): continue
-                for dir in 'go_left_if_new_state', 'go_right_if_new_state':
+                # try any direction:
+                for dir in (1, 0), (-1, 0), (0, 1), (0, -1):
                     count = 0
                     while True:
                         board = clone_state(state)
                         register_pieces()
                         p = pieces[nr]
                         count += 1
-                        mv = getattr(p, dir)
-                        r = mv(count)
+                        r = p.move(dir[0], dir[1], count)
                         if r == None:
                             break
                         if r == False:
@@ -413,7 +350,8 @@ def main():
         all_states_one_move_deeper()
 
 
-# :docs:main_loopbfs
+# :docs:main_loopklotski
+
 
 if __name__ == '__main__':
     main()

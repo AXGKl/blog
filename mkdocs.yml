@@ -64,8 +64,8 @@ theme:
     - navigation.instant
     - navigation.top
     - navigation.tabs
-    - navigation.sections
-    - toc.integrate
+      #- navigation.sections
+      #- toc.integrate
       #- navigation.expand
   name: material
   icon:

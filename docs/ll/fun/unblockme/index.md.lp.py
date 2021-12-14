@@ -1,4 +1,203 @@
-{'98659c828522386aca769aeae4fba767': {'formatted': '\n'
+{'8ebff2dd9c643b68ab352293b3dac402': {'formatted': '\n'
+                                                   '=== "Code"\n'
+                                                   '\n'
+                                                   '    ```python\n'
+                                                   '    def '
+                                                   'all_states_one_move_deeper():\n'
+                                                   '        global board\n'
+                                                   '        last_states = '
+                                                   'tree[-1]\n'
+                                                   "        print('next move: "
+                                                   "', len(tree))\n"
+                                                   "        print('breadth is: "
+                                                   "', "
+                                                   "sum([len(k['next_states']) "
+                                                   'for k in last_states]))\n'
+                                                   "        print('board "
+                                                   "states: ', len(states))\n"
+                                                   '        next_states = []\n'
+                                                   '        for s in '
+                                                   'last_states:\n'
+                                                   '            ns = '
+                                                   "s['next_states']\n"
+                                                   '            for state in '
+                                                   'ns:\n'
+                                                   '                state = '
+                                                   "state['board']\n"
+                                                   '                possbl_mov '
+                                                   '= []\n'
+                                                   '                for nr in '
+                                                   'range(1, len(pieces) + '
+                                                   '1):\n'
+                                                   '                    # try '
+                                                   'any direction:\n'
+                                                   '                    for '
+                                                   'dir in (1, 0), (-1, 0), '
+                                                   '(0, 1), (0, -1):\n'
+                                                   '                        '
+                                                   'count = 0\n'
+                                                   '                        '
+                                                   'while True:\n'
+                                                   '                            '
+                                                   'board = '
+                                                   'clone_state(state)\n'
+                                                   '                            '
+                                                   'register_pieces()\n'
+                                                   '                            '
+                                                   'p = pieces[nr]\n'
+                                                   '                            '
+                                                   'count += 1\n'
+                                                   '                            '
+                                                   'r = p.move(dir[0], dir[1], '
+                                                   'count)\n'
+                                                   '                            '
+                                                   'if r == None:\n'
+                                                   '                                '
+                                                   'break\n'
+                                                   '                            '
+                                                   'if r == False:\n'
+                                                   '                                '
+                                                   'continue\n'
+                                                   '                            '
+                                                   'check_solved(state, nr)\n'
+                                                   '                            '
+                                                   'possbl_mov.append(\n'
+                                                   '                                '
+                                                   "{'board': "
+                                                   "clone_state(board), 'nr': "
+                                                   "nr, 'count': count}\n"
+                                                   '                            '
+                                                   ')\n'
+                                                   '    \n'
+                                                   '                if '
+                                                   'possbl_mov:\n'
+                                                   '                    '
+                                                   "next_states.append({'next_states': "
+                                                   "possbl_mov, 'prev': "
+                                                   'state})\n'
+                                                   '        if next_states:\n'
+                                                   '            '
+                                                   'tree.append(next_states)\n'
+                                                   '        else:\n'
+                                                   "            print('no "
+                                                   "solution')\n"
+                                                   '            sys.exit(1)\n'
+                                                   '    \n'
+                                                   '    \n'
+                                                   '    def main():\n'
+                                                   "        print('Start "
+                                                   "State:')\n"
+                                                   '        print_board()\n'
+                                                   '        register_pieces()\n'
+                                                   '        have_new_state()  '
+                                                   '# register initial state\n'
+                                                   '        '
+                                                   "tree.append([{'prev': "
+                                                   "None, 'next_states': "
+                                                   "[{'board': board, 'nr': "
+                                                   '0}]}])\n'
+                                                   '        while True:\n'
+                                                   '            '
+                                                   'all_states_one_move_deeper()\n'
+                                                   '    ```\n'
+                                                   '\n'
+                                                   '=== '
+                                                   '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/klotski.py#L299)"\n'
+                                                   '    '
+                                                   'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/klotski.py#L299\n',
+                                      'res': '\n'
+                                             '=== "Code"\n'
+                                             '\n'
+                                             '    ```python\n'
+                                             '    def '
+                                             'all_states_one_move_deeper():\n'
+                                             '        global board\n'
+                                             '        last_states = tree[-1]\n'
+                                             "        print('next move: ', "
+                                             'len(tree))\n'
+                                             "        print('breadth is: ', "
+                                             "sum([len(k['next_states']) for k "
+                                             'in last_states]))\n'
+                                             "        print('board states: ', "
+                                             'len(states))\n'
+                                             '        next_states = []\n'
+                                             '        for s in last_states:\n'
+                                             '            ns = '
+                                             "s['next_states']\n"
+                                             '            for state in ns:\n'
+                                             '                state = '
+                                             "state['board']\n"
+                                             '                possbl_mov = []\n'
+                                             '                for nr in '
+                                             'range(1, len(pieces) + 1):\n'
+                                             '                    # try any '
+                                             'direction:\n'
+                                             '                    for dir in '
+                                             '(1, 0), (-1, 0), (0, 1), (0, '
+                                             '-1):\n'
+                                             '                        count = '
+                                             '0\n'
+                                             '                        while '
+                                             'True:\n'
+                                             '                            '
+                                             'board = clone_state(state)\n'
+                                             '                            '
+                                             'register_pieces()\n'
+                                             '                            p = '
+                                             'pieces[nr]\n'
+                                             '                            '
+                                             'count += 1\n'
+                                             '                            r = '
+                                             'p.move(dir[0], dir[1], count)\n'
+                                             '                            if r '
+                                             '== None:\n'
+                                             '                                '
+                                             'break\n'
+                                             '                            if r '
+                                             '== False:\n'
+                                             '                                '
+                                             'continue\n'
+                                             '                            '
+                                             'check_solved(state, nr)\n'
+                                             '                            '
+                                             'possbl_mov.append(\n'
+                                             '                                '
+                                             "{'board': clone_state(board), "
+                                             "'nr': nr, 'count': count}\n"
+                                             '                            )\n'
+                                             '    \n'
+                                             '                if possbl_mov:\n'
+                                             '                    '
+                                             "next_states.append({'next_states': "
+                                             "possbl_mov, 'prev': state})\n"
+                                             '        if next_states:\n'
+                                             '            '
+                                             'tree.append(next_states)\n'
+                                             '        else:\n'
+                                             "            print('no "
+                                             "solution')\n"
+                                             '            sys.exit(1)\n'
+                                             '    \n'
+                                             '    \n'
+                                             '    def main():\n'
+                                             "        print('Start State:')\n"
+                                             '        print_board()\n'
+                                             '        register_pieces()\n'
+                                             '        have_new_state()  # '
+                                             'register initial state\n'
+                                             "        tree.append([{'prev': "
+                                             "None, 'next_states': [{'board': "
+                                             "board, 'nr': 0}]}])\n"
+                                             '        while True:\n'
+                                             '            '
+                                             'all_states_one_move_deeper()\n'
+                                             '    ```\n'
+                                             '\n'
+                                             '=== '
+                                             '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/klotski.py#L299)"\n'
+                                             '    '
+                                             'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/klotski.py#L299\n'},
+ '98659c828522386aca769aeae4fba767': {'formatted': '\n'
                                                    '=== "Code"\n'
                                                    '\n'
                                                    '    ```python\n'
@@ -86,9 +285,9 @@
                                                    '    ```\n'
                                                    '\n'
                                                    '=== '
-                                                   '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L359)"\n'
+                                                   '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L341)"\n'
                                                    '    '
-                                                   'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L359\n',
+                                                   'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L341\n',
                                       'res': '\n'
                                              '=== "Code"\n'
                                              '\n'
@@ -165,9 +364,9 @@
                                              '    ```\n'
                                              '\n'
                                              '=== '
-                                             '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L359)"\n'
+                                             '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L341)"\n'
                                              '    '
-                                             'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L359\n'},
+                                             'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L341\n'},
  'a5c7efc3d692d2b37845328273ca7751': {'formatted': '\n'
                                                    '=== "Code"\n'
                                                    '\n'
@@ -313,9 +512,9 @@
                                                    '    ```\n'
                                                    '\n'
                                                    '=== '
-                                                   '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme.py#L385)"\n'
+                                                   '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme.py#L366)"\n'
                                                    '    '
-                                                   'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme.py#L385\n',
+                                                   'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme.py#L366\n',
                                       'res': '\n'
                                              '=== "Code"\n'
                                              '\n'
@@ -405,9 +604,9 @@
                                              '    ```\n'
                                              '\n'
                                              '=== '
-                                             '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme.py#L385)"\n'
+                                             '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme.py#L366)"\n'
                                              '    '
-                                             'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme.py#L385\n'},
+                                             'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme.py#L366\n'},
  'abd08ac17a8f324016934c18ec8e7733': {'formatted': '\n'
                                                    '=== "Code"\n'
                                                    '\n'
@@ -543,9 +742,9 @@
                                                    '    ```\n'
                                                    '\n'
                                                    '=== '
-                                                   '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L325)"\n'
+                                                   '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L307)"\n'
                                                    '    '
-                                                   'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L325\n',
+                                                   'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L307\n',
                                       'res': '\n'
                                              '=== "Code"\n'
                                              '\n'
@@ -604,9 +803,9 @@
                                              '    ```\n'
                                              '\n'
                                              '=== '
-                                             '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L325)"\n'
+                                             '"[:fontawesome-brands-git-alt:](https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L307)"\n'
                                              '    '
-                                             'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L325\n'},
+                                             'https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L307\n'},
  'beeba2c60983a2271d56e79390b4e74b': {'formatted': '\n'
                                                    '=== "Code"\n'
                                                    '\n'
