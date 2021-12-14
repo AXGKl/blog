@@ -18,6 +18,7 @@ env:
   POETRY_VIRTUALENVS_IN_PROJECT: "true"
   PYTHONIOENCODING: "UTF-8"
   PROJECT: "blog"
+  lp_eval: "on_page_change"
   MC: "/home/runner/miniconda3"
   PATH: "$(MC)/bin:/home/runner/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:"
   versioning: calver # for git-changelog

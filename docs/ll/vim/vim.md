@@ -1,6 +1,6 @@
 # (Neo)Vim
 
-```page lp eval=on_change
+```page lp eval=on_page_change
 ```
 
 After a few intense rounds with emacs and vscode I'm back to vim, specifically NeoVim.
@@ -34,8 +34,9 @@ I won't discuss all my config, just a few hacks of myself, maybe of interest to 
 
 ### Python
 
-```bash lp assert=except
-bat -f --terminal-width=200 ~/.config/nvim/ftplugin/python.vim
+
+```bash lp
+bat -f  --terminal-width=200 ~/.config/nvim/ftplugin/python.vim
 ```
 
 Wrapping of code into try except blocks:
