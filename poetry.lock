@@ -110,7 +110,7 @@ jinja2 = ">=2.10,<3.0"
 
 [[package]]
 name = "docutools"
-version = "2021.10.22"
+version = "2021.12.16"
 description = "Documentation Tools for the Mkdocs Material Framework"
 category = "dev"
 optional = false
@@ -770,7 +770,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "e410cede957968151ffc294fb2d06436cedb30f260cd08b2ec582db20a14d4a6"
+content-hash = "4f6533b3631f369c19008e5335c95d000b951cc4eeb10ffbee45469b9ed81354"
 
 [metadata.files]
 anybadge = [
@@ -859,8 +859,8 @@ diagrams = [
     {file = "diagrams-0.20.0.tar.gz", hash = "sha256:a50743ed9274e194e7898820f69aa12868ae217003580ef9e7d0285132c9674a"},
 ]
 docutools = [
-    {file = "docutools-2021.10.22-py3-none-any.whl", hash = "sha256:e1699353738af2d6b16246a66839b53f4dae115a0ff50649fbe5fe33eafb44f7"},
-    {file = "docutools-2021.10.22.tar.gz", hash = "sha256:b886e12d498d29b1f5a1be2f9340e2d6d38a938fa219bc216260fd5032502485"},
+    {file = "docutools-2021.12.16-py3-none-any.whl", hash = "sha256:0eafef46665ba48375fbebcb3227d5ce934c317252009a9c58683227663b75c1"},
+    {file = "docutools-2021.12.16.tar.gz", hash = "sha256:b2e5be9e226dae4f9f0bee9380a816e0313674a9443d0fb4581ccb24050c2687"},
 ]
 execnet = [
     {file = "execnet-1.9.0-py2.py3-none-any.whl", hash = "sha256:a295f7cc774947aac58dde7fdc85f4aa00c42adf5d8f5468fc630c1acf30a142"},

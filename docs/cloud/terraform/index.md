@@ -7,7 +7,7 @@ Case in point: The Ansible [example inventory][In] for OpenShift(OS) at the time
 To get an installation to be predictable, repeatable and consistent, hand-coding the inventory is the best way to *not* meet all these criteria. On the other hand, if you give a fixed set of inputs to Terraform and install the cluster from the inventory file it generated for you, you get the same result every time you run it, anywhere you run it(Provided you are using the same version of e.g. OpenShift).
 
 Also: TF maximally abstracts away differences of cloud providers, you can easily transfer deploys
-from one to the other and it even [supports hyprid deploys][hd].
+from one to the other and it even [supports hybrid deploys][hd].
 
 In 100 seconds:
 

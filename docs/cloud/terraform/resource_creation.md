@@ -961,6 +961,7 @@ Ready to apply, that command will now create the nodes (takes a minute):
 !!! important "Builtin Infrastructure Dependency Management"
     
     When you study the output of the apply you'll notice that 
+
     1. The output vars are in deed output
     1. TF deployed the LB only AFTER the droplets were up(!) Why? Because the LB had droplet
        specific variables declared - i.e. the site won't be up until the resources are.

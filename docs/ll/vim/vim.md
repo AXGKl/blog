@@ -3,6 +3,8 @@
 ```page lp eval=on_page_change
 ```
 
+
+
 After a few intense rounds with emacs and vscode I'm back to vim, specifically NeoVim.
 
 For publishing papers I'd stick to doom emacs and org -> latex -> pdf, but for the rest I'm in vim.
@@ -14,6 +16,7 @@ features for normal text editing left, available only in emacs.
 
 
 ### [fzf-vim](https://github.com/junegunn/fzf.vim)
+
 ![](img/fzf1.gif)
 ![](img/fzf2.gif)
 
