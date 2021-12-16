@@ -1,6 +1,6 @@
 # A Famous Riddle & Amazing Prolog
 
-date: 2021-10-10
+[2021-10-16 00;44] 
 
 The Einstein puzzle (also called zebra puzzle) is the most famous logic puzzle / logical ever. Albert Einstein [1879-1955] is sometimes mentioned as the author. He allegedly stated that only 2% of the population was able to solve it. It can actually be solved by logical conclusions – even if that's not easy. Have fun!
 

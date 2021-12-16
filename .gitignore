@@ -79,3 +79,5 @@ d.py
 docs/autodocs
 docs/cloud/terraform/clusters/*
 r
+
+docs/index.md.lp.py

@@ -155,8 +155,9 @@ env:
 - cached is the root `$HOME/miniconda3`
 - also cached the pyver specific envs, containing all pip installs.
 - cache name for the latter: `cache_name: cache-miniconda-envs-${{ env.PROJECT }}_py${{ matrix.python-version }}_${{ hashFiles('pyproject.toml') }}`
-    !!! tip "Deletion"
-        GH deletes the caches unused for 7 days.
+
+!!! tip "Deletion of Old Caches"
+    GH deletes the caches unused for 7 days.
 
 ```yaml lp mode=show_file fn=.github/workflows/ci.yml
 ```

@@ -160,9 +160,9 @@ hide:
     Backup to PDF converter version: null
 
     Processing backup:
-    Device: 65190ca32cb66839
-    User: armynyus (@armynyus)
-    id: fa27642c-e186-4f9d-b9ec-604f4591922f
+    Device: xxxxxxxxxxx
+    User: xxxxxxx
+    id: xxxxxxxxxxx
     created: 2021-11-02T18:10:08.402Z
     platform: Web
     version: 16

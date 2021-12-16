@@ -11,6 +11,11 @@
 
 <!-- pre_proc_marker -->
 
+----
+
+If you'd like to comment or ask anything, you can do it here, just refer to the page:
+
+`lp:python show=comments`
 
 ----
 
