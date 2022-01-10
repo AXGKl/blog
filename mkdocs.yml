@@ -29,6 +29,7 @@ nav:
           - The K8s Provider: cloud/terraform/k8s/k8s_provider/k8s_provider.md
   - LinuxLocal:
       - Apps: ll/apps/apps.md
+      - Devices: ll/devices/tv_q8.md
       - Distros: ll/distro.md
       - Emacs: ll/emacs/emacs.md
       - Gimp: ll/gimp/gimp.md

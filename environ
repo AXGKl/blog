@@ -14,7 +14,6 @@ mkdocs_port=2111
 nodejs="source $HOME/miniconda3/etc/profile.d/conda.sh && conda activate nodejs && node"
 browser="chromium-browser"
 # mkdocs serve:
-mkdocs_port=2225
 mkdocs_path="$PROJECT"
 
 lp_eval=on_page_change

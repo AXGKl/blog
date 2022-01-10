@@ -14,6 +14,7 @@ table = {
     'fe'          :  ':material-language-html5:',  # frontend
     'fences:all:' :  '```',
     'gh'          :  ':material-github:',
+    'github'      :  ':material-github:',
     'iot'         :  ':material-z-wave:',
     'linux'       :  ':fontawesome-brands-linux:',
     'mkdocs'      :  ':material-language-markdown-outline:',
@@ -21,9 +22,11 @@ table = {
     'python'      :  ':material-language-python:',
     'srcref'      :  srcref,
     'terminal'    :  ':octicons-terminal-24:',
+    'tv'    :  ':fontawesome-solid-tv:',
     'vi'          :  ':fontawesome-brands-vimeo-v:',
     'vim'         :  ':fontawesome-brands-vimeo-v:',
     'web'         :  ':material-web:',
+    'yt'         :  ':fontawesome-brands-youtube:',
 
 }
 # fmt:on

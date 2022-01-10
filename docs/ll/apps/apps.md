@@ -20,7 +20,7 @@ known ones.
   ffmpeg -ss 0.0 -i "$fn" -filter_complex "[0:v] fps=12,scale=760:-1,split [a][b];[a] palettegen [p];[b][p] paletteuse" $fn.gif`
   ```
   
-  also for animated gifs from the recordings.
+  also for animated gifs from the recordings. Simpler might be using [peek](https://github.com/phw/peek).
 
 - [vimium ](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en)
   Drives browsing via vim keys. Vimium-C even better.

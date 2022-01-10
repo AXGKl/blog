@@ -8,6 +8,56 @@ hide:
 <!-- all admons: https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks -->
 
 
+### :tv: First Steps on a TV API
+??? info "Trying to Remote Control a Samsung Q8"
+    [2022-01-09 22:13]  
+
+    Own Article [here](./ll/devices/tv_q8.md)
+
+
+### :yt: Re-enabling VLC for Youtube Streaming
+??? success "Updating Youtube Streaming"
+    [2021-12-26 17:46]  
+
+    YT seems not very fond of clients outside the browser, addlessly streaming their stuff.
+    Noticed in MPV massive throttling and vlc ran into:
+
+    ```
+    [00007fb1744fe6d0] lua stream error: Couldn't process youtube video URL, please check for updates to this script
+    [00007fb1744e2a10] access stream error: HTTP 403 error
+    ```
+
+    Fix (as root):
+
+    ```bash
+    [root@axgk playlist]# pwd
+    /usr/lib64/vlc/lua/playlist
+    [root@axgk playlist]# mv youtube.luac /tmp/
+    [root@axgk playlist]# wget https://raw.githubusercontent.com/videolan/vlc/master/share/lua/playlist/youtube.lua
+
+    ~ ❯ vlc "https://www.youtube.com/watch?v=El90OBILFBw"
+    ```
+
+    No luac(ompile) needed, vlc now plays the stream w/o delays (and no adds).
+
+
+
+
+### :gh: [gitty](https://github.com/muesli/gitty): github & gitlab Repo Status Viewer
+??? success "All infos you want - but not more"
+
+    [2021-12-16 23:44]  
+
+    gitty is a smart little CLI helper for git projects, that shows you all the relevant issues,
+    pull requests and changes at a quick glance, right on the command-line. It currently supports
+    the GitHub & GitLab APIs.
+
+    ![](./img/gitty.png) 
+
+    - Just call gitty in a repo folder (or on a url) and you have the infos.
+    - Also works with multiple repos
+
+
 ### :web: Hacking On the Wire API
 
 ??? success "Getting the login right"
@@ -184,7 +234,7 @@ hide:
     https://demo.home-assistant.io/#/lovelace/0
     https://www.awesome-ha.com/#themes
 
-### :mkdocs: Interesting Plugins
+### :mkdocs: Interesting mkdocs Plugins
 ??? info "Scanning the mkdocs wiki"
     [2021-09-15 22:28]  
     - [mike](https://github.com/jimporter/mike)
