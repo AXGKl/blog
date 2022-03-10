@@ -11,23 +11,7 @@ copyright: |
 #
 nav:
   - Overview: index.md
-  - CloudTech:
-      - DNSMasq: cloud/dnsmasq/index.md
-      - Github Actions: cloud/ci/github_actions.md
-      - Kubernetes:
-          - Notes: cloud/k8s/index.md
-          - K9s Terminal UI: cloud/k8s/k9s/k9s.md
-          - First App: cloud/k8s/1_hello_app/index.md
-          - With DB: cloud/k8s/2_hello_mysql/index.md
-      - Terraform:
-          - About: cloud/terraform/index.md
-          - Basic Operation: cloud/terraform/resource_creation.md
-          - TF And Ansible: cloud/terraform/ansible.md
-          - Kubernetes: cloud/terraform/k8s/index.md
-          - K8s Cluster Infra: cloud/terraform/k8s/k8s_on_do.md
-          - Attaching Using Token Only: cloud/terraform/k8s/k8s_provider/do_k8s.md
-          - The K8s Provider: cloud/terraform/k8s/k8s_provider/k8s_provider.md
-  - LinuxLocal:
+  - 🐧 LINUX:
       - Apps: ll/apps/apps.md
       - Devices: ll/devices/tv_q8.md
       - Distros: ll/distro.md
@@ -50,17 +34,36 @@ nav:
           - About: ll/vim/vim.md
           - Ultisnips: ll/vim/ultisnips.md
           - HTML: ll/vim/html.md
-      - Fun:
-          - Einstein: ll/fun/einstein.md
-          - UnblockMe: ll/fun/unblockme/index.md
       - Todo: ll/todo.md
+  - 💭 CLOUD:
+      - DNSMasq: cloud/dnsmasq/index.md
+      - Github Actions: cloud/ci/github_actions.md
+      - Kubernetes:
+          - Notes: cloud/k8s/index.md
+          - K9s Terminal UI: cloud/k8s/k9s/k9s.md
+          - First App: cloud/k8s/1_hello_app/index.md
+          - With DB: cloud/k8s/2_hello_mysql/index.md
+      - Terraform:
+          - About: cloud/terraform/index.md
+          - Basic Operation: cloud/terraform/resource_creation.md
+          - TF And Ansible: cloud/terraform/ansible.md
+          - Kubernetes: cloud/terraform/k8s/index.md
+          - K8s Cluster Infra: cloud/terraform/k8s/k8s_on_do.md
+          - Attaching Using Token Only: cloud/terraform/k8s/k8s_provider/do_k8s.md
+          - The K8s Provider: cloud/terraform/k8s/k8s_provider/k8s_provider.md
+  - 💻 DEV:
+      - 🐍 Python:
+          - programming/python/rx/index.md
+          - Fun:
+              - UnblockMe: ll/fun/unblockme/index.md
+              - Einstein: ll/fun/einstein.md
 
-  - Videos And Tutorials: inet/videos.md
-  - Logbook: logbook.md
+  - 📺 VIDS: inet/videos.md
+  - ✏️  LOG: logbook.md
 
   - About:
       - Changelog: about/changelog.md
-      - Credits: about/credits.md
+      - Navigation: about/navigation.md
 
 theme:
   features:
