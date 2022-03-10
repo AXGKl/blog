@@ -1,9 +1,12 @@
 #!/usr/bin/sh
+set -a
 PROJECT="blog"
 pyver="3.9" # min version
 tags='be,cloud,fe,vi,zsh'
 git config user.email "g_kl_es_sing_er@gmx.de"
 google_analytics_key="$(pass show google/analytics_key_blog)"
+conda_project_tools="tmux poetry graphviz imagemagick"
+make_autodocs=true
 versioning=calver
 #lit_prog_eval_match="on_demand" # we use locks
 # list of '::' seperated words to fail when occurring in committed files:
@@ -17,5 +20,7 @@ browser="chromium-browser"
 mkdocs_path="$PROJECT"
 
 lp_eval=on_page_change
+set +a
+
 # giving us make docs, make tests, ..:
 source ./make -a

@@ -16,6 +16,7 @@ table = {
     'gh'          :  ':material-github:',
     'github'      :  ':material-github:',
     'iot'         :  ':material-z-wave:',
+    'img'         :  ':material-image-edit:',
     'linux'       :  ':fontawesome-brands-linux:',
     'mkdocs'      :  ':material-language-markdown-outline:',
     'py'          :  ':material-language-python:',

@@ -49,9 +49,11 @@ nav:
       - Vim:
           - About: ll/vim/vim.md
           - Ultisnips: ll/vim/ultisnips.md
+          - HTML: ll/vim/html.md
       - Fun:
           - Einstein: ll/fun/einstein.md
           - UnblockMe: ll/fun/unblockme/index.md
+      - Todo: ll/todo.md
 
   - Videos And Tutorials: inet/videos.md
   - Logbook: logbook.md

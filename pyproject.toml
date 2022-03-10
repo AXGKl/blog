@@ -14,15 +14,17 @@ pythonPlatform = "Linux"
 executionEnvironments = [{ root = "src" }]
 
 [tool.poetry]
-name = "blog"
-version = "2021.8.18"
+
+name        = "blog"
+version     = "2021.8.18"
 description = "AXGK blog"
-authors = ["Gunther Klessinger <g_kle_ss_inger_wo_undersc@gmx.de>"]
-license = "BSD 2-Clause Simplified License"
-readme = "README.md"
-repository = "https://github.com/AXGKl/blog"
-homepage = "https://github.com/AXGKl/blog"
-keywords = []
+authors     = ["Gunther Klessinger <g_kle_ss_inger_wo_undersc@gmx.de>"]
+license     = "BSD 2-Clause Simplified License"
+readme      = "README.md"
+repository  = "https://github.com/AXGKl/blog"
+homepage    = "https://github.com/AXGKl/blog"
+keywords    = []
+
 #packages = [ { include = "mdv", from = "src" } ]
 include = [
     "README.md",
@@ -35,10 +37,10 @@ Rx = "^3.2.0"
 
 [tool.poetry.dev-dependencies]
 axblack = "^20201010"
+docutools = "*"
 # one of last versions with site-packages/black.py - overridden by axblack:
 #black = "18.6b4"
 # comes with the whole mkdocs suite:
-docutools = "^2021.12.16"
 # TODO: accept v5 once https://github.com/wemake-services/wemake-python-styleguide/issues/1584 is resolved
 isort = {version = "<5", extras = ["pyproject"]}
 jinja2-cli = "^0.7.0"

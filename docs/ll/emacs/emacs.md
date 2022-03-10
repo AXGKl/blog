@@ -18,6 +18,30 @@ config.el
 72:(setq ispell-dictionary "en_US")
 ```
 
+## ``jj`` - Exit Insert Mode
+
+Doom already defines `jk` to exit insert mode, but we want also `jj`.
+
+    (base) [root@axgk .doom.d]# vi -- +bindings.el
+
+And there:
+
+    (defun my-jj ()
+      (interactive)
+      (let* ((initial-key ?j)
+             (final-key ?j)
+             (timeout 0.5)
+             (event (read-event nil nil timeout)))
+        (if event
+            ;; timeout met
+            (if (and (characterp event) (= event final-key))
+                (evil-normal-state)
+              (insert initial-key)
+              (push event unread-command-events))
+          ;; timeout exceeded
+          (insert initial-key))))
+
+    (define-key evil-insert-state-map (kbd "j") 'my-jj)
 
 ## Kroki - on demand
 

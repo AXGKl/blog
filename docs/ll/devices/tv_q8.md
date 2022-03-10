@@ -7,6 +7,10 @@ Tizen OS Platform (from api/v2 below)
 There is contact. Main problem with python default [samsungctl](https://github.com/Ape/samsungctl)
 is the `ms.event.unauthorized` I'm getting with this series for any use case.
 
+update: Regarding auth read this: https://github.com/Ape/samsungctl/issues/114. Note that python code below works w/o token !
+
+
+
 ??? "info" "API Explore"
 
     This works w/o auth:

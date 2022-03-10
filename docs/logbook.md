@@ -7,6 +7,84 @@ hide:
 
 <!-- all admons: https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks -->
 
+### :vim: Install on new Fedora
+??? info "nvim: some hassle with lsb to solve"
+    [2022-03-01 04:18]  
+
+    1. python -m venv .venv/nvim, there pip install neovim
+    1. user install node, put in path, there node i -g neovim
+    1. Fix lsp incompat problems See https://jdhao.github.io/2021/12/01/nvim_v06_released/ (also see
+       .cache/nvim/lsb.log)
+    1. Remove octo plugin (too much foo)
+    1. rg over .config/nvim and .local/share/nvim to find those deprecated lua calls.
+
+    :checkhealth provider
+
+
+
+### :e-mail: Thunderbird Compose Plaintext Mails
+??? success "Hold Shift while clicking Reply or New"
+    [2022-02-08 14:32]  
+
+    Not obvious, no mouse over tooltip - you simply have to know it.
+
+    All hotkeys here: https://support.mozilla.org/en-US/kb/keyboard-shortcuts-thunderbird?redirectslug=keyboard-shortcuts&redirectlocale=en-US#w_writing-messages
+
+
+### :img: Common Image Operations On the CLI
+??? success "Not everything requires Gimp"
+    [2022-01-13 22:03]  
+
+    Gimp is overkill for these - also automation possibilities, within scripts:
+
+    === "Add alpha channel to png (make transparent)"
+
+        ```bash
+        ~ ❯ cat bin/add-alpha.sh
+        #!/usr/bin/env bash
+        
+        # Removes the background (makes transparent)
+        # https://stackoverflow.com/a/44542839/4583360
+        
+        orig="/tmp/img_orig.png"
+        
+        main() {
+            img="$1"
+            test -e "$img" || {
+                echo "Image file missing: $img"
+                exit 1
+            }
+            shift
+        
+            test -n "$1" && {
+                bgcol="$1"
+                shift
+            } || bgcol="white"
+            test -n "$1" && {
+                fuzz="$1"
+                shift
+            } || fuzz="2%"
+        
+            rm -f "$orig"
+            mv "$img" "$orig"
+        
+            convert "$orig" -fuzz "$fuzz" -transparent "$bgcol" "$img"
+        
+            feh --class HUD "$img" &
+        
+            echo "Alpha added: $img. Original image at $orig."
+        }
+        
+        main "$@"
+        
+        ```
+
+
+    === "Resize SVG Canvas to Image Size"
+
+            inkscape --batch-process --verb "EditSelectAll;FitCanvasToSelection;FileSave;FileQuit" filename.svg
+
+
 
 ### :tv: First Steps on a TV API
 ??? info "Trying to Remote Control a Samsung Q8"
