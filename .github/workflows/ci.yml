@@ -44,7 +44,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache_name }}
       - name: Install Miniconda Root
         shell: bash -l {0}
-        run: "source ./make && make ci_conda_root_env"
+        run: "source ./make && make ci-conda-root-env"
       - name: Conda info
         shell: bash -l {0}
         run: conda info
@@ -61,7 +61,7 @@ jobs:
         shell: bash -l {0}
         env:
           pyver: "${{ matrix.python-version }}"
-        run: "source ./make && make && make ci_conda_py_env"
+        run: "source ./make && make && make ci-conda-py-env"
 
       - name: Run tests
         shell: bash -l {0}
