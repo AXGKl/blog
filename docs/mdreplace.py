@@ -2,8 +2,6 @@ import os
 import sys
 import time
 
-from lcdoc.mkdocs.tools import srcref
-
 
 # fmt:off
 table = {
@@ -21,7 +19,6 @@ table = {
     'mkdocs'      :  ':material-language-markdown-outline:',
     'py'          :  ':material-language-python:',
     'python'      :  ':material-language-python:',
-    'srcref'      :  srcref,
     'terminal'    :  ':octicons-terminal-24:',
     'tv'    :  ':fontawesome-solid-tv:',
     'vi'          :  ':fontawesome-brands-vimeo-v:',

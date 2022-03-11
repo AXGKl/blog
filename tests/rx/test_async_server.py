@@ -41,7 +41,7 @@ def send_requests():
         s = partial(send_job_req_to_api_server, client=client)
         gevent.spawn(s)
     while not len(done_clients) == 3:
-        time.sleep(0.1)
+        wait(100)
     print('all_done', who=client)
 
 

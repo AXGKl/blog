@@ -92,16 +92,8 @@ def index(job, parts, dt):
     """
     # eventhandlers can produce here and we'll send to the client:
     q = gevent.queue.Queue()
-
-    def generate():
-        for data in q:
-            yield data
-        print('closing request socket')
-
-    meta = {'parts': parts, 'dt': dt, 'req': q, 'ts': now()}
     new_job(job, meta)
-    _ = 'application/json'
-    return app.response_class(stream_with_context(generate()), mimetype=_)
+    return app.response_class(stream_with_context(q), mimetype='application/json')
 
 
 # ------------------------------------------------------------------------------- server
