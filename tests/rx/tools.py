@@ -14,7 +14,7 @@ gray = '\x1b[0;38;5;245m%s\x1b[0m'
 def print(*a, p=print, who=0, **kw):
     pre = '%s %2s ' % (gray % ('%5s' % dt()), thread())
     msg = ' '.join([str(i) for i in a])
-    msg = '\x1b[3%sm[%s] %s\x1b[0m' % (who + 1, who or '♻️', msg)
+    msg = '\x1b[3%sm[%s] %s\x1b[0m' % (who + 1, who or 'S', msg)
     p(pre + msg, **kw)
     return a[0]
 

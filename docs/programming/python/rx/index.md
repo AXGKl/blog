@@ -110,25 +110,48 @@ below.
 We want to build a server, which we can reparametrize **declaratively** how it coordinates the
 events.
 
+Currently we have two event sources:
+
+1. From the clients (the requests they send)
+1. From the side effects we trigger, based on those requests. E.g. external websocket respsonses,
+   file reading chunks, ...
+
+We want to completely decouple those event streams and therefore create two subjects: one for jobs,
+one for response (parts):
+
+??? "Async Server Source"
+
+    ```python lp mode=show_file fmt=mk_console fn=tests/rx/server.py lang=python
+    ```
+
+## Processing Pipeline(s)
+
+Here is the code
+
+`lp:show_file fmt=mk_console fn=tests/rx/test_async_server.py lang=python`
+
+First we run the non parallel version of the job processor:
+
+```bash lp fmt=xt_flat
+pytest -xs tests/rx/test_async_server.py -k one 2>/dev/null
+```
+
+And here processing while giving up order, in parallel greenlets:
+
+```bash lp fmt=xt_flat
+pytest -xs tests/rx/test_async_server.py -k two 2>/dev/null
+```
 
 
+## Todo
+
+- Invent a mapping registry of job result (parts) to interested clients.
+- Once you have that, do e.g. `pipe(rx.group_by(job_data_source), rx.buffer_with_time(1),
+  rx.run_job_list`, to not overload external api with many small requests (use their list APIs).
+- Send all jobs you have at e.g. dashboard open in ONE request - and stream all results via that
+  socket
 
 
-
-
-
-
-, i.e. pretty
-t. RX to the
-rescue.
-
-Here is the codee
-
-
-
-
-
-[bot]: 
 [flask]: https://flask.palletsprojects.com/en/2.0.x/
 [rx]: https://en.wikipedia.org/wiki/ReactiveX
 [gevent]: http://www.gevent.org/

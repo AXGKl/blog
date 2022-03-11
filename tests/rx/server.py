@@ -26,7 +26,7 @@ jobs = Rx.subject.Subject()
 results = Rx.subject.Subject()
 flush_response = lambda q: q.put(StopIteration)  # closing the socket
 wait = lambda dt: time.sleep(dt / 1000.0)
-asyn = lambda: rx.delay(0, GS)
+asyn = lambda: rx.observe_on(GS)  # put pipeline onto a new greenlet
 
 
 class J:
@@ -48,22 +48,26 @@ class J:
                 'req': q,
             }
             results.on_next(res)
+        # Closing the req socket after all parts are there. Normally elsewhere, we do
+        # not know that normally or 'all there' is never.
+        # But that can be done from anywhere - e.g. at cancel from the client
+        # or when his socket closes:
         wait(dt)
         flush_response(q)
-        return
 
     run_job = rx.map(_run_job)
 
 
-def interested_clients(res):
-    """Work via a central registry of clients who want job results"""
-    # here we just added "them" directly into the result:
-    return [res.pop('req')]
-
-
 class R:
+    """Results Handling Functions"""
+
+    def interested_clients(res):
+        """Work via a central registry of clients who want job results"""
+        # here we just added "them" directly into the result:
+        return [res.pop('req')]
+
     def _send_response(res):
-        clients = interested_clients(res)
+        clients = R.interested_clients(res)
         ser = json.dumps(res) + '\r\n'
         [c.put(ser) for c in clients]
         return res
@@ -110,9 +114,11 @@ def reconfigure_server_pipelines(pipelines, subs=[0, 0]):
     for i in [0, 1]:
         s = [jobs, results][i].pipe(asyn(), *pipelines[i])
         subs[i] = s.subscribe()
+    return True
 
 
 def run_server():
+    print('')
     print('starting server at 50000')
     http_server = WSGIServer(('', 50000), DebuggedApplication(app))
     http_server.serve_forever()
