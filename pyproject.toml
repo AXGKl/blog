@@ -38,6 +38,8 @@ Rx = "^3.2.0"
 [tool.poetry.dev-dependencies]
 axblack = "^20201010"
 docutools = "*"
+gevent = "*"
+flask = "*"
 # one of last versions with site-packages/black.py - overridden by axblack:
 #black = "18.6b4"
 # comes with the whole mkdocs suite:
