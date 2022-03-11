@@ -38,6 +38,7 @@ Rx = "^3.2.0"
 [tool.poetry.dev-dependencies]
 axblack = "^20201010"
 docutools = "*"
+pytest = "*"
 gevent = "*"
 flask = "*"
 # one of last versions with site-packages/black.py - overridden by axblack:
