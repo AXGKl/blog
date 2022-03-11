@@ -40,7 +40,7 @@ axblack = "^20201010"
 docutools = "*"
 pytest = "*"
 gevent = "*"
-flask = "*"
+flask = "2.*"
 # one of last versions with site-packages/black.py - overridden by axblack:
 #black = "18.6b4"
 # comes with the whole mkdocs suite:
