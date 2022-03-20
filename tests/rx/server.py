@@ -92,6 +92,7 @@ def index(job, parts, dt):
     """
     # eventhandlers can produce here and we'll send to the client:
     q = gevent.queue.Queue()
+    meta = {'parts': parts, 'dt': dt, 'req': q, 'ts': now()}
     new_job(job, meta)
     return app.response_class(stream_with_context(q), mimetype='application/json')
 

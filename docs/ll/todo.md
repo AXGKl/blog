@@ -1,6 +1,9 @@
 # Todo / Interesting Things
 
 
+## tools
+lf/ueberzug: https://www.youtube.com/watch?v=XOMj7JSGR78
+telescopy, vim, tmux session mgmt (nice devsetup): https://www.youtube.com/watch?v=gMcGb55bsaE
 ## python
 
 - rich https://raw.githubusercontent.com/Textualize/rich/master/imgs/inspect.png

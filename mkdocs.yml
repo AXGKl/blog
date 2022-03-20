@@ -32,6 +32,7 @@ nav:
               - CPU Monitor: ll/sl/status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor.md
       - Vim:
           - About: ll/vim/vim.md
+          - AstroVim: ll/vim/astro_vim.md
           - Ultisnips: ll/vim/ultisnips.md
           - HTML: ll/vim/html.md
       - Todo: ll/todo.md
