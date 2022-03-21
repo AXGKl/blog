@@ -33,6 +33,7 @@ nav:
       - Vim:
           - About: ll/vim/vim.md
           - AstroVim: ll/vim/astro_vim.md
+          - AstroVimLspBuiltins: ll/vim/astro_vim_null_ls_builtins.md
           - Ultisnips: ll/vim/ultisnips.md
           - HTML: ll/vim/html.md
       - Todo: ll/todo.md

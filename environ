@@ -11,7 +11,7 @@ versioning=calver
 #lit_prog_eval_match="on_demand" # we use locks
 # list of '::' seperated words to fail when occurring in committed files:
 blacklisted_words="$(pass show sensitive/axgkl)"
-conda_env="~/miniconda3/envs/blog_py39"
+#conda_env="~/miniconda3/envs/blog_py39"
 mkdocs_port=2111
 # for browser screenshots:
 nodejs="source $HOME/miniconda3/etc/profile.d/conda.sh && conda activate nodejs && node"

@@ -26,7 +26,7 @@ set -a
 M="\x1b[1;32m"
 O="\x1b[0m"
 T1="\x1b[48;5;255;38;5;0m"
-T2="\x1b[48;5;124;38;5;255m"
+T2="\x1b[48;5;93;38;5;255m"
 XDG_RUNTIME_DIR=/run/user/$UID # for systemd --user mode
 TERMINAL="${TERMINAL:-st}"
 VERSION_MAKE="1"

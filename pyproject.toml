@@ -37,7 +37,7 @@ Rx = "^3.2.0"
 docutools = "^2022.03.03"
 
 [tool.poetry.dev-dependencies]
-axblack = "^20201010"
+axblack = "^20220322"
 pytest = "*"
 gevent = "*"
 coverage = "*"

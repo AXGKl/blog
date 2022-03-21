@@ -50,17 +50,28 @@ then e.g.
     All user config is in `.config/nvim/lua/user`, from `init.lua` there.
 
 
+## Conventional Folders: ftplugin and spell: Symlinked
+
+Put my old ones into `lua/user/<ftplugin|spell>` and symlinked 2 directories up. Worked.
+
+
+
+
 ## Own Lua and Own Vimscript
 
-Besides a few declarative config machineries, for own plugins, in init.lua
-there is a polish function, with lua loaded at the end. There you hook in your stuff like this:
+Besides a few declarative config possibilities, for own plugins, in init.lua
+there is a lua polish function, loaded at the end.
+
+There you hook in your stuff like this:
 
 
 ```lua
+    require('user.mymodule')
+    -- and vimscript like this:
     vim.cmd('source $HOME/.config/nvim/lua/user/polish.vim')
 ```
 
-and there e.g. `nmap ,g viW"ay:lua require('user.utils').smart_open([[<C-R>a]])<CR>`
+and in vimscript then back to lua in user folder like this: `nmap ,g viW"ay:lua require('user.utils').smart_open([[<C-R>a]])<CR>`
 
 ## Colors
 
@@ -74,6 +85,14 @@ It did not ask me to download german at `set spelllang=de`, so:
 ```bash
 mkdir .config/nvim/spell && cd $_` && wget 'http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl'
 ```
+
+## Telescope
+
+- AstroVim Config: https://github.com/kabinspace/AstroVim/issues/141
+- Generic Telescope Tuning: https://github-wiki-see.page/m/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes
+
+
+
 
 
 [AV]: https://github.com/kabinspace/AstroVim
