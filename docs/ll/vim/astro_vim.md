@@ -14,9 +14,9 @@ I like
   - floatterm
   - (...)
 
-  ...out of the box, in order to throw it also on servers with colleagues and
-  point them to an "official" repo with docs and stuff. Those are not easy to
-  get right with so many variants.
+  ...out of the box - and out of the way from my local conf - also to throw it also on
+  servers with colleagues and point them to an "official" repo with docs. Those are not
+  easy to get right with so many variants.
 
 - the full lua approach (but I'll have to have vim lang stuff, see below)
 - Also, while mine became a bit laggy on big files, this one is still pretty
@@ -101,6 +101,51 @@ LSP log as always in `$HOME/.cache/nvim/`, file `null_ls.log`.
 
 `null_ls` calls black with their `--stdin-filename` parameter. Had to [add][axb] that to axblack so that
 single quote formatting works, as a no op (not in use anyway for stdin/stdout based formatting).
+
+Edit: Found only later, that one can specify CLI args....
+
+## Special Plugins
+
+### Completion
+
+I use "uga-rosa/cmp-dictionary", with 10k words. 
+
+!!! caution
+
+    For async the loading order is important (after cmp) - then the mpack import works.
+    
+    Edit: Nope. After a packer sync it failed again, same error (mpack.so missing - loads too eaerly
+    again)
+
+
+## Debugging
+
+- lsp: `~ ❯ tail -f .cache/nvim/null-ls.log` (set `lsp.debug = true`)
+- tables: `lua U.dump(vim.lsp)`
+
+
+## Gotchas
+
+- When trying cmp or lsp, always try on files which exist at vi start. Do NOT create new files,
+it will not work.
+
+- The async flag at cmp_dictionary was behaving totally different after PackerSync calls, failed
+  with mpack not found, allthough working before... Had to switch it off.
+
+
+## Config Dumps
+
+??? "My init.lua"
+
+    `lp:show_file fmt=mk_console fn=/home/gk/.config/nvim.personal/init.lua lang=lua`
+
+??? "My polish.vim"
+
+    `lp:show_file fmt=mk_console fn=/home/gk/.config/nvim.personal/polish.vim lang=viml`
+
+
+
+
 
 [axb]: https://github.com/axiros/axblack/commit/30f19e3ae7c10dfd995bd6fb1b031000282e6af7
 [av]: https://github.com/kabinspace/AstroVim

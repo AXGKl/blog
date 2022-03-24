@@ -7,6 +7,60 @@ hide:
 
 <!-- all admons: https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks -->
 
+### :linux: AutoKey: Types stuff into XWindows
+??? tip "Away with xdotool type"
+    [2022-03-21 20:10] 
+    
+    Start `autokey-gtk` in dwm autostart.sh -> systray icon or Super-k brings up Editor.
+
+    [FAQ](https://github.com/autokey/autokey/wiki/FAQ)
+
+    Can be pip installed, it's python :-)
+
+    The dates here have been entered via alt-d bound to:
+
+    ```python
+    ~ ❯ cat .config/autokey/data/My\ Phrases/Insert\ Date.py
+    output = system.exec_command("date -u '+%+2Y-%m-%d %H:%M'")
+    keyboard.send_keys('[%s] ' % output)
+    ```
+
+    ```json
+
+    ~/.config/autokey/data/My Phrases ❯ cat .Insert\ Date.json                                                                                          6s
+    {
+    "type": "script",
+    "description": "Insert Date",
+    "store": {},
+    "modes": [
+        3
+    ],
+    "usageCount": 6,
+    "prompt": false,
+    "omitTrigger": false,
+    "showInTrayMenu": false,
+    "abbreviation": {
+        "abbreviations": [],
+        "backspace": true,
+        "ignoreCase": false,
+        "immediate": false,
+        "triggerInside": false,
+        "wordChars": "[\\w]"
+    },
+    "hotkey": {
+        "modifiers": [
+            "<alt>"
+        ],
+        "hotKey": "d"
+    },
+    "filter": {
+        "regex": null,
+        "isRecursive": false
+    }
+    }
+    ```
+
+
 ### :vim: Install on new Fedora
 ??? info "nvim: some hassle with lsb to solve"
     [2022-03-01 04:18]  

@@ -15,6 +15,7 @@ nav:
       - Apps: ll/apps/apps.md
       - Devices: ll/devices/tv_q8.md
       - Distros: ll/distro.md
+      - Distros: ll/arco.md
       - Emacs: ll/emacs/emacs.md
       - Gimp: ll/gimp/gimp.md
       - Hardware:

@@ -11,6 +11,7 @@ telescopy, vim, tmux session mgmt (nice devsetup): https://www.youtube.com/watch
 - https://github.com/qix-/better-exceptions
 
 
+https://github.com/manilarome/the-glorious-dotfiles/blob/master/config/polybar/config
 
 ## YT
 
