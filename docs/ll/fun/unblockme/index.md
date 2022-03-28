@@ -19,6 +19,14 @@ Variations are e.g. this game:
 
 When I somewhat recovered physically, I was looking into solver algorithms for the game.
 
+It will be a bit more tedious than this one ;-)
+
+```python
+import random
+input("Rock, paper, scissors? - r p s: ")
+print(random.choice(["You win", "You loose", "It's a draw"]))
+```
+
 
 ## Source Code
 

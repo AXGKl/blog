@@ -4,6 +4,11 @@
 ## tools
 lf/ueberzug: https://www.youtube.com/watch?v=XOMj7JSGR78
 telescopy, vim, tmux session mgmt (nice devsetup): https://www.youtube.com/watch?v=gMcGb55bsaE
+
+k8s:
+https://www.youtube.com/watch?v=CB79eTFbR0w
+especially flux/argo -> up2date containers w/o ci. AXC style (?)
+
 ## python
 
 - rich https://raw.githubusercontent.com/Textualize/rich/master/imgs/inspect.png
