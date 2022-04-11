@@ -6,6 +6,20 @@ hide:
 # Logbook
 
 <!-- all admons: https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks -->
+### :misc: Security: Is this guy for real?
+??? dev "Optical inspection of ROM in order to get to the data?! - WTF?!"
+    [2022-04-10 18:00] 
+    
+    https://youtu.be/lhbSD1Jba0Q?t=1355
+
+    ![](./img/optical_chip_anal.png)
+
+    [Oliver Koemmerling...](https://taz.de/Vorwuerfe-gegen-Murdochs-Unternehmen/!5097441/)
+ 
+    https://youtu.be/lhbSD1Jba0Q?t=1355
+
+    Background: I started my "career" at Siemens in the Chip Quality department. We had a big lab,
+    with all sorts of microscopes. But reading out the ROM *optically*, that is unheard of...
 
 ### :linux: AutoKey: Types stuff into XWindows
 ??? tip "Away with xdotool type"

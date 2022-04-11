@@ -41,3 +41,7 @@ https://github.com/manilarome/the-glorious-dotfiles/blob/master/config/polybar/c
     - WTF 53:37
     - no more secrets 54:54
 
+
+
+
+

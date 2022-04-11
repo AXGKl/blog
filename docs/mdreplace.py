@@ -1,10 +1,9 @@
-import os
-import sys
 import time
-
+from lcdoc.mkdocs.replace import css
 
 # fmt:off
 table = {
+    ':head:'        :  css.fullwidth,
     'bash'        :  ':material-bash:',
     'chrome'      :  ':fontawesome-brands-chrome:',
     'cloud'       :  ':material-cloud-tags:',

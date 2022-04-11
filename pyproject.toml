@@ -34,7 +34,7 @@ include = [
 [tool.poetry.dependencies]
 python = "^3.9"
 Rx = "^3.2.0"
-docutools = "^2022.03.03"
+docutools = "^2022.04.11"
 Flask = "^2.0.3"
 requests = "^2.27.1"
 

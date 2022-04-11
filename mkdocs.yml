@@ -60,7 +60,14 @@ nav:
           - Fun:
               - UnblockMe: ll/fun/unblockme/index.md
               - Einstein: ll/fun/einstein.md
-
+      - Electronics:
+          - ll/electronics/index.md
+          - "Desk Cycling":
+              - ll/electronics/deskcycle/intro.md
+              - ll/electronics/deskcycle/powermeter.md
+              - ll/electronics/deskcycle/mechanical.md
+              - ll/electronics/deskcycle/electromagnet.md
+              - ll/electronics/deskcycle/generator.md
   - 📺 VIDS: inet/videos.md
   - ✏️  LOG: logbook.md
 
@@ -105,7 +112,8 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.magiclink
   - pymdownx.superfences
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.details
