@@ -6,8 +6,8 @@ hide:
 # Logbook
 
 <!-- all admons: https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks -->
-### :misc: Security: Is this guy for real?
-??? dev "Optical inspection of ROM in order to get to the data?! - WTF?!"
+### CCC: Is this guy for real?
+??? dev "**Optical** inspection of ROM to get to the data?! - WTF?!"
     [2022-04-10 18:00] 
     
     https://youtu.be/lhbSD1Jba0Q?t=1355

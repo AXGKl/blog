@@ -27,7 +27,7 @@ But in YT University I found this guy:
 
 https://genesgreenmachine.com/
 
-The idea is: Buy a motor - but use it as a generator.
+The idea is simple: Buy a **motor** - but use it as a generator.
 
 Components: See video above, trivial: ![](https://i0.wp.com/genesgreenmachine.com/wp-content/uploads/rower_circuit.jpg?w=525)
 
@@ -72,7 +72,11 @@ Such drills can generate a lot of torque, might be comparable to what I can
 do with my legs. So, maybe it would survive, ampere wise, when I load it with my legs => Lets try it.
 
 
-### Position One
+## Positioning / Coupling
+
+That's not obvious. I tried a few alternatives:
+
+### Position One: Wheel 1, Direct
 
 Motor axis (7mm dia), directly coupled to first wheel of the drive:
 
@@ -88,7 +92,7 @@ Means: I'm not (yet) Robert, so I guess 100Watts is realistic => 25 Ampere... =>
 
 Ups, actually, maybe not, see spec again, >40 amps at "stall"
 
-### Position Two
+### Position Two: Belt
 
 The fly wheel is translated to around the double the speed of wheel 1, i.e. I'll get higher rpm
 here - but I need a drive belt, can not directly couple 
@@ -121,6 +125,70 @@ Checked the market and I did not find thin enough belts for being able to keep t
 permanent magnet where it is mounted out of the box - at its axis some 3mm away from the flywheel:
 
 ![](./img/beltprobl.png)
+
+
+### Position 3: No Belt / High Axis Radius 
+
+
+For this one I built a prototype, in order to finally generate some real power with my
+feet...
+
+![](./img/pos31.png)
+
+Was relatively simple to build - only challenging thing was to drill an exact 8mm hole through the
+plastic furniture roller wheel, so that it is well balanced (thanks Alex ;-) 
+
+Material is from [here](https://www.hagebau.de/search/?q=moebelrolle&sc=&ms=1).
+
+The white soft rubber coating coupling with the flywheel is from sanitary equipment, some sealing. I
+had to connect it with the black wheel, using double-sided duct tape.
+
+#### Findings
+
+Good: 
+
+- Runs supermooth. I do not feel it with my feet, while pedalling, no
+  shaking or stuttering whatsoever.
+
+- Is stable. I write this after pedalling for an hour, with high cadence. It's not degrading
+
+
+So so:
+
+- The wheel is increasing the diameter of the axis from 8mm to 4.5 cm. Means: I loose over 5 times
+  the RPMs (i.e. Voltage). When I pedal es fast as I can I get barely over 4.5 Volts. Normal cadence:
+  2-3V. I won't be able to power anything w/o ruining the device with too high current, at say,
+  100Watts.
+
+  Will have to check if there are motors which have their best perf at around those RPM.
+
+
+Bad:
+
+- It's loud. No comparison to the zero volume pedalling against the magnet brake.
+
+Here is a recording:
+
+[![](./img/loud.png)](./img/loud.mp4) 
+
+The needle is at 3.8v - hard to see (why ditch a fully working multimeter, just because of digital ones better in, well, ... anything?)
+
+Motor is only having contact with rubber:
+
+![](./img/rubber.png) 
+
+-> Nothing to optimize here.
+
+ 
+Have to think about that....
+
+
+
+
+
+
+
+
 
 
 
