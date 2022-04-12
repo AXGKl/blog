@@ -127,21 +127,26 @@ permanent magnet where it is mounted out of the box - at its axis some 3mm away 
 ![](./img/beltprobl.png)
 
 
-### Position 3: No Belt / High Axis Radius 
-
+### Position 3: Direct Coupling With Fly Wheel
 
 For this one I built a prototype, in order to finally generate some real power with my
 feet...
 
 ![](./img/pos31.png)
 
+You can, at this position, not directly couple the 8mm motor axis with the flywheel because of the
+radius of the motor housing colliding with the first gear wheel. I.e. you loose a lot of RPMs by
+increasing the motor axis diameter.
+
+
 Was relatively simple to build - only challenging thing was to drill an exact 8mm hole through the
 plastic furniture roller wheel, so that it is well balanced (thanks Alex ;-) 
 
 Material is from [here](https://www.hagebau.de/search/?q=moebelrolle&sc=&ms=1).
 
-The white soft rubber coating coupling with the flywheel is from sanitary equipment, some sealing. I
-had to connect it with the black wheel, using double-sided duct tape.
+The white soft rubber coating coupling with the flywheel is from kitchen equipment, some sealing. I
+had to connect it with the black wheel, using double-sided duct tape, so that it remains on the
+wheel.
 
 #### Findings
 
@@ -150,18 +155,22 @@ Good:
 - Runs supermooth. I do not feel it with my feet, while pedalling, no
   shaking or stuttering whatsoever.
 
-- Is stable. I write this after pedalling for an hour, with high cadence. It's not degrading
+- Is mechanically stable. I write this after pedalling for an hour, with high cadence. It's not degrading.
+  BUT(!) there is not yet any resistor attached, I'm just turning the motor, w/o load and check the
+  volts.
 
 
 So so:
 
 - The wheel is increasing the diameter of the axis from 8mm to 4.5 cm. Means: I loose over 5 times
   the RPMs (i.e. Voltage). When I pedal es fast as I can I get barely over 4.5 Volts. Normal cadence:
-  2-3V. I won't be able to power anything w/o ruining the device with too high current, at say,
+  2-3V. I won't be able to power anything w/o ruining the motor, with too high current, at say,
   100Watts.
+
 
   Will have to check if there are motors which have their best perf at around those RPM.
 
+- Also not sure if the coupler can stand the torque at 100 Watts..
 
 Bad:
 
@@ -182,6 +191,7 @@ Motor is only having contact with rubber:
  
 Have to think about that....
 
+I keep cycling a few days and see if I can get used to the noise or not.
 
 
 
