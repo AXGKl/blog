@@ -215,7 +215,7 @@ Here links to the other builds right while pedalling - they all are pretty loud:
 - [gene's build](https://youtu.be/LpXRTXK_FFQ?t=576) (closest to mine, also noise wise)
 - [scooter build](https://youtu.be/TX71O449AQ0?t=114) uh oh..
 - [500 watts build](https://youtu.be/y_icu6yaAxM?t=154)
-
+- [battery charger build](https://youtu.be/tQBWECQCFcQ?t=856)
 
 I keep cycling a few days and see.
 
