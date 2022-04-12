@@ -18,47 +18,66 @@ First attempts with my neodym magnets and some coils were a bit ... demotivating
 
 ![](./img/idiot.png)
 
-But in YT University I found this guy:
+But in YT University I found these:
+
+## YT Builds
+
+The idea is simple: Buy a **motor** - but use it as a generator. All of the YT builds I found are
+doing this.
 
 
+### Gene's Greenmachine
 
 [![](./img/gene1.png)](https://www.youtube.com/watch?time_continue=15&v=7yEAcId2h_M&feature=emb_logo)
 
 
 https://genesgreenmachine.com/
 
-The idea is simple: Buy a **motor** - but use it as a generator.
 
-Components: See video above, trivial: ![](https://i0.wp.com/genesgreenmachine.com/wp-content/uploads/rower_circuit.jpg?w=525)
+Components: See video above, trivial:
 
-
-Here a guy which also does it, using a bike motor: https://www.youtube.com/watch?v=7hfClQh3rxM
-
-
-## which motor
-
-![](./img/motors1.png)
+![](https://i0.wp.com/genesgreenmachine.com/wp-content/uploads/rower_circuit.jpg?w=525)
 
 
 
 Everything here: https://genesgreenmachine.com/best-design-diy-bike-trainer-pedal-generator/
 
      
-Other design:
 
 [![](./img/rcmoto1.png)](https://genesgreenmachine.com/spin-bike-rc-motor-powered-pedal-generator/)
+
+
 
 
 ![](https://i0.wp.com/genesgreenmachine.com/wp-content/uploads/MotorBracketBeforeMounting.jpg?w=866&ssl=1)
 
 
+### Hyprid E-Cycle
 
-## Material
+Here a real freak, which also does it, using a bike motor: https://www.youtube.com/watch?v=7hfClQh3rxM
+
+[![](./img/senkel.png)](https://youtu.be/7hfClQh3rxM?t=30)
+
+The actual motor for the ebike he built himeself...
+
+
+### Scooter Motor Build
+
+[![](./img/scooter.png)](https://www.youtube.com/watch?v=TX71O449AQ0)
+
+[Parts...](https://sites.google.com/site/debbinkbicyclegenerator/)
+
+### 500 Watts Build
+
+[![](./img/diy.png)](https://youtu.be/y_icu6yaAxM?t=64)
+
+
+## Our Own Build
 
 Possibly needed: Shaft Coupler: https://www.amazon.de/dp/B06X9RS6D6?linkCode=gs2&tag=gensgremac05-21&th=1
 
 
-Motor: From an old electric drill:
+Motor: The only one available in the household was from an old electric drill:
 
 Close match:
 
@@ -186,13 +205,19 @@ Motor is only having contact with rubber:
 
 ![](./img/rubber.png) 
 
--> Nothing to optimize here.
+-> Not much to optimize here.
 
  
-Have to think about that....
+Have to think about that.... Can I reduce that noise??
 
-I keep cycling a few days and see if I can get used to the noise or not.
+Here links to the other builds right while pedalling - they all are pretty loud:
 
+- [gene's build](https://youtu.be/LpXRTXK_FFQ?t=576) (closest to mine, also noise wise)
+- [scooter build](https://youtu.be/TX71O449AQ0?t=114) uh oh..
+- [500 watts build](https://youtu.be/y_icu6yaAxM?t=154)
+
+
+I keep cycling a few days and see.
 
 
 
