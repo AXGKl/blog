@@ -14,7 +14,6 @@ from rx import operators as rx
 from rx.scheduler.eventloop import GEventScheduler as GS
 from tools import gevent, now, print
 from werkzeug.debug import DebuggedApplication
-from werkzeug.serving import run_with_reloader
 
 sys.path.append(__file__.rsplit('/', 1)[0])
 
