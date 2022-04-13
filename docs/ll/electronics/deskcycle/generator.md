@@ -178,22 +178,35 @@ Good:
   BUT(!) there is not yet any resistor attached, I'm just turning the motor, w/o load and check the
   volts.
 
-
 So so:
 
-- The wheel is increasing the diameter of the axis from 8mm to 4.5 cm. Means: I loose over 5 times
+- Not sure if the coupler can transmitt the torque at 100 Watts..
+
+
+Bad:
+
+
+- RPM:
+
+  The wheel is increasing the diameter of the axis from 8mm to 4.5 cm. Means: I loose over 5 times
   the RPMs (i.e. Voltage). When I pedal es fast as I can I get barely over 4.5 Volts. Normal cadence:
   2-3V. I won't be able to power anything w/o ruining the motor, with too high current, at say,
   100Watts.
 
 
-  Will have to check if there are motors which have their best perf at around those RPM.
+  "Will have to check if there are motors which have their best perf at around those RPM."
 
-- Also not sure if the coupler can stand the torque at 100 Watts..
+  Edit: Stupid me - Think about it: How can more Volts at same RPM be done? Yes - geometry. Bigger motor...
 
-Bad:
+  Wich means: Yet more distance from the flywheel....
 
-- It's loud. No comparison to the zero volume pedalling against the magnet brake.
+  And the other solution, more current tolerability through fatter wires inside: Again bigger motor,
+  at same amount of loops.
+
+  Seems a principal problem at this position 3. 
+  
+
+- It's loud. Awfully loud. No comparison to the zero volume pedalling against the magnet brake.
 
 Here is a recording:
 
