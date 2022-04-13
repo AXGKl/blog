@@ -8,17 +8,22 @@
 [![](./img/robert.png)](https://www.youtube.com/watch?v=S4O5voOCqAQ)
 
 
-
 It's not a totally off Idea, there are devices on the market:
 
+??? "Amazon offering"
 
-[![](./img/gen1.png)](https://www.amazon.de/Pedalgenerator-Handkurbelgeneratoren-Fitness-Stromerzeugungs-Rehabilitations-Trainingsger%C3%A4t-USB-Schnittstelle-DC1-35V-Ausgangsschnittstelle/dp/B09NW9Z4H8/ref=pd_lpo_3?pd_rd_i=B09NWCL2DG&th=1&psc=1)
+    [![](./img/gen1.png)](https://www.amazon.de/Pedalgenerator-Handkurbelgeneratoren-Fitness-Stromerzeugungs-Rehabilitations-Trainingsger%C3%A4t-USB-Schnittstelle-DC1-35V-Ausgangsschnittstelle/dp/B09NW9Z4H8/ref=pd_lpo_3?pd_rd_i=B09NWCL2DG&th=1&psc=1)
+
+
 
 First attempts with my neodym magnets and some coils were a bit ... demotivating.
 
-![](./img/idiot.png)
 
-But in YT University I found these:
+??? "Embarrassing Attempt"
+
+    ![](./img/idiot.png)
+
+But in YT University I found these - more below:
 
 ## YT Builds
 
@@ -70,6 +75,19 @@ The actual motor for the ebike he built himeself...
 ### 500 Watts Build
 
 [![](./img/diy.png)](https://youtu.be/y_icu6yaAxM?t=64)
+
+
+## Bicycle Generators
+
+[2022-04-13 11:20] Opening YT - then this is offered:
+
+A whole collection about the subject:
+
+[![](./img/bg1.png)](https://www.youtube.com/user/bicyclegenerator/videos)
+
+Incl. website: https://pedalpowergenerator.com/shop-pedal-power/dynamo/
+
+
 
 
 ## Our Own Build
@@ -256,11 +274,6 @@ So there are geared motors, for my position3 problem above:
 - Simple no worries: Stepper motor
 
 - Complicated but professional: BLDC Motor with a gear box
-
-
-
-
-
 
 
 
