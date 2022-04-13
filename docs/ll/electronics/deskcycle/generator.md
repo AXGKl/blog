@@ -230,9 +230,32 @@ Here links to the other builds right while pedalling - they all are pretty loud:
 - [500 watts build](https://youtu.be/y_icu6yaAxM?t=154)
 - [battery charger build](https://youtu.be/tQBWECQCFcQ?t=856)
 - [gene different build](https://youtu.be/x1hMVqg8VZY?t=736) - the most silent so far
+- [retired](https://www.youtube.com/watch?v=pFREftLkJwE) - also not that loud
+
 
 
 I keep cycling a few days and see.
+
+
+## Electronics: Which Motor is the Best Generator
+
+YT finally realized what I'm interested in, getting good suggestions - instead of free energy
+crap...
+
+Great Scott has it all:
+
+https://www.youtube.com/watch?v=cJ_vDA7xsGs
+
+So there are geared motors, for my position3 problem above:
+
+
+[![](./img/scott1.png)](https://youtu.be/cJ_vDA7xsGs?t=439) - but lousy efficiency!
+
+- DC Motors are the worst option (brushes => wearoff)
+
+- Simple no worries: Stepper motor
+
+- Complicated but professional: BLDC Motor with a gear box
 
 
 
