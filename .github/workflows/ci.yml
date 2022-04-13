@@ -38,7 +38,7 @@ jobs:
       - name: Set up the Miniconda Root Cache
         uses: actions/cache@v2
         env:
-          cache_name: cache-miniconda-root-3
+          cache_name: cache-miniconda-root-4
         with:
           path: ~/miniconda3
           key: ${{ runner.os }}-build-${{ env.cache_name }}
@@ -48,15 +48,15 @@ jobs:
       - name: Conda info
         shell: bash -l {0}
         run: conda info
-      # - name: Set up the Miniconda Envs Cache
-      #   # they delete unused ones after 7 days.
-      #   uses: actions/cache@v2
-      #   env:
-      #     cache_name: cache-miniconda-envs-2-${{ env.PROJECT }}_py${{ matrix.python-version }}_${{ hashFiles('pyproject.toml', 'scripts/**') }}
-      #   with:
-      #     path: ~/miniconda3/envs/${{ env.PROJECT }}_py${{ matrix.python-version }}
-      #     key: ${{ runner.os }}-build-${{ env.cache_name }}
-
+      - name: Set up the Miniconda Envs Cache
+        # they delete unused ones after 7 days.
+        uses: actions/cache@v2
+        env:
+          cache_name: cache-miniconda-envs-2-${{ env.PROJECT }}_py${{ matrix.python-version }}_${{ hashFiles('pyproject.toml', 'scripts/**') }}
+        with:
+          path: ~/miniconda3/envs/${{ env.PROJECT }}_py${{ matrix.python-version }}
+          key: ${{ runner.os }}-build-${{ env.cache_name }}
+            
       - name: Install Miniconda PyEnv
         shell: bash -l {0}
         env:
