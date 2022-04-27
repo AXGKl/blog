@@ -249,7 +249,7 @@ Here links to the other builds right while pedalling - they all are pretty loud:
 - [battery charger build](https://youtu.be/tQBWECQCFcQ?t=856)
 - [gene different build](https://youtu.be/x1hMVqg8VZY?t=736) - the most silent so far
 - [retired](https://www.youtube.com/watch?v=pFREftLkJwE) - also not that loud
-
+- [rubber roller](https://youtu.be/HUr-ACN3ZJ8?t=533) - nice dashboard. But oh, the noise...
 
 
 I keep cycling a few days and see.

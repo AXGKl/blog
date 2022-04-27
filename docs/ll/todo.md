@@ -9,6 +9,8 @@ k8s:
 https://www.youtube.com/watch?v=CB79eTFbR0w
 especially flux/argo -> up2date containers w/o ci. AXC style (?)
 
+OS PaaS: https://captain.server.demo.caprover.com/#/settings
+
 ## python
 
 - rich https://raw.githubusercontent.com/Textualize/rich/master/imgs/inspect.png
@@ -42,6 +44,8 @@ https://github.com/manilarome/the-glorious-dotfiles/blob/master/config/polybar/c
     - no more secrets 54:54
 
 
+## Fireship: 
 
+- 10 very promising Open Source Projects you haven’t heard of: https://www.youtube.com/watch?v=qXUl3VsbA6o&t=262s
 
 

@@ -1,4 +1,4 @@
-# vim: ft=bash
+# vim: syntax=on filetype=sh
 about='
 Development Shortcuts
 
@@ -202,7 +202,7 @@ function docs-serve {
 function tests {
     test -z "$1" && {
         rm -f .coverage.pytest*
-        $CONDA_PREFIX/bin/pytest -vvxs tests -p no:randomly -c config/pytest.ini tests
+        $CONDA_PREFIX/bin/pytest -vvxs tests  -p no:randomly -c config/pytest.ini tests
         return $?
     }
     test -n "$1" && sh pytest "$@"
