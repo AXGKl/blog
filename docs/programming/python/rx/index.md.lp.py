@@ -49,7 +49,7 @@
                                               'Required-by:'}],
  '344fd121704d5dce8bb543248f0febd5': [{'cmd': 'python tests/rx/tools.py',
                                        'res': '$ python tests/rx/tools.py\n'
-                                              '\x1b[0;38;5;245m    4\x1b[0m  M '
+                                              '\x1b[0;38;5;245m    3\x1b[0m  M '
                                               '\x1b[31m[S] msg 1\x1b[0m\n'
                                               '\x1b[0;38;5;245m   54\x1b[0m  M '
                                               '\x1b[33m[2] async msg\x1b[0m\n'
@@ -57,21 +57,21 @@
                                               '\x1b[34m[3] async msg\x1b[0m\n'
                                               '\x1b[0;38;5;245m   54\x1b[0m  M '
                                               '\x1b[31m[S] async msg\x1b[0m\n'
-                                              '\x1b[0;38;5;245m  104\x1b[0m  M '
+                                              '\x1b[0;38;5;245m  105\x1b[0m  M '
                                               '\x1b[35m[4] msg 3\x1b[0m'},
                                       {'cmd': 'python tests/rx/tools.py '
                                               'patched',
                                        'res': '$ python tests/rx/tools.py '
                                               'patched\n'
-                                              '\x1b[0;38;5;245m  158\x1b[0m  M '
+                                              '\x1b[0;38;5;245m  143\x1b[0m  M '
                                               '\x1b[31m[S] msg 1\x1b[0m\n'
-                                              '\x1b[0;38;5;245m  208\x1b[0m  1 '
+                                              '\x1b[0;38;5;245m  193\x1b[0m  1 '
                                               '\x1b[33m[2] async msg\x1b[0m\n'
-                                              '\x1b[0;38;5;245m  209\x1b[0m  2 '
+                                              '\x1b[0;38;5;245m  193\x1b[0m  2 '
                                               '\x1b[34m[3] async msg\x1b[0m\n'
-                                              '\x1b[0;38;5;245m  209\x1b[0m  3 '
+                                              '\x1b[0;38;5;245m  193\x1b[0m  3 '
                                               '\x1b[31m[S] async msg\x1b[0m\n'
-                                              '\x1b[0;38;5;245m  259\x1b[0m  M '
+                                              '\x1b[0;38;5;245m  243\x1b[0m  M '
                                               '\x1b[35m[4] msg 3\x1b[0m'}],
  '6d9bd4e903932ff33bd8de1cdcfadc31': [{'cmd': 'pytest -xs '
                                               'tests/rx/test_async_server.py '

@@ -1,5 +1,7 @@
 # Prompt Toolkit
 
+[2022-04-27 06:27] 
+
 Want to explore this a bit over time - when I have time.
 
 Seems powerful enough as foundation for e.g. pymux (tmux in python)

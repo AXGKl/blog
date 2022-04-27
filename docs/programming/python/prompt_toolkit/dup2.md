@@ -1,5 +1,7 @@
 # Python's dup2 Method / Intercepting StdIn
 
+[2022-04-27 06:27]  
+
 That time of the year, where I want to do "simple" terminal stdin redirection/duplication and
 realize I forgot everything I knew about it. Lets write it down this time.
 
