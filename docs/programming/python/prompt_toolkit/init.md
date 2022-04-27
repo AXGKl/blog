@@ -1,5 +1,14 @@
 # Prompt Toolkit
 
+Want to explore this a bit over time - when I have time.
+
+Seems powerful enough as foundation for e.g. pymux (tmux in python)
+
+See tutorial
+[Example](https://python-prompt-toolkit.readthedocs.io/en/master/pages/tutorials/repl.html) about
+easy context menus - but there are also layout managers and built in dialogs.
+
+
 === "Hotkeys"
 
     This works also with gevent monkey patched:

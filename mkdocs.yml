@@ -57,6 +57,9 @@ nav:
   - 💻 DEV:
       - 🐍 Python:
           - programming/python/rx/index.md
+          - TermUIs:
+            - programming/python/prompt_toolkit/index.md
+            - "Stream Control": programming/python/prompt_toolkit/dup2.md
           - Fun:
               - UnblockMe: ll/fun/unblockme/index.md
               - Einstein: ll/fun/einstein.md
