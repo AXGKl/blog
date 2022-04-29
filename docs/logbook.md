@@ -647,7 +647,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 ### :linux: `evtest` for Better Input Tracing
 ??? tip "Better than xev for many use cases"
     [2021-08-21 13:07]  
-    See [this](./ll/hw/k860.md)
+    See [this](./ll/hw/input/k860.md)
 
 ### :vim: pyright error anlysis
 ??? success "Know the lsp log"

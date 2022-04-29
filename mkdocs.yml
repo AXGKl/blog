@@ -19,8 +19,11 @@ nav:
       - Emacs: ll/emacs/emacs.md
       - Gimp: ll/gimp/gimp.md
       - Hardware:
-          - Keyboards General: ll/hw/k860.md
-          - Keyboards Corne: ll/hw/corne.md
+          - Input:
+              - Keyboard: ll/hw/input/keyboard.md
+              - K860: ll/hw/input/k860.md
+              - Corne: ll/hw/input/corne.md
+              - HP: ll/hw/input/hp.md
       - MkDocs: ll/mkdocs/mkdocs.md
       - Suckless:
           - About: ll/sl/about.md
@@ -58,8 +61,8 @@ nav:
       - 🐍 Python:
           - programming/python/rx/index.md
           - TermUIs:
-            - "Prompt Toolkit": programming/python/prompt_toolkit/index.md
-            - "Stream Control": programming/python/prompt_toolkit/dup2.md
+              - "Prompt Toolkit": programming/python/prompt_toolkit/index.md
+              - "Stream Control": programming/python/prompt_toolkit/dup2.md
           - Fun:
               - UnblockMe: ll/fun/unblockme/index.md
               - Einstein: ll/fun/einstein.md
