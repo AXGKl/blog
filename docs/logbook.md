@@ -6,25 +6,36 @@ hide:
 # Logbook
 
 <!-- all admons: https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks -->
+
+shorts:
+
+- https://gist.github.com/vfarcic/e593ff9fa1a34d286e4b7f739bf47bc2
+- https://www.bing.com/videos/search?q=argocd+install&docid=608019442253525319&mid=A636CCDBDF44CC1E58EBA636CCDBDF44CC1E58EB&view=detail&FORM=VIRE
+- https://www.whatsmydns.net/#SOA/axlc.net
+
+dynu change nameservers: https://www.dynu.com/en-US/ControlPanel/DomainRegistrationNameServer?ATVPDKIKX0DER=SQBEAD0ANwAzADUANwA5ADQAMAA%7C
+
 ### CCC: Is this guy for real?
+
 ??? dev "**Optical** inspection of ROM to get to the data?! - WTF?!"
-    [2022-04-10 18:00] 
-    
+[2022-04-10 18:00]
+
     https://youtu.be/lhbSD1Jba0Q?t=1355
 
     ![](./img/optical_chip_anal.png)
 
     [Oliver Koemmerling...](https://taz.de/Vorwuerfe-gegen-Murdochs-Unternehmen/!5097441/)
- 
+
     https://youtu.be/lhbSD1Jba0Q?t=1355
 
     Background: I started my "career" at Siemens in the Chip Quality department. We had a big lab,
     with all sorts of microscopes. But reading out the ROM *optically*, that is unheard of...
 
 ### :linux: AutoKey: Types stuff into XWindows
+
 ??? tip "Away with xdotool type"
-    [2022-03-21 20:10] 
-    
+[2022-03-21 20:10]
+
     Start `autokey-gtk` in dwm autostart.sh -> systray icon or Super-k brings up Editor.
 
     [FAQ](https://github.com/autokey/autokey/wiki/FAQ)
@@ -74,10 +85,10 @@ hide:
     }
     ```
 
-
 ### :vim: Install on new Fedora
+
 ??? info "nvim: some hassle with lsb to solve"
-    [2022-03-01 04:18]  
+[2022-03-01 04:18]
 
     1. python -m venv .venv/nvim, there pip install neovim
     1. user install node, put in path, there node i -g neovim
@@ -88,20 +99,19 @@ hide:
 
     :checkhealth provider
 
-
-
 ### :e-mail: Thunderbird Compose Plaintext Mails
+
 ??? success "Hold Shift while clicking Reply or New"
-    [2022-02-08 14:32]  
+[2022-02-08 14:32]
 
     Not obvious, no mouse over tooltip - you simply have to know it.
 
     All hotkeys here: https://support.mozilla.org/en-US/kb/keyboard-shortcuts-thunderbird?redirectslug=keyboard-shortcuts&redirectlocale=en-US#w_writing-messages
 
-
 ### :img: Common Image Operations On the CLI
+
 ??? success "Not everything requires Gimp"
-    [2022-01-13 22:03]  
+[2022-01-13 22:03]
 
     Gimp is overkill for these - also automation possibilities, within scripts:
 
@@ -110,12 +120,12 @@ hide:
         ```bash
         ~ ❯ cat bin/add-alpha.sh
         #!/usr/bin/env bash
-        
+
         # Removes the background (makes transparent)
         # https://stackoverflow.com/a/44542839/4583360
-        
+
         orig="/tmp/img_orig.png"
-        
+
         main() {
             img="$1"
             test -e "$img" || {
@@ -123,7 +133,7 @@ hide:
                 exit 1
             }
             shift
-        
+
             test -n "$1" && {
                 bgcol="$1"
                 shift
@@ -132,19 +142,19 @@ hide:
                 fuzz="$1"
                 shift
             } || fuzz="2%"
-        
+
             rm -f "$orig"
             mv "$img" "$orig"
-        
+
             convert "$orig" -fuzz "$fuzz" -transparent "$bgcol" "$img"
-        
+
             feh --class HUD "$img" &
-        
+
             echo "Alpha added: $img. Original image at $orig."
         }
-        
+
         main "$@"
-        
+
         ```
 
 
@@ -152,18 +162,17 @@ hide:
 
             inkscape --batch-process --verb "EditSelectAll;FitCanvasToSelection;FileSave;FileQuit" filename.svg
 
-
-
 ### :tv: First Steps on a TV API
+
 ??? info "Trying to Remote Control a Samsung Q8"
-    [2022-01-09 22:13]  
+[2022-01-09 22:13]
 
     Own Article [here](./ll/devices/tv_q8.md)
 
-
 ### :yt: Re-enabling VLC for Youtube Streaming
+
 ??? success "Updating Youtube Streaming"
-    [2021-12-26 17:46]  
+[2021-12-26 17:46]
 
     YT seems not very fond of clients outside the browser, addlessly streaming their stuff.
     Noticed in MPV massive throttling and vlc ran into:
@@ -186,30 +195,26 @@ hide:
 
     No luac(ompile) needed, vlc now plays the stream w/o delays (and no adds).
 
-
-
-
 ### :gh: [gitty](https://github.com/muesli/gitty): github & gitlab Repo Status Viewer
+
 ??? success "All infos you want - but not more"
 
-    [2021-12-16 23:44]  
+    [2021-12-16 23:44]
 
     gitty is a smart little CLI helper for git projects, that shows you all the relevant issues,
     pull requests and changes at a quick glance, right on the command-line. It currently supports
     the GitHub & GitLab APIs.
 
-    ![](./img/gitty.png) 
+    ![](./img/gitty.png)
 
     - Just call gitty in a repo folder (or on a url) and you have the infos.
     - Also works with multiple repos
 
-
 ### :web: Hacking On the Wire API
 
 ??? success "Getting the login right"
-    [2021-11-02 23:28]  
-    The login process in wire's API docs is outdated. Here a working login, with access to all API endpoints:
-    
+[2021-11-02 23:28]  
+ The login process in wire's API docs is outdated. Here a working login, with access to all API endpoints:
 
     !!! danger
         Only problem: `{"code":429,"message":"Logins too frequent","label":"client-error"}` after many
@@ -326,10 +331,11 @@ hide:
         main()
 
     ```
+
 ### :web: Conversations to pdf in [wire](https://app.wire.com) chat
 
 ??? info "A strange failure"
-    [2021-11-02 23:32]  
+[2021-11-02 23:32]
 
     Here is the docker based pdf exporter, exporting a backup file created via their UI:
 
@@ -372,50 +378,48 @@ hide:
 
     ```
 
-
-
 ### :iot: HomeAssistant
+
 ??? info "Interesting Tool"
-    [2021-09-16 09:29]  
-    https://demo.home-assistant.io/#/lovelace/0
-    https://www.awesome-ha.com/#themes
+[2021-09-16 09:29]  
+ https://demo.home-assistant.io/#/lovelace/0
+https://www.awesome-ha.com/#themes
 
 ### :mkdocs: Interesting mkdocs Plugins
+
 ??? info "Scanning the mkdocs wiki"
-    [2021-09-15 22:28]  
-    - [mike](https://github.com/jimporter/mike)
-        Multiple version of documentation in gh-pages branch (major.minor)
-    - [simple](https://github.com/athackst/mkdocs-simple-plugin)
-        markdown extraction from source files
-    - [tags](https://github.com/jldiaz/mkdocs-plugin-tags)
-        creates a tags page from yaml metadata in pages
-    - [autorefs](https://github.com/mkdocstrings/autorefs)
-        finds header slugs and allows to link to them w/o specyfying the page itself.
-        There [are](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins#navigation--page-building) many other such links easing plugins.
-    - [htmlproofer](https://github.com/manuzhang/mkdocs-htmlproofer-plugin)
-        Validates internal and external links in rendered html
+[2021-09-15 22:28]
 
-
+- [mike](https://github.com/jimporter/mike)
+  Multiple version of documentation in gh-pages branch (major.minor) - [simple](https://github.com/athackst/mkdocs-simple-plugin)
+  markdown extraction from source files - [tags](https://github.com/jldiaz/mkdocs-plugin-tags)
+  creates a tags page from yaml metadata in pages - [autorefs](https://github.com/mkdocstrings/autorefs)
+  finds header slugs and allows to link to them w/o specyfying the page itself.
+  There [are](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins#navigation--page-building) many other such links easing plugins. - [htmlproofer](https://github.com/manuzhang/mkdocs-htmlproofer-plugin)
+  Validates internal and external links in rendered html
 
 ### :bash: [TFL](https://www.youtube.com/watch?v=qU4maL_smOs) Tips
-??? tip "Just some random notes I try push into my head by writing them" 
-    [2021-09-09 02:08]  
+
+??? tip "Just some random notes I try push into my head by writing them"
+[2021-09-09 02:08]
 
     - Pretty much forget `echo`
         printf -v >> echo
         I got reminded about printf and I admit I've done this *a lot* (left side):
-        [![./img/printf.png](./img/printf.png)](./img/printf.png) 
+        [![./img/printf.png](./img/printf.png)](./img/printf.png)
 
     - `<` instead `cat`: myhosts="$(< /etc/hosts)"
 
-### :terminal: ST  No more crashes on color emojjs
+### :terminal: ST No more crashes on color emojjs
+
 ??? success "Patching libxft"
-    [2021-09-09 01:56]  
-    Details [here](./ll/sl/st.md)
+[2021-09-09 01:56]  
+ Details [here](./ll/sl/st.md)
 
 ### :vim: Storing last edit position
+
 ??? tip "All plugins replaceable by one line"
-    [2021-09-08 10:56]  
+[2021-09-08 10:56]
 
     Tried:
 
@@ -434,13 +438,14 @@ hide:
     ```
 
 ### :gh: Bye bye Travis. Github Actions FTW
+
 I spent a [chapter](cloud/ci/github_actions.md) about that...
 
 ??? success "GH delivers - Also on CI"
-    [2021-09-07 01:19]  
-    Ok after further travis trouble with a CI related problem (tmux did not react fast enough, need a
-    delay - no reproducable in local ubuntu container) I began to check if the error was happening
-    using another CI tool. GH actions was anyway on the list since long.
+[2021-09-07 01:19]  
+ Ok after further travis trouble with a CI related problem (tmux did not react fast enough, need a
+delay - no reproducable in local ubuntu container) I began to check if the error was happening
+using another CI tool. GH actions was anyway on the list since long.
 
     Compare: https://docs.github.com/en/actions/learn-github-actions/migrating-from-travis-ci-to-github-actions
 
@@ -451,7 +456,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
     [![./img/ghact.png](./img/ghact.png)](./img/ghact.png)
 
-    Plus you can cache away your venvs, which would save another 40 secs for poetry install. 
+    Plus you can cache away your venvs, which would save another 40 secs for poetry install.
 
     So, bye bye travis... you should have focussed on *features* - and not an bullsh like that... maybe?
 
@@ -464,8 +469,9 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     https://www.jeffgeerling.com/blog/2020/travis-cis-new-pricing-plan-threw-wrench-my-open-source-works
 
 ### :py: Nail the subprocess shell executable. Always!
+
 ??? success "Ubuntu has dash. And dash sucks"
-    [2021-09-06 23:09]  
+[2021-09-06 23:09]
 
     - `subprocess.check_output(shell=True)` is using /bin/sh
     - On Fedora this is linked to bash => you can send bashisms
@@ -475,7 +481,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
     Breaks. Fine.
 
-    Checking: 
+    Checking:
 
     ```bash
     root@xenial:~ echo -e "Hello"
@@ -485,18 +491,17 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     root@xenial:~# FCKUBUNTU
     bash: FCKUBUNTU: command not found
     ```
-    
+
     Solution:
 
     **`subprocess.check_output(shell=True, executable='/bin/bash')`**
 
-
-
 ### :gh: Travis: How to enable
+
 ??? tip "You always need a plan..."
-    [2021-09-06 15:09]  
-    In their not so new anymore travis.com you need to first select the free plan - not
-    autoselected. Otherwise auth errors.
+[2021-09-06 15:09]  
+ In their not so new anymore travis.com you need to first select the free plan - not
+autoselected. Otherwise auth errors.
 
     On travis.com:
 
@@ -507,24 +512,25 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     [![./img/ghtrav.png](./img/ghtrav.png)](./img/ghtrav.png)
 
 ### :terminal: tmux: Best Guide
-??? tip "Very nice and detailed tmux guide"
-    [2021-09-04 21:48]  
-    https://thevaluable.dev/tmux-config-mouseless/
 
+??? tip "Very nice and detailed tmux guide"
+[2021-09-04 21:48]  
+ https://thevaluable.dev/tmux-config-mouseless/
 
 ### :linux: Available Software
+
 ??? tip "Garduda has it all..."
-    [2021-09-04 21:48]  
+[2021-09-04 21:48]
 
     Mental Outlaw recently did a Garduda review - and their software options seem quite extensive.
     [check it out](https://youtu.be/_ZCEiFA8ezA?t=700)
 
-
 ### :linux: Make a WLAN Accesspoint
+
 ??? success "Using nmcli - no NetworkManager"
-    [2021-09-04 09:05]  
-    My Fedora 34 does funnily not use NetworkManager, nmcli was working like a charm:
-    
+[2021-09-04 09:05]  
+ My Fedora 34 does funnily not use NetworkManager, nmcli was working like a charm:
+
     This does the job for now, incl. IP config, no need to install hostapd or anything else, like suggested on [arch wiki](https://aur.archlinux.org/packages/linux-wifi-hotspot/):
 
     ```bash
@@ -569,10 +575,10 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
     ```
 
-
 ### :linux: A Better `xdg` hack
+
 ??? success "Custom `xdg-open` ftw"
-    [2021-08-24 22:07]  
+[2021-08-24 22:07]
 
     Xdg is a buggy mess and
     [everybody](https://vermaden.wordpress.com/2021/04/22/freebsd-desktop-part-24-configuration-universal-file-opener/)
@@ -593,11 +599,11 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     And all of this w/o the need to further blow up `./config/mimeapps` or create any stupid `.desktop` files , with just one info, the app to open, burried in
     100 lines of foo.
 
-
 ### :linux: btrfs, timeshift, fedora, encryption, ...
+
 ??? tip "Willi Mutschler's blog: timeshift co-author with a great variety of linux subjects"
-    [2021-08-22 17:48]  
-    He is not only providing [super](https://mutschler.eu/linux/install-guides/fedora-post-install/?q=timeshift) infos about timeshift but about many distros, incl. [fedora](https://mutschler.eu/linux/install-guides/fedora-post-install/) in general.
+[2021-08-22 17:48]  
+ He is not only providing [super](https://mutschler.eu/linux/install-guides/fedora-post-install/?q=timeshift) infos about timeshift but about many distros, incl. [fedora](https://mutschler.eu/linux/install-guides/fedora-post-install/) in general.
 
     !!! note "Apropos btrfs"
     finally understand why my used diskpace is so low, during the reading process:
@@ -608,10 +614,10 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
     [This](https://fedoramagazine.org/recover-your-files-from-btrfs-snapshots/) is a good btrfs resource as well
 
-
 ### :vim: Overriding Specific Colors
+
 ??? success "Keeping the colorscheme, using `hi link`"
-    [2021-08-22 10:33]
+[2021-08-22 10:33]
 
     The lsp errors can get really distracting, especially when you refactor:
 
@@ -636,24 +642,24 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
         :hi def link LspDiagnosticsDefaultHint LineNr
     ```
 
-    !!! note "Apropos vim colors" 
+    !!! note "Apropos vim colors"
 
         With a few plugins you easily get over a 1000(!) different coloritems in
-        the output of `:hi` (hilight).  
+        the output of `:hi` (hilight).
         Better to find out a specific one you need to override via `:so $VIMRUNTIME/syntax/hitest.vim`
 
-
-
 ### :linux: `evtest` for Better Input Tracing
+
 ??? tip "Better than xev for many use cases"
-    [2021-08-21 13:07]  
-    See [this](./ll/hw/input/k860.md)
+[2021-08-21 13:07]  
+ See [this](./ll/hw/input/k860.md)
 
 ### :vim: pyright error anlysis
+
 ??? success "Know the lsp log"
-    [2021-08-20 07:09]  
-    Pyright consistently ignored the pyproject.toml settings - pyrightconfig.json worked.
-    This showed the reason:
+[2021-08-20 07:09]  
+ Pyright consistently ignored the pyproject.toml settings - pyrightconfig.json worked.
+This showed the reason:
 
     ```bash
     $ tail -f .cache/nvim/lsp.log
@@ -661,7 +667,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     [ WARN ] 2021-08-20T09:08:21+0200 ] ....axYdu21/usr/share/nvim/runtime/lua/vim/lsp/handlers.lua:108 ]   "The language server pyright triggers a registerCapability handler despite dynamicRegistration set to false. Report upstream, this warning is harmless"
     [ ERROR ] 2021-08-20T09:08:21+0200 ] ....axYdu21/usr/share/nvim/runtime/lua/vim/lsp/handlers.lua:402 ]  'Pyproject file parse attempt 1 error: {"name":"TomlError","fromTOML":true,"wrapped":null,"line":117,"col":0,"pos":3496}'
     ```
-    
+
     !!! note "Apropos pyright"
 
     vim: e.g.: `:PyrightOrganizeImports`
@@ -716,31 +722,35 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     ```
 
 ### :vim: Ultisnips Programmatically Created
+
 ??? success "dynamically creating the ultisnips body itself"
-    [2021-08-19 17:38]  
-    This is really neat: I can define tags in the environ and ulti shows them to me, per project
-    basically:
-    ```ultisnips
-    global !p
-    def create_tag(snip):
-        tags = [x.strip() for x in os.environ.get('tags', '<no $tags>').split(',')]
-        snip.expand_anon(":${1|%s|}:$0" % ','.join(tags))
-    def position_cursor(snip):
-        snip.cursor.set(snip.line, snip.column+1)
-    endglobal
+[2021-08-19 17:38]  
+ This is really neat: I can define tags in the environ and ulti shows them to me, per project
+basically:
+
+````ultisnips
+global !p
+def create_tag(snip):
+tags = [x.strip() for x in os.environ.get('tags', '<no $tags>').split(',')]
+snip.expand_anon(":${1|%s|}:$0" % ','.join(tags))
+def position_cursor(snip):
+snip.cursor.set(snip.line, snip.column+1)
+endglobal
 
     post_jump "create_tag(snip)"
     snippet tag "Add a tag exported in $tags" w
     endsnippet
     ```
+
 ### :fe: Mixing CSS layouts
+
 ??? success "Always invest in extra tags..."
-    [2021-08-19 1:34]  
+[2021-08-19 1:34]
 
     Timesucker of the evening was the (finally succesfull) attempt to add parent links to the
-    navigation plugin in the mkdocs footer. 
-    
-    ![](./img/next.png)  
+    navigation plugin in the mkdocs footer.
+
+    ![](./img/next.png)
     (from https://github.com/PleatMan/mkdocs-tree-title, which I found useful -
     but I wanted those **linked** to the pages, i.e. behaving like a real breadcrumb system...)
 
@@ -779,7 +789,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     The tree title plugin basically replaces the string `.title` in `{{ page.next_page.title }}`
     with `page.tree_title`, being set within the plugin for each page, like that:
 
-    ??? note "original plugin code" 
+    ??? note "original plugin code"
         ```python
         def on_pre_page(self, page, config, files):
             # skip if pages are not yet included in the mkdocs config file
@@ -797,7 +807,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
             return page
         ```
 
-    Simple. 
+    Simple.
 
     So we extended the plugin to not set a string but a list of `[[title parent1, url1],(...)]`, and
     created the links in a jinja loop over that. Did only partially work, clear, the links are nested within
@@ -809,7 +819,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     Replacing the `<a classes>` with `<div classes>` did work, formatting wise.
 
     But: the big links where gone.
-   
+
     I tried to add click handlers to the parents via javascript but to no avail, within one big
     `<a>` tag...
 
@@ -819,7 +829,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
         Sounded like a nightmare.
 
     Was that not possible in CSS/HTML alone?
- 
+
     Answer: Not really, nesting links is simply forbidden.
 
     !!! quote "W3"
@@ -832,7 +842,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
     ??? success "Link Nesting IS Possible, with HTML5 w/o JS"
 
-        Here the solution for the link nesting problem: 
+        Here the solution for the link nesting problem:
 
         ```html
         <div class="block">
@@ -864,8 +874,8 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
           pointer-events: all;
         }
         ```
-    
-    Key is the CSS HTML5 access to pointer events. 
+
+    Key is the CSS HTML5 access to pointer events.
 
     But now the real nightmare started. We have original CSS with float and flex layout - and need
     to mix with classic box model layout.
@@ -935,26 +945,25 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
     And now it all works nicely, as you can see in this blog :sunglasses:.
 
-
-   
 ### :vim: [nginx.vim](https://github.com/chr4/nginx.vim): nginx conf highlighter
-??? tip "Nice syntax highlighter with lua support"
-    [2021-08-19 08:29]  
-    [![img/nginx.vim.png](img/nginx.vim.png)](img/nginx.vim.png)
 
-    
+??? tip "Nice syntax highlighter with lua support"
+[2021-08-19 08:29]
+ [![img/nginx.vim.png](img/nginx.vim.png)](img/nginx.vim.png)
+
 ### :python: poetry plugin entrypoints
+
 ??? danger "How to make them be found"
-    [2021-08-18 14:49]  
-    Took me a while to find out how to get an entrypoint working which is contained in the repo
-    under development. Not talking of a script, that's clear: `tool.poetry.scripts` but of a plugin:
+[2021-08-18 14:49]
+ Took me a while to find out how to get an entrypoint working which is contained in the repo
+under development. Not talking of a script, that's clear: `tool.poetry.scripts` but of a plugin:
 
     ```toml
     [tool.poetry.plugins."mkdocs.plugins"]
     "page-tree" = "lcdoc.mkdocs.page_tree:PageTreePlugin"
     ```
 
-    analogue to setup.py's 
+    analogue to setup.py's
 
     ```python
     entry_points={
@@ -976,18 +985,19 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
     ```
 
-    But the plugin was not found by mkdocs, even after rm poetry.lock -> poetry install. 
-    
+    But the plugin was not found by mkdocs, even after rm poetry.lock -> poetry install.
+
     Resolution: There was an old `<projectroot>.venv` folder around, with an (empty) site-packages,
     which poetry preferred to look for such entry_points.txt files. After removing it all worked
     after a new `poetry install` (not update, not required), those python entryponits are, like
     scripts, installed by `poetry install`.
 
 ### :vi: :chrome: [vimium-c](https://github.com/gdh1995/vimium-c/wiki) Rocks
+
 ??? tip "`cd-`: like in shell, `T`"
-    [2021-08-18 12:41]  
-    The vimium-c guy has strong political [opinions](https://github.com/gdh1995/vimium-c/issues/359). Well maybe he is right, who am I to judge. In any case, his extension is the best "vimifier".
-    Examples:
+[2021-08-18 12:41]
+ The vimium-c guy has strong political [opinions](https://github.com/gdh1995/vimium-c/issues/359). Well maybe he is right, who am I to judge. In any case, his extension is the best "vimifier".
+Examples:
 
     - `T`: Lets you search thru open tabs.
     - Hotkey defs like `cd-`
@@ -1150,13 +1160,11 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
         ```
 
 ### :terminal: ZSH: global aliases
+
 ??? success "`ps ax pg foo`, `cat foo pclip`, ..."
-    [2021-08-18 07:17]  
-    Those work within commands:
-    ```bash
-    alias -g pg='| grep -i '
-    alias -g pclip='| xclip -i -selection clipboard'
-    ```
+[2021-08-18 07:17]
+ Those work within commands:
+`bash alias -g pg='| grep -i ' alias -g pclip='| xclip -i -selection clipboard' `
 
     Then
 
@@ -1167,14 +1175,14 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     /run/user/1000/doc
     ```
 
-
 ### :terminal: ZSH: better `type`
-??? success "shows where function is defined"
-    [2021-08-18 07:20]  
-    === "zsh"
-        man zshbuiltins
 
-        ```bash hl_lines="2"    
+??? success "shows where function is defined"
+[2021-08-18 07:20]
+ === "zsh"
+man zshbuiltins
+
+        ```bash hl_lines="2"
         ~/mi/en/b/l/py/si/mkdocs ❯ type gomod
         gomod is a shell function from /home/gk/.bashrc-personal
 
@@ -1185,7 +1193,7 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
             cd "$l"
             pwd
         }
-        ```    
+        ```
 
     === "bash"
         ```bash
@@ -1202,23 +1210,27 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
         But [where is it defined](https://askubuntu.com/questions/1146269/how-can-i-find-where-certain-bash-function-is-defined)?!
 
 ### :cloud: [Nuclio](https://nuclio.io/docs/latest/setup/k8s/getting-started-k8s/) FaaS
+
 ??? question "New kid on the block in FAAS land"
-    [2021-08-18 01:14]  
-    See [here](https://github.com/nuclio/nuclio) - found in [this](https://imhotep.io/istio/faas/2018/02/23/combing-lambdas.html) blog of the k9s guy...
+[2021-08-18 01:14]
+ See [here](https://github.com/nuclio/nuclio) - found in [this](https://imhotep.io/istio/faas/2018/02/23/combing-lambdas.html) blog of the k9s guy...
 
 ### :vi: Ultisnips config: No lua
+
 ??? danger "configure in init.vim not in lua"
-    [2021-08-18 00:55]  
-    See [ultisnips page](./ll/vim/ultisnips.md)
+[2021-08-18 00:55]
+ See [ultisnips page](./ll/vim/ultisnips.md)
 
 ### :linux: [`kmcaster`](https://github.com/DaveJarvis/kmcaster/)
+
 ??? tip "Best screenkey recorder"
-    [2021-08-17 00:55]  
-     ![](img/kmcaster.gif)
+[2021-08-17 00:55]
+ ![](img/kmcaster.gif)
 
 ### :linux: openjdk install
+
 ??? note "Per App / Non Global"
-    [2021-08-17 11:09]
+[2021-08-17 11:09]
 
     ```mk_console
     sudo yum -y install curl
@@ -1232,10 +1244,10 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
     `alias screenkeyjs='/opt/jdk-14/bin/java -jar /home/gk/inst/kmcaster.jar -d 60'`
 
-
 ### :linux: gpg-agent cache timeout
+
 ??? tip "Avoiding popups every minute"
-    [2021-08-17 10:34]
+[2021-08-17 10:34]
 
     After a fedora security update I got an annoyingly short gpg timeout for the pass utility. Fix:
 
@@ -1246,10 +1258,10 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
     and `systemctl --user restart gpg-agent`
 
-
 ### :linux: Grub: See the system booting
+
 ??? tip "Using grubby"
-    [2021-08-16 10:34]
+[2021-08-16 10:34]
 
     On Fedora34 fiddling with removing `quiet` and `rhgb`, then grub2-mkconfig did not work, guess I was
     "holding it wrong".
@@ -1266,11 +1278,11 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     !!! warning
         Do **not** add console=tty... as suggested in the example in the tutorial - I had no output
         anymore
-    
 
 ### :vi: Filedir in galaxyline
+
 ??? success "Lua Hack: Displaying parent dir"
-    [2021-08-11 18:00]
+[2021-08-11 18:00]
 
     Seeing only index.md in the statusline on multiple markdown files is not really cool. galaxyline allows functions:
 
@@ -1311,10 +1323,10 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
 
         ```
 
-
 ### :vi: Lost content on file save
+
 ??? danger "Formatter misinterprets files named '-'"
-    [2021-08-11 12:59]
+[2021-08-11 12:59]
 
     Crazy nvim bug/config problem(?): **You edit a file, write, content gone**.
     Especially when write+quitting this can kill your day.
@@ -1322,12 +1334,12 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     Reason: If you managed to create a file with name '-' (a single dash) - then the formatter (run on
     write by nvim) sees this obviously as input and changes the buffer accordingly.
 
-    Solution: Delete the file, all works again: `rm -- -` 
-
+    Solution: Delete the file, all works again: `rm -- -`
 
 ### :chrome: Edge Browser
+
 ??? tip "Meanwhile my default"
-    [2021-08-11 12:38]
+[2021-08-11 12:38]
 
     Politics aside but **Microsoft Edge**/Linux seems currently the technical best browser for me.
     FF is anyway totally
@@ -1335,21 +1347,21 @@ I spent a [chapter](cloud/ci/github_actions.md) about that...
     well
 
 ### :linux: pipewire -> pulse
+
 ??? info "Avoid problems with old config / alsamixer is great"
-    [2021-05-01 11:37]
+[2021-05-01 11:37]
 
     Fedora 34 fresh. Sound: Remove pipewire like described by fedora - then removed old
     .config/pulse(! (from arch times)). `systemctl --user restart pulseaudio` -> alsamixer worked, could connect, the
     rest as well
 
-### :vi: Appimage 
+### :vi: Appimage
+
 ??? tip "Best sandbox for newest versions"
-    [2021-02-11 12:36]
+[2021-02-11 12:36]
 
     nvim: Do not install the package mgr version on a stable distro, nvims' dev speed is crazy (e.g.
     lua support) - the app image (from their github) works perfect.
 
         /home/gk/inst/nvim.appimage README.md
-
-
-
+````
