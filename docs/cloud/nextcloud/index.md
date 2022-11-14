@@ -8,4 +8,13 @@ crash at heavy load.
 The adaption scripts are within this folder, for potential later re-use after analysis why it
 crashed.
 
+They feature
+
+- cron replacmentn within nc
+- redis within nc
+- a maint script usr/local/bin/m
+- a backdoor into the running container, via socat
+
+---
+
 For now I continue with version 24. Good enough.

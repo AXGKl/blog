@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+D="Maintenance tools for this server (/usr/local/bin/m)"
+
+d_nc="/root/docker/nc25"
+
+# for m e <short.
+files="
+c:/root/docker/nc25/var/www/html/config/config.php
+l:/root/docker/nc25/var/www/html/data/nextcloud.log
+m:$0
+s:/root/docker/nc25/start
+u:/etc/systemd/system/nextcloud.service
+v:$HOME/.vimrc
+"
+
+dirs="
+h:$d_nc/var/www/html/
+n:$d_nc
+"
+
+function c { echo -ne "\x1b[1;$1m$2\x1b[0m" ; }
+
+function show-help {
+  echo -e "\n`c 33 "$D"`" 
+  echo -e "USAGE: m <\$cmd> [args]\n"
+  local m="main"; cat "$0" | grep -A 20 "$m {" | grep -A 20 case |grep -B 20 esac
+  c 34 "\nKnown files (e.g. \`m e m\`):"; echo "$files"
+  c 34 "\nKnown dirs (e.g. \`m cd h\`):"; echo "$dirs"
+}
+
+set_file_name () {
+    filename="`echo -e "$1" | grep ''$2':' | cut -d ':' -f 2`"
+    echo "$filename"
+}
+
+function edit-file {
+    set_file_name "$files" "$1"
+    vi "$filename"
+    if [[ "$1" == "u" ]]; then systemctl daemon-reload; fi
+}
+function pretty_tail {
+    set_file_name "$files" "$1"
+    tail -f "$filename" | jq .
+}
+
+function system_ctl {
+    systemctl $1 nextcloud
+}
+function cd-dir {
+    set_file_name "$dirs" "$1"
+    cd "$filename"
+}
+function reverse_shell_via_socat {
+    local port
+    for ((port=1337; port<=1350; port++)); do
+        echo
+        socat file:`tty`,raw,echo=0 tcp-connect:127.0.0.1:$port && break || continue
+    done
+}
+
+function main {
+  local cmd="${1:--h}"
+  shift
+  case $cmd in
+     -h|--help) show-help;;
+     cd       ) cd-dir "${1:-h}" && bash;;
+     e|edit   ) edit-file "${1:-m}";;
+     jq       ) pretty_tail "${1:-l}";;
+     j        ) journalctl -u nextcloud -f;;
+     restart  ) m stop; sleep 1; m start;;
+     shell    ) reverse_shell_via_socat;;
+     spawn    ) systemd-nspawn -D "$d_nc";; # only when stopped
+     start|stop|status) system_ctl "$cmd";;
+  esac 
+
+     
+}
+
+
+main "$@"
