@@ -1,0 +1,3098 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Random Thoughts">
+      
+      
+      
+        <link rel="canonical" href="https://AXGKl.github.io/blog/ll/fun/unblockme/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>UnblockMe - AXGK Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../lcd/lp/css/xterm.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="black" data-md-color-accent="deep-purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unblockme-or-depth-first-vs-breadth-first" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="AXGK Blog" class="md-header__button md-logo" aria-label="AXGK Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AXGK Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UnblockMe
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AXGKl/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AXGKl/blog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Overview
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../apps/apps/" class="md-tabs__link">
+        🐧 LINUX
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cloud/dnsmasq/" class="md-tabs__link">
+        💭 CLOUD
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../programming/python/rx/" class="md-tabs__link md-tabs__link--active">
+        💻 DEV
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../inet/videos/" class="md-tabs__link">
+      📺 VIDS
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../logbook/" class="md-tabs__link">
+      ✏️  LOG
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/changelog/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="AXGK Blog" class="md-nav__button md-logo" aria-label="AXGK Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    AXGK Blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AXGKl/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AXGKl/blog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          🐧 LINUX
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🐧 LINUX" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          🐧 LINUX
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/apps/" class="md-nav__link">
+        Apps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/tv_q8/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../distro/" class="md-nav__link">
+        Distros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arco/" class="md-nav__link">
+        Distros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../emacs/emacs/" class="md-nav__link">
+        Emacs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gimp/gimp/" class="md-nav__link">
+        Gimp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Hardware
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Hardware" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Hardware
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_7_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_1">
+          Input
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Input" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Input
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw/input/keyboard/" class="md-nav__link">
+        Keyboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw/input/k860/" class="md-nav__link">
+        K860
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw/input/corne/" class="md-nav__link">
+        Corne
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw/input/hp/" class="md-nav__link">
+        HP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mkdocs/mkdocs/" class="md-nav__link">
+        MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Suckless
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Suckless" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Suckless
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/dwm/" class="md-nav__link">
+        dwm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/st/" class="md-nav__link">
+        st
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_4" data-md-state="indeterminate" type="checkbox" id="__nav_2_9_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_4">
+          Statusbar Fun
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Statusbar Fun" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_9_4">
+          <span class="md-nav__icon md-icon"></span>
+          Statusbar Fun
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar/" class="md-nav__link">
+        The Problem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/status_bar_fun/2021.05.24_dwm_status_2_never_call_xsession_within_dwm/" class="md-nav__link">
+        XFCE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/status_bar_fun/2021.05.24_dwm_status_3_xfce4_panel_in_dwm/" class="md-nav__link">
+        XFCE Panel in DWM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor/" class="md-nav__link">
+        CPU Monitor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" data-md-state="indeterminate" type="checkbox" id="__nav_2_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10">
+          Vim
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vim" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Vim
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vim/vim/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vim/astro_vim/" class="md-nav__link">
+        AstroVim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vim/astro_vim_null_ls_builtins/" class="md-nav__link">
+        AstroVimLspBuiltins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vim/ultisnips/" class="md-nav__link">
+        Ultisnips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vim/html/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../todo/" class="md-nav__link">
+        Todo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          💭 CLOUD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💭 CLOUD" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          💭 CLOUD
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dnsmasq/" class="md-nav__link">
+        DNSMasq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/ci/github_actions/" class="md-nav__link">
+        Github Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kubernetes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/" class="md-nav__link">
+        Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/k9s/k9s/" class="md-nav__link">
+        K9s Terminal UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/1_hello_app/" class="md-nav__link">
+        First App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/2_hello_mysql/" class="md-nav__link">
+        With DB
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Terraform
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Terraform" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Terraform
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/resource_creation/" class="md-nav__link">
+        Basic Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/ansible/" class="md-nav__link">
+        TF And Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/k8s_on_do/" class="md-nav__link">
+        K8s Cluster Infra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/k8s_provider/do_k8s/" class="md-nav__link">
+        Attaching Using Token Only
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/k8s_provider/k8s_provider/" class="md-nav__link">
+        The K8s Provider
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          💻 DEV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💻 DEV" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          💻 DEV
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          🐍 Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🐍 Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          🐍 Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/rx/" class="md-nav__link">
+        Reactive Programming With RxPY
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2">
+          TermUIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TermUIs" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          TermUIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/prompt_toolkit/" class="md-nav__link">
+        Prompt Toolkit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/prompt_toolkit/dup2/" class="md-nav__link">
+        Stream Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" type="checkbox" id="__nav_4_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3">
+          Fun
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          UnblockMe
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        UnblockMe
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    Source Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-read" class="md-nav__link">
+    Initial Read
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depth-first-dfs-approach" class="md-nav__link">
+    Depth First (DFS) Approach
+  </a>
+  
+    <nav class="md-nav" aria-label="Depth First (DFS) Approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingredients" class="md-nav__link">
+    Ingredients
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingredients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    Config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-loop" class="md-nav__link">
+    Main Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-indexing" class="md-nav__link">
+    State Indexing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tree-traversal-path" class="md-nav__link">
+    Tree Traversal Path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-the-board-showing-the-move" class="md-nav__link">
+    Printing the Board, Showing the Move
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-behaviour" class="md-nav__link">
+    Runtime Behaviour
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime Behaviour">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discussion" class="md-nav__link">
+    Discussion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#breadth-first-attempt-1" class="md-nav__link">
+    Breadth First: Attempt 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Breadth First: Attempt 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-ingredients" class="md-nav__link">
+    New Ingredients
+  </a>
+  
+    <nav class="md-nav" aria-label="New Ingredients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-loop_1" class="md-nav__link">
+    Main Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-the-solution" class="md-nav__link">
+    Printing the Solution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-behaviour_1" class="md-nav__link">
+    Runtime Behaviour
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime Behaviour">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output_1" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discussion_1" class="md-nav__link">
+    Discussion
+  </a>
+  
+    <nav class="md-nav" aria-label="Discussion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#it-is-still-not-perfect" class="md-nav__link">
+    It is still not perfect
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#breadth-first-attempt-2" class="md-nav__link">
+    Breadth First: Attempt 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Breadth First: Attempt 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#runtime-behaviour_2" class="md-nav__link">
+    Runtime Behaviour
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime Behaviour">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output_2" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discussion_2" class="md-nav__link">
+    Discussion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klotski" class="md-nav__link">
+    Klotski
+  </a>
+  
+    <nav class="md-nav" aria-label="Klotski">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#normal-version" class="md-nav__link">
+    Normal Version
+  </a>
+  
+    <nav class="md-nav" aria-label="Normal Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    Challenges
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#klotski-hard-version" class="md-nav__link">
+    Klotski - Hard Version
+  </a>
+  
+    <nav class="md-nav" aria-label="Klotski - Hard Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#challenges-bfs-not-feasible" class="md-nav__link">
+    Challenges: BFS not feasible
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../einstein/" class="md-nav__link">
+        Einstein
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Electronics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Electronics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Electronics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/" class="md-nav__link">
+        Interacting with Real World
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_2">
+          Desk Cycling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Desk Cycling" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Desk Cycling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/intro/" class="md-nav__link">
+        Zwiftifying My DeskCycle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/powermeter/" class="md-nav__link">
+        Power Meters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/mechanical/" class="md-nav__link">
+        Know the Gear Position
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/electromagnet/" class="md-nav__link">
+        Electromagent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/generator/" class="md-nav__link">
+        Generating Power
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inet/videos/" class="md-nav__link">
+        📺 VIDS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../logbook/" class="md-nav__link">
+        ✏️  LOG
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/navigation/" class="md-nav__link">
+        Navigation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    Source Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-read" class="md-nav__link">
+    Initial Read
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depth-first-dfs-approach" class="md-nav__link">
+    Depth First (DFS) Approach
+  </a>
+  
+    <nav class="md-nav" aria-label="Depth First (DFS) Approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingredients" class="md-nav__link">
+    Ingredients
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingredients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    Config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-loop" class="md-nav__link">
+    Main Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-indexing" class="md-nav__link">
+    State Indexing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tree-traversal-path" class="md-nav__link">
+    Tree Traversal Path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-the-board-showing-the-move" class="md-nav__link">
+    Printing the Board, Showing the Move
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-behaviour" class="md-nav__link">
+    Runtime Behaviour
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime Behaviour">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discussion" class="md-nav__link">
+    Discussion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#breadth-first-attempt-1" class="md-nav__link">
+    Breadth First: Attempt 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Breadth First: Attempt 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-ingredients" class="md-nav__link">
+    New Ingredients
+  </a>
+  
+    <nav class="md-nav" aria-label="New Ingredients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-loop_1" class="md-nav__link">
+    Main Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-the-solution" class="md-nav__link">
+    Printing the Solution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-behaviour_1" class="md-nav__link">
+    Runtime Behaviour
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime Behaviour">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output_1" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discussion_1" class="md-nav__link">
+    Discussion
+  </a>
+  
+    <nav class="md-nav" aria-label="Discussion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#it-is-still-not-perfect" class="md-nav__link">
+    It is still not perfect
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#breadth-first-attempt-2" class="md-nav__link">
+    Breadth First: Attempt 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Breadth First: Attempt 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#runtime-behaviour_2" class="md-nav__link">
+    Runtime Behaviour
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime Behaviour">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output_2" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discussion_2" class="md-nav__link">
+    Discussion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klotski" class="md-nav__link">
+    Klotski
+  </a>
+  
+    <nav class="md-nav" aria-label="Klotski">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#normal-version" class="md-nav__link">
+    Normal Version
+  </a>
+  
+    <nav class="md-nav" aria-label="Normal Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    Challenges
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#klotski-hard-version" class="md-nav__link">
+    Klotski - Hard Version
+  </a>
+  
+    <nav class="md-nav" aria-label="Klotski - Hard Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#challenges-bfs-not-feasible" class="md-nav__link">
+    Challenges: BFS not feasible
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="editor:///home/gk/repos/blog/docs/ll/fun/unblockme/index.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<style>
+
+          @media only screen and (min-width: 76.25em) {
+            .md-main__inner {
+              max-width: none;
+            }
+            .md-sidebar--primary {
+              left: 0;
+            }
+            .md-sidebar--secondary {
+              right: 0;
+              margin-left: 0;
+              -webkit-transform: none;
+              transform: none;   
+            }
+          }
+
+</style>
+<h1 id="unblockme-or-depth-first-vs-breadth-first">UnblockMe or: Depth First vs. Breadth First<a class="headerlink" href="#unblockme-or-depth-first-vs-breadth-first" title="Permanent link">¤</a></h1>
+<p>[2021-12-14 11:01] </p>
+<p>During a longer period of illness, which bound me to my bed for a few weeks, gaming on the mobile
+phone became the preferred time killer. Besides chess (which required a bit too much energy, given
+my state), I became a big fan of this game:  </p>
+<p><a href="https://www.youtube.com/watch?v=fKMbm-KZaFU"><img alt="" src="img/yt.png" /></a></p>
+<p>It can get surprisingly hard in export mode and you may well spend a day in finding a solution for
+single puzzle (e.g.: try 605) - you often can't imagine how it could even be possible. Also having
+solved one, will in no way guarantee you could do it again...</p>
+<p>Variations are e.g. this game: </p>
+<p><a href="https://www.youtube.com/watch?v=AXpgFNxXA2k"><img alt="" src="img/yt2.png" /></a></p>
+<p>When I somewhat recovered physically, I was looking into solver algorithms for the game.</p>
+<p>It will be a bit more tedious than this one ;-)</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+<span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Rock, paper, scissors? - r p s: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;You win&quot;</span><span class="p">,</span> <span class="s2">&quot;You loose&quot;</span><span class="p">,</span> <span class="s2">&quot;It&#39;s a draw&quot;</span><span class="p">]))</span>
+</code></pre></div>
+<h2 id="source-code">Source Code<a class="headerlink" href="#source-code" title="Permanent link">¤</a></h2>
+<p>Here all the programs we discuss below:</p>
+<ul>
+<li>UnblockMe, DFS is <a href="unblockme_dfs.py">here</a></li>
+<li>UnblockMe, BFS, single cell moves is <a href="unblockme_breadth_first_single_moves.py">here</a></li>
+<li>UnblockMe, BFS, multi cell moves is <a href="unblockme.py">here</a></li>
+<li>Klotski DFS is <a href="klotski_dfs.py">here</a></li>
+<li>Klotski BFS is <a href="klotski.py">here</a></li>
+</ul>
+<p>All the files can be run standalone (make them executable) and require no libs. They have to be edited in their config section, in order to configure new initial board states.</p>
+<p>Example: </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># save the file locally, then run:</span>
+~/repos/blog/docs/ll/fun/unblockme❯ ./unblockme.py
+Start State:
+
+<span class="m">23444</span>
+<span class="m">23</span> <span class="m">56</span>
+<span class="m">21156</span>
+<span class="m">778</span> <span class="m">6</span>
+  <span class="m">899</span>
+ aabb
+
+next move:  <span class="m">1</span>
+breadth is:  <span class="m">1</span>
+next move:  <span class="m">2</span>
+breadth is:  <span class="m">5</span>
+next move:  <span class="m">3</span>
+breadth is:  <span class="m">14</span>
+<span class="o">(</span>...<span class="o">)</span>
+
+Solved <span class="k">in</span> <span class="m">32</span> moves <span class="o">(</span>producing <span class="m">3288</span> States<span class="o">)</span>. Took <span class="m">4</span>.68sec.
+</code></pre></div>
+<h2 id="initial-read">Initial Read<a class="headerlink" href="#initial-read" title="Permanent link">¤</a></h2>
+<p>Check <a href="https://www.techiedelight.com/depth-first-search-dfs-vs-breadth-first-search-bfs">this</a> for the principal difference between a dept first (DFS) and breadth first (BFS)
+approach, when solving such kinds of problems.</p>
+<h2 id="depth-first-dfs-approach">Depth First (DFS) Approach<a class="headerlink" href="#depth-first-dfs-approach" title="Permanent link">¤</a></h2>
+<p>Not knowing how intense it will be on resources I tried first a depth first algo, since it is a low memory approach:</p>
+<ol>
+<li>Looking at a certain board state, pick the <em>first possible</em> move, which results in a new board
+   state</li>
+<li>Play it, i.e. move the piece</li>
+<li>Go to 1</li>
+</ol>
+<p>Backtracking:</p>
+<p>When there are NO possible moves which result in a new board state, undo the move, which led to
+position at 1.</p>
+<p>Solution:</p>
+<p>Every NEW board state we check if it is the solution, i.e. if there is nothing between the red piece
+and the exit.</p>
+<p>Example:</p>
+<p>Say the solution is to do the 3rd possible, then the second possible move we might end at having
+tried these:</p>
+<p><img alt="" src="img/Depth-first-tree.png" /></p>
+<p>Nr 12 would be the solution in the example, where we stop, having backtracked 2 times back to the
+initial config.</p>
+<p>What do we need for such an approach:</p>
+<h3 id="ingredients">Ingredients<a class="headerlink" href="#ingredients" title="Permanent link">¤</a></h3>
+<h4 id="config">Config<a class="headerlink" href="#config" title="Permanent link">¤</a></h4>
+<p>We need a way to tell the computer the initial state. Straightforwardly we picked a 2-D Matrix, and
+simply number the pieces from 1-<code>piece count</code>, where 1 must be the red piece to be freed.</p>
+<p>From that we then can instantiate a <code>Piece</code> dataclass, for every piece found on the board:</p>
+<p>Example:</p>
+<table>
+<thead>
+<tr><th>Board</th><th>Config</th><th>Parsed Pieces</th></tr>
+</thead>
+<tbody>
+<tr><td>
+    <img src="img/605.png" width=200px>
+</td><td>
+
+    <div class="highlight"><pre><span></span><code><span class="n">board_605</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">2</span> <span class="p">,</span> <span class="mi">3</span>  <span class="p">,</span> <span class="mi">4</span>  <span class="p">,</span> <span class="mi">4</span>  <span class="p">,</span> <span class="mi">4</span>  <span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span>
+    <span class="p">[</span><span class="mi">2</span> <span class="p">,</span> <span class="mi">3</span>  <span class="p">,</span> <span class="mi">0</span>  <span class="p">,</span> <span class="mi">5</span>  <span class="p">,</span> <span class="mi">6</span>  <span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span>
+    <span class="p">[</span><span class="mi">2</span> <span class="p">,</span> <span class="mi">1</span>  <span class="p">,</span> <span class="mi">1</span>  <span class="p">,</span> <span class="mi">5</span>  <span class="p">,</span> <span class="mi">6</span>  <span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span>
+    <span class="p">[</span><span class="mi">7</span> <span class="p">,</span> <span class="mi">7</span>  <span class="p">,</span> <span class="mi">8</span>  <span class="p">,</span> <span class="mi">0</span>  <span class="p">,</span> <span class="mi">6</span>  <span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span>
+    <span class="p">[</span><span class="mi">0</span> <span class="p">,</span> <span class="mi">0</span>  <span class="p">,</span> <span class="mi">8</span>  <span class="p">,</span> <span class="mi">9</span>  <span class="p">,</span> <span class="mi">9</span>  <span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span>
+    <span class="p">[</span><span class="mi">0</span> <span class="p">,</span> <span class="mi">10</span> <span class="p">,</span> <span class="mi">10</span> <span class="p">,</span> <span class="mi">11</span> <span class="p">,</span> <span class="mi">11</span> <span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span>
+<span class="p">]</span>
+</code></pre></div>
+</td><td>
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">pp</span> <span class="n">pieces</span>
+<span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="n">Piece</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">),</span>
+ <span class="mi">2</span><span class="p">:</span> <span class="n">Piece</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">),</span>
+ <span class="mi">3</span><span class="p">:</span> <span class="n">Piece</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">),</span>
+ <span class="mi">4</span><span class="p">:</span> <span class="n">Piece</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">),</span>
+ <span class="mi">5</span><span class="p">:</span> <span class="n">Piece</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">),</span>
+ <span class="mi">6</span><span class="p">:</span> <span class="n">Piece</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">),</span>
+ <span class="mi">7</span><span class="p">:</span> <span class="n">Piece</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">),</span>
+ <span class="mi">8</span><span class="p">:</span> <span class="n">Piece</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">),</span>
+ <span class="mi">9</span><span class="p">:</span> <span class="n">Piece</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">)}</span>
+</code></pre></div>
+
+</td></tr>
+</tbody>
+</table>
+
+<h4 id="main-loop">Main Loop<a class="headerlink" href="#main-loop" title="Permanent link">¤</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Code</label><label for="__tabbed_1_2"><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_deep.py#L355"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg></span></a></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Start State:&#39;</span><span class="p">)</span>
+<span class="n">print_board</span><span class="p">()</span>
+<span class="n">register_pieces</span><span class="p">()</span>
+<span class="n">have_new_state</span><span class="p">()</span>  <span class="c1"># indexes the initial state</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">check_solved</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">next_move</span><span class="p">():</span>
+        <span class="c1"># when this is False we have x, -x as the last 2 moves (indicating taking</span>
+        <span class="c1"># back the last move did not lead to new states) -&gt; we then remove those 2,</span>
+        <span class="c1"># so we take back the last but one move - until we have new state again:</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">take_last_move_back</span><span class="p">():</span>
+            <span class="n">moves</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">moves</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_deep.py#L355">https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_deep.py#L355</a></p>
+</div>
+</div>
+</div>
+<hr/>
+
+<p>where next_move is like:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Code</label><label for="__tabbed_2_2"><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_deep.py#L323"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg></span></a></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">next_move</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">nr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pieces</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">pieces</span><span class="p">[</span><span class="n">nr</span><span class="p">]</span>
+        <span class="c1"># print(p)</span>
+        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">go_left_if_new_state</span><span class="p">()</span> <span class="ow">or</span> <span class="n">p</span><span class="o">.</span><span class="n">go_right_if_new_state</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_deep.py#L323">https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_deep.py#L323</a></p>
+</div>
+</div>
+</div>
+<hr/>
+
+<h4 id="state-indexing">State Indexing<a class="headerlink" href="#state-indexing" title="Permanent link">¤</a></h4>
+<p>The algo depends on knowing if a board state had been reached before, i.e. all reached states have
+to be kept in a set in memory, in a comparable form. </p>
+<p>We simply concat the top left position of the pieces into a string:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Code</label><label for="__tabbed_3_2"><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_deep.py#L286"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg></span></a></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">calc_state</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;get a unique id per board(=pieces) state&quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">nr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pieces</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">pieces</span><span class="p">[</span><span class="n">nr</span><span class="p">]</span>
+        <span class="n">row</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">col</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">nr</span><span class="si">}{</span><span class="n">row</span><span class="si">}{</span><span class="n">col</span><span class="si">}</span><span class="s1">:&#39;</span>
+        <span class="c1"># if nr == 5 and row == 2: breakpoint()  # FIXME BREAKPOINT</span>
+    <span class="k">return</span> <span class="n">s</span>
+
+
+<span class="k">def</span> <span class="nf">have_new_state</span><span class="p">():</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">calc_state</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">states</span><span class="p">:</span>
+        <span class="n">states</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_deep.py#L286">https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_deep.py#L286</a></p>
+</div>
+</div>
+</div>
+<hr/>
+
+<p>which produces states like these:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">pp</span> <span class="n">states</span>
+<span class="p">{</span><span class="s1">&#39;121:200:301:402:513:614:730:832:943:1051:1153:&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;121:200:301:402:523:614:730:832:943:1051:1153:&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;121:200:301:403:513:614:730:832:943:1051:1153:&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;121:200:301:403:523:614:730:832:943:1051:1153:&#39;</span><span class="p">,</span> 
+ <span class="o">...</span>
+</code></pre></div>
+<h4 id="tree-traversal-path">Tree Traversal Path<a class="headerlink" href="#tree-traversal-path" title="Permanent link">¤</a></h4>
+<p>Also, in order to <em>backtrack</em>, we have to remember the moves we did up to a certain state:</p>
+<p>This we do efficiently only by putting the moved piece into an array, e.g.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">pp</span> <span class="n">moves</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</code></pre></div>
+<p>where -4 means we moved piece nr 4 left or up (dependend on if it is a horizontal or vertical
+piece), while +4 means right or down. In the example (which is from the above shown board 605) we
+moved piece </p>
+<ul>
+<li>nr 4 one right</li>
+<li>then 5 one down</li>
+<li>then 4 one left</li>
+<li>then 9 one right</li>
+<li>then 4 one right</li>
+</ul>
+<p>(you might already anticipate the major problem with this DFS approach)</p>
+<p>When we have to backtrack (undo), we simply move the piece into the opposite direction, switching
+off the state comparison part in <code>dev move</code>, via a global <code>undo_mode</code> boolean.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any move is just moving a piece <strong>one</strong> cell in the matrix.</p>
+</div>
+<h4 id="printing-the-board-showing-the-move">Printing the Board, Showing the Move<a class="headerlink" href="#printing-the-board-showing-the-move" title="Permanent link">¤</a></h4>
+<p>Using some ansi colors, and turning two digit piece numbers into letters (a=10, b=11, ...) we can
+nicely visualize the board and the move (background color dark purple then):</p>
+<p>Here the example from above:</p>
+<p><img alt="" src="img/deep.png" /></p>
+<h3 id="runtime-behaviour">Runtime Behaviour<a class="headerlink" href="#runtime-behaviour" title="Permanent link">¤</a></h3>
+<h4 id="output">Output<a class="headerlink" href="#output" title="Permanent link">¤</a></h4>
+<p><img alt="" src="img/deepsol.png" /></p>
+<h4 id="discussion">Discussion<a class="headerlink" href="#discussion" title="Permanent link">¤</a></h4>
+<p>Good:</p>
+<ul>
+<li>The solution is found by this algorithm.</li>
+<li>It is very fast</li>
+<li>Nearly no memory required (solely the moves array increases by an integer, per move, plus all
+  indexed states)</li>
+</ul>
+<p>Bad: Way too many (unnecessary) moves:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here the backtracking moves are already eliminated, i.e. every single one of this 1745 moves
+produced a unique (but often unnecessary) state.</p>
+</div>
+<h2 id="breadth-first-attempt-1">Breadth First: Attempt 1<a class="headerlink" href="#breadth-first-attempt-1" title="Permanent link">¤</a></h2>
+<p>To find a solution with a minimum number of moves, DFS cannot work. We would have to try every
+single possible path.</p>
+<p>So we changed to algo to BFS:</p>
+<ol>
+<li>From a given state, try <em>every</em> possible move, which produces new state</li>
+<li>For <em>any</em> of these, go back to 1 (checking if solved after each move).</li>
+</ol>
+<p>No backtracking involved here.</p>
+<p><img alt="" src="img/bfs.png" /></p>
+<p>Sounds simple, is harder.</p>
+<h3 id="new-ingredients">New Ingredients<a class="headerlink" href="#new-ingredients" title="Permanent link">¤</a></h3>
+<h4 id="main-loop_1">Main Loop<a class="headerlink" href="#main-loop_1" title="Permanent link">¤</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Code</label><label for="__tabbed_4_2"><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L341"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg></span></a></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">all_states_one_move_deeper</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">board</span>
+    <span class="n">last_states</span> <span class="o">=</span> <span class="n">tree</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;next move: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;breadth is: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">last_states</span><span class="p">))</span>
+    <span class="n">next_states</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">last_states</span><span class="p">:</span>
+        <span class="n">ns</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">&#39;next_states&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">:</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">&#39;board&#39;</span><span class="p">]</span>
+            <span class="n">possbl_mov</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">nr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pieces</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">board</span> <span class="o">=</span> <span class="n">clone_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+                <span class="n">register_pieces</span><span class="p">()</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">pieces</span><span class="p">[</span><span class="n">nr</span><span class="p">]</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">go_left_if_new_state</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">r</span><span class="p">:</span>
+                    <span class="n">possbl_mov</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;board&#39;</span><span class="p">:</span> <span class="n">clone_state</span><span class="p">(</span><span class="n">board</span><span class="p">),</span> <span class="s1">&#39;nr&#39;</span><span class="p">:</span> <span class="n">nr</span><span class="p">})</span>
+                    <span class="n">check_solved</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+                <span class="n">board</span> <span class="o">=</span> <span class="n">clone_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+                <span class="n">register_pieces</span><span class="p">()</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">pieces</span><span class="p">[</span><span class="n">nr</span><span class="p">]</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">go_right_if_new_state</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">r</span><span class="p">:</span>
+                    <span class="n">possbl_mov</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;board&#39;</span><span class="p">:</span> <span class="n">clone_state</span><span class="p">(</span><span class="n">board</span><span class="p">),</span> <span class="s1">&#39;nr&#39;</span><span class="p">:</span> <span class="n">nr</span><span class="p">})</span>
+                    <span class="n">check_solved</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">possbl_mov</span><span class="p">:</span>
+                <span class="n">next_states</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;next_states&#39;</span><span class="p">:</span> <span class="n">possbl_mov</span><span class="p">,</span> <span class="s1">&#39;prev&#39;</span><span class="p">:</span> <span class="n">state</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">next_states</span><span class="p">:</span>
+        <span class="n">tree</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_states</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;no solution&#39;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Start State:&#39;</span><span class="p">)</span>
+    <span class="n">print_board</span><span class="p">()</span>
+    <span class="n">register_pieces</span><span class="p">()</span>
+    <span class="n">tree</span><span class="o">.</span><span class="n">append</span><span class="p">([{</span><span class="s1">&#39;prev&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;next_states&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;board&#39;</span><span class="p">:</span> <span class="n">board</span><span class="p">,</span> <span class="s1">&#39;nr&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}]}])</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">all_states_one_move_deeper</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L341">https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L341</a></p>
+</div>
+</div>
+</div>
+<hr/>
+
+<h4 id="printing-the-solution">Printing the Solution<a class="headerlink" href="#printing-the-solution" title="Permanent link">¤</a></h4>
+<p>Since BFS should find the ideal solution we can print all moves to it at the end:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Code</label><label for="__tabbed_5_2"><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L307"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg></span></a></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">print_solution</span><span class="p">(</span><span class="n">prev</span><span class="p">,</span> <span class="n">sec</span><span class="p">):</span>
+    <span class="n">move_nr</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">old_piece</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">nr_moves</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">tree</span><span class="p">:</span>
+        <span class="n">move_nr</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">moves</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
+                <span class="n">ns</span> <span class="o">=</span> <span class="n">move</span><span class="p">[</span><span class="s1">&#39;next_states&#39;</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">state</span><span class="p">[</span><span class="s1">&#39;board&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">prev</span><span class="p">:</span>
+                        <span class="n">piece</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">&#39;nr&#39;</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">piece</span> <span class="o">==</span> <span class="n">old_piece</span><span class="p">:</span>
+                            <span class="c1"># a piece is moved over &gt; 1 cells, this counts as ONE move:</span>
+                            <span class="c1"># adding 1 will result in us reporting one move less then:</span>
+                            <span class="n">move_nr</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;move &#39;</span><span class="p">,</span> <span class="n">move_nr</span><span class="p">,</span> <span class="n">piece</span><span class="p">)</span>
+                        <span class="n">print_board</span><span class="p">(</span><span class="n">prev</span><span class="p">,</span> <span class="n">piece</span><span class="p">)</span>
+                        <span class="n">prev</span> <span class="o">=</span> <span class="n">move</span><span class="p">[</span><span class="s1">&#39;prev&#39;</span><span class="p">]</span>
+                        <span class="n">old_piece</span> <span class="o">=</span> <span class="n">piece</span>
+                        <span class="k">raise</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No solution found&#39;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="n">lmoves</span> <span class="o">=</span> <span class="n">nr_moves</span> <span class="o">-</span> <span class="n">move_nr</span>
+    <span class="n">lstates</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Solved in </span><span class="si">{</span><span class="n">lmoves</span><span class="si">}</span><span class="s1"> moves (producing </span><span class="si">{</span><span class="n">lstates</span><span class="si">}</span><span class="s1"> States). Took </span><span class="si">{</span><span class="n">sec</span><span class="si">}</span><span class="s1">sec.&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L307">https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme_breadth_first_single_moves.py#L307</a></p>
+</div>
+</div>
+</div>
+<hr/>
+
+<p>This walks the tree (with last entry the solution) like this:</p>
+<ul>
+<li>pop the last move </li>
+<li>print the one, which state is referred to as prev state from the previously printed</li>
+</ul>
+<p>I.e. it will print the solution moves, bottom up, starting from the solution.</p>
+<p>Also, since in the real game, a move over TWO cells counts as ONE move (while we have only single
+cell moves), we detect those multiple moves with one piece in that print out routine, adding 1 to
+the move number - in the example this results in 11 eliminated multiple moves with one piece.</p>
+<h3 id="runtime-behaviour_1">Runtime Behaviour<a class="headerlink" href="#runtime-behaviour_1" title="Permanent link">¤</a></h3>
+<h4 id="output_1">Output<a class="headerlink" href="#output_1" title="Permanent link">¤</a></h4>
+<p><img alt="" src="img/bfs1sol.png" /></p>
+<h4 id="discussion_1">Discussion<a class="headerlink" href="#discussion_1" title="Permanent link">¤</a></h4>
+<p>Good:</p>
+<ul>
+<li>FAR less moves than DFS (38 instead of 1745).</li>
+</ul>
+<p>Bad:</p>
+<ul>
+<li>Far bigger solving time (3.6 sec vs 0.17 for DFS)</li>
+<li>Far more memory required, since we have to now keep <em>all</em> the board configs in memory: Until the
+  solution found, we do not know <em>which</em> path will be the successful one...</li>
+</ul>
+<p><img alt="" src="img/tree.png" /></p>
+<h5 id="it-is-still-not-perfect">It is still not perfect<a class="headerlink" href="#it-is-still-not-perfect" title="Permanent link">¤</a></h5>
+<p>Trying the solution within the real game, we got only 2 stars - well done but not the perfect one
+found - which is 32 and not 38 moves.</p>
+<p>Why.</p>
+<p>Well, looking at the first moves we see the answer. It moves </p>
+<ul>
+<li>piece 5 down one cell</li>
+<li>then 9 right one cell</li>
+<li>then, with 9 removed from the column of 5, 5 again down one cell</li>
+</ul>
+<p>which is 3 moves to a certain state in the successful path.</p>
+<p>while moving</p>
+<ul>
+<li><em>first</em> 9 right,  </li>
+<li><em>then</em> 5 down 2 cells </li>
+</ul>
+<p>would be only 2 moves to the same state.</p>
+<p>Why did it not find that, what prevented it.</p>
+<p>Answer (after debugging) - check the terminal output of the solution shown above:</p>
+<ul>
+<li>In move 1 it did also register the move 9 right</li>
+<li>Then in move 2 it started with the board in state after 5 down one (and 9 in orig place), found 9
+  right and remembered the state</li>
+<li>Then in move 2 it tried new moves after 9 right first, found 5 down one - and stopped. Since that
+  state was already indexed. 5 down 2 cells was therefore not even tried.</li>
+</ul>
+<p>So: Our single cell approach is the problem. We cannot, in the main loop, move only single cells
+and then eliminate double moves only at solution printout.</p>
+<p>We must cover multi cell moves already in the main loop.</p>
+<h2 id="breadth-first-attempt-2">Breadth First: Attempt 2<a class="headerlink" href="#breadth-first-attempt-2" title="Permanent link">¤</a></h2>
+<p>This is the right approach:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Code</label><label for="__tabbed_6_2"><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme.py#L366"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg></span></a></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">all_states_one_move_deeper</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">board</span>
+    <span class="n">last_states</span> <span class="o">=</span> <span class="n">tree</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;next move: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;breadth is: &#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="s1">&#39;next_states&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">last_states</span><span class="p">]))</span>
+    <span class="n">next_states</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">last_states</span><span class="p">:</span>
+        <span class="n">ns</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">&#39;next_states&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">:</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">&#39;board&#39;</span><span class="p">]</span>
+            <span class="n">possbl_mov</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">nr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pieces</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="c1"># if not nr in (12,): continue</span>
+                <span class="k">for</span> <span class="nb">dir</span> <span class="ow">in</span> <span class="s1">&#39;go_left_if_new_state&#39;</span><span class="p">,</span> <span class="s1">&#39;go_right_if_new_state&#39;</span><span class="p">:</span>
+                    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                        <span class="n">board</span> <span class="o">=</span> <span class="n">clone_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+                        <span class="n">register_pieces</span><span class="p">()</span>
+                        <span class="n">p</span> <span class="o">=</span> <span class="n">pieces</span><span class="p">[</span><span class="n">nr</span><span class="p">]</span>
+                        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">mv</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="nb">dir</span><span class="p">)</span>
+                        <span class="n">r</span> <span class="o">=</span> <span class="n">mv</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="k">break</span>
+                        <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                            <span class="k">continue</span>
+                        <span class="n">check_solved</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">nr</span><span class="p">)</span>
+                        <span class="n">possbl_mov</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                            <span class="p">{</span><span class="s1">&#39;board&#39;</span><span class="p">:</span> <span class="n">clone_state</span><span class="p">(</span><span class="n">board</span><span class="p">),</span> <span class="s1">&#39;nr&#39;</span><span class="p">:</span> <span class="n">nr</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="n">count</span><span class="p">}</span>
+                        <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">possbl_mov</span><span class="p">:</span>
+                <span class="n">next_states</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;next_states&#39;</span><span class="p">:</span> <span class="n">possbl_mov</span><span class="p">,</span> <span class="s1">&#39;prev&#39;</span><span class="p">:</span> <span class="n">state</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">next_states</span><span class="p">:</span>
+        <span class="n">tree</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_states</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;no solution&#39;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Start State:&#39;</span><span class="p">)</span>
+    <span class="n">print_board</span><span class="p">()</span>
+    <span class="n">register_pieces</span><span class="p">()</span>
+    <span class="n">have_new_state</span><span class="p">()</span>  <span class="c1"># register initial state</span>
+    <span class="n">tree</span><span class="o">.</span><span class="n">append</span><span class="p">([{</span><span class="s1">&#39;prev&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;next_states&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;board&#39;</span><span class="p">:</span> <span class="n">board</span><span class="p">,</span> <span class="s1">&#39;nr&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}]}])</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">all_states_one_move_deeper</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme.py#L366">https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/unblockme.py#L366</a></p>
+</div>
+</div>
+</div>
+<hr/>
+
+<p>Here, we try move to a certain direction not just one cell but as many cells as possible, on the board, for a given overall move number.</p>
+<p>Means: This increases the width of every move yet more: E.g. in our example, for the second move,
+based upon first (previous) number 9 right one cell, we have nr 5 down one AND 5 down two cells as possible single
+move continuations now.</p>
+<h3 id="runtime-behaviour_2">Runtime Behaviour<a class="headerlink" href="#runtime-behaviour_2" title="Permanent link">¤</a></h3>
+<h4 id="output_2">Output<a class="headerlink" href="#output_2" title="Permanent link">¤</a></h4>
+<p><img alt="" src="img/bfssol.png" /></p>
+<p>(9 right is now first move, 5 completely down only in move 5)</p>
+<h4 id="discussion_2">Discussion<a class="headerlink" href="#discussion_2" title="Permanent link">¤</a></h4>
+<p>Good:</p>
+<ul>
+<li>Finds the perfect solution, confirmed by replaying the solution in the real game.</li>
+</ul>
+<p>Bad:</p>
+<ul>
+<li>Yet more CPU, we are at 4.8 sec vs 0.17 DFS) and yet more memory (breadth is even higher)</li>
+</ul>
+<h2 id="klotski">Klotski<a class="headerlink" href="#klotski" title="Permanent link">¤</a></h2>
+<h3 id="normal-version">Normal Version<a class="headerlink" href="#normal-version" title="Permanent link">¤</a></h3>
+<p>Having the basic algo in place, we tried it on a variant of the game (actually it seems the
+original):</p>
+<p><a href="https://www.y8.com/games/klotski"><img alt="" src="img/klotski.png" /></a></p>
+<p>Big difference to UnblockMe: Pieces can now be moved into <em>any</em> direction:</p>
+<p>So the main loop basically identical to unblockme's optimal solution bfs:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Code</label><label for="__tabbed_7_2"><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/klotski.py#L299"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg></span></a></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">all_states_one_move_deeper</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">board</span>
+    <span class="n">last_states</span> <span class="o">=</span> <span class="n">tree</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;next move: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;breadth is: &#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="s1">&#39;next_states&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">last_states</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;board states: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">states</span><span class="p">))</span>
+    <span class="n">next_states</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">last_states</span><span class="p">:</span>
+        <span class="n">ns</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">&#39;next_states&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">:</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">&#39;board&#39;</span><span class="p">]</span>
+            <span class="n">possbl_mov</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">nr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pieces</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="c1"># try any direction:</span>
+                <span class="k">for</span> <span class="nb">dir</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                        <span class="n">board</span> <span class="o">=</span> <span class="n">clone_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+                        <span class="n">register_pieces</span><span class="p">()</span>
+                        <span class="n">p</span> <span class="o">=</span> <span class="n">pieces</span><span class="p">[</span><span class="n">nr</span><span class="p">]</span>
+                        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="nb">dir</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dir</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">count</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="k">break</span>
+                        <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                            <span class="k">continue</span>
+                        <span class="n">check_solved</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">nr</span><span class="p">)</span>
+                        <span class="n">possbl_mov</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                            <span class="p">{</span><span class="s1">&#39;board&#39;</span><span class="p">:</span> <span class="n">clone_state</span><span class="p">(</span><span class="n">board</span><span class="p">),</span> <span class="s1">&#39;nr&#39;</span><span class="p">:</span> <span class="n">nr</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="n">count</span><span class="p">}</span>
+                        <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">possbl_mov</span><span class="p">:</span>
+                <span class="n">next_states</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;next_states&#39;</span><span class="p">:</span> <span class="n">possbl_mov</span><span class="p">,</span> <span class="s1">&#39;prev&#39;</span><span class="p">:</span> <span class="n">state</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">next_states</span><span class="p">:</span>
+        <span class="n">tree</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_states</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;no solution&#39;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Start State:&#39;</span><span class="p">)</span>
+    <span class="n">print_board</span><span class="p">()</span>
+    <span class="n">register_pieces</span><span class="p">()</span>
+    <span class="n">have_new_state</span><span class="p">()</span>  <span class="c1"># register initial state</span>
+    <span class="n">tree</span><span class="o">.</span><span class="n">append</span><span class="p">([{</span><span class="s1">&#39;prev&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;next_states&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;board&#39;</span><span class="p">:</span> <span class="n">board</span><span class="p">,</span> <span class="s1">&#39;nr&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}]}])</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">all_states_one_move_deeper</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><a href="https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/klotski.py#L299">https://github.com/AXGKl/blog/blob/master/docs/ll/fun/unblockme/klotski.py#L299</a></p>
+</div>
+</div>
+</div>
+<hr/>
+
+<h4 id="challenges">Challenges<a class="headerlink" href="#challenges" title="Permanent link">¤</a></h4>
+<p>But the run time got huge, with a crazy high breadth. We tackled that by using another indexing
+method, where a state is considered identical to another if pieces with only the same dimensions
+reside on the same places - not necessarily with their piece number matching:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+
+<span class="c1"># is considered ident to</span>
+
+<span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+</code></pre></div>
+<p>The solution to this problem requires 91 moves(!):</p>
+<p><img alt="" src="img/klsol.png" /></p>
+<h3 id="klotski-hard-version">Klotski - Hard Version<a class="headerlink" href="#klotski-hard-version" title="Permanent link">¤</a></h3>
+<p>If this wasn't hard enough, there is also an expert version of the game:</p>
+<p><a href="https://www.y8.com/games/klotski"><img alt="" src="img/klotski_hard.png" /></a> </p>
+<p>Initial board setup varies, had also e.g. this:</p>
+<div class="highlight"><pre><span></span><code><span class="n">board_hard1</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">2</span> <span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span> <span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">7</span> <span class="p">,</span> <span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">7</span> <span class="p">,</span> <span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">17</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">24</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">24</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">22</span><span class="p">],</span>
+    <span class="p">]</span>
+</code></pre></div>
+<h4 id="challenges-bfs-not-feasible">Challenges: BFS not feasible<a class="headerlink" href="#challenges-bfs-not-feasible" title="Permanent link">¤</a></h4>
+<p>The bfs <a href="klotski.py">code</a> code in general did not need any changes, except an adjustment of
+<code>solved_row</code>, <code>solved_col</code>.</p>
+<p>Problem: Computing time was not tolerable. With so many pieces on the board, possibilities to move
+them around, i.e. breadth, exploded:</p>
+<div class="highlight"><pre><span></span><code>(...)
+next move:  12
+breadth is:  1893
+board states:  4987
+time 45.87 sec
+next move:  13
+breadth is:  2901
+board states:  7888
+time 74.44 sec
+next move:  14
+breadth is:  4482
+board states:  12370
+time 117.52 sec
+next move:  15
+breadth is:  7062
+board states:  19432
+time 184.78 sec
+(...)
+</code></pre></div>
+<p>We did not profile and the code is rater inefficient, grown from the pretty fast DFS algo into BFS.
+But an optimization would need orders of magnitude improvement, which I did not go into. I assume I would need
+to change programming language for finding that in bearable time.</p>
+<p>Rather I tried DFS with this, in order to see if it also performs. And it did:</p>
+<p>Result:</p>
+<p><img alt="" src="img/klotski_hard_dfs.png" /></p>
+<p>0.4 seconds - unexpectedly fast, after having to interrupt the bfs version for resource problems.</p>
+<p>Over 8000 moves is, I assume, an order of magnitude too high, compared to the (unknown) perfect
+solution (remember: the normal version had 91
+for perfect, here we'll have at least 5-10 times as many).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In klotzki expert mode, BFS was not even feasible, while DFS found a solution in less then half a second.</p>
+</div>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¤</a></h2>
+<p>For the given class of problems <strong>DFS</strong> is:</p>
+<ul>
+<li>easier to program</li>
+<li>light on resources, i.e. super fast</li>
+<li>finds a solution guaranteed.</li>
+<li>But that solution will be FAR from the optimal one</li>
+</ul>
+<p><strong>BFS</strong> is <em>pretty</em> resource intense (CPU <em>and</em> memory) - but will find the <em>perfect</em> solution, given we
+consider really <em>every</em> possible move, for a certain step (e.g. not just single cell moves in
+UnblockMe).</p>
+<p><img alt="" src="img/perfect.png" width="400" /></p>
+
+<script>typeof start_lc === "undefined" ? 0 : start_lc() </script>
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<style>
+  .md-footer__link--next {
+    width: 75%;
+  }
+  .overlay_block {
+    position: relative;
+    width: 100%;
+  }
+  .overlay_block .overlay_link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .overlay_block .overlay_inner {
+    position: relative;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .overlay_block .overlay_inner a {
+    pointer-events: all;
+  }
+</style>
+
+<footer class="md-footer">
+  
+
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../../programming/python/prompt_toolkit/dup2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Stream Control" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Stream Control
+            </div>
+          </div>
+        </a>
+
+
+
+       
+      <div class="md-footer__link md-footer__link--next">
+        
+        <div class="overlay_block">
+          <a
+            class="overlay_link"
+            href="../einstein/"
+            rel="next"
+          ></a>
+          <div class="overlay_inner">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                
+                <a href="/blog/programming/python/rx/">
+                    
+                  <small>💻 DEV</small> - 
+                </a>
+                
+                <a href="/blog/programming/python/rx/">
+                    
+                  <small>🐍 Python</small> - 
+                </a>
+                
+                <a href="/blog/ll/fun/unblockme/">
+                    
+                  <small>Fun</small> - 
+                </a>
+                
+                <a href="/blog/ll/fun/einstein/">
+                     <span>Einstein</span> 
+                </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-left: -2rem" class="md-footer__button md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+        </div>
+      </div>
+
+
+
+
+      
+    </nav>
+  </div>
+  
+
+
+
+
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Gunther Klessinger
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/axiros" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/fa_all.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm-addon-search.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm.4.9.0.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/Rx.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/tablesort.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/lc.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm-addon-fit.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/tables.js"></script>
+      
+    
+  </body>
+</html>

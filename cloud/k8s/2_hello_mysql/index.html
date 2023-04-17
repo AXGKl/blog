@@ -1,0 +1,2804 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Random Thoughts">
+      
+      
+      
+        <link rel="canonical" href="https://AXGKl.github.io/blog/cloud/k8s/2_hello_mysql/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>With DB - AXGK Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../lcd/lp/css/xterm.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="black" data-md-color-accent="deep-purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stateful-app-with-mysql-database" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="AXGK Blog" class="md-header__button md-logo" aria-label="AXGK Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AXGK Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              With DB
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AXGKl/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AXGKl/blog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Overview
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ll/apps/apps/" class="md-tabs__link">
+        🐧 LINUX
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dnsmasq/" class="md-tabs__link md-tabs__link--active">
+        💭 CLOUD
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../programming/python/rx/" class="md-tabs__link">
+        💻 DEV
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../inet/videos/" class="md-tabs__link">
+      📺 VIDS
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../logbook/" class="md-tabs__link">
+      ✏️  LOG
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/changelog/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="AXGK Blog" class="md-nav__button md-logo" aria-label="AXGK Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    AXGK Blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AXGKl/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AXGKl/blog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          🐧 LINUX
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🐧 LINUX" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          🐧 LINUX
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/apps/apps/" class="md-nav__link">
+        Apps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/devices/tv_q8/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/distro/" class="md-nav__link">
+        Distros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/arco/" class="md-nav__link">
+        Distros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/emacs/emacs/" class="md-nav__link">
+        Emacs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/gimp/gimp/" class="md-nav__link">
+        Gimp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Hardware
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Hardware" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Hardware
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_7_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_1">
+          Input
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Input" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Input
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/hw/input/keyboard/" class="md-nav__link">
+        Keyboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/hw/input/k860/" class="md-nav__link">
+        K860
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/hw/input/corne/" class="md-nav__link">
+        Corne
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/hw/input/hp/" class="md-nav__link">
+        HP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/mkdocs/mkdocs/" class="md-nav__link">
+        MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Suckless
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Suckless" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Suckless
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/dwm/" class="md-nav__link">
+        dwm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/st/" class="md-nav__link">
+        st
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_4" data-md-state="indeterminate" type="checkbox" id="__nav_2_9_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_4">
+          Statusbar Fun
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Statusbar Fun" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_9_4">
+          <span class="md-nav__icon md-icon"></span>
+          Statusbar Fun
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar/" class="md-nav__link">
+        The Problem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/status_bar_fun/2021.05.24_dwm_status_2_never_call_xsession_within_dwm/" class="md-nav__link">
+        XFCE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/status_bar_fun/2021.05.24_dwm_status_3_xfce4_panel_in_dwm/" class="md-nav__link">
+        XFCE Panel in DWM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor/" class="md-nav__link">
+        CPU Monitor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" data-md-state="indeterminate" type="checkbox" id="__nav_2_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10">
+          Vim
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vim" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Vim
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/vim/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/astro_vim/" class="md-nav__link">
+        AstroVim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/astro_vim_null_ls_builtins/" class="md-nav__link">
+        AstroVimLspBuiltins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/ultisnips/" class="md-nav__link">
+        Ultisnips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/html/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/todo/" class="md-nav__link">
+        Todo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          💭 CLOUD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💭 CLOUD" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          💭 CLOUD
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dnsmasq/" class="md-nav__link">
+        DNSMasq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ci/github_actions/" class="md-nav__link">
+        Github Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kubernetes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k9s/k9s/" class="md-nav__link">
+        K9s Terminal UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_hello_app/" class="md-nav__link">
+        First App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          With DB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        With DB
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-app" class="md-nav__link">
+    Server App
+  </a>
+  
+    <nav class="md-nav" aria-label="Server App">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#containerize" class="md-nav__link">
+    Containerize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    Test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit" class="md-nav__link">
+    Commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push" class="md-nav__link">
+    Push
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-deployment" class="md-nav__link">
+    Cloud Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion" class="md-nav__link">
+    Discussion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Terraform
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Terraform" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Terraform
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/resource_creation/" class="md-nav__link">
+        Basic Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/ansible/" class="md-nav__link">
+        TF And Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/k8s/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/k8s/k8s_on_do/" class="md-nav__link">
+        K8s Cluster Infra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/k8s/k8s_provider/do_k8s/" class="md-nav__link">
+        Attaching Using Token Only
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/k8s/k8s_provider/k8s_provider/" class="md-nav__link">
+        The K8s Provider
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          💻 DEV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💻 DEV" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          💻 DEV
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" data-md-state="indeterminate" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          🐍 Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🐍 Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          🐍 Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/rx/" class="md-nav__link">
+        Reactive Programming With RxPY
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2">
+          TermUIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TermUIs" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          TermUIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/prompt_toolkit/" class="md-nav__link">
+        Prompt Toolkit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/prompt_toolkit/dup2/" class="md-nav__link">
+        Stream Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" data-md-state="indeterminate" type="checkbox" id="__nav_4_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3">
+          Fun
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/fun/unblockme/" class="md-nav__link">
+        UnblockMe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/fun/einstein/" class="md-nav__link">
+        Einstein
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Electronics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Electronics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Electronics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/" class="md-nav__link">
+        Interacting with Real World
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_2">
+          Desk Cycling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Desk Cycling" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Desk Cycling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/intro/" class="md-nav__link">
+        Zwiftifying My DeskCycle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/powermeter/" class="md-nav__link">
+        Power Meters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/mechanical/" class="md-nav__link">
+        Know the Gear Position
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/electromagnet/" class="md-nav__link">
+        Electromagent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/generator/" class="md-nav__link">
+        Generating Power
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inet/videos/" class="md-nav__link">
+        📺 VIDS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../logbook/" class="md-nav__link">
+        ✏️  LOG
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/navigation/" class="md-nav__link">
+        Navigation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-app" class="md-nav__link">
+    Server App
+  </a>
+  
+    <nav class="md-nav" aria-label="Server App">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#containerize" class="md-nav__link">
+    Containerize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    Test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit" class="md-nav__link">
+    Commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push" class="md-nav__link">
+    Push
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-deployment" class="md-nav__link">
+    Cloud Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion" class="md-nav__link">
+    Discussion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="editor:///home/gk/repos/blog/docs/cloud/k8s/2_hello_mysql/index.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<style>
+
+          @media only screen and (min-width: 76.25em) {
+            .md-main__inner {
+              max-width: none;
+            }
+            .md-sidebar--primary {
+              left: 0;
+            }
+            .md-sidebar--secondary {
+              right: 0;
+              margin-left: 0;
+              -webkit-transform: none;
+              transform: none;   
+            }
+          }
+
+</style>
+<h1 id="stateful-app-with-mysql-database">Stateful App With MySQL Database<a class="headerlink" href="#stateful-app-with-mysql-database" title="Permanent link">¤</a></h1>
+<p>Lets connect a database to our <a href="../1_hello_app/">hello app</a>, i.e. we need a Stateful Set.</p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">¤</a></h2>
+<p>We require the app from <a href="../1_hello_app/">last chapter</a>:</p>
+<!-- id: 1e36edf2f174f4c02372408a11c40ef6 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Cmd</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>git ls-files <span class="c1"># lp: asserts=server.py</span>
+<span class="gp">$ </span>git tag
+<span class="gp">$ </span>sed -i <span class="s1">&#39;s/0.2/0.3/&#39;</span> environ <span class="c1"># version now 0.3</span>
+<span class="gp">$ </span><span class="nb">source</span> ./environ
+<span class="gp">$ </span>rm -f *.yaml
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ git ls-files           
+Dockerfile               
+environ                  
+server.py
+$ git tag                
+0.2                      
+0.3
+$ sed -i 's/0.2/0.3/' environ # version now 0.3    
+$ 
+$ source ./environ
+$ rm -f *.yaml
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 1e36edf2f174f4c02372408a11c40ef6 -->
+
+<h2 id="server-app">Server App<a class="headerlink" href="#server-app" title="Permanent link">¤</a></h2>
+<p>First we need a mysql server:</p>
+<!-- id: 67fb95a429eb155e68034ba317de5c3f -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Cmd</label><label for="__tabbed_2_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="o">(</span> p images <span class="p">|</span> grep mysql <span class="p">|</span> grep <span class="m">5</span>.7 <span class="o">||</span> p pull docker.io/library/mysql:5.7 <span class="o">)</span>
+<span class="gp">$ </span>p run -d -e <span class="nv">MYSQL_ROOT_HOST</span><span class="o">=</span><span class="s1">&#39;%&#39;</span> -e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>secret -e <span class="nv">MYSQL_DATABASE</span><span class="o">=</span>db -p3306:3306 --rm -ti mysql:5.7
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ ( p images | grep mysql | grep 5.7 || p pull docker.io/library/mysql:5.7 ) 
+docker.io/library/mysql                                  [1m[31m5.7[0m[39m[49m         8cf62[1m[31m507[0m[39m[49m0931  3 weeks ago   454 MB
+$ p run -d -e MYSQL_ROOT_HOST='%' -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=db -p3306:3306 --rm -ti mysql:5.7             
+ae4eebc46b6fd78074d9586f68a1e891f58d2a1a951a90bcfdb404458a12e975
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 67fb95a429eb155e68034ba317de5c3f -->
+
+<p>The app is simple webserver, now with database support plus a real app server framework:</p>
+<!-- id: 1b2787aec4e34f00b4798bd0ca41efff -->
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">cat</span> <span class="n">server</span><span class="o">.</span><span class="n">py</span>
+<span class="c1">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">bottle</span><span class="o">,</span> <span class="nn">bottle_mysql</span><span class="o">,</span> <span class="nn">json</span> <span class="k">as</span> <span class="nn">j</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">bottle</span><span class="o">.</span><span class="n">Bottle</span><span class="p">()</span>
+<span class="n">dbconf</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;dbuser&#39;</span><span class="p">,</span> <span class="s1">&#39;dbpass&#39;</span><span class="p">,</span> <span class="s1">&#39;dbname&#39;</span><span class="p">,</span> <span class="s1">&#39;dbhost&#39;</span><span class="p">)}</span>
+<span class="n">plugin</span> <span class="o">=</span> <span class="n">bottle_mysql</span><span class="o">.</span><span class="n">Plugin</span><span class="p">(</span><span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="n">dbconf</span><span class="p">))</span>
+<span class="n">app</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+
+<span class="n">now</span><span class="p">,</span> <span class="n">die</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/initdb&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">initdb</span><span class="p">(</span><span class="n">db</span><span class="p">):</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;drop TABLE IF EXISTS items&#39;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;CREATE TABLE items (name varchar(255), age int)&#39;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO items (name, age) VALUES (&#39;brian&#39;, 42)&quot;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;show tables&#39;</span><span class="p">)</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">)}</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/show/&lt;item&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * from items where name=</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">item</span><span class="p">,))</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">bottle</span><span class="o">.</span><span class="n">HTTPError</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s1">&#39;Item not found&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/env&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;GET&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">env</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;at&#39;</span><span class="p">:</span> <span class="n">now</span><span class="p">(),</span> <span class="s1">&#39;env&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">)}</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/kill/&lt;ec&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">kill</span><span class="p">(</span><span class="n">ec</span><span class="p">):</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">die</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">ec</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Starting bottle httpd server&#39;</span><span class="p">)</span>
+    <span class="n">bottle</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">28001</span><span class="p">)</span>
+</code></pre></div>
+<!-- id: 1b2787aec4e34f00b4798bd0ca41efff -->
+
+<h3 id="containerize">Containerize<a class="headerlink" href="#containerize" title="Permanent link">¤</a></h3>
+<!-- id: c11fb1022b1a2b9cd75ad89cbfcbb163 -->
+<div class="highlight"><pre><span></span><code>$ cat Dockerfile
+<span class="k">FROM</span><span class="w">         </span><span class="s">python:3.8</span>
+<span class="k">MAINTAINER</span><span class="w">   </span><span class="s">gk</span>
+<span class="k">RUN</span><span class="w">          </span>mkdir -p /app
+<span class="k">RUN</span><span class="w">          </span>pip install mysql bottle bottle-mysql
+<span class="k">WORKDIR</span><span class="w">      </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w">         </span>server.py /app/server.py
+<span class="k">ENV</span><span class="w">          </span>APP_ENV development
+<span class="k">EXPOSE</span><span class="w">       </span><span class="s">28001</span>
+<span class="k">CMD</span><span class="w">          </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;server.py&quot;</span><span class="p">]</span>
+</code></pre></div>
+<!-- id: c11fb1022b1a2b9cd75ad89cbfcbb163 -->
+
+<!-- id: 84c7f95145cdd1580776a54f8a37f904 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Cmd</label><label for="__tabbed_3_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>p rmi -f <span class="nv">$namespace</span>/<span class="nv">$app</span>
+<span class="gp">$ </span>p build --quiet -t <span class="nv">$app</span>  .
+<span class="gp">$ </span>p tag <span class="s2">&quot;</span><span class="nv">$app</span><span class="s2">:latest&quot;</span> <span class="s2">&quot;</span><span class="nv">$namespace</span><span class="s2">/</span><span class="nv">$app</span><span class="s2">:</span><span class="nv">$ver</span><span class="s2">&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ p rmi -f $namespace/$app                                                   
+Untagged: localhost/devapps/hello_app:0.3
+$ p build --quiet -t $app  .                                                 
+603b3f682f1e101453ca517ab5bd9f9d45a60b7825f80ff21df899abc91c5f84
+$ p tag "$app:latest" "$namespace/$app:$ver"
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 84c7f95145cdd1580776a54f8a37f904 -->
+
+<h3 id="test">Test<a class="headerlink" href="#test" title="Permanent link">¤</a></h3>
+<!-- id: c686722e8caaa40c9f168b820b05dad3 -->
+<p><xterm /></p>
+<pre><code>$ hostip="$(ip addr show |grep 'inet ' | grep -v 127 | head -n 1 | cut -d t -f2 | cut -db -f1 | cut -d'/' -f1 | xargs)"
+$ echo $hostip           
+10.0.0.84
+$ p run -d -ti --rm -p 28001:28001 -e dbuser=root -e dbpass=secret -e dbname=db -e dbhost=$hostip $namespace/$app:$ver          
+6b28f15292eefdc92fda8c1bee52207c47299a4958f42b72bef717309fb140af
+$ ( while true; do sleep 1; wget -q http://127.0.0.1:28001/initdb -O - &amp;&amp; break; done )               
+{"result": "{'Tables_in_db': 'items'}"}
+wget -q http://127.0.0.1:28001/show/brian -O - | jq . # lp: asserts=brian and result
+$ wget -q http://127.0.0.1:28001/show/brian -O - | jq .                      
+[1m{[0m[39m[49m                        
+[1m  [34m"result"[39m: {[0m[39m[49m            
+[1m    [34m"name"[39m: [0m[32m[49m"brian"[1m[39m,[0m[39m[49m     
+[1m    [34m"age"[39m: [0m[39m[49m42            
+[1m  }[0m[39m[49m                      
+[1m}[0m[39m[49m
+</code></pre>
+<!-- id: c686722e8caaa40c9f168b820b05dad3 -->
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The app container needed to connect to an ip different to 127.0.0.1 (mysql binds to <code>0.0.0.0</code> but
+127.0.0.1 within the app container is within its own network namespace).</p>
+</div>
+<p>Cleanup:</p>
+<!-- id: 64e3efed68c3a0cc50e88c3dcb300d64 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Cmd</label><label for="__tabbed_4_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>wget -q http://127.0.0.1:28001/kill/0
+<span class="gp">$ </span><span class="o">(</span> p ps <span class="p">|</span> grep mysqld <span class="p">|</span> cut -d<span class="s1">&#39; &#39;</span> -f1 <span class="p">|</span> xargs podman stop<span class="p">;</span> <span class="nb">echo</span> stopped <span class="o">)</span> <span class="c1"># lp: asserts=stopped</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ wget -q http://127.0.0.1:28001/kill/0
+$ ( p ps | grep mysqld | cut -d' ' -f1 | xargs podman stop; echo stopped )   
+ae4eebc46b6f                                    
+stopped
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 64e3efed68c3a0cc50e88c3dcb300d64 -->
+
+<h3 id="commit">Commit<a class="headerlink" href="#commit" title="Permanent link">¤</a></h3>
+<!-- id: 3de05d63e060a71ab8ed584eed9b17c4 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Cmd</label><label for="__tabbed_5_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>git commit -am <span class="s1">&#39;feat: mysql connection&#39;</span>
+<span class="gp">$ </span>git tag <span class="nv">$ver</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ git commit -am 'feat: mysql connection'                             
+On branch master                                
+Untracked files:                                
+  (use "git add &lt;file&gt;..." to include in what will be committed)                                
+        [31menv[39m
+
+nothing added to commit but untracked files present (use "git add" to track)
+$ git tag $ver        
+fatal: tag '0.3' already exists
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 3de05d63e060a71ab8ed584eed9b17c4 -->
+
+<h3 id="push">Push<a class="headerlink" href="#push" title="Permanent link">¤</a></h3>
+<!-- id: 23ed0b2db0dbe69c84c7a76c93ac10e5 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Cmd</label><label for="__tabbed_6_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>p login <span class="s2">&quot;</span><span class="k">$(</span>pass show reg/domain<span class="k">)</span><span class="s2">&quot;</span> -u <span class="k">$(</span>pass show reg/user<span class="k">)</span> -p <span class="s2">&quot;</span><span class="k">$(</span>pass show reg/passw<span class="k">)</span><span class="s2">&quot;</span>
+<span class="gp">$ </span><span class="nv">r</span><span class="o">=</span><span class="s2">&quot;docker://</span><span class="k">$(</span>pass show reg/domain<span class="k">)</span><span class="s2">/docker-internal/</span><span class="nv">$namespace</span><span class="s2">&quot;</span>
+<span class="gp">$ </span>p push --quiet --authfile<span class="o">=</span><span class="nv">$fn_reg_auth</span> <span class="nv">$namespace</span>/<span class="nv">$app</span>:<span class="nv">$ver</span> <span class="s2">&quot;</span><span class="nv">$r</span><span class="s2">/</span><span class="nv">$app</span><span class="s2">:</span><span class="nv">$ver</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> success <span class="c1"># lp: assert=success</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ p login "$(pass show reg/domain)" -u $(pass show reg/user) -p "$(pass show reg/passw)"                                                                              
+Login Succeeded!
+$ r="docker://$(pass show reg/domain)/docker-internal/$namespace"
+$ p push --quiet --authfile=$fn_reg_auth $namespace/$app:$ver "$r/$app:$ver" &amp;&amp; echo success                                                                          
+success
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 23ed0b2db0dbe69c84c7a76c93ac10e5 -->
+
+<h2 id="cloud-deployment">Cloud Deployment<a class="headerlink" href="#cloud-deployment" title="Permanent link">¤</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We follow <a href="https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/">this</a> tutorial, modified for our app.</p>
+</div>
+<p>Again we deploy the app using K8s' solely. First a secret "generator", configured for a static one
+(but you <a href="https://kubernetes.io/docs/concepts/configuration/secret/">could</a> have varying ones at every redeploy):</p>
+<!-- id: 197c4a39463011b1a4ab8c5f3292d5ab -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Cmd</label><label for="__tabbed_7_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>cat &lt;&lt;EOF &gt;./kustomization.yaml
+<span class="go">secretGenerator:</span>
+<span class="go">- name: mysql-pass</span>
+<span class="go">  literals:</span>
+<span class="go">  - password=myk8ssecret</span>
+<span class="go">resources:</span>
+<span class="go">  - mysql-deployment.yaml</span>
+<span class="go">  - hello2-deployment.yaml</span>
+<span class="go">EOF</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ cat &lt;&lt;EOF &gt;./kustomization.yaml               
+&gt; secretGenerator:                              
+&gt; - name: mysql-pass                            
+&gt;   literals:                                   
+&gt;   - password=myk8ssecret                      
+&gt; resources:                                    
+&gt;   - mysql-deployment.yaml                     
+&gt;   - hello2-deployment.yaml                    
+&gt; EOF                                           
+$
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 197c4a39463011b1a4ab8c5f3292d5ab -->
+
+<!-- id: e0cc65adf966c9384a07d4606dd8395e -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Cmd</label><label for="__tabbed_8_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>cat &lt;&lt;EOF &gt;./mysql-deployment.yaml
+<span class="go">apiVersion: v1</span>
+<span class="go">kind: Service</span>
+<span class="go">metadata:</span>
+<span class="go">  name: hello2-mysql</span>
+<span class="go">  labels:</span>
+<span class="go">    app: hello2</span>
+<span class="go">spec:</span>
+<span class="go">  ports:</span>
+<span class="go">    - port: 3306</span>
+<span class="go">  selector:</span>
+<span class="go">    app: hello2</span>
+<span class="go">    tier: mysql</span>
+<span class="go">  clusterIP: None</span>
+<span class="go">---</span>
+<span class="go">apiVersion: v1</span>
+<span class="go">kind: PersistentVolumeClaim</span>
+<span class="go">metadata:</span>
+<span class="go">  name: mysql-pv-claim</span>
+<span class="go">  labels:</span>
+<span class="go">    app: hello2</span>
+<span class="go">spec:</span>
+<span class="go">  accessModes:</span>
+<span class="go">    - ReadWriteOnce</span>
+<span class="go">  resources:</span>
+<span class="go">    requests:</span>
+<span class="go">      storage: 5Gi</span>
+<span class="go">---</span>
+<span class="go">apiVersion: apps/v1</span>
+<span class="go">kind: Deployment</span>
+<span class="go">metadata:</span>
+<span class="go">  name: hello2-mysql</span>
+<span class="go">  labels:</span>
+<span class="go">    app: hello2</span>
+<span class="go">spec:</span>
+<span class="go">  selector:</span>
+<span class="go">    matchLabels:</span>
+<span class="go">      app: hello2</span>
+<span class="go">      tier: mysql</span>
+<span class="go">  strategy:</span>
+<span class="go">    type: Recreate</span>
+<span class="go">  template:</span>
+<span class="go">    metadata:</span>
+<span class="go">      labels:</span>
+<span class="go">        app: hello2</span>
+<span class="go">        tier: mysql</span>
+<span class="go">    spec:</span>
+<span class="go">      containers:</span>
+<span class="go">      - image: mysql:5.7</span>
+<span class="go">        name: mysql</span>
+<span class="go">        args:</span>
+<span class="go">        - &quot;--ignore-db-dir=lost+found&quot;</span>
+<span class="go">        env:</span>
+<span class="go">        - name: MYSQL_ROOT_HOST</span>
+<span class="go">          value: &quot;%&quot; </span>
+<span class="go">        - name: MYSQL_DATABASE</span>
+<span class="go">          value: &quot;db&quot; </span>
+<span class="go">        - name: MYSQL_ROOT_PASSWORD</span>
+<span class="go">          valueFrom:</span>
+<span class="go">            secretKeyRef:</span>
+<span class="go">              name: mysql-pass</span>
+<span class="go">              key: password</span>
+<span class="go">        ports:</span>
+<span class="go">        - containerPort: 3306</span>
+<span class="go">          name: mysql</span>
+<span class="go">        volumeMounts:</span>
+<span class="go">        - name: mysql-persistent-storage</span>
+<span class="go">          mountPath: /var/lib/mysql</span>
+<span class="go">      volumes:</span>
+<span class="go">      - name: mysql-persistent-storage</span>
+<span class="go">        persistentVolumeClaim:</span>
+<span class="go">          claimName: mysql-pv-claim</span>
+<span class="go">EOF</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ cat &lt;&lt;EOF &gt;./mysql-deployment.yaml            
+&gt; apiVersion: v1                                
+&gt; kind: Service                                 
+&gt; metadata:                                     
+&gt;   name: hello2-mysql                          
+&gt;   labels:                                     
+&gt;     app: hello2                               
+&gt; spec:                                         
+&gt;   ports:                                      
+&gt;     - port: 3306                              
+&gt;   selector:                                   
+&gt;     app: hello2                               
+&gt;     tier: mysql                               
+&gt;   clusterIP: None                             
+&gt; ---                                           
+&gt; apiVersion: v1                                
+&gt; kind: PersistentVolumeClaim                   
+&gt; metadata:                                     
+&gt;   name: mysql-pv-claim                        
+&gt;   labels:                                     
+&gt;     app: hello2                               
+&gt; spec:                                         
+&gt;   accessModes:                                
+&gt;     - ReadWriteOnce                           
+&gt;   resources:                                  
+&gt;     requests:                                 
+&gt;       storage: 5Gi                            
+&gt; ---                                           
+&gt; apiVersion: apps/v1                           
+&gt; kind: Deployment                              
+&gt; metadata:                                     
+&gt;   name: hello2-mysql                          
+&gt;   labels:                                     
+&gt;     app: hello2                               
+&gt; spec:                                         
+&gt;   selector:                                   
+&gt;     matchLabels:                              
+&gt;       app: hello2                             
+&gt;       tier: mysql                             
+&gt;   strategy:                                   
+&gt;     type: Recreate                            
+&gt;   template:                                   
+&gt;     metadata:                                 
+&gt;       labels:                                 
+&gt;         app: hello2                           
+&gt;         tier: mysql                           
+&gt;     spec:                                     
+&gt;       containers:                             
+&gt;       - image: mysql:5.7                      
+&gt;         name: mysql                           
+&gt;         args:                                 
+&gt;         - "--ignore-db-dir=lost+found"        
+&gt;         env:                                  
+&gt;         - name: MYSQL_ROOT_HOST               
+&gt;           value: "%"                          
+&gt;         - name: MYSQL_DATABASE                
+&gt;           value: "db"                         
+&gt;         - name: MYSQL_ROOT_PASSWORD           
+&gt;           valueFrom:                          
+&gt;             secretKeyRef:                     
+&gt;               name: mysql-pass                
+&gt;               key: password                   
+&gt;         ports:                                
+&gt;         - containerPort: 3306                 
+&gt;           name: mysql                         
+&gt;         volumeMounts:                         
+&gt;         - name: mysql-persistent-storage      
+&gt;           mountPath: /var/lib/mysql           
+&gt;       volumes:                                
+&gt;       - name: mysql-persistent-storage        
+&gt;         persistentVolumeClaim:                
+&gt;           claimName: mysql-pv-claim           
+&gt; EOF                                           
+$
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: e0cc65adf966c9384a07d4606dd8395e -->
+
+<div class="admonition warning">
+<p class="admonition-title"><code>ignore-db-dir</code> start argument</p>
+<p>On ext4 the mysql5.7 images <a href="https://stackoverflow.com/a/66027830/4583360">refuses</a> to start due to non empty dir otherwise.</p>
+</div>
+<!-- id: d44a9cadddb329bcb6effc921583d5db -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Cmd</label><label for="__tabbed_9_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>cat &lt;&lt;EOF &gt;./hello2-deployment.yaml
+<span class="go">apiVersion: v1</span>
+<span class="go">kind: Service</span>
+<span class="go">metadata:</span>
+<span class="go">  name: hello2</span>
+<span class="go">  labels:</span>
+<span class="go">    app: hello2</span>
+<span class="go">    tier: frontend</span>
+<span class="go">spec:</span>
+<span class="go">  type: LoadBalancer</span>
+<span class="go">  ports:</span>
+<span class="go">    - port: 28001</span>
+<span class="go">  selector:</span>
+<span class="go">    app: hello2</span>
+<span class="go">    tier: frontend</span>
+<span class="go">---</span>
+<span class="go">apiVersion: apps/v1</span>
+<span class="go">kind: Deployment</span>
+<span class="go">metadata:</span>
+<span class="go">  name: hello2</span>
+<span class="go">  labels:</span>
+<span class="go">    app: hello2</span>
+<span class="go">spec:</span>
+<span class="go">  selector:</span>
+<span class="go">    matchLabels:</span>
+<span class="go">      app: hello2</span>
+<span class="go">      tier: frontend</span>
+<span class="go">  strategy:</span>
+<span class="go">    type: Recreate</span>
+<span class="go">  template:</span>
+<span class="go">    metadata:</span>
+<span class="go">      labels:</span>
+<span class="go">        app: hello2</span>
+<span class="go">        tier: frontend</span>
+<span class="go">    spec:</span>
+<span class="go">      imagePullSecrets:</span>
+<span class="go">      - name: regcred</span>
+<span class="go">      containers:</span>
+<span class="go">      - name: hello2</span>
+<span class="go">        image: $(pass show reg/domain)/docker-internal/$namespace/$app:$ver</span>
+<span class="go">        imagePullPolicy: Always</span>
+<span class="go">        env:</span>
+<span class="go">        - name: dbuser</span>
+<span class="go">          value: &quot;root&quot;</span>
+<span class="go">        - name: dbpass</span>
+<span class="go">          valueFrom:</span>
+<span class="go">            secretKeyRef:</span>
+<span class="go">              name: mysql-pass</span>
+<span class="go">              key: password</span>
+<span class="go">        - name: dbhost</span>
+<span class="go">          value: &quot;hello2-mysql&quot;</span>
+<span class="go">        - name: dbname</span>
+<span class="go">          value: &quot;db&quot;</span>
+<span class="go">        ports:</span>
+<span class="go">        - containerPort: 28001</span>
+<span class="go">          name: hello2</span>
+<span class="go">        resources:</span>
+<span class="go">          requests:</span>
+<span class="go">            cpu: 100m</span>
+<span class="go">            memory: 100Mi</span>
+<span class="go">EOF</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ cat &lt;&lt;EOF &gt;./hello2-deployment.yaml           
+&gt; apiVersion: v1                                
+&gt; kind: Service                                 
+&gt; metadata:                                     
+&gt;   name: hello2                                
+&gt;   labels:                                     
+&gt;     app: hello2                               
+&gt;     tier: frontend                            
+&gt; spec:                                         
+&gt;   type: LoadBalancer                          
+&gt;   ports:                                      
+&gt;     - port: 28001                             
+&gt;   selector:                                   
+&gt;     app: hello2                               
+&gt;     tier: frontend                            
+&gt; ---                                           
+&gt; apiVersion: apps/v1                           
+&gt; kind: Deployment                              
+&gt; metadata:                                     
+&gt;   name: hello2                                
+&gt;   labels:                                     
+&gt;     app: hello2                               
+&gt; spec:                                         
+&gt;   selector:                                   
+&gt;     matchLabels:                              
+&gt;       app: hello2                             
+&gt;       tier: frontend                          
+&gt;   strategy:                                   
+&gt;     type: Recreate                            
+&gt;   template:                                   
+&gt;     metadata:                                 
+&gt;       labels:                                 
+&gt;         app: hello2                           
+&gt;         tier: frontend                        
+&gt;     spec:                                     
+&gt;       imagePullSecrets:                       
+&gt;       - name: regcred                         
+&gt;       containers:                             
+&gt;       - name: hello2                          
+&gt;         image: $(pass show reg/domain)/docker-internal/$namespace/$app:$ver                   
+&gt;         imagePullPolicy: Always               
+&gt;         env:                                  
+&gt;         - name: dbuser                        
+&gt;           value: "root"                       
+&gt;         - name: dbpass                        
+&gt;           valueFrom:                          
+&gt;             secretKeyRef:                     
+&gt;               name: mysql-pass                
+&gt;               key: password                   
+&gt;         - name: dbhost                        
+&gt;           value: "hello2-mysql"               
+&gt;         - name: dbname                        
+&gt;           value: "db"                         
+&gt;         ports:                                
+&gt;         - containerPort: 28001                
+&gt;           name: hello2                        
+&gt;         resources:                            
+&gt;           requests:                           
+&gt;             cpu: 100m                         
+&gt;             memory: 100Mi                     
+&gt; EOF                                           
+$
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: d44a9cadddb329bcb6effc921583d5db -->
+
+<p>Now we apply all, with the -k switch, for the kustomize.yaml:</p>
+<!-- id: b5e00ff69f130f2e9e217131c3530105 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Cmd</label><label for="__tabbed_10_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>kubectl apply -k ./
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ kubectl apply -k ./ 
+secret/mysql-pass-2f9464chcc unchanged          
+service/hello2 unchanged                        
+service/hello2-mysql unchanged                  
+persistentvolumeclaim/mysql-pv-claim unchanged  
+deployment.apps/hello2 unchanged                
+deployment.apps/hello2-mysql unchanged
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: b5e00ff69f130f2e9e217131c3530105 -->
+
+<p>then wait for the loadbalancer and fetch the public IP:</p>
+<!-- id: 78f647e21c231d01fd61dbc1596d891a -->
+<p><xterm /></p>
+<pre><code>time while true; do sleep 2; k get service hello2 | grep pending &gt;/dev/null || break; done # lp: timeout=600
+$ time while true; do sleep 2; k get service hello2 | grep pending &gt;/dev/null || break; done
+
+real    0m2.130s                                
+user    0m0.052s                                
+sys     0m0.036s
+$ k -o json get service hello2 | jq .                                 
+[1m{[0m[39m[49m                                               
+[1m  [34m"apiVersion"[39m: [0m[32m[49m"v1"[1m[39m,[0m[39m[49m                           
+[1m  [34m"kind"[39m: [0m[32m[49m"Service"[1m[39m,[0m[39m[49m                            
+[1m  [34m"metadata"[39m: {[0m[39m[49m                                 
+[1m    [34m"annotations"[39m: {[0m[39m[49m                            
+[1m      [34m"kubectl.kubernetes.io/last-applied-configuration"[39m: [0m[32m[49m"{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"hello2\",\"tier\":\"frontend\"},\"name\":\"hello2\",\"namespace\":\"default\"},\"spec\":{\"ports\":[{\"port\":28001}],\"selector\":{\"app\":\"hello2\",\"tier\":\"frontend\"},\"type\":\"LoadBalancer\"}}\n"[1m[39m,[0m[39m[49m                     
+[1m      [34m"kubernetes.digitalocean.com/load-balancer-id"[39m: [0m[32m[49m"5ff78870-218c-4a61-a6ad-e3a669618e94"[39m    
+[1m    },[0m[39m[49m                                          
+[1m    [34m"creationTimestamp"[39m: [0m[32m[49m"2021-08-17T09:33:46Z"[1m[39m,
+    [34m"finalizers"[39m: [[0m[39m[49m                             
+[1m      [0m[32m[49m"service.kubernetes.io/load-balancer-cleanup"[39m                                             
+[1m    ],[0m[39m[49m                                          
+[1m    [34m"labels"[39m: {[0m[39m[49m                                 
+[1m      [34m"app"[39m: [0m[32m[49m"hello2"[1m[39m,[0m[39m[49m                          
+[1m      [34m"tier"[39m: [0m[32m[49m"frontend"[39m                        
+[1m    },[0m[39m[49m                                          
+[1m    [34m"name"[39m: [0m[32m[49m"hello2"[1m[39m,[0m[39m[49m                           
+[1m    [34m"namespace"[39m: [0m[32m[49m"default"[1m[39m,[0m[39m[49m                     
+[1m    [34m"resourceVersion"[39m: [0m[32m[49m"142545"[1m[39m,[0m[39m[49m                
+[1m    [34m"uid"[39m: [0m[32m[49m"eaa8b74a-f491-4fb0-a629-ff13bc2a827a"[39m                                               
+[1m  },[0m[39m[49m                                            
+[1m  [34m"spec"[39m: {[0m[39m[49m                                     
+[1m    [34m"clusterIP"[39m: [0m[32m[49m"10.245.241.244"[1m[39m,[0m[39m[49m              
+[1m    [34m"clusterIPs"[39m: [[0m[39m[49m                             
+[1m      [0m[32m[49m"10.245.241.244"[39m                          
+[1m    ],[0m[39m[49m                                          
+[1m    [34m"externalTrafficPolicy"[39m: [0m[32m[49m"Cluster"[1m[39m,[0m[39m[49m         
+[1m    [34m"ipFamilies"[39m: [[0m[39m[49m                             
+[1m      [0m[32m[49m"IPv4"[39m                                    
+[1m    ],[0m[39m[49m                                          
+[1m    [34m"ipFamilyPolicy"[39m: [0m[32m[49m"SingleStack"[1m[39m,[0m[39m[49m            
+[1m    [34m"ports"[39m: [[0m[39m[49m                                  
+[1m      {[0m[39m[49m                                         
+[1m        [34m"nodePort"[39m: [0m[39m[49m32106[1m,[0m[39m[49m                      
+[1m        [34m"port"[39m: [0m[39m[49m28001[1m,[0m[39m[49m                          
+[1m        [34m"protocol"[39m: [0m[32m[49m"TCP"[1m[39m,[0m[39m[49m                      
+[1m        [34m"targetPort"[39m: [0m[39m[49m28001                     
+[1m      }[0m[39m[49m                                         
+[1m    ],[0m[39m[49m                                          
+[1m    [34m"selector"[39m: {[0m[39m[49m                               
+[1m      [34m"app"[39m: [0m[32m[49m"hello2"[1m[39m,[0m[39m[49m                          
+[1m      [34m"tier"[39m: [0m[32m[49m"frontend"[39m                        
+[1m    },[0m[39m[49m                                          
+[1m    [34m"sessionAffinity"[39m: [0m[32m[49m"None"[1m[39m,[0m[39m[49m                  
+[1m    [34m"type"[39m: [0m[32m[49m"LoadBalancer"[39m                      
+[1m  },[0m[39m[49m                                            
+[1m  [34m"status"[39m: {[0m[39m[49m                                   
+[1m    [34m"loadBalancer"[39m: {[0m[39m[49m                           
+[1m      [34m"ingress"[39m: [[0m[39m[49m                              
+[1m        {[0m[39m[49m                                       
+[1m          [34m"ip"[39m: [0m[32m[49m"67.207.72.117"[39m                 
+[1m        }[0m[39m[49m                                       
+[1m      ][0m[39m[49m                                         
+[1m    }[0m[39m[49m                                           
+[1m  }[0m[39m[49m                                             
+[1m}[0m[39m[49m
+$ ip=$(k -o json get service hello2 | jq -r .status.loadBalancer.ingress[0].ip)
+</code></pre>
+<!-- id: 78f647e21c231d01fd61dbc1596d891a -->
+
+<p>All environ settings are in the app container:</p>
+<!-- id: 72f9a9663483e992059aa351337dbd5e -->
+<p><xterm /></p>
+<pre><code>$ wget -q http://$ip:28001/env -O - | jq .                            
+[1m{[0m[39m[49m                                               
+[1m  [34m"at"[39m: [0m[39m[49m1629196739.1266227[1m,[0m[39m[49m                     
+[1m  [34m"env"[39m: {[0m[39m[49m                                      
+[1m    [34m"PATH"[39m: [0m[32m[49m"/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"[1m[39m,[0m[39m[49m      
+[1m    [34m"HOSTNAME"[39m: [0m[32m[49m"hello2-d646c6dc4-zzsmx"[1m[39m,[0m[39m[49m       
+[1m    [34m"LANG"[39m: [0m[32m[49m"C.UTF-8"[1m[39m,[0m[39m[49m                          
+[1m    [34m"GPG_KEY"[39m: [0m[32m[49m"E3FF2839C048B25C084DEBE9B26995E310250568"[1m[39m,[0m[39m[49m                                      
+[1m    [34m"PYTHON_VERSION"[39m: [0m[32m[49m"3.8.11"[1m[39m,[0m[39m[49m                 
+[1m    [34m"PYTHON_PIP_VERSION"[39m: [0m[32m[49m"21.2.3"[1m[39m,[0m[39m[49m             
+[1m    [34m"PYTHON_GET_PIP_URL"[39m: [0m[32m[49m"https://github.com/pypa/get-pip/raw/c20b0cfd643cd4a19246ccf204e2997af70f6b21/public/get-pip.py"[1m[39m,[0m[39m[49m                                                                     
+[1m    [34m"PYTHON_GET_PIP_SHA256"[39m: [0m[32m[49m"fa6f3fb93cce234cd4e8dd2beb54a51ab9c247653b52855a48dd44e6b21ff28b"[1m[39m,
+    [34m"APP_ENV"[39m: [0m[32m[49m"development"[1m[39m,[0m[39m[49m                   
+[1m    [34m"dbuser"[39m: [0m[32m[49m"root"[1m[39m,[0m[39m[49m                           
+[1m    [34m"dbpass"[39m: [0m[32m[49m"myk8ssecret"[1m[39m,[0m[39m[49m                    
+[1m    [34m"dbhost"[39m: [0m[32m[49m"hello2-mysql"[1m[39m,[0m[39m[49m                   
+[1m    [34m"dbname"[39m: [0m[32m[49m"db"[1m[39m,[0m[39m[49m                             
+[1m    [34m"HELLO2_PORT_28001_TCP_PROTO"[39m: [0m[32m[49m"tcp"[1m[39m,[0m[39m[49m       
+[1m    [34m"KUBERNETES_SERVICE_PORT"[39m: [0m[32m[49m"443"[1m[39m,[0m[39m[49m           
+[1m    [34m"KUBERNETES_PORT_443_TCP_PROTO"[39m: [0m[32m[49m"tcp"[1m[39m,[0m[39m[49m     
+[1m    [34m"HELLO2_PORT"[39m: [0m[32m[49m"tcp://10.245.241.244:28001"[1m[39m,
+    [34m"HELLO2_PORT_28001_TCP_PORT"[39m: [0m[32m[49m"28001"[1m[39m,[0m[39m[49m      
+[1m    [34m"KUBERNETES_PORT_443_TCP"[39m: [0m[32m[49m"tcp://10.245.0.1:443"[1m[39m,[0m[39m[49m                                          
+[1m    [34m"KUBERNETES_PORT_443_TCP_PORT"[39m: [0m[32m[49m"443"[1m[39m,[0m[39m[49m      
+[1m    [34m"KUBERNETES_PORT_443_TCP_ADDR"[39m: [0m[32m[49m"10.245.0.1"[1m[39m,[0m[39m[49m                                               
+[1m    [34m"HELLO2_SERVICE_PORT"[39m: [0m[32m[49m"28001"[1m[39m,[0m[39m[49m             
+[1m    [34m"HELLO2_PORT_28001_TCP"[39m: [0m[32m[49m"tcp://10.245.241.244:28001"[1m[39m,[0m[39m[49m                                      
+[1m    [34m"KUBERNETES_SERVICE_HOST"[39m: [0m[32m[49m"10.245.0.1"[1m[39m,[0m[39m[49m    
+[1m    [34m"KUBERNETES_SERVICE_PORT_HTTPS"[39m: [0m[32m[49m"443"[1m[39m,[0m[39m[49m     
+[1m    [34m"KUBERNETES_PORT"[39m: [0m[32m[49m"tcp://10.245.0.1:443"[1m[39m,[0m[39m[49m  
+[1m    [34m"HELLO2_SERVICE_HOST"[39m: [0m[32m[49m"10.245.241.244"[1m[39m,[0m[39m[49m    
+[1m    [34m"HELLO2_PORT_28001_TCP_ADDR"[39m: [0m[32m[49m"10.245.241.244"[1m[39m,[0m[39m[49m                                             
+[1m    [34m"HOME"[39m: [0m[32m[49m"/root"[39m                             
+[1m  }[0m[39m[49m                                             
+[1m}[0m[39m[49m
+</code></pre>
+<!-- id: 72f9a9663483e992059aa351337dbd5e -->
+
+<p>And the app works:</p>
+<!-- id: 35fb61130b99033d43b0d19893ef0e8c -->
+<p><xterm /></p>
+<pre><code>$ wget -q http://$ip:28001/initdb -O - | jq .                         
+[1m{[0m[39m[49m                                               
+[1m  [34m"result"[39m: [0m[32m[49m"{'Tables_in_db': 'items'}"[39m         
+[1m}[0m[39m[49m
+wget -q http://$ip:28001/show/brian -O - | jq . # lp: asserts="brian and result"
+$ wget -q http://$ip:28001/show/brian -O - | jq .                     
+[1m{[0m[39m[49m                                               
+[1m  [34m"result"[39m: {[0m[39m[49m                                   
+[1m    [34m"name"[39m: [0m[32m[49m"brian"[1m[39m,[0m[39m[49m                            
+[1m    [34m"age"[39m: [0m[39m[49m42                                   
+[1m  }[0m[39m[49m                                             
+[1m}[0m[39m[49m
+</code></pre>
+<!-- id: 35fb61130b99033d43b0d19893ef0e8c -->
+
+<p>Delete everything:</p>
+<!-- id: 6f2beec7853bb1e1c0eb05fad8243ab0 -->
+
+<div class="highlight"><pre><span></span><code>kubectl delete -k ./. # lp: asserts=&quot;deployment.apps and deleted&quot;
+</code></pre></div>
+<!-- id: 6f2beec7853bb1e1c0eb05fad8243ab0 -->
+
+<h2 id="discussion">Discussion<a class="headerlink" href="#discussion" title="Permanent link">¤</a></h2>
+<ul>
+<li>
+<p>The loadbalancer creation is the time limiting factor at re-deploys from scratch, took often around 4-5 minutes.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For CI/CD I'd therefore would keep the loadbalancer standing and just update the app.</p>
+</div>
+</li>
+<li>
+<p>In order to debug, <code>kubectl get pods</code> -&gt; <code>kubectl logs --follow &lt;podname&gt;</code> was indispensable.</p>
+</li>
+<li><code>kubectl delete -k ./.</code> did always work nicely, removing all, in the right order. </li>
+<li>K8s's name resolution is simple: The app could simply connect to the dbhost by <code>name</code> attribute of
+  the corresponding service deployment.</li>
+<li>
+<p>On DO (and I guess on other infra providers as well) they use their internal volume creation means
+  as default K8s "storage class", i.e. when volumes are to be created for Stateful Sets.  Those
+  volumes will survive node failure, <a href="https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/">unlike</a> the <code>hostPath</code> based storage class, being set as
+  default on local test clusters (e.g. minicube).   </p>
+<table>
+<thead>
+<tr>
+<th>DO Dashboard</th>
+<th>K8s Dashboard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="img/stocl1.png"><img alt="" src="img/stocl1.png" /></a></td>
+<td><a href="img/stocl2.png"><img alt="" src="img/stocl2.png" /></a></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+
+<script>typeof start_lc === "undefined" ? 0 : start_lc() </script>
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<style>
+  .md-footer__link--next {
+    width: 75%;
+  }
+  .overlay_block {
+    position: relative;
+    width: 100%;
+  }
+  .overlay_block .overlay_link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .overlay_block .overlay_inner {
+    position: relative;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .overlay_block .overlay_inner a {
+    pointer-events: all;
+  }
+</style>
+
+<footer class="md-footer">
+  
+
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../1_hello_app/" class="md-footer__link md-footer__link--prev" aria-label="Previous: First App" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              First App
+            </div>
+          </div>
+        </a>
+
+
+
+       
+      <div class="md-footer__link md-footer__link--next">
+        
+        <div class="overlay_block">
+          <a
+            class="overlay_link"
+            href="../../terraform/"
+            rel="next"
+          ></a>
+          <div class="overlay_inner">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                
+                <a href="/blog/cloud/dnsmasq/">
+                    
+                  <small>💭 CLOUD</small> - 
+                </a>
+                
+                <a href="/blog/cloud/terraform/">
+                    
+                  <small>Terraform</small> - 
+                </a>
+                
+                <a href="/blog/cloud/terraform/">
+                     <span>About</span> 
+                </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-left: -2rem" class="md-footer__button md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+        </div>
+      </div>
+
+
+
+
+      
+    </nav>
+  </div>
+  
+
+
+
+
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Gunther Klessinger
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/axiros" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/fa_all.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm-addon-search.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm.4.9.0.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/Rx.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/tablesort.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/lc.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm-addon-fit.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/tables.js"></script>
+      
+    
+  </body>
+</html>

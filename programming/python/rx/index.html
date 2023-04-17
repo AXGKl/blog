@@ -1,0 +1,2580 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Random Thoughts">
+      
+      
+      
+        <link rel="canonical" href="https://AXGKl.github.io/blog/programming/python/rx/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>Reactive Programming With RxPY - AXGK Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../lcd/lp/css/xterm.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="black" data-md-color-accent="deep-purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reactive-programming-with-rxpy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="AXGK Blog" class="md-header__button md-logo" aria-label="AXGK Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AXGK Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reactive Programming With RxPY
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AXGKl/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AXGKl/blog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Overview
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ll/apps/apps/" class="md-tabs__link">
+        🐧 LINUX
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cloud/dnsmasq/" class="md-tabs__link">
+        💭 CLOUD
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        💻 DEV
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../inet/videos/" class="md-tabs__link">
+      📺 VIDS
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../logbook/" class="md-tabs__link">
+      ✏️  LOG
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/changelog/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="AXGK Blog" class="md-nav__button md-logo" aria-label="AXGK Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    AXGK Blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AXGKl/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AXGKl/blog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          🐧 LINUX
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🐧 LINUX" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          🐧 LINUX
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/apps/apps/" class="md-nav__link">
+        Apps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/devices/tv_q8/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/distro/" class="md-nav__link">
+        Distros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/arco/" class="md-nav__link">
+        Distros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/emacs/emacs/" class="md-nav__link">
+        Emacs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/gimp/gimp/" class="md-nav__link">
+        Gimp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Hardware
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Hardware" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Hardware
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_7_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_1">
+          Input
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Input" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Input
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/hw/input/keyboard/" class="md-nav__link">
+        Keyboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/hw/input/k860/" class="md-nav__link">
+        K860
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/hw/input/corne/" class="md-nav__link">
+        Corne
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/hw/input/hp/" class="md-nav__link">
+        HP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/mkdocs/mkdocs/" class="md-nav__link">
+        MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Suckless
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Suckless" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Suckless
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/dwm/" class="md-nav__link">
+        dwm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/st/" class="md-nav__link">
+        st
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_4" data-md-state="indeterminate" type="checkbox" id="__nav_2_9_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_4">
+          Statusbar Fun
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Statusbar Fun" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_9_4">
+          <span class="md-nav__icon md-icon"></span>
+          Statusbar Fun
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar/" class="md-nav__link">
+        The Problem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/status_bar_fun/2021.05.24_dwm_status_2_never_call_xsession_within_dwm/" class="md-nav__link">
+        XFCE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/status_bar_fun/2021.05.24_dwm_status_3_xfce4_panel_in_dwm/" class="md-nav__link">
+        XFCE Panel in DWM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor/" class="md-nav__link">
+        CPU Monitor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" data-md-state="indeterminate" type="checkbox" id="__nav_2_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10">
+          Vim
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vim" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Vim
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/vim/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/astro_vim/" class="md-nav__link">
+        AstroVim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/astro_vim_null_ls_builtins/" class="md-nav__link">
+        AstroVimLspBuiltins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/ultisnips/" class="md-nav__link">
+        Ultisnips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/html/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/todo/" class="md-nav__link">
+        Todo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          💭 CLOUD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💭 CLOUD" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          💭 CLOUD
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dnsmasq/" class="md-nav__link">
+        DNSMasq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/ci/github_actions/" class="md-nav__link">
+        Github Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kubernetes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/" class="md-nav__link">
+        Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/k9s/k9s/" class="md-nav__link">
+        K9s Terminal UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/1_hello_app/" class="md-nav__link">
+        First App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/2_hello_mysql/" class="md-nav__link">
+        With DB
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Terraform
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Terraform" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Terraform
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/resource_creation/" class="md-nav__link">
+        Basic Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/ansible/" class="md-nav__link">
+        TF And Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/k8s_on_do/" class="md-nav__link">
+        K8s Cluster Infra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/k8s_provider/do_k8s/" class="md-nav__link">
+        Attaching Using Token Only
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/k8s_provider/k8s_provider/" class="md-nav__link">
+        The K8s Provider
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          💻 DEV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💻 DEV" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          💻 DEV
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          🐍 Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🐍 Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          🐍 Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Reactive Programming With RxPY
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Reactive Programming With RxPY
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    Motivation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-stack" class="md-nav__link">
+    Solution Stack
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packages" class="md-nav__link">
+    Packages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server" class="md-nav__link">
+    Server
+  </a>
+  
+    <nav class="md-nav" aria-label="Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intro-async-http-processing-with-greenlets" class="md-nav__link">
+    Intro: Async HTTP processing with greenlets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-code" class="md-nav__link">
+    Server Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-pipelines" class="md-nav__link">
+    Processing Pipeline(s)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todo" class="md-nav__link">
+    Todo
+  </a>
+  
+    <nav class="md-nav" aria-label="Todo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#suggestion-expressing-interest" class="md-nav__link">
+    Suggestion: Expressing Interest
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2">
+          TermUIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TermUIs" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          TermUIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt_toolkit/" class="md-nav__link">
+        Prompt Toolkit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt_toolkit/dup2/" class="md-nav__link">
+        Stream Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" data-md-state="indeterminate" type="checkbox" id="__nav_4_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3">
+          Fun
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/fun/unblockme/" class="md-nav__link">
+        UnblockMe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/fun/einstein/" class="md-nav__link">
+        Einstein
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Electronics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Electronics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Electronics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/" class="md-nav__link">
+        Interacting with Real World
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_2">
+          Desk Cycling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Desk Cycling" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Desk Cycling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/intro/" class="md-nav__link">
+        Zwiftifying My DeskCycle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/powermeter/" class="md-nav__link">
+        Power Meters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/mechanical/" class="md-nav__link">
+        Know the Gear Position
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/electromagnet/" class="md-nav__link">
+        Electromagent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/generator/" class="md-nav__link">
+        Generating Power
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inet/videos/" class="md-nav__link">
+        📺 VIDS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../logbook/" class="md-nav__link">
+        ✏️  LOG
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/navigation/" class="md-nav__link">
+        Navigation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    Motivation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-stack" class="md-nav__link">
+    Solution Stack
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packages" class="md-nav__link">
+    Packages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server" class="md-nav__link">
+    Server
+  </a>
+  
+    <nav class="md-nav" aria-label="Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intro-async-http-processing-with-greenlets" class="md-nav__link">
+    Intro: Async HTTP processing with greenlets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-code" class="md-nav__link">
+    Server Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-pipelines" class="md-nav__link">
+    Processing Pipeline(s)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todo" class="md-nav__link">
+    Todo
+  </a>
+  
+    <nav class="md-nav" aria-label="Todo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#suggestion-expressing-interest" class="md-nav__link">
+    Suggestion: Expressing Interest
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="editor:///home/gk/repos/blog/docs/programming/python/rx/index.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<style>
+
+          @media only screen and (min-width: 76.25em) {
+            .md-main__inner {
+              max-width: none;
+            }
+            .md-sidebar--primary {
+              left: 0;
+            }
+            .md-sidebar--secondary {
+              right: 0;
+              margin-left: 0;
+              -webkit-transform: none;
+              transform: none;   
+            }
+          }
+
+</style>
+<h1 id="reactive-programming-with-rxpy">Reactive Programming With RxPY<a class="headerlink" href="#reactive-programming-with-rxpy" title="Permanent link">¤</a></h1>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">¤</a></h2>
+<p>Let's build an API server, which can send data to clients as soon as it arrives.</p>
+<p>You might say that's trivial but it is not:</p>
+<p>Data may arrive e.g.</p>
+<ul>
+<li><em>not</em> en bloc but in <strong>parts</strong>, like from<ul>
+<li>"follow tailing" files or</li>
+<li>from stream subscriptions, e.g. via websockets or</li>
+<li>a server implemented as show here, i.e. itself streaming</li>
+</ul>
+</li>
+<li>from jobs of <strong>other</strong> clients (but still interesting for us)</li>
+<li>from <strong>different</strong> systems, with vastly varying response times</li>
+</ul>
+<p>In all these cases we want to update the client <strong>partially</strong>, as soon as new data is present on the
+server, w/o having to wait for the "full" result (if that even exists).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Also we do <strong>not</strong> want to constantly <strong>poll</strong> the server but passively wait for new data, with the server
+being able to push to all interested parties, once there.</p>
+</div>
+<p>The operationally most simple solution is not via websockets but by sending the responses as
+<a href="https://en.wikipedia.org/wiki/Chunked_transfer_encoding">chunks</a>.</p>
+<h2 id="solution-stack">Solution Stack<a class="headerlink" href="#solution-stack" title="Permanent link">¤</a></h2>
+<ul>
+<li><a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> as (not so) Microframework</li>
+<li><a href="http://www.gevent.org/">gevent</a> as async framwork</li>
+<li><a href="https://en.wikipedia.org/wiki/ReactiveX">ReactiveX</a><ul>
+<li>for a far more high level coordination of jobs and coroutines, compared to using gevent low level
+  machinery </li>
+<li>in order to <em>declaratively</em> parametrize the server's async behaviour via high level
+  coordination functions like this one: <img alt="" src="img/rx-debounce.gif" /></li>
+</ul>
+</li>
+</ul>
+<h3 id="packages">Packages<a class="headerlink" href="#packages" title="Permanent link">¤</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Cmd</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="k">for</span> p <span class="k">in</span> rx gevent flask<span class="p">;</span> <span class="k">do</span> pip show <span class="nv">$p</span> <span class="o">||</span> pip install <span class="nv">$p</span><span class="p">;</span> <span class="k">done</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ for p in rx gevent flask; do pip show $p || pip install $p; done
+Name: Rx
+Version: 3.2.0
+Summary: Reactive Extensions (Rx) for Python
+Home-page: http://reactivex.io
+Author: Dag Brattli
+Author-email: dag@brattli.net
+License: MIT License
+Location: /home/gk/miniconda3/envs/blog_py3.9/lib/python3.9/site-packages
+Requires: 
+Required-by: 
+Name: gevent
+Version: 21.12.0
+Summary: Coroutine-based network library
+Home-page: http://www.gevent.org/
+Author: Denis Bilenko
+Author-email: denis.bilenko@gmail.com
+License: MIT
+Location: /home/gk/miniconda3/envs/blog_py3.9/lib/python3.9/site-packages
+Requires: greenlet, setuptools, zope.event, zope.interface
+Required-by: 
+Name: Flask
+Version: 2.0.3
+Summary: A simple framework for building complex web applications.
+Home-page: https://palletsprojects.com/p/flask
+Author: Armin Ronacher
+Author-email: armin.ronacher@active-4.com
+License: BSD-3-Clause
+Location: /home/gk/miniconda3/envs/blog_py3.9/lib/python3.9/site-packages
+Requires: click, itsdangerous, Jinja2, Werkzeug
+Required-by:
+</code></pre>
+</div>
+</div>
+</div>
+<hr/>
+
+<h2 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">¤</a></h2>
+<p>We want to carefully inspect what's going on on the server. For this any invocation of print will
+also show </p>
+<ul>
+<li>millisecs since process start</li>
+<li>threadname (shortened) </li>
+<li>colors, according to a <code>who</code> integer given (so we can see who initiated an event)</li>
+</ul>
+<p>Little test, one w/o and one with the gevent monkey patch:</p>
+<!-- id: 344fd121704d5dce8bb543248f0febd5 -->
+<p><xterm /></p>
+<pre><code>$ python tests/rx/tools.py
+[0;38;5;245m    5[0m  M [31m[S] msg 1[0m
+[0;38;5;245m   56[0m  M [33m[2] async msg[0m
+[0;38;5;245m   56[0m  M [34m[3] async msg[0m
+[0;38;5;245m   56[0m  M [31m[S] async msg[0m
+[0;38;5;245m  106[0m  M [35m[4] msg 3[0m
+$ python tests/rx/tools.py patched
+[0;38;5;245m  115[0m  M [31m[S] msg 1[0m
+[0;38;5;245m  166[0m  1 [33m[2] async msg[0m
+[0;38;5;245m  166[0m  2 [34m[3] async msg[0m
+[0;38;5;245m  166[0m  3 [31m[S] async msg[0m
+[0;38;5;245m  216[0m  M [35m[4] msg 3[0m
+</code></pre>
+<!-- id: 344fd121704d5dce8bb543248f0febd5 -->
+
+<ul>
+<li><code>M</code> is MainThread, Numbers like <code>2</code> in the second column are "<a href="https://pypi.org/project/greenlet/">Greenlet</a>" numbers. You
+  see w/o the monkey patch that gevent actually coordinates everything on the main thread of the
+  process.</li>
+<li>The <code>[S]</code> symbol is printed for <code>who=0</code> (the default - here the server) </li>
+<li>Colors depend on the <code>who</code> argument</li>
+<li>You can see that the (pretty complex) monkey patching of all(!) blocking calls consumes well over
+  100 milliseconds startup time.</li>
+</ul>
+<details>
+<summary>Console Printer Source</summary>
+<p>The tests are done in the main section</p>
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">cat</span> <span class="n">tests</span><span class="o">/</span><span class="n">rx</span><span class="o">/</span><span class="n">tools</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">current_thread</span>
+<span class="kn">import</span> <span class="nn">gevent</span>
+
+
+<span class="n">now</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">now</span><span class="p">()</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+<span class="n">thread</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">current_thread</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Dummy-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;MainThread&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">)</span>
+<span class="n">gray</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[0;38;5;245m</span><span class="si">%s</span><span class="se">\x1b</span><span class="s1">[0m&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="nb">print</span><span class="p">,</span> <span class="n">who</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+    <span class="n">pre</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%2s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">gray</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">%5s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">dt</span><span class="p">()),</span> <span class="n">thread</span><span class="p">())</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">])</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[3</span><span class="si">%s</span><span class="s1">m[</span><span class="si">%s</span><span class="s1">] </span><span class="si">%s</span><span class="se">\x1b</span><span class="s1">[0m&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">who</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">who</span> <span class="ow">or</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+    <span class="n">p</span><span class="p">(</span><span class="n">pre</span> <span class="o">+</span> <span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="c1">#  --------------------   quick test follows -------------------------------------------</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span>
+
+    <span class="n">sleep</span><span class="p">,</span> <span class="n">asyn</span> <span class="o">=</span> <span class="n">gevent</span><span class="o">.</span><span class="n">sleep</span><span class="p">,</span> <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;patched&#39;</span><span class="p">:</span>
+        <span class="n">monkey</span><span class="o">.</span><span class="n">patch_all</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span> <span class="o">==</span> <span class="n">gevent</span><span class="o">.</span><span class="n">sleep</span>  <span class="c1"># since patched</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;msg 1&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">who</span><span class="p">):</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;async msg&#39;</span><span class="p">,</span> <span class="n">who</span><span class="o">=</span><span class="n">who</span><span class="p">)</span>
+
+    <span class="n">asyn</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">asyn</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">asyn</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;msg 3&#39;</span><span class="p">,</span> <span class="n">who</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<hr/>
+</details>
+<h2 id="server">Server<a class="headerlink" href="#server" title="Permanent link">¤</a></h2>
+<h3 id="intro-async-http-processing-with-greenlets">Intro: Async HTTP processing with greenlets<a class="headerlink" href="#intro-async-http-processing-with-greenlets" title="Permanent link">¤</a></h3>
+<p>Any webserver based on gevent will allocate one greenlet per incoming request.</p>
+<p>Therefore we can block within the request handler w/o affecting other clients:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">handle_get</span><span class="p">(</span><span class="n">job</span><span class="p">):</span>
+    <span class="c1"># run within a request specific greenlet</span>
+    <span class="c1"># blocks for this client request but servers others</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;&lt;external api&gt;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> 
+    <span class="k">return</span> <span class="n">res</span>
+</code></pre></div>
+<p>The job processing, incl. sending the full response was a direct consequence of the <strong>client request
+event</strong></p>
+<p>We have to solve now</p>
+<ol>
+<li>How to send data in parts (chunks) to the API clients (browsers, others)</li>
+<li>How to allow <em>any</em> eventhandler on the server to send a data chunk at<ul>
+<li>any time</li>
+<li>to any client interested in it</li>
+</ul>
+</li>
+</ol>
+<p>Here is how this is done (framwork API wise): <a href="https://bottlepy.org/docs/dev/async.html">https://bottlepy.org/docs/dev/async.html</a>. Please read
+- it is pretty concise.</p>
+<h3 id="server-code">Server Code<a class="headerlink" href="#server-code" title="Permanent link">¤</a></h3>
+<p>We want to build a server, which we can reparametrize <strong>declaratively</strong> how it coordinates the
+events.</p>
+<p>Currently we have two event sources:</p>
+<ol>
+<li>From the clients (the requests they send)</li>
+<li>From the side effects we trigger, based on those requests. E.g. external websocket respsonses,
+   file reading chunks, ...</li>
+</ol>
+<p>We want to completely decouple those event streams and therefore create two subjects: one for jobs,
+one for response (parts):</p>
+<details>
+<summary>Async Server Source</summary>
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">cat</span> <span class="n">tests</span><span class="o">/</span><span class="n">rx</span><span class="o">/</span><span class="n">server</span><span class="o">.</span><span class="n">py</span>
+<span class="c1">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="kn">import</span> <span class="nn">gevent</span>
+<span class="kn">import</span> <span class="nn">gevent.queue</span>
+<span class="kn">import</span> <span class="nn">rx</span> <span class="k">as</span> <span class="nn">Rx</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">stream_with_context</span>
+<span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span>
+<span class="kn">from</span> <span class="nn">gevent.pywsgi</span> <span class="kn">import</span> <span class="n">WSGIServer</span>
+<span class="kn">from</span> <span class="nn">rx</span> <span class="kn">import</span> <span class="n">operators</span> <span class="k">as</span> <span class="n">rx</span>
+<span class="kn">from</span> <span class="nn">rx.scheduler.eventloop</span> <span class="kn">import</span> <span class="n">GEventScheduler</span> <span class="k">as</span> <span class="n">GS</span>
+<span class="kn">from</span> <span class="nn">tools</span> <span class="kn">import</span> <span class="n">gevent</span><span class="p">,</span> <span class="n">now</span><span class="p">,</span> <span class="nb">print</span>
+<span class="kn">from</span> <span class="nn">werkzeug.debug</span> <span class="kn">import</span> <span class="n">DebuggedApplication</span>
+<span class="kn">from</span> <span class="nn">werkzeug.serving</span> <span class="kn">import</span> <span class="n">run_with_reloader</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="vm">__file__</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="n">monkey</span><span class="o">.</span><span class="n">patch_all</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">GS</span> <span class="o">=</span> <span class="n">GS</span><span class="p">(</span><span class="n">gevent</span><span class="p">)</span>
+<span class="n">jobs</span> <span class="o">=</span> <span class="n">Rx</span><span class="o">.</span><span class="n">subject</span><span class="o">.</span><span class="n">Subject</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">Rx</span><span class="o">.</span><span class="n">subject</span><span class="o">.</span><span class="n">Subject</span><span class="p">()</span>
+<span class="n">flush_response</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">q</span><span class="p">:</span> <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="ne">StopIteration</span><span class="p">)</span>  <span class="c1"># closing the socket</span>
+<span class="n">wait</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">dt</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">dt</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">)</span>
+<span class="n">asyn</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">rx</span><span class="o">.</span><span class="n">observe_on</span><span class="p">(</span><span class="n">GS</span><span class="p">)</span>  <span class="c1"># put pipeline onto a new greenlet</span>
+
+
+<span class="k">class</span> <span class="nc">J</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Job Running Pipeline Functions&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_run_job</span><span class="p">(</span><span class="n">job</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;syncronous job running&quot;&quot;&quot;</span>
+        <span class="c1"># how is the job (transport, behaviour, ...):</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">job</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">,</span> <span class="n">job</span><span class="p">[</span><span class="s1">&#39;job&#39;</span><span class="p">]</span>
+        <span class="n">parts</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;parts&#39;</span><span class="p">),</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;dt&#39;</span><span class="p">),</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;req&#39;</span><span class="p">),</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;ts&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;running job&#39;</span><span class="p">,</span> <span class="n">job</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">parts</span><span class="p">):</span>
+            <span class="n">wait</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;got result part&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">job</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;res&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> result </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span>
+                <span class="s1">&#39;nr&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span>
+                <span class="s1">&#39;dt&#39;</span><span class="p">:</span> <span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">ts</span><span class="p">,</span>
+                <span class="s1">&#39;req&#39;</span><span class="p">:</span> <span class="n">q</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">on_next</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        <span class="c1"># Closing the req socket after all parts are there. Normally elsewhere, we do</span>
+        <span class="c1"># not know that normally or &#39;all there&#39; is never.</span>
+        <span class="c1"># But that can be done from anywhere - e.g. at cancel from the client</span>
+        <span class="c1"># or when his socket closes:</span>
+        <span class="n">wait</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+        <span class="n">flush_response</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+
+    <span class="n">run_job</span> <span class="o">=</span> <span class="n">rx</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_run_job</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">R</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Results Handling Functions&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">interested_clients</span><span class="p">(</span><span class="n">res</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Work via a central registry of clients who want job results&quot;&quot;&quot;</span>
+        <span class="c1"># here we just added &quot;them&quot; directly into the result:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">res</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;req&#39;</span><span class="p">)]</span>
+
+    <span class="k">def</span> <span class="nf">_send_response</span><span class="p">(</span><span class="n">res</span><span class="p">):</span>
+        <span class="n">clients</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">interested_clients</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        <span class="n">ser</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span>
+        <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">ser</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">clients</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="n">send_response</span> <span class="o">=</span> <span class="n">rx</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_send_response</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">new_job</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Production decoupled from repsonse sending&quot;&quot;&quot;</span>
+    <span class="n">jobs</span><span class="o">.</span><span class="n">on_next</span><span class="p">({</span><span class="s1">&#39;job&#39;</span><span class="p">:</span> <span class="n">job</span><span class="p">,</span> <span class="s1">&#39;meta&#39;</span><span class="p">:</span> <span class="n">meta</span><span class="p">})</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&lt;job&gt;/&lt;int:parts&gt;/&lt;int:dt&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The request handling greenlet.</span>
+
+<span class="sd">    The client can parametrize how many data parts the job result should have - and</span>
+<span class="sd">    when they &#39;arrive&#39;.</span>
+
+<span class="sd">    Creates a queue which, when seing an item, will cause a chunk response</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># eventhandlers can produce here and we&#39;ll send to the client:</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">gevent</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;parts&#39;</span><span class="p">:</span> <span class="n">parts</span><span class="p">,</span> <span class="s1">&#39;dt&#39;</span><span class="p">:</span> <span class="n">dt</span><span class="p">,</span> <span class="s1">&#39;req&#39;</span><span class="p">:</span> <span class="n">q</span><span class="p">,</span> <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="n">now</span><span class="p">()}</span>
+    <span class="n">new_job</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">meta</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">response_class</span><span class="p">(</span><span class="n">stream_with_context</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">mimetype</span><span class="o">=</span><span class="s1">&#39;application/json&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># ------------------------------------------------------------------------------- server</span>
+<span class="k">def</span> <span class="nf">reconfigure_server_pipelines</span><span class="p">(</span><span class="n">pipelines</span><span class="p">,</span> <span class="n">subs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;starting processing pipelines for jobs and incomming data&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">subs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;stopping old pipeline&#39;</span><span class="p">)</span>
+        <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">dispose</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">subs</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="n">jobs</span><span class="p">,</span> <span class="n">results</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">asyn</span><span class="p">(),</span> <span class="o">*</span><span class="n">pipelines</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">subs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">subscribe</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="k">def</span> <span class="nf">run_server</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;starting server at 50000&#39;</span><span class="p">)</span>
+    <span class="n">http_server</span> <span class="o">=</span> <span class="n">WSGIServer</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">50000</span><span class="p">),</span> <span class="n">DebuggedApplication</span><span class="p">(</span><span class="n">app</span><span class="p">))</span>
+    <span class="n">http_server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</code></pre></div>
+<hr/>
+</details>
+<h2 id="processing-pipelines">Processing Pipeline(s)<a class="headerlink" href="#processing-pipelines" title="Permanent link">¤</a></h2>
+<p>Here is the code</p>
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">cat</span> <span class="n">tests</span><span class="o">/</span><span class="n">rx</span><span class="o">/</span><span class="n">test_async_server</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="kn">from</span> <span class="nn">server</span> <span class="kn">import</span> <span class="n">J</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">Rx</span><span class="p">,</span> <span class="n">asyn</span><span class="p">,</span> <span class="n">reconfigure_server_pipelines</span><span class="p">,</span> <span class="n">run_server</span><span class="p">,</span> <span class="n">rx</span><span class="p">,</span> <span class="n">wait</span>
+<span class="kn">from</span> <span class="nn">tools</span> <span class="kn">import</span> <span class="n">gevent</span><span class="p">,</span> <span class="nb">print</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="vm">__file__</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># noqa</span>
+<span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">run_server</span><span class="p">)</span>
+
+<span class="n">done_clients</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">def</span> <span class="nf">test_server_one</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Keeping order but processing jobs (and responses) one after the other</span>
+<span class="sd">    Whichever clients&#39; requests is first on the server will see all chunks first:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="p">[[</span><span class="n">J</span><span class="o">.</span><span class="n">run_job</span><span class="p">],</span> <span class="p">[</span><span class="n">R</span><span class="o">.</span><span class="n">send_response</span><span class="p">]]</span>
+    <span class="n">reconfigure_server_pipelines</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="ow">and</span> <span class="n">send_requests</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">test_server_two</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Here we run the jobs within parallel greenlets&quot;&quot;&quot;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="n">rx</span><span class="o">.</span><span class="n">flat_map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">job</span><span class="p">:</span> <span class="n">Rx</span><span class="o">.</span><span class="n">just</span><span class="p">(</span><span class="n">job</span><span class="p">)</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">asyn</span><span class="p">(),</span> <span class="n">J</span><span class="o">.</span><span class="n">run_job</span><span class="p">)),],</span>
+        <span class="p">[</span><span class="n">R</span><span class="o">.</span><span class="n">send_response</span><span class="p">],</span>
+    <span class="p">]</span>
+    <span class="n">reconfigure_server_pipelines</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="ow">and</span> <span class="n">send_requests</span><span class="p">()</span>
+
+
+<span class="c1"># ------------------------------------------------------------------------------- Tools</span>
+<span class="c1"># here spawn 3 greenlets, sending 3 requests in parallel, simulating 3 clients&quot;&quot;&quot;</span>
+<span class="c1"># they iterate of the chunks from the server and print them</span>
+<span class="k">def</span> <span class="nf">send_requests</span><span class="p">():</span>
+    <span class="c1"># yes we can reconfigure the pipeline while running;</span>
+    <span class="n">done_clients</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">client</span> <span class="ow">in</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">send_job_req_to_api_server</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>
+        <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">done_clients</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">wait</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;all_done&#39;</span><span class="p">,</span> <span class="n">who</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">send_job_req_to_api_server</span><span class="p">(</span><span class="n">client</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">get</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sending job&#39;</span><span class="p">,</span> <span class="n">who</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>
+    <span class="n">j</span><span class="p">,</span> <span class="n">url</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">,</span> <span class="s1">&#39;http://127.0.0.1:50000/job</span><span class="si">%s</span><span class="s1">/3/</span><span class="si">%s</span><span class="s1">&#39;</span>
+    <span class="n">chunks</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span> <span class="o">%</span> <span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">client</span><span class="p">),</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="p">[</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;got chunk&#39;</span><span class="p">,</span> <span class="n">j</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">who</span><span class="o">=</span><span class="n">client</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">chunks</span><span class="o">.</span><span class="n">iter_lines</span><span class="p">()]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done client&#39;</span><span class="p">,</span> <span class="n">who</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>
+    <span class="n">done_clients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+</code></pre></div>
+<hr/>
+
+<p>First we run the non parallel version of the job processor:</p>
+<p><xterm /></p>
+<pre><code>$ pytest -xs tests/rx/test_async_server.py -k one 2&gt;/dev/null
+============================= test session starts ==============================
+platform linux -- Python 3.9.10, pytest-6.2.5, py-1.11.0, pluggy-1.0.0
+Using --randomly-seed=860789797
+rootdir: /home/gk/repos
+plugins: forked-1.4.0, randomly-3.11.0, cov-2.12.1, xdist-2.5.0, sugar-0.9.4
+collected 2 items / 1 deselected / 1 selected
+
+tests/rx/test_async_server.py [0;38;5;245m   80[0m  M [31m[S] starting processing pipelines for jobs and incomming data[0m
+[0;38;5;245m   80[0m  M [31m[S] [0m
+[0;38;5;245m   81[0m  1 [31m[S] [0m
+[0;38;5;245m   81[0m  1 [31m[S] starting server at 50000[0m
+[0;38;5;245m  113[0m  2 [32m[1] Sending job[0m
+[0;38;5;245m  114[0m  3 [33m[2] Sending job[0m
+[0;38;5;245m  115[0m  4 [34m[3] Sending job[0m
+[0;38;5;245m  120[0m  5 [31m[S] running job job3[0m
+[0;38;5;245m  420[0m  5 [31m[S] got result part 0 job3[0m
+[0;38;5;245m  421[0m  4 [34m[3] got chunk {'res': 'job3 result 0', 'nr': 0, 'dt': 301}[0m
+[0;38;5;245m  721[0m  5 [31m[S] got result part 1 job3[0m
+[0;38;5;245m  722[0m  4 [34m[3] got chunk {'res': 'job3 result 1', 'nr': 1, 'dt': 602}[0m
+[0;38;5;245m 1021[0m  5 [31m[S] got result part 2 job3[0m
+[0;38;5;245m 1022[0m  4 [34m[3] got chunk {'res': 'job3 result 2', 'nr': 2, 'dt': 902}[0m
+[0;38;5;245m 1322[0m  6 [31m[S] running job job1[0m
+[0;38;5;245m 1323[0m  4 [34m[3] done client[0m
+[0;38;5;245m 1423[0m  6 [31m[S] got result part 0 job1[0m
+[0;38;5;245m 1424[0m  2 [32m[1] got chunk {'res': 'job1 result 0', 'nr': 0, 'dt': 1304}[0m
+[0;38;5;245m 1524[0m  6 [31m[S] got result part 1 job1[0m
+[0;38;5;245m 1524[0m  2 [32m[1] got chunk {'res': 'job1 result 1', 'nr': 1, 'dt': 1405}[0m
+[0;38;5;245m 1625[0m  6 [31m[S] got result part 2 job1[0m
+[0;38;5;245m 1625[0m  2 [32m[1] got chunk {'res': 'job1 result 2', 'nr': 2, 'dt': 1506}[0m
+[0;38;5;245m 1726[0m  7 [31m[S] running job job2[0m
+[0;38;5;245m 1726[0m  2 [32m[1] done client[0m
+[0;38;5;245m 1926[0m  7 [31m[S] got result part 0 job2[0m
+[0;38;5;245m 1927[0m  3 [33m[2] got chunk {'res': 'job2 result 0', 'nr': 0, 'dt': 1807}[0m
+[0;38;5;245m 2127[0m  7 [31m[S] got result part 1 job2[0m
+[0;38;5;245m 2127[0m  3 [33m[2] got chunk {'res': 'job2 result 1', 'nr': 1, 'dt': 2008}[0m
+[0;38;5;245m 2328[0m  7 [31m[S] got result part 2 job2[0m
+[0;38;5;245m 2328[0m  3 [33m[2] got chunk {'res': 'job2 result 2', 'nr': 2, 'dt': 2209}[0m
+[0;38;5;245m 2530[0m  3 [33m[2] done client[0m
+[0;38;5;245m 2591[0m  M [34m[3] all_done[0m
+.
+
+======================= 1 passed, 1 deselected in 2.72s ========================
+</code></pre>
+<hr/>
+
+<p>And here processing in <em>parallel</em> greenlets, i.e. giving up order for throughput:</p>
+<p><xterm /></p>
+<pre><code>$ pytest -xs tests/rx/test_async_server.py -k two 2&gt;/dev/null
+============================= test session starts ==============================
+platform linux -- Python 3.9.10, pytest-6.2.5, py-1.11.0, pluggy-1.0.0
+Using --randomly-seed=3525127434
+rootdir: /home/gk/repos
+plugins: forked-1.4.0, randomly-3.11.0, cov-2.12.1, xdist-2.5.0, sugar-0.9.4
+collected 2 items / 1 deselected / 1 selected
+
+tests/rx/test_async_server.py [0;38;5;245m   78[0m  M [31m[S] starting processing pipelines for jobs and incomming data[0m
+[0;38;5;245m   79[0m  M [31m[S] [0m
+[0;38;5;245m   79[0m  1 [31m[S] [0m
+[0;38;5;245m   79[0m  1 [31m[S] starting server at 50000[0m
+[0;38;5;245m  111[0m  2 [32m[1] Sending job[0m
+[0;38;5;245m  112[0m  3 [33m[2] Sending job[0m
+[0;38;5;245m  113[0m  4 [34m[3] Sending job[0m
+[0;38;5;245m  117[0m  6 [31m[S] running job job1[0m
+[0;38;5;245m  118[0m  8 [31m[S] running job job2[0m
+[0;38;5;245m  118[0m 10 [31m[S] running job job3[0m
+[0;38;5;245m  218[0m  6 [31m[S] got result part 0 job1[0m
+[0;38;5;245m  219[0m  2 [32m[1] got chunk {'res': 'job1 result 0', 'nr': 0, 'dt': 102}[0m
+[0;38;5;245m  318[0m  6 [31m[S] got result part 1 job1[0m
+[0;38;5;245m  318[0m  8 [31m[S] got result part 0 job2[0m
+[0;38;5;245m  319[0m  2 [32m[1] got chunk {'res': 'job1 result 1', 'nr': 1, 'dt': 202}[0m
+[0;38;5;245m  319[0m  3 [33m[2] got chunk {'res': 'job2 result 0', 'nr': 0, 'dt': 202}[0m
+[0;38;5;245m  418[0m 10 [31m[S] got result part 0 job3[0m
+[0;38;5;245m  419[0m  6 [31m[S] got result part 2 job1[0m
+[0;38;5;245m  419[0m  2 [32m[1] got chunk {'res': 'job1 result 2', 'nr': 2, 'dt': 303}[0m
+[0;38;5;245m  419[0m  4 [34m[3] got chunk {'res': 'job3 result 0', 'nr': 0, 'dt': 301}[0m
+[0;38;5;245m  519[0m  8 [31m[S] got result part 1 job2[0m
+[0;38;5;245m  519[0m  3 [33m[2] got chunk {'res': 'job2 result 1', 'nr': 1, 'dt': 403}[0m
+[0;38;5;245m  519[0m  2 [32m[1] done client[0m
+[0;38;5;245m  719[0m 10 [31m[S] got result part 1 job3[0m
+[0;38;5;245m  719[0m  8 [31m[S] got result part 2 job2[0m
+[0;38;5;245m  719[0m  3 [33m[2] got chunk {'res': 'job2 result 2', 'nr': 2, 'dt': 603}[0m
+[0;38;5;245m  720[0m  4 [34m[3] got chunk {'res': 'job3 result 1', 'nr': 1, 'dt': 602}[0m
+[0;38;5;245m  921[0m  3 [33m[2] done client[0m
+[0;38;5;245m 1019[0m 10 [31m[S] got result part 2 job3[0m
+[0;38;5;245m 1020[0m  4 [34m[3] got chunk {'res': 'job3 result 2', 'nr': 2, 'dt': 902}[0m
+[0;38;5;245m 1321[0m  4 [34m[3] done client[0m
+[0;38;5;245m 1386[0m  M [34m[3] all_done[0m
+.
+
+======================= 1 passed, 1 deselected in 1.51s ========================
+</code></pre>
+<hr/>
+
+<h2 id="todo">Todo<a class="headerlink" href="#todo" title="Permanent link">¤</a></h2>
+<ul>
+<li>Invent a mapping registry of job result (parts) to interested clients.</li>
+<li>Who is interested in what should be up to the client - server should only care about security.
+  See below.</li>
+<li>Once you have that, do e.g. <code>pipe(rx.group_by(job_data_source), rx.buffer_with_time(1),
+  rx.run_job_list</code>, to not overload external api with many small requests (use their list APIs).</li>
+<li>Send all jobs you have at e.g. dashboard open in ONE request - and stream all results via that
+  socket</li>
+</ul>
+<h3 id="suggestion-expressing-interest">Suggestion: Expressing Interest<a class="headerlink" href="#suggestion-expressing-interest" title="Permanent link">¤</a></h3>
+<p>How can we enable clients to express sth. like "Dear API server, I want to get all data updates from any job,
+<code>containing joe@doe.com for the next 10 seconds</code> ( no matter the nesting level of that email address
+within the data schemas).</p>
+<p>In order to facilitate clients to be able to express and update to the server, in which data they are
+interested, you might look into an expression library like <a href="https://github.com/axiros/pycond">this one</a>.</p>
+<p>The most common conditions will be e.g. ids of certain data objects, like cpeids, userids, (...).</p>
+<p>Problem here that those are typically not always at the "same places" within the data.</p>
+<p>One solution might be, to define, when implementing a new use case, also sth like a 'possibly
+interesting value extractor' function and then push those possibly interesting values into a
+dedicated stream, mapping them to jobids. When client interest matches, you can pull the full data
+from short lived memory caches.</p>
+<p>Redis streams would be a good choice, when such values arrive on many server processes.</p>
+<p>Then store also the process (or local redis server) where the full data is in the cache. </p>
+
+<script>typeof start_lc === "undefined" ? 0 : start_lc() </script>
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<style>
+  .md-footer__link--next {
+    width: 75%;
+  }
+  .overlay_block {
+    position: relative;
+    width: 100%;
+  }
+  .overlay_block .overlay_link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .overlay_block .overlay_inner {
+    position: relative;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .overlay_block .overlay_inner a {
+    pointer-events: all;
+  }
+</style>
+
+<footer class="md-footer">
+  
+
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../../cloud/terraform/k8s/k8s_provider/k8s_provider/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The K8s Provider" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              The K8s Provider
+            </div>
+          </div>
+        </a>
+
+
+
+       
+      <div class="md-footer__link md-footer__link--next">
+        
+        <div class="overlay_block">
+          <a
+            class="overlay_link"
+            href="../prompt_toolkit/"
+            rel="next"
+          ></a>
+          <div class="overlay_inner">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                
+                <a href="/blog/programming/python/rx/">
+                    
+                  <small>💻 DEV</small> - 
+                </a>
+                
+                <a href="/blog/programming/python/rx/">
+                    
+                  <small>🐍 Python</small> - 
+                </a>
+                
+                <a href="/blog/programming/python/prompt_toolkit/">
+                    
+                  <small>TermUIs</small> - 
+                </a>
+                
+                <a href="/blog/programming/python/prompt_toolkit/">
+                     <span>Prompt Toolkit</span> 
+                </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-left: -2rem" class="md-footer__button md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+        </div>
+      </div>
+
+
+
+
+      
+    </nav>
+  </div>
+  
+
+
+
+
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Gunther Klessinger
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/axiros" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/fa_all.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm-addon-search.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm.4.9.0.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/Rx.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/tablesort.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/lc.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm-addon-fit.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/tables.js"></script>
+      
+    
+  </body>
+</html>

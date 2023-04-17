@@ -1,0 +1,2720 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Random Thoughts">
+      
+      
+      
+        <link rel="canonical" href="https://AXGKl.github.io/blog/cloud/k8s/1_hello_app/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>First App - AXGK Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../lcd/lp/css/xterm.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="black" data-md-color-accent="deep-purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a-first-hello-world-python-app-run-on-k8s" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="AXGK Blog" class="md-header__button md-logo" aria-label="AXGK Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AXGK Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              First App
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AXGKl/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AXGKl/blog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Overview
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ll/apps/apps/" class="md-tabs__link">
+        🐧 LINUX
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dnsmasq/" class="md-tabs__link md-tabs__link--active">
+        💭 CLOUD
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../programming/python/rx/" class="md-tabs__link">
+        💻 DEV
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../inet/videos/" class="md-tabs__link">
+      📺 VIDS
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../logbook/" class="md-tabs__link">
+      ✏️  LOG
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/changelog/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="AXGK Blog" class="md-nav__button md-logo" aria-label="AXGK Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    AXGK Blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AXGKl/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AXGKl/blog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          🐧 LINUX
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🐧 LINUX" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          🐧 LINUX
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/apps/apps/" class="md-nav__link">
+        Apps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/devices/tv_q8/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/distro/" class="md-nav__link">
+        Distros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/arco/" class="md-nav__link">
+        Distros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/emacs/emacs/" class="md-nav__link">
+        Emacs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/gimp/gimp/" class="md-nav__link">
+        Gimp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Hardware
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Hardware" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Hardware
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_7_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_1">
+          Input
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Input" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Input
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/hw/input/keyboard/" class="md-nav__link">
+        Keyboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/hw/input/k860/" class="md-nav__link">
+        K860
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/hw/input/corne/" class="md-nav__link">
+        Corne
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/hw/input/hp/" class="md-nav__link">
+        HP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/mkdocs/mkdocs/" class="md-nav__link">
+        MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Suckless
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Suckless" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Suckless
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/dwm/" class="md-nav__link">
+        dwm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/st/" class="md-nav__link">
+        st
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_4" data-md-state="indeterminate" type="checkbox" id="__nav_2_9_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_4">
+          Statusbar Fun
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Statusbar Fun" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_9_4">
+          <span class="md-nav__icon md-icon"></span>
+          Statusbar Fun
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar/" class="md-nav__link">
+        The Problem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/status_bar_fun/2021.05.24_dwm_status_2_never_call_xsession_within_dwm/" class="md-nav__link">
+        XFCE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/status_bar_fun/2021.05.24_dwm_status_3_xfce4_panel_in_dwm/" class="md-nav__link">
+        XFCE Panel in DWM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/sl/status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor/" class="md-nav__link">
+        CPU Monitor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" data-md-state="indeterminate" type="checkbox" id="__nav_2_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10">
+          Vim
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vim" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Vim
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/vim/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/astro_vim/" class="md-nav__link">
+        AstroVim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/astro_vim_null_ls_builtins/" class="md-nav__link">
+        AstroVimLspBuiltins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/ultisnips/" class="md-nav__link">
+        Ultisnips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/vim/html/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/todo/" class="md-nav__link">
+        Todo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          💭 CLOUD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💭 CLOUD" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          💭 CLOUD
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dnsmasq/" class="md-nav__link">
+        DNSMasq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ci/github_actions/" class="md-nav__link">
+        Github Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kubernetes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k9s/k9s/" class="md-nav__link">
+        K9s Terminal UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          First App
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        First App
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparation" class="md-nav__link">
+    Preparation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environ" class="md-nav__link">
+    Environ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-app" class="md-nav__link">
+    Server App
+  </a>
+  
+    <nav class="md-nav" aria-label="Server App">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#containerize" class="md-nav__link">
+    Containerize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    Test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit-app" class="md-nav__link">
+    Commit App
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-to-private-registry" class="md-nav__link">
+    Push to (Private) Registry
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-deployment" class="md-nav__link">
+    Cloud Deployment
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_hello_mysql/" class="md-nav__link">
+        With DB
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Terraform
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Terraform" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Terraform
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/resource_creation/" class="md-nav__link">
+        Basic Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/ansible/" class="md-nav__link">
+        TF And Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/k8s/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/k8s/k8s_on_do/" class="md-nav__link">
+        K8s Cluster Infra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/k8s/k8s_provider/do_k8s/" class="md-nav__link">
+        Attaching Using Token Only
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terraform/k8s/k8s_provider/k8s_provider/" class="md-nav__link">
+        The K8s Provider
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          💻 DEV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💻 DEV" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          💻 DEV
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" data-md-state="indeterminate" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          🐍 Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🐍 Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          🐍 Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/rx/" class="md-nav__link">
+        Reactive Programming With RxPY
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2">
+          TermUIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TermUIs" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          TermUIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/prompt_toolkit/" class="md-nav__link">
+        Prompt Toolkit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/prompt_toolkit/dup2/" class="md-nav__link">
+        Stream Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" data-md-state="indeterminate" type="checkbox" id="__nav_4_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3">
+          Fun
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/fun/unblockme/" class="md-nav__link">
+        UnblockMe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/fun/einstein/" class="md-nav__link">
+        Einstein
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Electronics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Electronics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Electronics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/" class="md-nav__link">
+        Interacting with Real World
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_2">
+          Desk Cycling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Desk Cycling" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Desk Cycling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/intro/" class="md-nav__link">
+        Zwiftifying My DeskCycle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/powermeter/" class="md-nav__link">
+        Power Meters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/mechanical/" class="md-nav__link">
+        Know the Gear Position
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/electromagnet/" class="md-nav__link">
+        Electromagent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ll/electronics/deskcycle/generator/" class="md-nav__link">
+        Generating Power
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inet/videos/" class="md-nav__link">
+        📺 VIDS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../logbook/" class="md-nav__link">
+        ✏️  LOG
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/navigation/" class="md-nav__link">
+        Navigation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparation" class="md-nav__link">
+    Preparation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environ" class="md-nav__link">
+    Environ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-app" class="md-nav__link">
+    Server App
+  </a>
+  
+    <nav class="md-nav" aria-label="Server App">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#containerize" class="md-nav__link">
+    Containerize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    Test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit-app" class="md-nav__link">
+    Commit App
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-to-private-registry" class="md-nav__link">
+    Push to (Private) Registry
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-deployment" class="md-nav__link">
+    Cloud Deployment
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="editor:///home/gk/repos/blog/docs/cloud/k8s/1_hello_app/index.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<style>
+
+          @media only screen and (min-width: 76.25em) {
+            .md-main__inner {
+              max-width: none;
+            }
+            .md-sidebar--primary {
+              left: 0;
+            }
+            .md-sidebar--secondary {
+              right: 0;
+              margin-left: 0;
+              -webkit-transform: none;
+              transform: none;   
+            }
+          }
+
+</style>
+<h1 id="a-first-hello-world-python-app-run-on-k8s">A First Hello World Python App Run on K8s<a class="headerlink" href="#a-first-hello-world-python-app-run-on-k8s" title="Permanent link">¤</a></h1>
+<p>We create a hello world app, which we containerize, then deploy on k8s.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are thousands of "better" tutorials regarding how to do this already out there since long.
+But you have to start somewhere and I wanted an automatically<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> reproducable baseline, for the more
+complex things, we'll eventually address in other tutorials around here.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">kubernetes playground</p>
+<p>If you can't install a cloud kubernetes server you can test most of the stuff below using this
+playground: <a href="https://labs.play-with-k8s.com/">https://labs.play-with-k8s.com/</a></p>
+</div>
+<p>First example is stateless:</p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">¤</a></h2>
+<ul>
+<li>Having a <a href="../../terraform/k8s/k8s_on_do/">k8s cluster and configured kubectl command</a>, with access to our private container image registry.</li>
+</ul>
+<!-- id: 28213a4ccf9b72ecdcb68e77d4a2396f -->
+<div class="highlight"><pre><span></span><code>$ kubectl get nodes                                       
+NAME                 STATUS   ROLES    AGE   VERSION                                
+app-pool-849ri       Ready    &lt;none&gt;   28m   v1.21.2                                
+app-pool-849rv       Ready    &lt;none&gt;   28m   v1.21.2                                
+default-pool-849j0   Ready    &lt;none&gt;   31m   v1.21.2                                
+default-pool-849j1   Ready    &lt;none&gt;   32m   v1.21.2
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$ kubectl get secrets                                     
+NAME                  TYPE                                  DATA   AGE              
+default-token-7jjc4   kubernetes.io/service-account-token   <span class="m">3</span>      35m              
+regcred               kubernetes.io/dockerconfigjson        <span class="m">1</span>      27m
+</code></pre></div>
+<!-- id: 28213a4ccf9b72ecdcb68e77d4a2396f -->
+
+<ul>
+<li>
+<p>Have the following values present (we use <a href="https://www.passwordstore.org/"><code>pass</code></a> to retrieve them):</p>
+<ul>
+<li><code>reg/domain</code>  domain name of your registry</li>
+<li><code>reg/user</code>    username for your registry</li>
+<li><code>reg/passw</code>   your registry password</li>
+</ul>
+</li>
+<li>
+<p>podman or docker and kubectl. Here we will use podman to build and push a container image.</p>
+</li>
+</ul>
+<h3 id="preparation">Preparation<a class="headerlink" href="#preparation" title="Permanent link">¤</a></h3>
+<!-- id: 9a0af911e6c608eecfac473c911a7349 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Cmd</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">type</span> kubectl podman <span class="c1"># asserts: podman and kubectl</span>
+<span class="gp">$ </span><span class="nv">app</span><span class="o">=</span><span class="s2">&quot;hello_app&quot;</span>       <span class="c1"># app (container) name</span>
+<span class="gp">$ </span><span class="nv">D</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$DT_PROJECT_ROOT</span><span class="s2">/tmp/clusters/DO/k8s/</span><span class="nv">$app</span><span class="s2">&quot;</span>
+<span class="gp">$ </span>mkdir -p <span class="s2">&quot;</span><span class="nv">$D</span><span class="s2">&quot;</span> <span class="o">||</span> <span class="nb">exit</span> <span class="m">1</span>
+<span class="gp">$ </span><span class="nb">cd</span> <span class="s2">&quot;</span><span class="nv">$D</span><span class="s2">&quot;</span>
+<span class="gp">$ </span>ls -a <span class="p">|</span> xargs rm -rf <span class="m">2</span>&gt;/dev/null
+<span class="gp">$ </span>git init
+<span class="gp">$ </span>podman rmi --force <span class="nv">$app</span> <span class="m">2</span>&gt;/dev/null <span class="o">||</span> <span class="nb">true</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ type kubectl podman # asserts: podman and kubectl                                 
+kubectl is hashed (/usr/local/bin/kubectl)                                          
+podman is hashed (/usr/bin/podman)        
+$ 
+$ app="hello_app"       # app (container) name                                      
+$ 
+$ D="$DT_PROJECT_ROOT/tmp/clusters/DO/k8s/$app"
+$ mkdir -p "$D" || exit 1
+$ cd "$D"
+$ ls -a | xargs rm -rf 2&gt;/dev/null
+$ git init      
+[33mhint: Using 'master' as the name for the initial branch. This default branch name[39m   
+[33mhint: is subject to change. To configure the initial branch name to use in all[39m      
+[33mhint: of your new repositories, which will suppress this warning, call:[39m             
+[33mhint: [39m               
+[33mhint: [39m  [33mgit config --global init.defaultBranch &lt;name&gt;[39m                               
+[33mhint: [39m               
+[33mhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and[39m             
+[33mhint: 'development'. The just-created branch can be renamed via this command:[39m       
+[33mhint: [39m               
+[33mhint: [39m  [33mgit branch -m &lt;name&gt;[39m              
+Initialized empty Git repository in /home/gk/repos/blog/tmp/clusters/DO/k8s/hello_app/.git/
+$ podman rmi --force $app 2&gt;/dev/null || true             
+Untagged: localhost/devapps/hello_app:0.2
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 9a0af911e6c608eecfac473c911a7349 -->
+
+<h2 id="environ">Environ<a class="headerlink" href="#environ" title="Permanent link">¤</a></h2>
+<p>As usual we create an <code>environ</code> file, which sets up our working environ, when sourced - convenient for new shells:</p>
+<!-- id: 37000e0d2e577fc4c44f64b4a81374be -->
+<div class="highlight"><pre><span></span><code>$ cat environ
+<span class="nb">set</span> -ae
+<span class="nb">alias</span> <span class="nv">k</span><span class="o">=</span>kubectl <span class="nv">p</span><span class="o">=</span>podman
+
+<span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span> <span class="o">=</span> *bash* <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">s</span><span class="o">=</span>bash <span class="o">||</span> <span class="nv">s</span><span class="o">=</span>zsh
+<span class="nb">source</span> &lt;<span class="o">(</span>kubectl completion <span class="nv">$s</span><span class="o">)</span>
+
+<span class="nv">D</span><span class="o">=</span><span class="s2">&quot;/home/gk/repos/blog/tmp/clusters/DO/k8s/hello_app&quot;</span>
+<span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;devapps&quot;</span>                                  <span class="c1"># namespace of our app in registry</span>
+<span class="nv">fn_reg_auth</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$XDG_RUNTIME_DIR</span><span class="s2">/containers/auth.json&quot;</span>  <span class="c1"># where podman stores creds</span>
+<span class="nv">app</span><span class="o">=</span><span class="s2">&quot;hello_app&quot;</span>                                    <span class="c1"># app (container) name</span>
+<span class="nv">ver</span><span class="o">=</span><span class="s2">&quot;0.2&quot;</span>
+<span class="nb">cd</span> <span class="s2">&quot;</span><span class="nv">$D</span><span class="s2">&quot;</span>
+<span class="nb">set</span> +ae
+</code></pre></div>
+<!-- id: 37000e0d2e577fc4c44f64b4a81374be -->
+
+<!-- id: e9081053b0fef30de850787fcd421f9a -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Cmd</label><label for="__tabbed_2_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">source</span> ./environ
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ source ./environ
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: e9081053b0fef30de850787fcd421f9a -->
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Automatic Sourcing on <code>cd</code></label><label for="__tabbed_3_2">Recipe</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>You can tell your shell to automatically source the environ file, when you cd into the folder, by overwritting the builtin cd function.</p>
+</div>
+<div class="tabbed-block">
+<p>In your <code>.bashrc</code> or <code>.zshrc</code>:</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">function</span> <span class="nb">cd</span> <span class="o">{</span>
+    <span class="nb">local</span> m f <span class="nv">d</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="nv">$HOME</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="c1"># useful as well: cd into dir when a file is given:</span>
+    <span class="nb">test</span> -d <span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span> <span class="o">||</span> <span class="o">{</span>
+        <span class="nb">test</span> <span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;-&quot;</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+            <span class="nv">f</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>
+            <span class="nv">d</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>dirname <span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+            <span class="nb">test</span> -e <span class="s2">&quot;</span><span class="nv">$f</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> <span class="nv">m</span><span class="o">=</span><span class="s2">&quot;Is a file&quot;</span> <span class="o">||</span> <span class="nv">m</span><span class="o">=</span><span class="s2">&quot;Not exists&quot;</span>
+            <span class="nb">echo</span> -e <span class="s2">&quot;\x1b[38;5;245m</span><span class="nv">$m</span><span class="s2">: </span><span class="nv">$f</span><span class="s2"> - going to \x1b[0m</span><span class="nv">$d</span><span class="s2">&quot;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="nb">builtin</span> <span class="nb">cd</span> <span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>
+    <span class="nb">test</span> -e <span class="s2">&quot;./.cd.rc&quot;</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+        <span class="nb">echo</span> -e <span class="s2">&quot;\x1b[38;5;245m</span><span class="k">$(</span>cat <span class="s2">&quot;./.cd.rc&quot;</span><span class="k">)</span><span class="s2">\x1b[0m&quot;</span>
+        <span class="nb">source</span> <span class="s2">&quot;./.cd.rc&quot;</span>
+    <span class="o">}</span>
+    <span class="nb">true</span>
+<span class="o">}</span>
+</code></pre></div>
+Now you can add <code>source environ</code> into a <code>.cd.rc</code> file within the same folder.</p>
+</div>
+</div>
+</div>
+</div>
+<h2 id="server-app">Server App<a class="headerlink" href="#server-app" title="Permanent link">¤</a></h2>
+<p>A simple webserver, returning its process environ to the client and supports getting shut down from
+remote:</p>
+<!-- id: 369d0132692c58d99ebe410df2316e8d -->
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">cat</span> <span class="n">server</span><span class="o">.</span><span class="n">py</span>
+<span class="c1">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">json</span> <span class="k">as</span> <span class="nn">j</span>
+<span class="kn">from</span> <span class="nn">http.server</span> <span class="kn">import</span> <span class="n">HTTPServer</span><span class="p">,</span> <span class="n">BaseHTTPRequestHandler</span> <span class="k">as</span> <span class="n">Handler</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span>
+<span class="n">die</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span>
+
+<span class="n">nfo</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;at&#39;</span><span class="p">:</span> <span class="n">now</span><span class="p">(),</span> <span class="s1">&#39;env&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">)}</span>
+<span class="n">rsp</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">j</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">nfo</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">send_response</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">send_header</span><span class="p">(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s1">&#39;application/json&#39;</span><span class="p">)</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">end_headers</span><span class="p">()</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="p">:</span> <span class="n">h</span><span class="o">.</span><span class="n">wfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+    <span class="n">w</span><span class="p">(</span><span class="n">rsp</span><span class="p">())</span>
+    <span class="c1"># we allow the client to stop the server via those URL paths:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">die</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="s1">&#39;/stop&#39;</span> <span class="k">else</span> <span class="n">die</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="s1">&#39;/err&#39;</span> <span class="k">else</span> <span class="mi">0</span>
+
+
+<span class="n">Handler</span><span class="o">.</span><span class="n">do_GET</span> <span class="o">=</span> <span class="n">get</span>
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">28001</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Starting httpd server on </span><span class="si">{</span><span class="n">bind</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">HTTPServer</span><span class="p">((</span><span class="n">bind</span><span class="p">,</span> <span class="n">port</span><span class="p">),</span> <span class="n">Handler</span><span class="p">)</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+
+<span class="n">run</span><span class="p">()</span> <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span> <span class="k">else</span> <span class="mi">0</span>
+</code></pre></div>
+<!-- id: 369d0132692c58d99ebe410df2316e8d -->
+
+<h3 id="containerize">Containerize<a class="headerlink" href="#containerize" title="Permanent link">¤</a></h3>
+<!-- id: 133a9fbd70b19d8a3696d925753be51b -->
+<div class="highlight"><pre><span></span><code>$ cat Dockerfile
+<span class="k">FROM</span><span class="w">         </span><span class="s">docker.io/python:3.8</span>
+<span class="k">MAINTAINER</span><span class="w">   </span><span class="s">gk</span>
+<span class="k">RUN</span><span class="w">          </span>mkdir -p /app
+<span class="k">WORKDIR</span><span class="w">      </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w">         </span>server.py /app/server.py
+<span class="k">ENV</span><span class="w">          </span>APP_ENV development
+<span class="k">EXPOSE</span><span class="w">       </span><span class="s">28001</span>
+<span class="k">CMD</span><span class="w">          </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;server.py&quot;</span><span class="p">]</span>
+</code></pre></div>
+<!-- id: 133a9fbd70b19d8a3696d925753be51b -->
+
+<!-- id: 607a9bdf55e10c9e70828644c1bf2e2c -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Cmd</label><label for="__tabbed_4_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>p build --quiet -t <span class="nv">$app</span>  .
+<span class="gp">$ </span>p tag <span class="s2">&quot;</span><span class="nv">$app</span><span class="s2">:latest&quot;</span> <span class="s2">&quot;</span><span class="nv">$namespace</span><span class="s2">/</span><span class="nv">$app</span><span class="s2">:</span><span class="nv">$ver</span><span class="s2">&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ p build --quiet -t $app  .                              
+084853fe41554ceb4094d20d6f202e23a14be169c1ec252abfd5111be62bc5d9
+$ p tag "$app:latest" "$namespace/$app:$ver"
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 607a9bdf55e10c9e70828644c1bf2e2c -->
+
+<h3 id="test">Test<a class="headerlink" href="#test" title="Permanent link">¤</a></h3>
+<!-- id: 0d8dd6deed60237d4078723ed9618bee -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Cmd</label><label for="__tabbed_5_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>p run -d --rm -p28001:28001 <span class="nv">$namespace</span>/<span class="nv">$app</span>:<span class="nv">$ver</span>
+<span class="gp">$ </span>wget --retry-connrefused http://localhost:28001/stop -O - <span class="c1"># lp: asserts=PATH</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ p run -d --rm -p28001:28001 $namespace/$app:$ver        
+cd8c94247f5849f6c04e8db1049ebb0b8110b449bc22eca7ddc9ef8351ca8f7d
+$ wget --retry-connrefused http://localhost:28001/stop -O -                    
+--2021-08-16 14:40:37--  http://localhost:28001/stop                                
+Resolving localhost (localhost)... ::1, 127.0.0.1                                   
+Connecting to localhost (localhost)|::1|:28001... connected.                        
+HTTP request sent, awaiting response... 200 OK                                      
+Length: unspecified [application/json]    
+Saving to: ‘STDOUT’
+
+-                        [&lt;=&gt;                    ]       0  --.-KB/s               {
+    "at": 1629117637.1792567,             
+    "env": {         
+        "APP_ENV": "development",         
+        "GPG_KEY": "E3FF2839C048B25C084DEBE9B26995E310250568",                      
+        "HOME": "/root",                  
+        "HOSTNAME": "cd8c94247f58",       
+        "LANG": "C.UTF-8",                
+        "PATH": "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",           
+        "PYTHON_GET_PIP_SHA256": "fa6f3fb93cce234cd4e8dd2beb54a51ab9c247653b52855a48dd44e6b21ff28b",     
+        "PYTHON_GET_PIP_URL": "https://github.com/pypa/get-pip/raw/c20b0cfd643cd4a19246ccf204e2997af70f6b21/public/get-pip.py",                                         
+        "PYTHON_PIP_VERSION": "21.2.3",   
+        "PYTHON_VERSION": "3.8.11",       
+        "TERM": "xterm",                  
+        "container": "podman"             
+    }                
+-                        [ &lt;=&gt;                   ]     692  --.-KB/s    in 0s
+
+2021-08-16 14:40:37 (1.36 MB/s) - written to stdout [692]
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 0d8dd6deed60237d4078723ed9618bee -->
+
+<h3 id="commit-app">Commit App<a class="headerlink" href="#commit-app" title="Permanent link">¤</a></h3>
+<!-- id: cedbe869f1067899a67639a1fb240fca -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Cmd</label><label for="__tabbed_6_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>git add server.py Dockerfile environ
+<span class="gp">$ </span>git commit -am <span class="s1">&#39;feat: First version of hello world server&#39;</span>
+<span class="gp">$ </span>git tag <span class="nv">$ver</span> <span class="o">||</span> <span class="nb">true</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ git add server.py Dockerfile environ
+$ git commit -am 'feat: First version of hello world server'                   
+[master (root-commit) cf30264] feat: First version of hello world server            
+ 3 files changed, 50 insertions(+)        
+ create mode 100644 Dockerfile            
+ create mode 100644 environ               
+ create mode 100755 server.py
+$ git tag $ver || true
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: cedbe869f1067899a67639a1fb240fca -->
+
+<h3 id="push-to-private-registry">Push to (Private) Registry<a class="headerlink" href="#push-to-private-registry" title="Permanent link">¤</a></h3>
+<!-- id: 23ed0b2db0dbe69c84c7a76c93ac10e5 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Cmd</label><label for="__tabbed_7_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>p login <span class="s2">&quot;</span><span class="k">$(</span>pass show reg/domain<span class="k">)</span><span class="s2">&quot;</span> -u <span class="k">$(</span>pass show reg/user<span class="k">)</span> -p <span class="s2">&quot;</span><span class="k">$(</span>pass show reg/passw<span class="k">)</span><span class="s2">&quot;</span>
+<span class="gp">$ </span><span class="nv">r</span><span class="o">=</span><span class="s2">&quot;docker://</span><span class="k">$(</span>pass show reg/domain<span class="k">)</span><span class="s2">/docker-internal/</span><span class="nv">$namespace</span><span class="s2">&quot;</span>
+<span class="gp">$ </span>p push --quiet --authfile<span class="o">=</span><span class="nv">$fn_reg_auth</span> <span class="nv">$namespace</span>/<span class="nv">$app</span>:<span class="nv">$ver</span> <span class="s2">&quot;</span><span class="nv">$r</span><span class="s2">/</span><span class="nv">$app</span><span class="s2">:</span><span class="nv">$ver</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> success <span class="c1"># lp: assert=success</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ p login "$(pass show reg/domain)" -u $(pass show reg/user) -p "$(pass show reg/passw)"            
+Login Succeeded!
+$ r="docker://$(pass show reg/domain)/docker-internal/$namespace"
+$ p push --quiet --authfile=$fn_reg_auth $namespace/$app:$ver "$r/$app:$ver" &amp;&amp; echo success        
+success
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 23ed0b2db0dbe69c84c7a76c93ac10e5 -->
+
+<h2 id="cloud-deployment">Cloud Deployment<a class="headerlink" href="#cloud-deployment" title="Permanent link">¤</a></h2>
+<p>Lets deploy the container using K8s' builtin weapons:</p>
+<p>The app is stateless, so we deploy, ...well..., a <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">"Deployment"</a>:</p>
+<!-- id: 872b0271a9b7e9c0ce92a2e6373bf6a9 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Cmd</label><label for="__tabbed_8_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>cat &lt;&lt; EOF &gt; frontend-deployment.yaml
+<span class="go">apiVersion: apps/v1</span>
+<span class="go">kind: Deployment</span>
+<span class="go">metadata:</span>
+<span class="go">  name: frontend</span>
+<span class="go">spec:</span>
+<span class="go">  replicas: 2</span>
+<span class="go">  selector:</span>
+<span class="go">    matchLabels:</span>
+<span class="go">      app: pyhello</span>
+<span class="go">      tier: frontend</span>
+<span class="go">  template:</span>
+<span class="go">    metadata:</span>
+<span class="go">      labels:</span>
+<span class="go">        app: pyhello</span>
+<span class="go">        tier: frontend</span>
+<span class="go">    spec:</span>
+<span class="go">      imagePullSecrets:</span>
+<span class="go">      - name: regcred</span>
+<span class="go">      containers:</span>
+<span class="go">      - name: py-hello1</span>
+<span class="go">        image: $(pass show reg/domain)/docker-internal/$namespace/$app:$ver</span>
+<span class="go">        imagePullPolicy: Always</span>
+<span class="go">        env:</span>
+<span class="go">        - name: FOO</span>
+<span class="go">          value: &quot;BAR&quot;</span>
+<span class="go">        ports:</span>
+<span class="go">        - containerPort: 28001</span>
+<span class="go">        resources:</span>
+<span class="go">          requests:</span>
+<span class="go">            cpu: 100m</span>
+<span class="go">            memory: 100Mi</span>
+<span class="go">EOF</span>
+<span class="gp">$ </span>k apply -f frontend-deployment.yaml
+<span class="gp">$ </span>sleep <span class="m">1</span>
+<span class="gp">$ </span>k get pods -l <span class="nv">app</span><span class="o">=</span>pyhello -l <span class="nv">tier</span><span class="o">=</span>frontend
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ cat &lt;&lt; EOF &gt; frontend-deployment.yaml   
+&gt; apiVersion: apps/v1                     
+&gt; kind: Deployment   
+&gt; metadata:          
+&gt;   name: frontend   
+&gt; spec:              
+&gt;   replicas: 2      
+&gt;   selector:        
+&gt;     matchLabels:   
+&gt;       app: pyhello 
+&gt;       tier: frontend                    
+&gt;   template:        
+&gt;     metadata:      
+&gt;       labels:      
+&gt;         app: pyhello                    
+&gt;         tier: frontend                  
+&gt;     spec:          
+&gt;       imagePullSecrets:                 
+&gt;       - name: regcred                   
+&gt;       containers:  
+&gt;       - name: py-hello1                 
+&gt;         image: $(pass show reg/domain)/docker-internal/$namespace/$app:$ver       
+&gt;         imagePullPolicy: Always         
+&gt;         env:       
+&gt;         - name: FOO
+&gt;           value: "BAR"                  
+&gt;         ports:     
+&gt;         - containerPort: 28001          
+&gt;         resources: 
+&gt;           requests:
+&gt;             cpu: 100m                   
+&gt;             memory: 100Mi               
+&gt; EOF                
+$ 
+$ k apply -f frontend-deployment.yaml                     
+deployment.apps/frontend unchanged
+$ sleep 1
+$ k get pods -l app=pyhello -l tier=frontend              
+NAME                       READY   STATUS    RESTARTS   AGE                         
+frontend-9d9756598-tgkxj   1/1     Running   0          14m                         
+frontend-9d9756598-w2dck   1/1     Running   0          14m
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 872b0271a9b7e9c0ce92a2e6373bf6a9 -->
+
+<!-- id: e353ee1d2e8916e8d96cd3bbc24a8889 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Cmd</label><label for="__tabbed_9_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>cat &lt;&lt; EOF &gt; frontend-service.yaml
+<span class="go">apiVersion: v1</span>
+<span class="go">kind: Service</span>
+<span class="go">metadata:</span>
+<span class="go">  name: frontend</span>
+<span class="go">  labels:</span>
+<span class="go">    app: pyhello</span>
+<span class="go">    tier: frontend</span>
+<span class="go">spec:</span>
+<span class="go">  type: LoadBalancer</span>
+<span class="go">  ports:</span>
+<span class="go">  - port: 28001</span>
+<span class="go">  selector:</span>
+<span class="go">    app: pyhello</span>
+<span class="go">    tier: frontend</span>
+<span class="go">EOF</span>
+<span class="gp">$ </span>k apply -f frontend-service.yaml
+<span class="gp">$ </span>sleep <span class="m">1</span>
+<span class="gp">$ </span>k get service frontend
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ cat &lt;&lt; EOF &gt; frontend-service.yaml      
+&gt; apiVersion: v1     
+&gt; kind: Service      
+&gt; metadata:          
+&gt;   name: frontend   
+&gt;   labels:          
+&gt;     app: pyhello   
+&gt;     tier: frontend 
+&gt; spec:              
+&gt;   type: LoadBalancer                    
+&gt;   ports:           
+&gt;   - port: 28001    
+&gt;   selector:        
+&gt;     app: pyhello   
+&gt;     tier: frontend 
+&gt; EOF                
+$ 
+$ k apply -f frontend-service.yaml                        
+service/frontend unchanged
+$ sleep 1
+$ k get service frontend                                  
+NAME       TYPE           CLUSTER-IP      EXTERNAL-IP       PORT(S)           AGE   
+frontend   LoadBalancer   10.245.204.64   104.248.103.121   28001:31927/TCP   14m
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: e353ee1d2e8916e8d96cd3bbc24a8889 -->
+
+<p>On DO the loadbalancer needs a few minutes when you first configure one, on a <em>new</em> k8s cluster (<code>k describe service frontend</code> shows details).</p>
+<p>Let's wait until up:</p>
+<!-- id: 444aba1d65ac8125d1bb736e98846551 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Cmd</label><label for="__tabbed_10_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="k">while</span> true<span class="p">;</span> <span class="k">do</span> sleep <span class="m">2</span><span class="p">;</span> k get service frontend <span class="p">|</span> grep pending <span class="o">||</span> break<span class="p">;</span> <span class="k">done</span> <span class="c1"># lp: timeout=600</span>
+<span class="gp">$ </span>k -o json get service frontend <span class="p">|</span> jq .
+<span class="gp">$ </span><span class="nv">ip</span><span class="o">=</span><span class="k">$(</span>k -o json get service frontend <span class="p">|</span> jq -r .status.loadBalancer.ingress<span class="o">[</span><span class="m">0</span><span class="o">]</span>.ip<span class="k">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ while true; do sleep 2; k get service frontend | grep pending || break; done
+$ k -o json get service frontend | jq .                   
+[1m{[0m[39m[49m                    
+[1m  [34m"apiVersion"[39m: [0m[32m[49m"v1"[1m[39m,
+  [34m"kind"[39m: [0m[32m[49m"Service"[1m[39m,[0m[39m[49m 
+[1m  [34m"metadata"[39m: {[0m[39m[49m      
+[1m    [34m"annotations"[39m: {[0m[39m[49m 
+[1m      [34m"kubectl.kubernetes.io/last-applied-configuration"[39m: [0m[32m[49m"{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"pyhello\",\"tier\":\"frontend\"},\"name\":\"frontend\",\"namespace\":\"default\"},\"spec\":{\"ports\":[{\"port\":28001}],\"selector\":{\"app\":\"pyhello\",\"tier\":\"frontend\"},\"type\":\"LoadBalancer\"}}\n"[1m[39m,[0m[39m[49m           
+[1m      [34m"kubernetes.digitalocean.com/load-balancer-id"[39m: [0m[32m[49m"6781507a-afb4-49b0-b411-f0269483efb4"[39m             
+[1m    },[0m[39m[49m               
+[1m    [34m"creationTimestamp"[39m: [0m[32m[49m"2021-08-16T12:26:31Z"[1m[39m,[0m[39m[49m                                    
+[1m    [34m"finalizers"[39m: [[0m[39m[49m  
+[1m      [0m[32m[49m"service.kubernetes.io/load-balancer-cleanup"[39m                                 
+[1m    ],[0m[39m[49m               
+[1m    [34m"labels"[39m: {[0m[39m[49m      
+[1m      [34m"app"[39m: [0m[32m[49m"pyhello"[1m[39m,[0m[39m[49m                   
+[1m      [34m"tier"[39m: [0m[32m[49m"frontend"[39m                  
+[1m    },[0m[39m[49m               
+[1m    [34m"name"[39m: [0m[32m[49m"frontend"[1m[39m,[0m[39m[49m                   
+[1m    [34m"namespace"[39m: [0m[32m[49m"default"[1m[39m,[0m[39m[49m               
+[1m    [34m"resourceVersion"[39m: [0m[32m[49m"3707"[1m[39m,[0m[39m[49m            
+[1m    [34m"uid"[39m: [0m[32m[49m"ac18b950-82cd-4b6b-8aa1-59f3dcf94af5"[39m                                   
+[1m  },[0m[39m[49m                 
+[1m  [34m"spec"[39m: {[0m[39m[49m          
+[1m    [34m"clusterIP"[39m: [0m[32m[49m"10.245.204.64"[1m[39m,[0m[39m[49m         
+[1m    [34m"clusterIPs"[39m: [[0m[39m[49m  
+[1m      [0m[32m[49m"10.245.204.64"
+[1m[39m    ],[0m[39m[49m               
+[1m    [34m"externalTrafficPolicy"[39m: [0m[32m[49m"Cluster"[1m[39m,[0m[39m[49m   
+[1m    [34m"ipFamilies"[39m: [[0m[39m[49m  
+[1m      [0m[32m[49m"IPv4"[39m         
+[1m    ],[0m[39m[49m               
+[1m    [34m"ipFamilyPolicy"[39m: [0m[32m[49m"SingleStack"[1m[39m,[0m[39m[49m      
+[1m    [34m"ports"[39m: [[0m[39m[49m       
+[1m      {[0m[39m[49m              
+[1m        [34m"nodePort"[39m: [0m[39m[49m31927[1m,[0m[39m[49m                
+[1m        [34m"port"[39m: [0m[39m[49m28001[1m,[0m[39m[49m                    
+[1m        [34m"protocol"[39m: [0m[32m[49m"TCP"[1m[39m,[0m[39m[49m                
+[1m        [34m"targetPort"[39m: [0m[39m[49m28001               
+[1m      }[0m[39m[49m              
+[1m    ],[0m[39m[49m               
+[1m    [34m"selector"[39m: {[0m[39m[49m    
+[1m      [34m"app"[39m: [0m[32m[49m"pyhello"[1m[39m,[0m[39m[49m                   
+[1m      [34m"tier"[39m: [0m[32m[49m"frontend"[39m                  
+[1m    },[0m[39m[49m               
+[1m    [34m"sessionAffinity"[39m: [0m[32m[49m"None"[1m[39m,[0m[39m[49m            
+[1m    [34m"type"[39m: [0m[32m[49m"LoadBalancer"[39m                
+[1m  },[0m[39m[49m                 
+[1m  [34m"status"[39m: {[0m[39m[49m        
+[1m    [34m"loadBalancer"[39m: {
+      [34m"ingress"[39m: [[0m[39m[49m   
+[1m        {[0m[39m[49m            
+[1m          [34m"ip"[39m: [0m[32m[49m"104.248.103.121"[39m         
+[1m        }[0m[39m[49m            
+[1m      ][0m[39m[49m              
+[1m    }[0m[39m[49m                
+[1m  }[0m[39m[49m                  
+[1m}[0m[39m[49m
+$ ip=$(k -o json get service frontend | jq -r .status.loadBalancer.ingress[0].ip)
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 444aba1d65ac8125d1bb736e98846551 -->
+
+<p>The pods are up now - we can access the service from the internet via <code>$ip</code>.
+Loadbalancer distributes requests over pods:</p>
+<!-- id: 47f81a430ec26bb830009a63bb3d62a6 -->
+<p><xterm /></p>
+<pre><code>$ wget -q http://$ip:28001/ -O - | jq .                   
+[1m{[0m[39m[49m                    
+[1m  [34m"at"[39m: [0m[39m[49m1629117652.7117255[1m,[0m[39m[49m               
+[1m  [34m"env"[39m: {[0m[39m[49m           
+[1m    [34m"APP_ENV"[39m: [0m[32m[49m"development"[1m[39m,[0m[39m[49m             
+[1m    [34m"FOO"[39m: [0m[32m[49m"BAR"[1m[39m,[0m[39m[49m    
+[1m    [34m"FRONTEND_PORT"[39m: [0m[32m[49m"tcp://10.245.204.64:28001"[1m[39m,[0m[39m[49m                                   
+[1m    [34m"FRONTEND_PORT_28001_TCP"[39m: [0m[32m[49m"tcp://10.245.204.64:28001"[1m[39m,[0m[39m[49m                         
+[1m    [34m"FRONTEND_PORT_28001_TCP_ADDR"[39m: [0m[32m[49m"10.245.204.64"[1m[39m,[0m[39m[49m                                
+[1m    [34m"FRONTEND_PORT_28001_TCP_PORT"[39m: [0m[32m[49m"28001"[1m[39m,[0m[39m[49m                                        
+[1m    [34m"FRONTEND_PORT_28001_TCP_PROTO"[39m: [0m[32m[49m"tcp"[1m[39m,[0m[39m[49m                                         
+[1m    [34m"FRONTEND_SERVICE_HOST"[39m: [0m[32m[49m"10.245.204.64"[1m[39m,[0m[39m[49m                                       
+[1m    [34m"FRONTEND_SERVICE_PORT"[39m: [0m[32m[49m"28001"[1m[39m,[0m[39m[49m     
+[1m    [34m"GPG_KEY"[39m: [0m[32m[49m"E3FF2839C048B25C084DEBE9B26995E310250568"[1m[39m,[0m[39m[49m                          
+[1m    [34m"HOME"[39m: [0m[32m[49m"/root"[1m[39m,[0m[39m[49m 
+[1m    [34m"HOSTNAME"[39m: [0m[32m[49m"frontend-9d9756598-tgkxj"[1m[39m,[0m[39m[49m                                         
+[1m    [34m"KUBERNETES_PORT"[39m: [0m[32m[49m"tcp://10.245.0.1:443"[1m[39m,[0m[39m[49m                                      
+[1m    [34m"KUBERNETES_PORT_443_TCP"[39m: [0m[32m[49m"tcp://10.245.0.1:443"[1m[39m,[0m[39m[49m                              
+[1m    [34m"KUBERNETES_PORT_443_TCP_ADDR"[39m: [0m[32m[49m"10.245.0.1"[1m[39m,[0m[39m[49m                                   
+[1m    [34m"KUBERNETES_PORT_443_TCP_PORT"[39m: [0m[32m[49m"443"[1m[39m,
+    [34m"KUBERNETES_PORT_443_TCP_PROTO"[39m: [0m[32m[49m"tcp"[1m[39m,[0m[39m[49m                                         
+[1m    [34m"KUBERNETES_SERVICE_HOST"[39m: [0m[32m[49m"10.245.0.1"[1m[39m,[0m[39m[49m                                        
+[1m    [34m"KUBERNETES_SERVICE_PORT"[39m: [0m[32m[49m"443"[1m[39m,[0m[39m[49m     
+[1m    [34m"KUBERNETES_SERVICE_PORT_HTTPS"[39m: [0m[32m[49m"443"[1m[39m,[0m[39m[49m                                         
+[1m    [34m"LANG"[39m: [0m[32m[49m"C.UTF-8"[1m[39m,[0m[39m[49m                    
+[1m    [34m"PATH"[39m: [0m[32m[49m"/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"[1m[39m,[0m[39m[49m               
+[1m    [34m"PYTHON_GET_PIP_SHA256"[39m: [0m[32m[49m"fa6f3fb93cce234cd4e8dd2beb54a51ab9c247653b52855a48dd44e6b21ff28b"[1m[39m,[0m[39m[49m         
+[1m    [34m"PYTHON_GET_PIP_URL"[39m: [0m[32m[49m"https://github.com/pypa/get-pip/raw/c20b0cfd643cd4a19246ccf204e2997af70f6b21/public/get-pip.py"[1m[39m,[0m[39m[49m   
+[1m    [34m"PYTHON_PIP_VERSION"[39m: [0m[32m[49m"21.2.3"[1m[39m,[0m[39m[49m       
+[1m    [34m"PYTHON_VERSION"[39m: [0m[32m[49m"3.8.11"[39m            
+[1m  }[0m[39m[49m                  
+[1m}[0m[39m[49m
+</code></pre>
+<!-- id: 47f81a430ec26bb830009a63bb3d62a6 -->
+
+<!-- id: de6aa5535195585fc63c0b7f289880f8 -->
+<div class="highlight"><pre><span></span><code>$ <span class="k">for</span> i <span class="k">in</span> <span class="o">{</span><span class="m">1</span>..10<span class="o">}</span><span class="p">;</span> <span class="k">do</span> wget -q http://<span class="nv">$ip</span>:28001/ -O - <span class="p">|</span> jq -r .env.HOSTNAME<span class="p">;</span> <span class="k">done</span> <span class="p">|</span> sort <span class="p">|</span> uniq     
+frontend-9d9756598-tgkxj                  
+frontend-9d9756598-w2dck
+</code></pre></div>
+<!-- id: de6aa5535195585fc63c0b7f289880f8 -->
+
+<p>Dashboard says:</p>
+<p><a href="img/k8s.png"><img alt="" src="img/k8s.png" style="max-width: 300px" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">K8s HA</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Crashing the App</label><label for="__tabbed_11_2">Backoff Behaviour</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>We can watch K8s respawning pods when we cause the service to crash:</p>
+<p><!-- id: 62f43f6f857b3ba713d9805bdcc17490 -->
+                <div class="highlight"><pre><span></span><code>$ <span class="k">for</span> i <span class="k">in</span> <span class="m">1</span> <span class="m">2</span><span class="p">;</span> <span class="k">do</span> wget -qt1T1 http://<span class="nv">$ip</span>:28001/err -O /dev/null<span class="p">;</span> <span class="k">done</span>
+</code></pre></div></p>
+<pre><code>            ```bash
+            $ sleep 2
+            ```
+
+            ```bash
+            $ k get pods    
+            NAME                       READY   STATUS    RESTARTS   AGE                         
+            frontend-9d9756598-tgkxj   1/1     Running   1          14m                         
+            frontend-9d9756598-w2dck   1/1     Running   1          14m
+            ```
+</code></pre>
+<!-- id: 62f43f6f857b3ba713d9805bdcc17490 -->
+</div>
+<div class="tabbed-block">
+<p>When crashing it a few times in a row, K8s reacts reasonably by default:
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>k get pods
+<span class="go">NAME                        READY   STATUS   RESTARTS   AGE</span>
+<span class="go">frontend-67bc4f75c8-26prb   0/1     Error    2          2m54s</span>
+<span class="go">frontend-67bc4f75c8-d57vg   0/1     Error    2          2m54s</span>
+<span class="gp gp-VirtualEnv">(...)</span>
+<span class="go">NAME                        READY   STATUS             RESTARTS   AGE</span>
+<span class="go">frontend-67bc4f75c8-26prb   0/1     CrashLoopBackOff   2          2m54s</span>
+<span class="go">frontend-67bc4f75c8-d57vg   0/1     CrashLoopBackOff   2          2m54s</span>
+<span class="gp gp-VirtualEnv">(...)</span>
+<span class="go">NAME                        READY   STATUS    RESTARTS   AGE</span>
+<span class="go">frontend-67bc4f75c8-26prb   1/1     Running   3          3m35s</span>
+<span class="go">frontend-67bc4f75c8-d57vg   1/1     Running   3          3m35s</span>
+</code></pre></div></p>
+</div>
+</div>
+</div>
+</div>
+<p>Bring it down again:</p>
+<!-- id: e52d27ccab1dfbb0e3084837c0ec4aa7 -->
+<div class="highlight"><pre><span></span><code>$ k delete -f frontend-service.yaml                       
+service <span class="s2">&quot;frontend&quot;</span> deleted
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$ k delete -f frontend-deployment.yaml                    
+deployment.apps <span class="s2">&quot;frontend&quot;</span> deleted
+</code></pre></div>
+<!-- id: e52d27ccab1dfbb0e3084837c0ec4aa7 -->
+
+<!-- id: c5c877457cd009969c6f3dbeaf57c52c -->
+<p><xterm /></p>
+<!-- id: c5c877457cd009969c6f3dbeaf57c52c -->
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>All the code in this tutorial is run by a markdown preprocessor.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+<script>typeof start_lc === "undefined" ? 0 : start_lc() </script>
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<style>
+  .md-footer__link--next {
+    width: 75%;
+  }
+  .overlay_block {
+    position: relative;
+    width: 100%;
+  }
+  .overlay_block .overlay_link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .overlay_block .overlay_inner {
+    position: relative;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .overlay_block .overlay_inner a {
+    pointer-events: all;
+  }
+</style>
+
+<footer class="md-footer">
+  
+
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../k9s/k9s/" class="md-footer__link md-footer__link--prev" aria-label="Previous: K9s Terminal UI" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              K9s Terminal UI
+            </div>
+          </div>
+        </a>
+
+
+
+       
+      <div class="md-footer__link md-footer__link--next">
+        
+        <div class="overlay_block">
+          <a
+            class="overlay_link"
+            href="../2_hello_mysql/"
+            rel="next"
+          ></a>
+          <div class="overlay_inner">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                
+                <a href="/blog/cloud/dnsmasq/">
+                    
+                  <small>💭 CLOUD</small> - 
+                </a>
+                
+                <a href="/blog/cloud/k8s/">
+                    
+                  <small>Kubernetes</small> - 
+                </a>
+                
+                <a href="/blog/cloud/k8s/2_hello_mysql/">
+                     <span>With DB</span> 
+                </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-left: -2rem" class="md-footer__button md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+        </div>
+      </div>
+
+
+
+
+      
+    </nav>
+  </div>
+  
+
+
+
+
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Gunther Klessinger
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/axiros" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/fa_all.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm-addon-search.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm.4.9.0.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/Rx.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/tablesort.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/lc.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm-addon-fit.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/tables.js"></script>
+      
+    
+  </body>
+</html>

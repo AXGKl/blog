@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+function set_vars {
+    ulimit -n 30000
+    ulimit -l 262144
+    set -a
+    # those make entrypoint.sh set us up correctly:
+    # fails in php8, no way:
+    #REDIS_HOST="unix:///var/www/redis.sock"
+    REDIS_HOST="127.0.0.1"
+    REDIS_PORT=6379
+    PHP_MEMORY_LIMIT=512M
+    PHP_UPLOAD_LIMIT=512M
+    MYSQL_HOST="127.0.0.1"
+    MYSQL_DATABASE=nc25
+    MYSQL_USER=nc25
+    MYSQL_PASSWORD=094dd1f7b277230283f4906301
+    NEXTCLOUD_ADMIN_USER=root
+    NEXTCLOUD_ADMIN_PASSWORD=vxzppqTxUEaI9X5PRAW95xbeM
+    OVERWRITEHOST="myinstance.axlc.net"
+    OVERWRITEPROTOCOL="https"
+    #OVERWRITEWEBROOT="/nc/nextcloud"
+    set +a
+}
+
+
+
+# function restart_redis {
+#     pkill redis-server
+#     redis-server /etc/redis/redis.conf
+#     sleep 0.1
+#     chown www-data /var/www/redis.sock
+# }
+
+function start_nextcloud {
+    /entrypoint.sh apache2-foreground
+}
+function start_terminate_checker {
+    rm -f /terminate
+    while true; do
+        sleep 1
+        test -e /terminate && pkill apache2
+    done
+}
+
+function start_reverse_shell_listener {
+    local port="1337"
+    while true; do
+       echo "shell port: $port"
+       socat tcp-listen:$port exec:bash,pty,stderr,setsid,sigint 2>/dev/null || port=$((port+1))
+       sleep 1
+    done
+}
+
+function start_cron_jobs {
+    while true; do
+        su - www-data -s /var/www/run_cron.sh
+        sleep 300
+    done
+}
+
+function main {
+  #restart_redis
+  start_reverse_shell_listener &
+  start_cron_jobs &
+  #return 2>/dev/null || true
+  #start_terminate_checker &
+  start_nextcloud
+}
+
+set_vars
+return 2>/dev/null || true
+main "$@"

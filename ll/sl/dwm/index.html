@@ -1,0 +1,2970 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Random Thoughts">
+      
+      
+      
+        <link rel="canonical" href="https://AXGKl.github.io/blog/ll/sl/dwm/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>dwm - AXGK Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../lcd/lp/css/xterm.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="black" data-md-color-accent="deep-purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dwm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="AXGK Blog" class="md-header__button md-logo" aria-label="AXGK Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AXGK Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              dwm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AXGKl/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AXGKl/blog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Overview
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../apps/apps/" class="md-tabs__link md-tabs__link--active">
+        🐧 LINUX
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cloud/dnsmasq/" class="md-tabs__link">
+        💭 CLOUD
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../programming/python/rx/" class="md-tabs__link">
+        💻 DEV
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../inet/videos/" class="md-tabs__link">
+      📺 VIDS
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../logbook/" class="md-tabs__link">
+      ✏️  LOG
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/changelog/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="AXGK Blog" class="md-nav__button md-logo" aria-label="AXGK Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    AXGK Blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AXGKl/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AXGKl/blog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          🐧 LINUX
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🐧 LINUX" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          🐧 LINUX
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/apps/" class="md-nav__link">
+        Apps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/tv_q8/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../distro/" class="md-nav__link">
+        Distros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arco/" class="md-nav__link">
+        Distros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../emacs/emacs/" class="md-nav__link">
+        Emacs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gimp/gimp/" class="md-nav__link">
+        Gimp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Hardware
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Hardware" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Hardware
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_7_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_1">
+          Input
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Input" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Input
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw/input/keyboard/" class="md-nav__link">
+        Keyboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw/input/k860/" class="md-nav__link">
+        K860
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw/input/corne/" class="md-nav__link">
+        Corne
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw/input/hp/" class="md-nav__link">
+        HP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mkdocs/mkdocs/" class="md-nav__link">
+        MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Suckless
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Suckless" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Suckless
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          dwm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        dwm
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#patches" class="md-nav__link">
+    Patches
+  </a>
+  
+    <nav class="md-nav" aria-label="Patches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xfce4-panel" class="md-nav__link">
+    xfce4-panel
+  </a>
+  
+    <nav class="md-nav" aria-label="xfce4-panel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design" class="md-nav__link">
+    Design
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hacking-dwm-xephyr" class="md-nav__link">
+    Hacking DWM: Xephyr
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drag-and-drop" class="md-nav__link">
+    Drag and Drop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    Services
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-gaps-but-gaps" class="md-nav__link">
+    No Gaps - but Gaps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misc-tips" class="md-nav__link">
+    Misc Tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    Config
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../st/" class="md-nav__link">
+        st
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_4" data-md-state="indeterminate" type="checkbox" id="__nav_2_9_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_4">
+          Statusbar Fun
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Statusbar Fun" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_9_4">
+          <span class="md-nav__icon md-icon"></span>
+          Statusbar Fun
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar/" class="md-nav__link">
+        The Problem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../status_bar_fun/2021.05.24_dwm_status_2_never_call_xsession_within_dwm/" class="md-nav__link">
+        XFCE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../status_bar_fun/2021.05.24_dwm_status_3_xfce4_panel_in_dwm/" class="md-nav__link">
+        XFCE Panel in DWM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor/" class="md-nav__link">
+        CPU Monitor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" data-md-state="indeterminate" type="checkbox" id="__nav_2_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10">
+          Vim
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vim" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Vim
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vim/vim/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vim/astro_vim/" class="md-nav__link">
+        AstroVim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vim/astro_vim_null_ls_builtins/" class="md-nav__link">
+        AstroVimLspBuiltins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vim/ultisnips/" class="md-nav__link">
+        Ultisnips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vim/html/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../todo/" class="md-nav__link">
+        Todo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          💭 CLOUD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💭 CLOUD" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          💭 CLOUD
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dnsmasq/" class="md-nav__link">
+        DNSMasq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/ci/github_actions/" class="md-nav__link">
+        Github Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kubernetes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/" class="md-nav__link">
+        Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/k9s/k9s/" class="md-nav__link">
+        K9s Terminal UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/1_hello_app/" class="md-nav__link">
+        First App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/2_hello_mysql/" class="md-nav__link">
+        With DB
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Terraform
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Terraform" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Terraform
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/resource_creation/" class="md-nav__link">
+        Basic Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/ansible/" class="md-nav__link">
+        TF And Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/k8s_on_do/" class="md-nav__link">
+        K8s Cluster Infra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/k8s_provider/do_k8s/" class="md-nav__link">
+        Attaching Using Token Only
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/k8s_provider/k8s_provider/" class="md-nav__link">
+        The K8s Provider
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          💻 DEV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💻 DEV" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          💻 DEV
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" data-md-state="indeterminate" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          🐍 Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🐍 Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          🐍 Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/rx/" class="md-nav__link">
+        Reactive Programming With RxPY
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2">
+          TermUIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TermUIs" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          TermUIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/prompt_toolkit/" class="md-nav__link">
+        Prompt Toolkit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/prompt_toolkit/dup2/" class="md-nav__link">
+        Stream Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" data-md-state="indeterminate" type="checkbox" id="__nav_4_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3">
+          Fun
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fun/unblockme/" class="md-nav__link">
+        UnblockMe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fun/einstein/" class="md-nav__link">
+        Einstein
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Electronics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Electronics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Electronics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/" class="md-nav__link">
+        Interacting with Real World
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_2">
+          Desk Cycling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Desk Cycling" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Desk Cycling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/intro/" class="md-nav__link">
+        Zwiftifying My DeskCycle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/powermeter/" class="md-nav__link">
+        Power Meters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/mechanical/" class="md-nav__link">
+        Know the Gear Position
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/electromagnet/" class="md-nav__link">
+        Electromagent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/generator/" class="md-nav__link">
+        Generating Power
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inet/videos/" class="md-nav__link">
+        📺 VIDS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../logbook/" class="md-nav__link">
+        ✏️  LOG
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/navigation/" class="md-nav__link">
+        Navigation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#patches" class="md-nav__link">
+    Patches
+  </a>
+  
+    <nav class="md-nav" aria-label="Patches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xfce4-panel" class="md-nav__link">
+    xfce4-panel
+  </a>
+  
+    <nav class="md-nav" aria-label="xfce4-panel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design" class="md-nav__link">
+    Design
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hacking-dwm-xephyr" class="md-nav__link">
+    Hacking DWM: Xephyr
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drag-and-drop" class="md-nav__link">
+    Drag and Drop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    Services
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-gaps-but-gaps" class="md-nav__link">
+    No Gaps - but Gaps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misc-tips" class="md-nav__link">
+    Misc Tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    Config
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="editor:///home/gk/repos/blog/docs/ll/sl/dwm.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<style>
+
+          @media only screen and (min-width: 76.25em) {
+            .md-main__inner {
+              max-width: none;
+            }
+            .md-sidebar--primary {
+              left: 0;
+            }
+            .md-sidebar--secondary {
+              right: 0;
+              margin-left: 0;
+              -webkit-transform: none;
+              transform: none;   
+            }
+          }
+
+</style>
+<h1 id="dwm"><a href="https://www.youtube.com/watch?v=wRh8HQ4ICwE&amp;lc=UgxHaFO8ZVlxiLho0lJ4AaABAg.98UCGD3epEP9RTFb8rSDlu">DWM</a><a class="headerlink" href="#dwm" title="Permanent link">¤</a></h1>
+<p><a href="https://www.youtube.com/watch?v=RY9yZPNuYYY"><img alt="" src="../img/nicedwm.png" /></a></p>
+<h2 id="patches">Patches<a class="headerlink" href="#patches" title="Permanent link">¤</a></h2>
+<p>These are my current patches:</p>
+<!-- id: 4cc34837afb34c09b699865f9d0a78eb -->
+<div class="highlight"><pre><span></span><code>$ tree ~/.config/dwm/patches
+/home/gk/.config/dwm/patches
+├── <span class="m">0001</span>-dwm-cyclelayouts-20180524-6.2.diff
+├── 01_dwm-alwayscenter-20200625-f04cac6.diff
+├── 02_dwm-columns-6.0.diff
+├── <span class="m">03</span>-dwm-ewmhtags-20180101-db22360.diff
+├── <span class="m">04</span>-dwm-gridmode-20170909-ceac8c9.diff
+├── <span class="m">05</span>-dwm-focusonnetactive-6.2.diff
+├── <span class="m">06</span>-dwm-autostart-20210120-cb3f58a.diff
+├── <span class="m">07</span>-dwm-xfce4-panel-20210606-67d76bd.diff
+├── <span class="m">08</span>-dwm-pertag-20200914-61bb8b2.diff
+├── <span class="m">09</span>-dwm-setborderpx-6.2.diff
+├── <span class="m">09</span>-dwm-vanitygaps-20190508-6.2.diff
+├── <span class="m">10</span>-dwm-noborderfloatingfix-6.2.diff
+└── dwm-xfce4-panel-20210701-67d76bd.diff
+
+<span class="m">0</span> directories, <span class="m">13</span> files
+</code></pre></div>
+<!-- id: 4cc34837afb34c09b699865f9d0a78eb -->
+
+<h3 id="xfce4-panel">xfce4-panel<a class="headerlink" href="#xfce4-panel" title="Permanent link">¤</a></h3>
+<p>The statusbar is from myself, <a href="https://dwm.suckless.org/patches/xfce4-panel/">got accepted</a> by the
+suckless guys as official patch (hooray). </p>
+<p><img alt="" src="https://dwm.suckless.org/patches/xfce4-panel/dwm_xfce4-panel.png" /></p>
+<p>I made it because</p>
+<ul>
+<li>I wanted a systray but the official <a href="https://dwm.suckless.org/patches/systray/">systray patch</a> is
+  massive and collided with other patches, e.g. statuscolors if I remember correctly</li>
+<li>Also statuscolors made dwm eat CPU, strangely, became often visible in htop - which is not
+  suckless.</li>
+</ul>
+<h4 id="design">Design<a class="headerlink" href="#design" title="Permanent link">¤</a></h4>
+<p>It works by simple starting the panel as a normal window - but detecting it by window class name and moving it to the top
+right position, plus preventing it showing up in the tag indicators and at cyclewindow actions.
+See the diff <a href="https://dwm.suckless.org/patches/xfce4-panel/">here</a>.</p>
+<p><a href="../status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar/">Here</a> is a description of the ride towards it...</p>
+<h2 id="hacking-dwm-xephyr">Hacking DWM: Xephyr<a class="headerlink" href="#hacking-dwm-xephyr" title="Permanent link">¤</a></h2>
+<p><a href="https://www.linuxtoday.com/blog/xnest-tutorial/">xnest/Xephyr</a> is totally amazing and one of the many reasons I prefer X11.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Using Xephyr you can test all dwm patches w/o having to restart the actual one. This is far more
+convenient than switching back and forth between different Xsessions.</p>
+</div>
+<p>This</p>
+<!-- id: 622fb26a213c26837d8a4d9d8fca6ed1 -->
+<div class="highlight"><pre><span></span><code>$ cat /home/gk/bin/xnest
+<span class="c1">#!/usr/bin/env bash</span>
+Xephyr -br -ac -noreset -screen 1800x1000 :1 <span class="p">&amp;</span>
+sleep <span class="m">1</span>
+<span class="nv">DISPLAY</span><span class="o">=</span>:1 <span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="nv">dwm</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+<!-- id: 622fb26a213c26837d8a4d9d8fca6ed1 -->
+
+<p>allows to start the full Xserver with window manager in a window - and with ctrl-shift it gets ALL
+keyboard events, incl. shortcuts of the outer DWM.</p>
+<p>Only things not working</p>
+<ul>
+<li>picom - but this you can test anyway nicely outside, did not dig into getting it up</li>
+<li>xfce4-panel - unless I kill it outside before starting xnest:</li>
+</ul>
+<p><a href="../img/xnest.gif"><img alt="" src="../img/xnest.gif" /></a></p>
+<h2 id="drag-and-drop">Drag and Drop<a class="headerlink" href="#drag-and-drop" title="Permanent link">¤</a></h2>
+<p>Not using a Desktop Environment but Window Manager only requires some integration for drag and drop,
+which you need all the time in the age of web based services.</p>
+<p><a href="https://github.com/mwh/dragon">dragon</a> is the solution, together with a little
+<a href="https://unix.stackexchange.com/a/557100/123121">xdotool/scrot</a> hack of mine:</p>
+<p><a href="../img/drag_into.gif"><img alt="" src="../img/drag_into.gif" /></a></p>
+<p>Here the script:</p>
+<!-- id: 01d6f4fba3e7ae02aae725e90a24ae07 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Cmd</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>bat -f /home/gk/bin/drag_into
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ bat -f /home/gk/bin/drag_into
+[38;5;238m───────┬────────────────────────────────────────────────────────────────────────[0m
+       [38;5;238m│ [0mFile: [1m/home/gk/bin/drag_into[0m
+[38;5;238m───────┼────────────────────────────────────────────────────────────────────────[0m
+[38;5;238m   1[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101m!/usr/bin/env bash[0m
+[38;5;238m   2[0m   [38;5;238m│[0m [38;2;102;217;239mset[0m[38;2;255;255;255m [0m[38;2;253;151;31m-[0m[38;2;253;151;31mx[0m
+[38;5;238m   3[0m   [38;5;238m│[0m [38;2;255;255;255mdoc[0m[38;2;249;38;114m=[0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255m0[0m[38;2;230;219;116m &lt;filename|'shot'&gt;[0m
+[38;5;238m   4[0m   [38;5;238m│[0m 
+[38;5;238m   5[0m   [38;5;238m│[0m [38;2;230;219;116mDrags a given file to where the mouse is using dragon. Click to drop it (anywere).[0m
+[38;5;238m   6[0m   [38;5;238m│[0m [38;2;230;219;116mIf filename is 'shot' then the file will be a shot of a an area to be selected.[0m
+[38;5;238m   7[0m   [38;5;238m│[0m [38;2;255;255;255m"[0m
+[38;5;238m   8[0m   [38;5;238m│[0m 
+[38;5;238m   9[0m   [38;5;238m│[0m [38;2;255;255;255mcmd_shot[0m[38;2;249;38;114m=[0m[38;2;255;255;255m"[0m[38;2;230;219;116mshot[0m[38;2;255;255;255m"[0m
+[38;5;238m  10[0m   [38;5;238m│[0m [38;2;255;255;255mfile[0m[38;2;249;38;114m=[0m
+[38;5;238m  11[0m   [38;5;238m│[0m 
+[38;5;238m  12[0m   [38;5;238m│[0m [38;2;166;226;46mexit_help[0m[38;2;255;255;255m [0m[38;2;255;255;255m([0m[38;2;255;255;255m)[0m[38;2;255;255;255m [0m[38;2;255;255;255m{[0m[38;2;255;255;255m [0m[38;2;102;217;239mecho[0m[38;2;255;255;255m [0m[38;2;253;151;31m-[0m[38;2;253;151;31me[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255mdoc[0m[38;2;255;255;255m"[0m[38;2;249;38;114m;[0m[38;2;255;255;255m [0m[38;2;102;217;239mexit[0m[38;2;255;255;255m 1[0m[38;2;249;38;114m;[0m[38;2;255;255;255m [0m[38;2;255;255;255m}[0m
+[38;5;238m  13[0m   [38;5;238m│[0m 
+[38;5;238m  14[0m   [38;5;238m│[0m [38;2;166;226;46mselect_shot_area[0m[38;2;255;255;255m [0m[38;2;255;255;255m([0m[38;2;255;255;255m)[0m[38;2;255;255;255m [0m[38;2;255;255;255m{[0m
+[38;5;238m  15[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;124;120;101m#[0m[38;2;124;120;101m create screen shot    [0m
+[38;5;238m  16[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255mnotify-send[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;230;219;116mSelect area - we'll shoot it and drag to where the mouse is.[0m[38;2;255;255;255m"[0m
+[38;5;238m  17[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;102;217;239mcd[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255mHOME[0m[38;2;230;219;116m/Pictures/shots/[0m[38;2;255;255;255m"[0m[38;2;255;255;255m [0m[38;2;249;38;114m||[0m[38;2;255;255;255m [0m[38;2;102;217;239mexit[0m[38;2;255;255;255m 1[0m
+[38;5;238m  18[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255mrm[0m[38;2;253;151;31m -[0m[38;2;253;151;31mf[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;230;219;116mlatest.png[0m[38;2;255;255;255m"[0m
+[38;5;238m  19[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;124;120;101m#[0m[38;2;124;120;101m the cp we do to have convenient cp of always same files into images dirs:[0m
+[38;5;238m  20[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255mscrot[0m[38;2;253;151;31m -[0m[38;2;253;151;31ms[0m[38;2;255;255;255m [0m[38;2;255;255;255m'[0m[38;2;230;219;116m%Y-%m-%d_$wx$h_scrot.png[0m[38;2;255;255;255m'[0m[38;2;253;151;31m -[0m[38;2;253;151;31me[0m[38;2;255;255;255m [0m[38;2;255;255;255m'[0m[38;2;230;219;116mln -s $f latest.png; cp $f last.png[0m[38;2;255;255;255m'[0m
+[38;5;238m  21[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255mfile[0m[38;2;249;38;114m=[0m[38;2;255;255;255m"[0m[38;2;230;219;116m`[0m[38;2;255;255;255mreadlink[0m[38;2;230;219;116m latest.png[0m[38;2;230;219;116m`[0m[38;2;255;255;255m"[0m
+[38;5;238m  22[0m   [38;5;238m│[0m [38;2;255;255;255m}[0m
+[38;5;238m  23[0m   [38;5;238m│[0m 
+[38;5;238m  24[0m   [38;5;238m│[0m [38;2;166;226;46mmain[0m[38;2;255;255;255m [0m[38;2;255;255;255m([0m[38;2;255;255;255m)[0m[38;2;255;255;255m [0m[38;2;255;255;255m{[0m
+[38;5;238m  25[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255mtest[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255m1[0m[38;2;255;255;255m"[0m[38;2;255;255;255m == [0m[38;2;255;255;255m'[0m[38;2;230;219;116m-t[0m[38;2;255;255;255m'[0m[38;2;255;255;255m [0m[38;2;249;38;114m&amp;&amp;[0m[38;2;255;255;255m [0m[38;2;255;255;255m{[0m
+[38;5;238m  26[0m   [38;5;238m│[0m [38;2;255;255;255m        [0m[38;2;255;255;255mnotify-send[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;230;219;116mSleeping [0m[38;2;255;255;255m$[0m[38;2;255;255;255m2[0m[38;2;230;219;116m seconds before shot...[0m[38;2;255;255;255m"[0m
+[38;5;238m  27[0m   [38;5;238m│[0m [38;2;255;255;255m        [0m[38;2;255;255;255msleep[0m[38;2;255;255;255m [0m[38;2;255;255;255m$[0m[38;2;255;255;255m2[0m
+[38;5;238m  28[0m   [38;5;238m│[0m [38;2;255;255;255m        [0m[38;2;102;217;239mshift[0m[38;2;255;255;255m 2[0m
+[38;5;238m  29[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255m}[0m
+[38;5;238m  30[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255mfile[0m[38;2;249;38;114m=[0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255m1[0m[38;2;255;255;255m"[0m
+[38;5;238m  31[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255mtest[0m[38;2;253;151;31m -[0m[38;2;253;151;31mz[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255mfile[0m[38;2;255;255;255m"[0m[38;2;253;151;31m -[0m[38;2;253;151;31mo[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255mfile[0m[38;2;255;255;255m"[0m[38;2;255;255;255m == [0m[38;2;255;255;255m"[0m[38;2;230;219;116m-h[0m[38;2;255;255;255m"[0m[38;2;255;255;255m [0m[38;2;249;38;114m&amp;&amp;[0m[38;2;255;255;255m [0m[38;2;255;255;255mexit_help[0m
+[38;5;238m  32[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;102;217;239meval[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;230;219;116m([0m[38;2;255;255;255mxdotool[0m[38;2;230;219;116m getmouselocation[0m[38;2;253;151;31m --[0m[38;2;253;151;31mshell[0m[38;2;230;219;116m)[0m[38;2;255;255;255m"[0m[38;2;255;255;255m [0m[38;2;124;120;101m#[0m[38;2;124;120;101m into $X and $Y[0m
+[38;5;238m  33[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255mtest[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255mfile[0m[38;2;255;255;255m"[0m[38;2;255;255;255m == [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255mcmd_shot[0m[38;2;255;255;255m"[0m[38;2;255;255;255m [0m[38;2;249;38;114m&amp;&amp;[0m[38;2;255;255;255m [0m[38;2;255;255;255m{[0m[38;2;255;255;255m [0m[38;2;255;255;255mselect_shot_area[0m[38;2;255;255;255m [0m[38;2;249;38;114m||[0m[38;2;255;255;255m [0m[38;2;249;38;114mreturn[0m[38;2;255;255;255m 1[0m[38;2;249;38;114m;[0m[38;2;255;255;255m [0m[38;2;255;255;255m}[0m
+[38;5;238m  34[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;102;217;239mset[0m[38;2;255;255;255m [0m[38;2;253;151;31m-[0m[38;2;253;151;31mx[0m
+[38;5;238m  35[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255mkillall[0m[38;2;255;255;255m dragon [0m[38;2;190;132;255m2[0m[38;2;249;38;114m&gt;[0m[38;2;255;255;255m/dev/null [0m[38;2;124;120;101m#[0m[38;2;124;120;101m No accidential drops of wrong items ...[0m
+[38;5;238m  36[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;124;120;101m#[0m[38;2;124;120;101mdragon --and-exit "$file" &amp;[0m
+[38;5;238m  37[0m   [38;5;238m│[0m [38;2;255;255;255m    dragon  [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255mfile[0m[38;2;255;255;255m"[0m[38;2;255;255;255m [0m[38;2;249;38;114m&amp;[0m[38;2;255;255;255m [0m[38;2;124;120;101m#[0m[38;2;124;120;101m when the target is not visible we have a hard time[0m
+[38;5;238m  38[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;124;120;101m#[0m[38;2;124;120;101m wait for dragon window to show up:[0m
+[38;5;238m  39[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;249;38;114mwhile[0m[38;2;255;255;255m [0m[38;2;255;255;255mtrue[0m[38;2;249;38;114m;[0m[38;2;255;255;255m [0m[38;2;249;38;114mdo[0m
+[38;5;238m  40[0m   [38;5;238m│[0m [38;2;255;255;255m        [0m[38;2;255;255;255mxid[0m[38;2;249;38;114m=[0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;230;219;116m([0m[38;2;255;255;255mxdotool[0m[38;2;230;219;116m search[0m[38;2;253;151;31m --[0m[38;2;253;151;31monlyvisible[0m[38;2;253;151;31m --[0m[38;2;253;151;31mclass[0m[38;2;230;219;116m  dragon[0m[38;2;230;219;116m [0m[38;2;249;38;114m|[0m[38;2;230;219;116m [0m[38;2;255;255;255mhead[0m[38;2;253;151;31m -[0m[38;2;253;151;31mn[0m[38;2;230;219;116m 2[0m[38;2;230;219;116m)[0m[38;2;255;255;255m"[0m
+[38;5;238m  41[0m   [38;5;238m│[0m [38;2;255;255;255m        [0m[38;2;255;255;255mtest[0m[38;2;253;151;31m -[0m[38;2;253;151;31mz[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255mxid[0m[38;2;255;255;255m"[0m[38;2;255;255;255m [0m[38;2;249;38;114m||[0m[38;2;255;255;255m [0m[38;2;249;38;114mbreak[0m
+[38;5;238m  42[0m   [38;5;238m│[0m [38;2;255;255;255m        [0m[38;2;255;255;255msleep[0m[38;2;255;255;255m 0.05[0m
+[38;5;238m  43[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;249;38;114mdone[0m
+[38;5;238m  44[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;124;120;101m#[0m[38;2;124;120;101m now click the dragon window and stay on the button:[0m
+[38;5;238m  45[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255mxdotool[0m[38;2;255;255;255m mousemove[0m[38;2;253;151;31m --[0m[38;2;253;151;31msync[0m[38;2;253;151;31m -[0m[38;2;253;151;31mw[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255mxid[0m[38;2;255;255;255m"[0m[38;2;255;255;255m 1 1 mousedown 1 mousemove [0m[38;2;255;255;255m$[0m[38;2;255;255;255mX[0m[38;2;255;255;255m [0m[38;2;255;255;255m$[0m[38;2;255;255;255mY[0m[38;2;255;255;255m [0m
+[38;5;238m  46[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255mnotify-send[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;230;219;116mClick to drop [0m[38;2;255;255;255m$[0m[38;2;255;255;255mfile[0m[38;2;230;219;116m or hit escape. We will kill the dragon window in a minute... [0m[38;2;255;255;255m"[0m
+[38;5;238m  47[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255m([0m[38;2;255;255;255m [0m[38;2;255;255;255msleep[0m[38;2;255;255;255m 60[0m[38;2;249;38;114m;[0m[38;2;255;255;255m [0m[38;2;255;255;255mxkill[0m[38;2;253;151;31m -[0m[38;2;253;151;31mid[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255mxid[0m[38;2;255;255;255m"[0m[38;2;255;255;255m [0m[38;2;255;255;255m)[0m[38;2;255;255;255m [0m[38;2;249;38;114m&amp;[0m
+[38;5;238m  48[0m   [38;5;238m│[0m [38;2;255;255;255m}[0m
+[38;5;238m  49[0m   [38;5;238m│[0m 
+[38;5;238m  50[0m   [38;5;238m│[0m [38;2;255;255;255mmain[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255m@[0m[38;2;255;255;255m"[0m
+[38;5;238m  51[0m   [38;5;238m│[0m 
+[38;5;238m───────┴────────────────────────────────────────────────────────────────────────[0m
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 01d6f4fba3e7ae02aae725e90a24ae07 -->
+
+<p>I.e.: Hotkey to start script -&gt; select area -&gt; click into drop area. Done.</p>
+<p>It uses scrot to make a screenshot of a selected area, then dragon to create a drag window top left,
+then xdotool to click and drag that to the point where you click.</p>
+<h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">¤</a></h2>
+<p>Via the autostart patch I start these:</p>
+<!-- id: 6dadac2ce6fc53cc92f9df459d63f7a0 -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Cmd</label><label for="__tabbed_2_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>bat -f /home/gk/.config/dwm/autostart.sh
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ bat -f /home/gk/.config/dwm/autostart.sh
+[38;5;238m───────┬────────────────────────────────────────────────────────────────────────[0m
+       [38;5;238m│ [0mFile: [1m/home/gk/.config/dwm/autostart.sh[0m
+[38;5;238m───────┼────────────────────────────────────────────────────────────────────────[0m
+[38;5;238m   1[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101m!/bin/bash[0m
+[38;5;238m   2[0m   [38;5;238m│[0m [38;2;255;255;255mhere[0m[38;2;249;38;114m=[0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;230;219;116m([0m[38;2;166;226;46mbuiltin[0m[38;2;230;219;116m cd [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;230;219;116m([0m[38;2;255;255;255mdirname[0m[38;2;230;219;116m [0m[38;2;255;255;255m$[0m[38;2;230;219;116m{[0m[38;2;255;255;255mBASH_SOURCE[0m[38;2;255;255;255m[[0m[38;2;190;132;255m0[0m[38;2;255;255;255m][0m[38;2;230;219;116m}[0m[38;2;230;219;116m)[0m[38;2;255;255;255m"[0m[38;2;249;38;114m;[0m[38;2;230;219;116m [0m[38;2;255;255;255mpwd[0m[38;2;230;219;116m)[0m[38;2;255;255;255m"[0m
+[38;5;238m   3[0m   [38;5;238m│[0m 
+[38;5;238m   4[0m   [38;5;238m│[0m [38;2;102;217;239mfunction[0m[38;2;255;255;255m [0m[38;2;166;226;46mrun[0m[38;2;255;255;255m [0m[38;2;255;255;255m{[0m
+[38;5;238m   5[0m   [38;5;238m│[0m [38;2;255;255;255m  [0m[38;2;249;38;114mif[0m[38;2;255;255;255m [0m[38;2;249;38;114m![0m[38;2;255;255;255m [0m[38;2;255;255;255mpgrep[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;230;219;116m([0m[38;2;255;255;255mbasename[0m[38;2;230;219;116m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255m1[0m[38;2;255;255;255m"[0m[38;2;230;219;116m)[0m[38;2;255;255;255m"[0m[38;2;255;255;255m [0m[38;2;249;38;114m;[0m
+[38;5;238m   6[0m   [38;5;238m│[0m [38;2;255;255;255m  [0m[38;2;249;38;114mthen[0m
+[38;5;238m   7[0m   [38;5;238m│[0m [38;2;255;255;255m    [0m[38;2;255;255;255m$[0m[38;2;255;255;255m@[0m[38;2;249;38;114m&amp;[0m
+[38;5;238m   8[0m   [38;5;238m│[0m [38;2;255;255;255m  [0m[38;2;249;38;114mfi[0m
+[38;5;238m   9[0m   [38;5;238m│[0m [38;2;255;255;255m}[0m
+[38;5;238m  10[0m   [38;5;238m│[0m 
+[38;5;238m  11[0m   [38;5;238m│[0m [38;2;255;255;255m$[0m[38;2;255;255;255mHOME[0m[38;2;255;255;255m/bin/X11_setup.sh[0m
+[38;5;238m  12[0m   [38;5;238m│[0m 
+[38;5;238m  13[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "dex $HOME/.config/autostart/arcolinux-welcome-app.desktop"[0m
+[38;5;238m  14[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "xrandr --output VGA-1 --primary --mode 1360x768 --pos 0x0 --rotate normal"[0m
+[38;5;238m  15[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off"[0m
+[38;5;238m  16[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun xrandr --output eDP-1 --primary --mode 1368x768 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off[0m
+[38;5;238m  17[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun xrandr --output LVDS1 --mode 1366x768 --output DP3 --mode 1920x1080 --right-of LVDS1[0m
+[38;5;238m  18[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun xrandr --output DVI-I-0 --right-of HDMI-0 --auto[0m
+[38;5;238m  19[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun xrandr --output DVI-1 --right-of DVI-0 --auto[0m
+[38;5;238m  20[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun xrandr --output DVI-D-1 --right-of DVI-I-1 --auto[0m
+[38;5;238m  21[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun xrandr --output HDMI2 --right-of HDMI1 --auto[0m
+[38;5;238m  22[0m   [38;5;238m│[0m 
+[38;5;238m  23[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "pasystray"[0m
+[38;5;238m  24[0m   [38;5;238m│[0m [38;2;255;255;255mrun[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;230;219;116mnm-applet[0m[38;2;255;255;255m"[0m
+[38;5;238m  25[0m   [38;5;238m│[0m [38;2;255;255;255mrun[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;230;219;116mpamac-tray[0m[38;2;255;255;255m"[0m
+[38;5;238m  26[0m   [38;5;238m│[0m [38;2;255;255;255mrun[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;230;219;116mvariety[0m[38;2;255;255;255m"[0m
+[38;5;238m  27[0m   [38;5;238m│[0m [38;2;255;255;255mrun[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;230;219;116mxfce4-power-manager[0m[38;2;255;255;255m"[0m
+[38;5;238m  28[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "blueberry-tray"[0m
+[38;5;238m  29[0m   [38;5;238m│[0m [38;2;255;255;255mrun[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;230;219;116m/usr/lib/xfce4/notifyd/xfce4-notifyd[0m[38;2;255;255;255m"[0m
+[38;5;238m  30[0m   [38;5;238m│[0m [38;2;255;255;255mrun[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;230;219;116m/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1[0m[38;2;255;255;255m"[0m
+[38;5;238m  31[0m   [38;5;238m│[0m [38;2;255;255;255mrun[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;230;219;116mnumlockx on[0m[38;2;255;255;255m"[0m
+[38;5;238m  32[0m   [38;5;238m│[0m [38;2;255;255;255mrun[0m[38;2;255;255;255m [0m[38;2;255;255;255m"[0m[38;2;255;255;255m$[0m[38;2;255;255;255mhere[0m[38;2;230;219;116m/cpu_mon.py[0m[38;2;255;255;255m"[0m
+[38;5;238m  33[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "volumeicon"[0m
+[38;5;238m  34[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "$HOME/.config/dwm/status.py" # restarting:[0m
+[38;5;238m  35[0m   [38;5;238m│[0m [38;2;255;255;255mrun[0m[38;2;255;255;255m sxhkd[0m
+[38;5;238m  36[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun st[0m
+[38;5;238m  37[0m   [38;5;238m│[0m [38;2;255;255;255mrun[0m[38;2;255;255;255m [0m[38;2;255;255;255m$[0m[38;2;255;255;255mhere[0m[38;2;255;255;255m/panel.sh[0m
+[38;5;238m  38[0m   [38;5;238m│[0m [38;2;255;255;255mrun[0m[38;2;255;255;255m picom[0m
+[38;5;238m  39[0m   [38;5;238m│[0m [38;2;255;255;255mrun[0m[38;2;255;255;255m /usr/lib64/xfce4/notifyd/xfce4-notifyd[0m
+[38;5;238m  40[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101m collides with panel setup when overlapping in time:[0m
+[38;5;238m  41[0m   [38;5;238m│[0m [38;2;255;255;255m([0m[38;2;255;255;255m [0m[38;2;255;255;255msleep[0m[38;2;255;255;255m 4[0m[38;2;249;38;114m;[0m[38;2;255;255;255m [0m[38;2;255;255;255mxrdb[0m[38;2;253;151;31m -[0m[38;2;253;151;31mload[0m[38;2;255;255;255m .config/st_theme/Xresources[0m[38;2;249;38;114m;[0m[38;2;255;255;255m [0m[38;2;255;255;255m)[0m
+[38;5;238m  42[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mpicom -b  --config ~/.config/arco-dwm/picom.conf &amp;[0m
+[38;5;238m  43[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "nitrogen --restore"[0m
+[38;5;238m  44[0m   [38;5;238m│[0m 
+[38;5;238m  45[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101m this is run every second![0m
+[38;5;238m  46[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101m( while true; do sleep 4; copyq; done ) &amp; # our clip board science[0m
+[38;5;238m  47[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101m run "copyq" # autostarts [0m
+[38;5;238m  48[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "conky -c $HOME/.config/dwm/system-overview-conky"[0m
+[38;5;238m  49[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101myou can set wallpapers in themes as well[0m
+[38;5;238m  50[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mfeh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &amp;[0m
+[38;5;238m  51[0m   [38;5;238m│[0m 
+[38;5;238m  52[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun applications from startup[0m
+[38;5;238m  53[0m   [38;5;238m│[0m 
+[38;5;238m  54[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "insync start"[0m
+[38;5;238m  55[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "spotify"[0m
+[38;5;238m  56[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "ckb-next -b"[0m
+[38;5;238m  57[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "discord"[0m
+[38;5;238m  58[0m   [38;5;238m│[0m [38;2;124;120;101m#[0m[38;2;124;120;101mrun "telegram-desktop"[0m
+[38;5;238m───────┴────────────────────────────────────────────────────────────────────────[0m
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: 6dadac2ce6fc53cc92f9df459d63f7a0 -->
+
+<h2 id="no-gaps-but-gaps">No Gaps - but Gaps<a class="headerlink" href="#no-gaps-but-gaps" title="Permanent link">¤</a></h2>
+<p>Vanitygaps is bloated plus I wanted a prominent active window indicator.</p>
+<p>Solution: I simply use thick borders and have them black for the non active window and white for the active one via dwm, then set them to 0.7 transparent via picom:</p>
+<pre><code># Opacity of window titlebars and borders. (0.1 - 1.0, disabled by default)
+# frame-opacity = 1.0
+frame-opacity = 0.7;
+</code></pre>
+<p>=&gt; That effects black far more than white.</p>
+<p>I.e. there are actually no gaps - but the illusion is given.</p>
+<p><a href="../img/dwmgaps.png"><img alt="" src="../img/dwmgaps.png" /></a></p>
+<h2 id="misc-tips">Misc Tips<a class="headerlink" href="#misc-tips" title="Permanent link">¤</a></h2>
+<ul>
+<li>On a fresh xfce spin fedora use <code>lxappearance</code> for gtk theming.</li>
+<li>Mouse cursor size: .Xresources -&gt; Xcursor.size 40</li>
+</ul>
+<h2 id="config">Config<a class="headerlink" href="#config" title="Permanent link">¤</a></h2>
+<p>For varying shortcuts I don't recompile dwm but use sxhkdrc:</p>
+<!-- id: c346ef744e162afdfdc93f293b32997d -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Cmd</label><label for="__tabbed_3_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>bat -f /home/gk/.config/sxhkd/sxhkdrc
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><xterm /></p>
+<pre><code>$ bat -f /home/gk/.config/sxhkd/sxhkdrc
+[38;5;238m───────┬────────────────────────────────────────────────────────────────────────[0m
+       [38;5;238m│ [0mFile: [1m/home/gk/.config/sxhkd/sxhkdrc[0m
+[38;5;238m───────┼────────────────────────────────────────────────────────────────────────[0m
+[38;5;238m   1[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m   2[0m   [38;5;238m│[0m [38;2;248;248;242m# KEYBOARD BINDINGS FOR ANY TWM[0m
+[38;5;238m   3[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m   4[0m   [38;5;238m│[0m 
+[38;5;238m   5[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m   6[0m   [38;5;238m│[0m [38;2;248;248;242m# SUPER + FUNCTION KEYS[0m
+[38;5;238m   7[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m   8[0m   [38;5;238m│[0m [38;2;248;248;242m# Vivaldi[0m
+[38;5;238m   9[0m   [38;5;238m│[0m [38;2;248;248;242msuper + F1[0m
+[38;5;238m  10[0m   [38;5;238m│[0m [38;2;248;248;242m    vivaldi-stable[0m
+[38;5;238m  11[0m   [38;5;238m│[0m 
+[38;5;238m  12[0m   [38;5;238m│[0m [38;2;248;248;242m# Atom[0m
+[38;5;238m  13[0m   [38;5;238m│[0m [38;2;248;248;242msuper + F2[0m
+[38;5;238m  14[0m   [38;5;238m│[0m [38;2;248;248;242m    atom[0m
+[38;5;238m  15[0m   [38;5;238m│[0m 
+[38;5;238m  16[0m   [38;5;238m│[0m [38;2;248;248;242m#Inkscape[0m
+[38;5;238m  17[0m   [38;5;238m│[0m [38;2;248;248;242msuper + F3[0m
+[38;5;238m  18[0m   [38;5;238m│[0m [38;2;248;248;242m    inkscape[0m
+[38;5;238m  19[0m   [38;5;238m│[0m 
+[38;5;238m  20[0m   [38;5;238m│[0m [38;2;248;248;242m#Gimp[0m
+[38;5;238m  21[0m   [38;5;238m│[0m [38;2;248;248;242msuper + F4[0m
+[38;5;238m  22[0m   [38;5;238m│[0m [38;2;248;248;242m    gimp[0m
+[38;5;238m  23[0m   [38;5;238m│[0m 
+[38;5;238m  24[0m   [38;5;238m│[0m [38;2;248;248;242m#Meld[0m
+[38;5;238m  25[0m   [38;5;238m│[0m [38;2;248;248;242msuper + F5[0m
+[38;5;238m  26[0m   [38;5;238m│[0m [38;2;248;248;242m    meld[0m
+[38;5;238m  27[0m   [38;5;238m│[0m 
+[38;5;238m  28[0m   [38;5;238m│[0m [38;2;248;248;242m#Vlc[0m
+[38;5;238m  29[0m   [38;5;238m│[0m [38;2;248;248;242msuper + F6[0m
+[38;5;238m  30[0m   [38;5;238m│[0m [38;2;248;248;242m    vlc --video-on-top[0m
+[38;5;238m  31[0m   [38;5;238m│[0m 
+[38;5;238m  32[0m   [38;5;238m│[0m [38;2;248;248;242m#Virtualbox[0m
+[38;5;238m  33[0m   [38;5;238m│[0m [38;2;248;248;242msuper + F7[0m
+[38;5;238m  34[0m   [38;5;238m│[0m [38;2;248;248;242m    virtualbox[0m
+[38;5;238m  35[0m   [38;5;238m│[0m 
+[38;5;238m  36[0m   [38;5;238m│[0m [38;2;248;248;242m#Thunar[0m
+[38;5;238m  37[0m   [38;5;238m│[0m [38;2;248;248;242msuper + F8[0m
+[38;5;238m  38[0m   [38;5;238m│[0m [38;2;248;248;242m    thunar[0m
+[38;5;238m  39[0m   [38;5;238m│[0m 
+[38;5;238m  40[0m   [38;5;238m│[0m [38;2;248;248;242m#Evolution[0m
+[38;5;238m  41[0m   [38;5;238m│[0m [38;2;248;248;242msuper + F9[0m
+[38;5;238m  42[0m   [38;5;238m│[0m [38;2;248;248;242m    evolution[0m
+[38;5;238m  43[0m   [38;5;238m│[0m 
+[38;5;238m  44[0m   [38;5;238m│[0m [38;2;248;248;242m#Spotify[0m
+[38;5;238m  45[0m   [38;5;238m│[0m [38;2;248;248;242msuper + F10[0m
+[38;5;238m  46[0m   [38;5;238m│[0m [38;2;248;248;242m    spotify[0m
+[38;5;238m  47[0m   [38;5;238m│[0m 
+[38;5;238m  48[0m   [38;5;238m│[0m [38;2;248;248;242m#Rofi Fullscreen[0m
+[38;5;238m  49[0m   [38;5;238m│[0m [38;2;248;248;242msuper + F11[0m
+[38;5;238m  50[0m   [38;5;238m│[0m [38;2;248;248;242m    rofi -show run -fullscreen[0m
+[38;5;238m  51[0m   [38;5;238m│[0m 
+[38;5;238m  52[0m   [38;5;238m│[0m [38;2;248;248;242m#Rofi[0m
+[38;5;238m  53[0m   [38;5;238m│[0m [38;2;248;248;242msuper + F12[0m
+[38;5;238m  54[0m   [38;5;238m│[0m [38;2;248;248;242m    rofi -show run[0m
+[38;5;238m  55[0m   [38;5;238m│[0m 
+[38;5;238m  56[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m  57[0m   [38;5;238m│[0m [38;2;248;248;242m# SUPER + ... KEYS[0m
+[38;5;238m  58[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m  59[0m   [38;5;238m│[0m 
+[38;5;238m  60[0m   [38;5;238m│[0m [38;2;248;248;242m#Atom[0m
+[38;5;238m  61[0m   [38;5;238m│[0m [38;2;248;248;242msuper + e[0m
+[38;5;238m  62[0m   [38;5;238m│[0m [38;2;248;248;242m    atom[0m
+[38;5;238m  63[0m   [38;5;238m│[0m 
+[38;5;238m  64[0m   [38;5;238m│[0m [38;2;248;248;242m#Browser[0m
+[38;5;238m  65[0m   [38;5;238m│[0m [38;2;248;248;242msuper + w[0m
+[38;5;238m  66[0m   [38;5;238m│[0m [38;2;248;248;242m    vivaldi-stable[0m
+[38;5;238m  67[0m   [38;5;238m│[0m 
+[38;5;238m  68[0m   [38;5;238m│[0m [38;2;248;248;242m#Conky-toggle[0m
+[38;5;238m  69[0m   [38;5;238m│[0m [38;2;248;248;242msuper + c[0m
+[38;5;238m  70[0m   [38;5;238m│[0m [38;2;248;248;242m    conky-toggle[0m
+[38;5;238m  71[0m   [38;5;238m│[0m 
+[38;5;238m  72[0m   [38;5;238m│[0m [38;2;248;248;242m#Htop[0m
+[38;5;238m  73[0m   [38;5;238m│[0m [38;2;248;248;242m#super + h[0m
+[38;5;238m  74[0m   [38;5;238m│[0m [38;2;248;248;242m#    urxvt 'htop task manager' -e htop[0m
+[38;5;238m  75[0m   [38;5;238m│[0m 
+[38;5;238m  76[0m   [38;5;238m│[0m [38;2;248;248;242m#arcolinux-logout[0m
+[38;5;238m  77[0m   [38;5;238m│[0m [38;2;248;248;242msuper + x[0m
+[38;5;238m  78[0m   [38;5;238m│[0m [38;2;248;248;242m    arcolinux-logout[0m
+[38;5;238m  79[0m   [38;5;238m│[0m 
+[38;5;238m  80[0m   [38;5;238m│[0m [38;2;248;248;242m#Rofi theme selector[0m
+[38;5;238m  81[0m   [38;5;238m│[0m [38;2;248;248;242msuper + r[0m
+[38;5;238m  82[0m   [38;5;238m│[0m [38;2;248;248;242m    rofi-theme-selector[0m
+[38;5;238m  83[0m   [38;5;238m│[0m 
+[38;5;238m  84[0m   [38;5;238m│[0m [38;2;248;248;242m#Urxvt[0m
+[38;5;238m  85[0m   [38;5;238m│[0m [38;2;248;248;242m#super + t[0m
+[38;5;238m  86[0m   [38;5;238m│[0m [38;2;248;248;242m#    urxvt[0m
+[38;5;238m  87[0m   [38;5;238m│[0m 
+[38;5;238m  88[0m   [38;5;238m│[0m [38;2;248;248;242m#Pavucontrol[0m
+[38;5;238m  89[0m   [38;5;238m│[0m [38;2;248;248;242msuper + v[0m
+[38;5;238m  90[0m   [38;5;238m│[0m [38;2;248;248;242m    pavucontrol[0m
+[38;5;238m  91[0m   [38;5;238m│[0m 
+[38;5;238m  92[0m   [38;5;238m│[0m [38;2;248;248;242m#Pragha[0m
+[38;5;238m  93[0m   [38;5;238m│[0m [38;2;248;248;242m#super + m[0m
+[38;5;238m  94[0m   [38;5;238m│[0m [38;2;248;248;242m#    pragha[0m
+[38;5;238m  95[0m   [38;5;238m│[0m 
+[38;5;238m  96[0m   [38;5;238m│[0m [38;2;248;248;242m#Termite[0m
+[38;5;238m  97[0m   [38;5;238m│[0m [38;2;248;248;242msuper + Return[0m
+[38;5;238m  98[0m   [38;5;238m│[0m [38;2;248;248;242m    termite[0m
+[38;5;238m  99[0m   [38;5;238m│[0m 
+[38;5;238m 100[0m   [38;5;238m│[0m [38;2;248;248;242m#Xkill[0m
+[38;5;238m 101[0m   [38;5;238m│[0m [38;2;248;248;242msuper + Escape[0m
+[38;5;238m 102[0m   [38;5;238m│[0m [38;2;248;248;242m    xkill[0m
+[38;5;238m 103[0m   [38;5;238m│[0m 
+[38;5;238m 104[0m   [38;5;238m│[0m [38;2;248;248;242m#Keyboard dependent[0m
+[38;5;238m 105[0m   [38;5;238m│[0m [38;2;248;248;242m#termite[0m
+[38;5;238m 106[0m   [38;5;238m│[0m [38;2;248;248;242msuper + KP_Enter[0m
+[38;5;238m 107[0m   [38;5;238m│[0m [38;2;248;248;242m    termite[0m
+[38;5;238m 108[0m   [38;5;238m│[0m 
+[38;5;238m 109[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 110[0m   [38;5;238m│[0m [38;2;248;248;242m# SUPER + SHIFT KEYS[0m
+[38;5;238m 111[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 112[0m   [38;5;238m│[0m 
+[38;5;238m 113[0m   [38;5;238m│[0m [38;2;248;248;242m#File-Manager[0m
+[38;5;238m 114[0m   [38;5;238m│[0m [38;2;248;248;242msuper + shift + Return[0m
+[38;5;238m 115[0m   [38;5;238m│[0m [38;2;248;248;242m    thunar[0m
+[38;5;238m 116[0m   [38;5;238m│[0m 
+[38;5;238m 117[0m   [38;5;238m│[0m [38;2;248;248;242m#Keyboard dependent[0m
+[38;5;238m 118[0m   [38;5;238m│[0m [38;2;248;248;242m#File-Manager[0m
+[38;5;238m 119[0m   [38;5;238m│[0m [38;2;248;248;242msuper + shift + KP_Enter[0m
+[38;5;238m 120[0m   [38;5;238m│[0m [38;2;248;248;242m    thunar[0m
+[38;5;238m 121[0m   [38;5;238m│[0m 
+[38;5;238m 122[0m   [38;5;238m│[0m [38;2;248;248;242m#dmenu[0m
+[38;5;238m 123[0m   [38;5;238m│[0m [38;2;248;248;242msuper + shift + d[0m
+[38;5;238m 124[0m   [38;5;238m│[0m [38;2;248;248;242m    dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'[0m
+[38;5;238m 125[0m   [38;5;238m│[0m 
+[38;5;238m 126[0m   [38;5;238m│[0m [38;2;248;248;242m#reload sxhkd:[0m
+[38;5;238m 127[0m   [38;5;238m│[0m [38;2;248;248;242msuper + shift + s[0m
+[38;5;238m 128[0m   [38;5;238m│[0m [38;2;248;248;242m    pkill -USR1 -x sxhkd; notify-send -u critical "sxhkd config reloaded"[0m
+[38;5;238m 129[0m   [38;5;238m│[0m 
+[38;5;238m 130[0m   [38;5;238m│[0m 
+[38;5;238m 131[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 132[0m   [38;5;238m│[0m [38;2;248;248;242m# CONTROL + ALT KEYS[0m
+[38;5;238m 133[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 134[0m   [38;5;238m│[0m 
+[38;5;238m 135[0m   [38;5;238m│[0m [38;2;248;248;242m#arcolinux-welcome-app[0m
+[38;5;238m 136[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + w[0m
+[38;5;238m 137[0m   [38;5;238m│[0m [38;2;248;248;242m     arcolinux-welcome-app[0m
+[38;5;238m 138[0m   [38;5;238m│[0m 
+[38;5;238m 139[0m   [38;5;238m│[0m [38;2;248;248;242m#arcolinux-tweak-tool[0m
+[38;5;238m 140[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + e[0m
+[38;5;238m 141[0m   [38;5;238m│[0m [38;2;248;248;242m    arcolinux-tweak-tool[0m
+[38;5;238m 142[0m   [38;5;238m│[0m 
+[38;5;238m 143[0m   [38;5;238m│[0m [38;2;248;248;242m#conky-rotate[0m
+[38;5;238m 144[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + Next[0m
+[38;5;238m 145[0m   [38;5;238m│[0m [38;2;248;248;242m     conky-rotate -n[0m
+[38;5;238m 146[0m   [38;5;238m│[0m 
+[38;5;238m 147[0m   [38;5;238m│[0m [38;2;248;248;242m#conky-rotate[0m
+[38;5;238m 148[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + Prior[0m
+[38;5;238m 149[0m   [38;5;238m│[0m [38;2;248;248;242m    conky-rotate -p[0m
+[38;5;238m 150[0m   [38;5;238m│[0m 
+[38;5;238m 151[0m   [38;5;238m│[0m [38;2;248;248;242m#File-Manager[0m
+[38;5;238m 152[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + b[0m
+[38;5;238m 153[0m   [38;5;238m│[0m [38;2;248;248;242m     thunar[0m
+[38;5;238m 154[0m   [38;5;238m│[0m 
+[38;5;238m 155[0m   [38;5;238m│[0m [38;2;248;248;242m#Catfish[0m
+[38;5;238m 156[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + c[0m
+[38;5;238m 157[0m   [38;5;238m│[0m [38;2;248;248;242m     catfish[0m
+[38;5;238m 158[0m   [38;5;238m│[0m 
+[38;5;238m 159[0m   [38;5;238m│[0m [38;2;248;248;242m#Chromium[0m
+[38;5;238m 160[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + g[0m
+[38;5;238m 161[0m   [38;5;238m│[0m [38;2;248;248;242m    chromium -no-default-browser-check[0m
+[38;5;238m 162[0m   [38;5;238m│[0m 
+[38;5;238m 163[0m   [38;5;238m│[0m [38;2;248;248;242m#Firefox[0m
+[38;5;238m 164[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + f[0m
+[38;5;238m 165[0m   [38;5;238m│[0m [38;2;248;248;242m     firefox[0m
+[38;5;238m 166[0m   [38;5;238m│[0m 
+[38;5;238m 167[0m   [38;5;238m│[0m [38;2;248;248;242m#Nitrogen[0m
+[38;5;238m 168[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + i[0m
+[38;5;238m 169[0m   [38;5;238m│[0m [38;2;248;248;242m     nitrogen[0m
+[38;5;238m 170[0m   [38;5;238m│[0m 
+[38;5;238m 171[0m   [38;5;238m│[0m [38;2;248;248;242m#arcolinux-logout[0m
+[38;5;238m 172[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + k[0m
+[38;5;238m 173[0m   [38;5;238m│[0m [38;2;248;248;242m     arcolinux-logout[0m
+[38;5;238m 174[0m   [38;5;238m│[0m 
+[38;5;238m 175[0m   [38;5;238m│[0m [38;2;248;248;242m#arcolinux-logout[0m
+[38;5;238m 176[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + l[0m
+[38;5;238m 177[0m   [38;5;238m│[0m [38;2;248;248;242m    arcolinux-logout[0m
+[38;5;238m 178[0m   [38;5;238m│[0m 
+[38;5;238m 179[0m   [38;5;238m│[0m 
+[38;5;238m 180[0m   [38;5;238m│[0m [38;2;248;248;242m#Xfce4-settings-manager[0m
+[38;5;238m 181[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + m[0m
+[38;5;238m 182[0m   [38;5;238m│[0m [38;2;248;248;242m     xfce4-settings-manager[0m
+[38;5;238m 183[0m   [38;5;238m│[0m 
+[38;5;238m 184[0m   [38;5;238m│[0m [38;2;248;248;242m#Pulse Audio Control[0m
+[38;5;238m 185[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + u[0m
+[38;5;238m 186[0m   [38;5;238m│[0m [38;2;248;248;242m     pavucontrol[0m
+[38;5;238m 187[0m   [38;5;238m│[0m 
+[38;5;238m 188[0m   [38;5;238m│[0m [38;2;248;248;242m#Rofi theme selector[0m
+[38;5;238m 189[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + r[0m
+[38;5;238m 190[0m   [38;5;238m│[0m [38;2;248;248;242m  rofi-theme-selector[0m
+[38;5;238m 191[0m   [38;5;238m│[0m 
+[38;5;238m 192[0m   [38;5;238m│[0m [38;2;248;248;242m#Spotify[0m
+[38;5;238m 193[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + s[0m
+[38;5;238m 194[0m   [38;5;238m│[0m [38;2;248;248;242m   spotify[0m
+[38;5;238m 195[0m   [38;5;238m│[0m 
+[38;5;238m 196[0m   [38;5;238m│[0m [38;2;248;248;242m#Termite[0m
+[38;5;238m 197[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + Return[0m
+[38;5;238m 198[0m   [38;5;238m│[0m [38;2;248;248;242m    st[0m
+[38;5;238m 199[0m   [38;5;238m│[0m 
+[38;5;238m 200[0m   [38;5;238m│[0m [38;2;248;248;242m#termite[0m
+[38;5;238m 201[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + t[0m
+[38;5;238m 202[0m   [38;5;238m│[0m [38;2;248;248;242m    termite[0m
+[38;5;238m 203[0m   [38;5;238m│[0m 
+[38;5;238m 204[0m   [38;5;238m│[0m [38;2;248;248;242m#Vivaldi[0m
+[38;5;238m 205[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + v[0m
+[38;5;238m 206[0m   [38;5;238m│[0m [38;2;248;248;242m    vivaldi-stable[0m
+[38;5;238m 207[0m   [38;5;238m│[0m 
+[38;5;238m 208[0m   [38;5;238m│[0m [38;2;248;248;242m#Xfce4-appfinder[0m
+[38;5;238m 209[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + a[0m
+[38;5;238m 210[0m   [38;5;238m│[0m [38;2;248;248;242m    xfce4-appfinder[0m
+[38;5;238m 211[0m   [38;5;238m│[0m 
+[38;5;238m 212[0m   [38;5;238m│[0m [38;2;248;248;242m#Keyboard dependent[0m
+[38;5;238m 213[0m   [38;5;238m│[0m [38;2;248;248;242m#termite[0m
+[38;5;238m 214[0m   [38;5;238m│[0m [38;2;248;248;242m#ctrl + alt + KP_Enter[0m
+[38;5;238m 215[0m   [38;5;238m│[0m [38;2;248;248;242m#     termite[0m
+[38;5;238m 216[0m   [38;5;238m│[0m 
+[38;5;238m 217[0m   [38;5;238m│[0m 
+[38;5;238m 218[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 219[0m   [38;5;238m│[0m [38;2;248;248;242m# ALT + ... KEYS[0m
+[38;5;238m 220[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 221[0m   [38;5;238m│[0m 
+[38;5;238m 222[0m   [38;5;238m│[0m [38;2;248;248;242m##Wallpaper trash[0m
+[38;5;238m 223[0m   [38;5;238m│[0m [38;2;248;248;242m#alt + t[0m
+[38;5;238m 224[0m   [38;5;238m│[0m [38;2;248;248;242m#    variety -t[0m
+[38;5;238m 225[0m   [38;5;238m│[0m 
+[38;5;238m 226[0m   [38;5;238m│[0m [38;2;248;248;242m##Wallpaper next[0m
+[38;5;238m 227[0m   [38;5;238m│[0m [38;2;248;248;242m#alt + n[0m
+[38;5;238m 228[0m   [38;5;238m│[0m [38;2;248;248;242m#    variety -n[0m
+[38;5;238m 229[0m   [38;5;238m│[0m 
+[38;5;238m 230[0m   [38;5;238m│[0m [38;2;248;248;242m##Wallpaper previous[0m
+[38;5;238m 231[0m   [38;5;238m│[0m [38;2;248;248;242m#alt + p[0m
+[38;5;238m 232[0m   [38;5;238m│[0m [38;2;248;248;242m#    variety -p[0m
+[38;5;238m 233[0m   [38;5;238m│[0m 
+[38;5;238m 234[0m   [38;5;238m│[0m [38;2;248;248;242m##Wallpaper favorite[0m
+[38;5;238m 235[0m   [38;5;238m│[0m [38;2;248;248;242m#alt + f[0m
+[38;5;238m 236[0m   [38;5;238m│[0m [38;2;248;248;242m#    variety -f[0m
+[38;5;238m 237[0m   [38;5;238m│[0m 
+[38;5;238m 238[0m   [38;5;238m│[0m [38;2;248;248;242m##Wallpaper previous[0m
+[38;5;238m 239[0m   [38;5;238m│[0m [38;2;248;248;242m#alt + Left[0m
+[38;5;238m 240[0m   [38;5;238m│[0m [38;2;248;248;242m#    variety -p[0m
+[38;5;238m 241[0m   [38;5;238m│[0m 
+[38;5;238m 242[0m   [38;5;238m│[0m [38;2;248;248;242m##Wallpaper next[0m
+[38;5;238m 243[0m   [38;5;238m│[0m [38;2;248;248;242m#alt + Right[0m
+[38;5;238m 244[0m   [38;5;238m│[0m [38;2;248;248;242m#    variety -n[0m
+[38;5;238m 245[0m   [38;5;238m│[0m 
+[38;5;238m 246[0m   [38;5;238m│[0m [38;2;248;248;242m##Wallpaper toggle-pause[0m
+[38;5;238m 247[0m   [38;5;238m│[0m [38;2;248;248;242m#alt + Up[0m
+[38;5;238m 248[0m   [38;5;238m│[0m [38;2;248;248;242m#    variety --toggle-pause[0m
+[38;5;238m 249[0m   [38;5;238m│[0m 
+[38;5;238m 250[0m   [38;5;238m│[0m [38;2;248;248;242m##Wallpaper resume[0m
+[38;5;238m 251[0m   [38;5;238m│[0m [38;2;248;248;242m#alt + Down[0m
+[38;5;238m 252[0m   [38;5;238m│[0m [38;2;248;248;242m#    variety --resume[0m
+[38;5;238m 253[0m   [38;5;238m│[0m 
+[38;5;238m 254[0m   [38;5;238m│[0m [38;2;248;248;242m##Gmrun[0m
+[38;5;238m 255[0m   [38;5;238m│[0m [38;2;248;248;242m#alt + F2[0m
+[38;5;238m 256[0m   [38;5;238m│[0m [38;2;248;248;242m#    gmrun[0m
+[38;5;238m 257[0m   [38;5;238m│[0m 
+[38;5;238m 258[0m   [38;5;238m│[0m [38;2;248;248;242m##Xfce4-appfinder[0m
+[38;5;238m 259[0m   [38;5;238m│[0m [38;2;248;248;242m#alt + F3[0m
+[38;5;238m 260[0m   [38;5;238m│[0m [38;2;248;248;242m#    xfce4-appfinder[0m
+[38;5;238m 261[0m   [38;5;238m│[0m 
+[38;5;238m 262[0m   [38;5;238m│[0m 
+[38;5;238m 263[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 264[0m   [38;5;238m│[0m [38;2;248;248;242m#VARIETY KEYS WITH PYWAL[0m
+[38;5;238m 265[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 266[0m   [38;5;238m│[0m 
+[38;5;238m 267[0m   [38;5;238m│[0m [38;2;248;248;242m#Wallpaper trash[0m
+[38;5;238m 268[0m   [38;5;238m│[0m [38;2;248;248;242malt + shift + w[0m
+[38;5;238m 269[0m   [38;5;238m│[0m [38;2;248;248;242m    variety --selector [0m
+[38;5;238m 270[0m   [38;5;238m│[0m 
+[38;5;238m 271[0m   [38;5;238m│[0m [38;2;248;248;242m#Wallpaper next[0m
+[38;5;238m 272[0m   [38;5;238m│[0m [38;2;248;248;242malt + shift + n[0m
+[38;5;238m 273[0m   [38;5;238m│[0m [38;2;248;248;242m    variety -n &amp;&amp; wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&amp;[0m
+[38;5;238m 274[0m   [38;5;238m│[0m 
+[38;5;238m 275[0m   [38;5;238m│[0m [38;2;248;248;242m#Wallpaper previous[0m
+[38;5;238m 276[0m   [38;5;238m│[0m [38;2;248;248;242malt + shift + p[0m
+[38;5;238m 277[0m   [38;5;238m│[0m [38;2;248;248;242m    variety -p &amp;&amp; wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&amp;[0m
+[38;5;238m 278[0m   [38;5;238m│[0m 
+[38;5;238m 279[0m   [38;5;238m│[0m [38;2;248;248;242m#Wallpaper favorite[0m
+[38;5;238m 280[0m   [38;5;238m│[0m [38;2;248;248;242malt + shift + f[0m
+[38;5;238m 281[0m   [38;5;238m│[0m [38;2;248;248;242m    variety -f &amp;&amp; wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&amp;[0m
+[38;5;238m 282[0m   [38;5;238m│[0m 
+[38;5;238m 283[0m   [38;5;238m│[0m [38;2;248;248;242m#Wallpaper update[0m
+[38;5;238m 284[0m   [38;5;238m│[0m [38;2;248;248;242malt + shift + u[0m
+[38;5;238m 285[0m   [38;5;238m│[0m [38;2;248;248;242m    wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&amp;[0m
+[38;5;238m 286[0m   [38;5;238m│[0m 
+[38;5;238m 287[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 288[0m   [38;5;238m│[0m [38;2;248;248;242m# CONTROL + SHIFT KEYS[0m
+[38;5;238m 289[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 290[0m   [38;5;238m│[0m 
+[38;5;238m 291[0m   [38;5;238m│[0m [38;2;248;248;242m#Xcfe4-TaskManager[0m
+[38;5;238m 292[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + shift + Escape[0m
+[38;5;238m 293[0m   [38;5;238m│[0m [38;2;248;248;242m    xfce4-taskmanager[0m
+[38;5;238m 294[0m   [38;5;238m│[0m 
+[38;5;238m 295[0m   [38;5;238m│[0m 
+[38;5;238m 296[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 297[0m   [38;5;238m│[0m [38;2;248;248;242m#     SCREENSHOTS[0m
+[38;5;238m 298[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 299[0m   [38;5;238m│[0m 
+[38;5;238m 300[0m   [38;5;238m│[0m [38;2;248;248;242m#Scrot[0m
+[38;5;238m 301[0m   [38;5;238m│[0m [38;2;248;248;242mPrint[0m
+[38;5;238m 302[0m   [38;5;238m│[0m [38;2;248;248;242m    scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'[0m
+[38;5;238m 303[0m   [38;5;238m│[0m 
+[38;5;238m 304[0m   [38;5;238m│[0m [38;2;248;248;242m#screeenshooter[0m
+[38;5;238m 305[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + Print[0m
+[38;5;238m 306[0m   [38;5;238m│[0m [38;2;248;248;242m     xfce4-screenshooter[0m
+[38;5;238m 307[0m   [38;5;238m│[0m 
+[38;5;238m 308[0m   [38;5;238m│[0m [38;2;248;248;242m#Gnome-Screenshot[0m
+[38;5;238m 309[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + shift + Print[0m
+[38;5;238m 310[0m   [38;5;238m│[0m [38;2;248;248;242m     gnome-screenshot -i[0m
+[38;5;238m 311[0m   [38;5;238m│[0m 
+[38;5;238m 312[0m   [38;5;238m│[0m 
+[38;5;238m 313[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 314[0m   [38;5;238m│[0m [38;2;248;248;242m#     FUNCTION KEYS[0m
+[38;5;238m 315[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 316[0m   [38;5;238m│[0m 
+[38;5;238m 317[0m   [38;5;238m│[0m [38;2;248;248;242m#xfce4-terminal dropdown[0m
+[38;5;238m 318[0m   [38;5;238m│[0m [38;2;248;248;242mF12[0m
+[38;5;238m 319[0m   [38;5;238m│[0m [38;2;248;248;242m    xfce4-terminal --drop-down[0m
+[38;5;238m 320[0m   [38;5;238m│[0m 
+[38;5;238m 321[0m   [38;5;238m│[0m [38;2;248;248;242m#Delete[0m
+[38;5;238m 322[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + Delete[0m
+[38;5;238m 323[0m   [38;5;238m│[0m [38;2;248;248;242m    /usr/bin/python /usr/lib/arcologout/arcologout.py[0m
+[38;5;238m 324[0m   [38;5;238m│[0m 
+[38;5;238m 325[0m   [38;5;238m│[0m 
+[38;5;238m 326[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 327[0m   [38;5;238m│[0m [38;2;248;248;242m#     MULTIMEDIA KEYS[0m
+[38;5;238m 328[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 329[0m   [38;5;238m│[0m 
+[38;5;238m 330[0m   [38;5;238m│[0m [38;2;248;248;242m#Raises volume[0m
+[38;5;238m 331[0m   [38;5;238m│[0m [38;2;248;248;242mXF86AudioRaiseVolume[0m
+[38;5;238m 332[0m   [38;5;238m│[0m [38;2;248;248;242m    /home/gk/bin/hw audioraise[0m
+[38;5;238m 333[0m   [38;5;238m│[0m [38;2;248;248;242m    #amixer set Master 10%+[0m
+[38;5;238m 334[0m   [38;5;238m│[0m 
+[38;5;238m 335[0m   [38;5;238m│[0m [38;2;248;248;242m#Lowers volume[0m
+[38;5;238m 336[0m   [38;5;238m│[0m [38;2;248;248;242mXF86AudioLowerVolume[0m
+[38;5;238m 337[0m   [38;5;238m│[0m [38;2;248;248;242m    /home/gk/bin/hw audiolower[0m
+[38;5;238m 338[0m   [38;5;238m│[0m [38;2;248;248;242m    #amixer set Master 10%-[0m
+[38;5;238m 339[0m   [38;5;238m│[0m 
+[38;5;238m 340[0m   [38;5;238m│[0m [38;2;248;248;242m#Mute[0m
+[38;5;238m 341[0m   [38;5;238m│[0m [38;2;248;248;242mXF86AudioMute[0m
+[38;5;238m 342[0m   [38;5;238m│[0m [38;2;248;248;242m    /home/gk/bin/hw audiomute[0m
+[38;5;238m 343[0m   [38;5;238m│[0m [38;2;248;248;242m    #amixer -D pulse set Master 1+ toggle[0m
+[38;5;238m 344[0m   [38;5;238m│[0m 
+[38;5;238m 345[0m   [38;5;238m│[0m [38;2;248;248;242mXF86Display[0m
+[38;5;238m 346[0m   [38;5;238m│[0m [38;2;248;248;242m    /home/gk/bin/hw display[0m
+[38;5;238m 347[0m   [38;5;238m│[0m [38;2;248;248;242m#Playerctl works for Pragha, Spotify and others[0m
+[38;5;238m 348[0m   [38;5;238m│[0m [38;2;248;248;242m#Delete the line for playerctl if you want to use mpc[0m
+[38;5;238m 349[0m   [38;5;238m│[0m [38;2;248;248;242m#and replace it with the corresponding code[0m
+[38;5;238m 350[0m   [38;5;238m│[0m [38;2;248;248;242m#mpc works for e.g.ncmpcpp[0m
+[38;5;238m 351[0m   [38;5;238m│[0m [38;2;248;248;242m#mpc toggle[0m
+[38;5;238m 352[0m   [38;5;238m│[0m [38;2;248;248;242m#mpc next[0m
+[38;5;238m 353[0m   [38;5;238m│[0m [38;2;248;248;242m#mpc prev[0m
+[38;5;238m 354[0m   [38;5;238m│[0m [38;2;248;248;242m#mpc stop[0m
+[38;5;238m 355[0m   [38;5;238m│[0m 
+[38;5;238m 356[0m   [38;5;238m│[0m [38;2;248;248;242m#PLAY[0m
+[38;5;238m 357[0m   [38;5;238m│[0m [38;2;248;248;242mXF86AudioPlay[0m
+[38;5;238m 358[0m   [38;5;238m│[0m [38;2;248;248;242m    playerctl play-pause[0m
+[38;5;238m 359[0m   [38;5;238m│[0m 
+[38;5;238m 360[0m   [38;5;238m│[0m [38;2;248;248;242m#Next[0m
+[38;5;238m 361[0m   [38;5;238m│[0m [38;2;248;248;242mXF86AudioNext[0m
+[38;5;238m 362[0m   [38;5;238m│[0m [38;2;248;248;242m    playerctl next[0m
+[38;5;238m 363[0m   [38;5;238m│[0m 
+[38;5;238m 364[0m   [38;5;238m│[0m [38;2;248;248;242m#previous[0m
+[38;5;238m 365[0m   [38;5;238m│[0m [38;2;248;248;242mXF86AudioPrev[0m
+[38;5;238m 366[0m   [38;5;238m│[0m [38;2;248;248;242m    playerctl previous[0m
+[38;5;238m 367[0m   [38;5;238m│[0m 
+[38;5;238m 368[0m   [38;5;238m│[0m [38;2;248;248;242m#Stop[0m
+[38;5;238m 369[0m   [38;5;238m│[0m [38;2;248;248;242mXF86AudioStop[0m
+[38;5;238m 370[0m   [38;5;238m│[0m [38;2;248;248;242m    playerctl stop[0m
+[38;5;238m 371[0m   [38;5;238m│[0m 
+[38;5;238m 372[0m   [38;5;238m│[0m [38;2;248;248;242m#Brightness up[0m
+[38;5;238m 373[0m   [38;5;238m│[0m [38;2;248;248;242m#XF86MonBrightnessUp[0m
+[38;5;238m 374[0m   [38;5;238m│[0m [38;2;248;248;242m#    xbacklight -inc 10[0m
+[38;5;238m 375[0m   [38;5;238m│[0m 
+[38;5;238m 376[0m   [38;5;238m│[0m [38;2;248;248;242m##Brightness down[0m
+[38;5;238m 377[0m   [38;5;238m│[0m [38;2;248;248;242m#XF86MonBrightnessDown[0m
+[38;5;238m 378[0m   [38;5;238m│[0m [38;2;248;248;242m#    xbacklight -dec 10[0m
+[38;5;238m 379[0m   [38;5;238m│[0m 
+[38;5;238m 380[0m   [38;5;238m│[0m 
+[38;5;238m 381[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 382[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 383[0m   [38;5;238m│[0m [38;2;248;248;242m##################   DESKTOP SPECIFIC    ########################[0m
+[38;5;238m 384[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 385[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 386[0m   [38;5;238m│[0m 
+[38;5;238m 387[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 388[0m   [38;5;238m│[0m [38;2;248;248;242m# CTRL + ALT KEYS[0m
+[38;5;238m 389[0m   [38;5;238m│[0m [38;2;248;248;242m#################################################################[0m
+[38;5;238m 390[0m   [38;5;238m│[0m 
+[38;5;238m 391[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + super + f[0m
+[38;5;238m 392[0m   [38;5;238m│[0m [38;2;248;248;242m        /home/gk/bin/find_and_type_file[0m
+[38;5;238m 393[0m   [38;5;238m│[0m [38;2;248;248;242m#Picom Toggle[0m
+[38;5;238m 394[0m   [38;5;238m│[0m [38;2;248;248;242mctrl + alt + p[0m
+[38;5;238m 395[0m   [38;5;238m│[0m [38;2;248;248;242m    ~/bin/picom-toggle.sh[0m
+[38;5;238m 396[0m   [38;5;238m│[0m 
+[38;5;238m 397[0m   [38;5;238m│[0m [38;2;248;248;242malt + d[0m
+[38;5;238m 398[0m   [38;5;238m│[0m [38;2;248;248;242m    ~/bin/type_date_into_window[0m
+[38;5;238m───────┴────────────────────────────────────────────────────────────────────────[0m
+</code></pre>
+</div>
+</div>
+</div>
+<!-- id: c346ef744e162afdfdc93f293b32997d -->
+
+<p>This is my full config</p>
+<!-- id: 62fd440c0f9cead450d8de46b49de8ba -->
+<div class="highlight"><pre><span></span><code><span class="n">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">gk</span><span class="o">/</span><span class="p">.</span><span class="n">config</span><span class="o">/</span><span class="n">dwm</span><span class="o">/</span><span class="n">config</span><span class="p">.</span><span class="n">h</span><span class="w"></span>
+<span class="cm">/* See LICENSE file for copyright and license details. */</span><span class="w"></span>
+
+<span class="c1">// clang-format off</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;X11/XF86keysym.h&gt;</span><span class="cp"></span>
+<span class="cm">/* appearance */</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">borderpx</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="cm">/* border pixel of windows */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">snap</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="cm">/* snap pixel */</span><span class="w"></span>
+
+
+<span class="cm">/*static const int bar_right_offset      = 180 ; offset from the right -depends on color tags used in dwmbar. increase if you use more of them, 0 would be correct w/o any color tag */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bar_right_offset</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="p">;</span><span class="w"> </span><span class="cm">/* offset from the right -depends on color tags used in dwmbar. increase if you use more of them, 0 would be correct w/o any color tag */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">showbar</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="p">;</span><span class="w"> </span><span class="cm">/* 0 means no bar */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">topbar</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="p">;</span><span class="w"> </span><span class="cm">/* 0 means bottom bar */</span><span class="w"></span>
+
+<span class="cm">/* We get those all from .Xresources, dynmaically:</span>
+<span class="cm">static const char *fonts[]          = { &quot;monospace:size=10&quot; };</span>
+<span class="cm">static const char dmenufont[]       = &quot;monospace:size=10&quot;;</span>
+<span class="cm">static const char col_gray1[]       = &quot;#222222&quot;;</span>
+<span class="cm">static const char col_gray2[]       = &quot;#444444&quot;;</span>
+<span class="cm">static const char col_gray3[]       = &quot;#bbbbbb&quot;;</span>
+<span class="cm">static const char col_gray4[]       = &quot;#eeeeee&quot;;</span>
+<span class="cm">static const char col_cyan[]        = &quot;#005577&quot;;</span>
+<span class="cm">static const char *colors[][3]      = {</span>
+<span class="cm">    [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },</span>
+<span class="cm">    [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },</span>
+<span class="cm">};</span>
+
+<span class="cm">static const char *tags[] = { &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot; };</span>
+<span class="cm">static const char *fonts[]            = { &quot;unifont:size = 13&quot; };</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">fonts</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Hack:size=13&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">panel</span><span class="p">[][</span><span class="mi">20</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;xfce4-panel&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Xfce4-panel&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">baralpha</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mh">0x10</span><span class="p">;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">borderalpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x10</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/*</span>
+<span class="cm"> * See https://github.com/jgrar/dwm-patches/tree/master/statuscolors, regarding how to close gaps in progrss meters</span>
+<span class="cm"> * and this regarind how to really make it fancy:</span>
+<span class="cm">  https://www.reddit.com/r/unixporn/comments/8hrkt3/dwm_powerline_themed_status_bar</span>
+<span class="cm">    [SchemeSel]    = { &quot;#999999&quot;, &quot;#111111&quot;, &quot;#88b7c1&quot; },</span>
+<span class="cm"> * */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">colors</span><span class="p">[][</span><span class="mi">4</span><span class="p">]</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/*               fg         bg         border   */</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">SchemeNorm</span><span class="p">]</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;#555555&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;#111111&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;#000&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">SchemeSel</span><span class="p">]</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;#999999&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;#111111&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;#999&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">SchemeAX</span><span class="p">]</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;#bbb&quot;</span><span class="w">   </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;#8bd124&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;#666&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="cm">/* statuscolors not required anymore, we have xfce4-panel</span>
+<span class="cm">    [SchemeWarn]   = { &quot;#eeee00&quot;, &quot;#111111&quot;, &quot;#666&quot; },</span>
+<span class="cm">    [SchemeUrgent] = { &quot;#ee0000&quot;, &quot;#111111&quot;, &quot;#666&quot; },</span>
+<span class="cm">    [SchemeGood]   = { &quot;#8bd124&quot;, &quot;#111111&quot;, &quot;#666&quot; },</span>
+<span class="cm">    [SchemeGray]   = { &quot;#999&quot;   , &quot;#111111&quot;, &quot;#666&quot; },</span>
+<span class="cm">};</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cm">/*</span>
+<span class="cm">static const unsigned int alphas[][3]      = {</span>
+<span class="cm">    *               fg      bg        border     *</span>
+<span class="cm">    [SchemeNorm] = { OPAQUE, baralpha, borderalpha },</span>
+<span class="cm">    [SchemeSel]  = { OPAQUE, baralpha, borderalpha },</span>
+<span class="cm">};</span>
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="cm">/* tagging</span>
+<span class="cm">static const char *tags[] = { &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot; };</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">tags</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;一&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;二&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;三&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;四&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;五&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;六&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;七&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;八&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;九&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">dmenumon</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p">;</span><span class="w"> </span><span class="cm">/* component of dmenucmd, manipulated in spawn() */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">dmenucmd</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;bin/rofi_utils_select&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;startup&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Rule</span><span class="w"> </span><span class="n">rules</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* xprop(1):</span>
+<span class="cm">     *    WM_CLASS(STRING) = instance, class</span>
+<span class="cm">     *    WM_NAME(STRING) = title</span>
+<span class="cm">     */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* class                  instance    title       tags mask ,    isfloating   monitor */</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Arcologout.py&quot;</span><span class="p">,</span><span class="w">        </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="mi">0</span><span class="p">,</span><span class="w">                </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;SimpleScreenRecorder&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="mi">0</span><span class="p">,</span><span class="w">                </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">panel</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w">               </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">0</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Xfce4-appfinder&quot;</span><span class="p">,</span><span class="w">      </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Xfrun4&quot;</span><span class="p">,</span><span class="w">               </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Peek&quot;</span><span class="p">,</span><span class="w">                 </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="mi">0</span><span class="p">,</span><span class="w">                </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Dragon&quot;</span><span class="p">,</span><span class="w">               </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;flameshot&quot;</span><span class="p">,</span><span class="w">            </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Variety&quot;</span><span class="p">,</span><span class="w">              </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="mi">0</span><span class="p">,</span><span class="w">                </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w">                   </span><span class="s">&quot;HUD&quot;</span><span class="p">,</span><span class="w">      </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="mi">0</span><span class="p">,</span><span class="w">                </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;HUD&quot;</span><span class="p">,</span><span class="w">                  </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="mi">0</span><span class="p">,</span><span class="w">                </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;HUDALL&quot;</span><span class="p">,</span><span class="w">               </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="nb">NULL</span><span class="p">,</span><span class="w">  </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">          </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Firefox&quot;</span><span class="p">,</span><span class="w">              </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="mi">0</span><span class="p">,</span><span class="w">                </span><span class="mi">0</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w">                   </span><span class="nb">NULL</span><span class="p">,</span><span class="w">       </span><span class="s">&quot;Skype&quot;</span><span class="p">,</span><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w">                </span><span class="mi">1</span><span class="p">,</span><span class="w">           </span><span class="mi">-1</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="cm">/* layout(s) */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">mfact</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mf">0.55</span><span class="p">;</span><span class="w"> </span><span class="cm">/* factor of master area size [0.05..0.95] */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nmaster</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">    </span><span class="cm">/* number of clients in master area */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">resizehints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">    </span><span class="cm">/* 1 means respect size hints in tiled resizals */</span><span class="w"></span>
+
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;layouts.c&quot;</span><span class="cp"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Layout</span><span class="w"> </span><span class="n">layouts</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* symbol     arrange function */</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;T&quot;</span><span class="p">,</span><span class="w">      </span><span class="n">tile</span><span class="w"> </span><span class="p">},</span><span class="w">    </span><span class="cm">/* first entry is default */</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">,</span><span class="w">      </span><span class="nb">NULL</span><span class="w"> </span><span class="p">},</span><span class="w">    </span><span class="cm">/* no layout function means floating behavior */</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="p">,</span><span class="w">      </span><span class="n">monocle</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;G&quot;</span><span class="p">,</span><span class="w">      </span><span class="n">grid</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;V&quot;</span><span class="p">,</span><span class="w">      </span><span class="n">col</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="cm">/* key definitions */</span><span class="w"></span>
+<span class="cp">#define MODKEY Mod4Mask</span>
+<span class="cm">/*</span>
+<span class="cm">#define TAGKEYS(KEY,TAG) \</span>
+<span class="cm">    { MODKEY,                       KEY,      view,           {.ui = 1 &lt;&lt; TAG} }, \</span>
+<span class="cm">    { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 &lt;&lt; TAG} }, \</span>
+<span class="cm">    { MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 &lt;&lt; TAG} }, \</span>
+<span class="cm">    { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 &lt;&lt; TAG} },</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#define TAGKEYS(KEY,TAG) \</span>
+<span class="cp">    { ControlMask                  , KEY , view       , {.ui = 1 &lt;&lt; TAG} } , \</span>
+<span class="cp">    { MODKEY|ControlMask           , KEY , toggleview , {.ui = 1 &lt;&lt; TAG} } , \</span>
+<span class="cp">    { ControlMask|ShiftMask        , KEY , tag        , {.ui = 1 &lt;&lt; TAG} } , \</span>
+<span class="cp">    { MODKEY|ControlMask|ShiftMask , KEY , toggletag  , {.ui = 1 &lt;&lt; TAG} } ,</span>
+
+
+<span class="cm">/* helper for spawning shell commands in the pre dwm-5.0 fashion */</span><span class="w"></span>
+<span class="cp">#define SHCMD(cmd) { .v = (const char*[]){ &quot;/bin/sh&quot;, &quot;-c&quot;, cmd, NULL } }</span>
+
+
+<span class="cm">/* commands */</span><span class="w"></span>
+<span class="cm">/*static const char *dmenucmd[] = { &quot;dmenu_run&quot;, &quot;-m&quot;, dmenumon, &quot;-fn&quot;, dmenufont, &quot;-nb&quot;, col_gray1, &quot;-nf&quot;, col_gray3, &quot;-sb&quot;, col_cyan, &quot;-sf&quot;, col_gray4, NULL };</span>
+<span class="cm">static const char *copyq_menucmd[] = { &quot;copyq&quot;, &quot;menu&quot;, NULL };</span>
+<span class="cm">static const char *insert_date  [] = { &quot;/home/gk/bin/type_date_into_window&quot;, NULL };</span>
+<span class="cm">static const char *volumemute[]    = { &quot;amixer&quot;, &quot;set&quot;, &quot;Master&quot;, &quot;toggle&quot;         , &quot;;&quot;, &quot;/home/gk/bin/refbar&quot;, NULL };</span>
+
+<span class="cm">    { ControlMask                       , XK_c                     , spawn          , {.v = signtcmd                               }   } ,  this is control key on my keyboard (swapped)</span>
+<span class="cm">    { ControlMask                       , XK_d                     , spawn          , {.v = sigdtcmd                               }   } ,  this is control key on my keyboard (swapped)</span>
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">Key</span><span class="w"> </span><span class="n">keys</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">    </span><span class="cm">/* modifier                     key        function        argument */</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/* { ControlMask                    , XK_space  , spawn   , SHCMD(&quot;/home/gk/bin/st_hud&quot; ) }                    , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { ControlMask|ShiftMask|Mod4Mask , XK_3      , spawn   , SHCMD(&quot;sleep 1s;/home/gk/bin/shot_selected&quot;) }     , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { ControlMask|ShiftMask          , XK_b      , spawn   , SHCMD(&quot;/home/gk/bin/clipctrl previous_item&quot;) }     , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { MODKEY|ControlMask             , XK_d      , spawn   , SHCMD(&quot;/home/gk/bin/type_date_into_window&quot;     ) } , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { Mod4Mask                       , XK_Return , zoom    , { 0                  }}                            , * swap focus when gtk keys swapped*/</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/*{ ControlMask                     , XK_Left   , lasttag , {.i =  1} }                                        , */</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="o">|</span><span class="n">ShiftMask</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">XK_1</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">togglebar</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w">                       </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="o">|</span><span class="n">ShiftMask</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">XK_minus</span><span class="w">       </span><span class="p">,</span><span class="w"> </span><span class="n">setborderpx</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w">                       </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="o">|</span><span class="n">ShiftMask</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">XK_equal</span><span class="w">       </span><span class="p">,</span><span class="w"> </span><span class="n">setborderpx</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w">                       </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">ControlMask</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="n">XK_BackSpace</span><span class="w">   </span><span class="p">,</span><span class="w"> </span><span class="n">killclient</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w">                  </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">ControlMask</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="n">XK_q</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">killclient</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w">                  </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">ControlMask</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="n">XK_Return</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="n">zoom</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w">                  </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"> </span><span class="cm">/* swap focus*/</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">ControlMask</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="n">XK_space</span><span class="w">       </span><span class="p">,</span><span class="w"> </span><span class="n">spawn</span><span class="w">          </span><span class="p">,</span><span class="w"> </span><span class="n">SHCMD</span><span class="p">(</span><span class="s">&quot;/usr/bin/ulauncher&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="cm">/* faster than sxk */</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">ControlMask</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="n">XK_Tab</span><span class="w">         </span><span class="p">,</span><span class="w"> </span><span class="n">spawn</span><span class="w">          </span><span class="p">,</span><span class="w"> </span><span class="n">SHCMD</span><span class="p">(</span><span class="s">&quot;/usr/bin/skippy-xd&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">       </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">ControlMask</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="n">XK_n</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">spawn</span><span class="w">          </span><span class="p">,</span><span class="w"> </span><span class="n">SHCMD</span><span class="p">(</span><span class="s">&quot;st&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">                       </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="o">|</span><span class="n">ShiftMask</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">XK_b</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">togglebar</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w">                  </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">ControlMask</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="n">XK_j</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">focusstack</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="w">            </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">ControlMask</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="n">XK_k</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">focusstack</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="mi">1</span><span class="w">            </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">ControlMask</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="n">XK_m</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">focusmon</span><span class="w">       </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="w">            </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { ControlMask      , XK_l           , focusmon       , { .i = +1            }}             , h is enough we have just 2 or 3 mons. l is for browser location*/</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="o">|</span><span class="n">ShiftMask</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">XK_h</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">spawn</span><span class="w">          </span><span class="p">,</span><span class="w"> </span><span class="n">SHCMD</span><span class="p">(</span><span class="s">&quot;/home/gk/bin/tagmon -1&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="o">|</span><span class="n">ShiftMask</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">XK_l</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">spawn</span><span class="w">          </span><span class="p">,</span><span class="w"> </span><span class="n">SHCMD</span><span class="p">(</span><span class="s">&quot;/home/gk/bin/tagmon  1&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="o">|</span><span class="n">ShiftMask</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">XK_comma</span><span class="w">       </span><span class="p">,</span><span class="w"> </span><span class="n">tagmon</span><span class="w">         </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="w">            </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="o">|</span><span class="n">ShiftMask</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">XK_period</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="n">tagmon</span><span class="w">         </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="mi">1</span><span class="w">            </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">XK_i</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">incnmaster</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="mi">1</span><span class="w">            </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">XK_d</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">incnmaster</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="w">            </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">Mod1Mask</span><span class="w">         </span><span class="p">,</span><span class="w"> </span><span class="n">XK_h</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">setmfact</span><span class="w">       </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-0.05</span><span class="w">         </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">Mod1Mask</span><span class="w">         </span><span class="p">,</span><span class="w"> </span><span class="n">XK_l</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">setmfact</span><span class="w">       </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="mf">0.05</span><span class="w">         </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { MODKEY           , XK_Tab         , view           , { 0                  }}             , */</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">XK_t</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">setlayout</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">layouts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w">   </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">XK_f</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">setlayout</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">layouts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">   </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">XK_m</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">setlayout</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">layouts</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w">   </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">XK_g</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">setlayout</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">layouts</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w">   </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">XK_v</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">setlayout</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">layouts</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w">   </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="o">|</span><span class="n">ShiftMask</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">XK_period</span><span class="w">      </span><span class="p">,</span><span class="w"> </span><span class="n">cyclelayout</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w">                       </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { MODKEY|ShiftMask , XK_space       , setlayout      , { 0                  }}             , */</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="o">|</span><span class="n">ShiftMask</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">XK_space</span><span class="w">       </span><span class="p">,</span><span class="w"> </span><span class="n">togglefloating</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w">                  </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">XK_0</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">view</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">ui</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="mi">0</span><span class="w">           </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="o">|</span><span class="n">ShiftMask</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">XK_0</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="w">            </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">ui</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="mi">0</span><span class="w">           </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">MODKEY</span><span class="o">|</span><span class="n">ShiftMask</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">XK_q</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="n">quit</span><span class="w">           </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w">                  </span><span class="p">}}</span><span class="w">             </span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w">                </span><span class="p">,</span><span class="w"> </span><span class="n">XF86XK_Display</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">spawn</span><span class="w">          </span><span class="p">,</span><span class="w"> </span><span class="n">SHCMD</span><span class="p">(</span><span class="s">&quot;/home/gk/bin/hw display&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/* xev is your friend to find those */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0,                     XF86XK_LaunchA           , spawn,           SHCMD(&quot;/home/gk/bin/hw launcha&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0,                     XF86XK_MonBrightnessDown , spawn,           SHCMD(&quot;/home/gk/bin/hw monbrightdown&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0,                     XF86XK_MonBrightnessUp   , spawn,           SHCMD(&quot;/home/gk/bin/hw monbrightup&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0,                     XF86XK_AudioMute         , spawn,           SHCMD(&quot;/home/gk/bin/hw audiomute&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0,                     XF86XK_AudioLowerVolume  , spawn,           SHCMD(&quot;/home/gk/bin/hw audiolower&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0,                     XF86XK_AudioRaiseVolume  , spawn,           SHCMD(&quot;/home/gk/bin/hw audioraise&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0,                     XF86XK_RFKill            , spawn,           SHCMD(&quot;/home/gk/bin/hw rfkill&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { ControlMask,           XF86XK_Eject             , killclient     , {0                  }} , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                  , XF86XK_Eject             , spawn,           SHCMD(&quot;/home/gk/bin/hw eject&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                     , XK_F1           , spawn,           SHCMD(&quot;/home/gk/bin/hw F1&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                     , XK_F2           , spawn,           SHCMD(&quot;/home/gk/bin/hw F2&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                     , XK_F3           , spawn,           SHCMD(&quot;/home/gk/bin/hw F3&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                     , XK_F4           , spawn,           SHCMD(&quot;/home/gk/bin/hw F4&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                     , XK_F5           , spawn,           SHCMD(&quot;/home/gk/bin/hw F5&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                     , XK_F6           , spawn,           SHCMD(&quot;/home/gk/bin/hw F6&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                     , XK_F7           , spawn,           SHCMD(&quot;/home/gk/bin/hw F7&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                     , XK_F8           , spawn,           SHCMD(&quot;/home/gk/bin/hw F8&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                     , XK_F9           , spawn,           SHCMD(&quot;/home/gk/bin/hw F9&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                     , XK_F10          , spawn,           SHCMD(&quot;/home/gk/bin/hw F10&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                     , XK_F11          , spawn,           SHCMD(&quot;/home/gk/bin/hw F11&quot; ) }, */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                     , XK_F12          , spawn,           SHCMD(&quot;/home/gk/bin/hw F12&quot; ) }, */</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/* { ControlMask,           XK_Delete       , spawn,           SHCMD(&quot;/home/gk/bin/hw ctrl_del&quot; ) }, */</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/* /1* Keyboard Backlight *1/ */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { ControlMask        , XF86XK_MonBrightnessDown , spawn          , {.v = F13           }} , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { ControlMask        , XF86XK_MonBrightnessUp   , spawn          , {.v = F14           }} , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                  , XF86XK_LaunchA           , spawn          , {.v = F03           }} , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                  , XF86XK_LaunchB           , spawn          , {.v = F04           }} , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                  , XF86XK_AudioPrev         , spawn          , {.v = F07           }} , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                  , XF86XK_AudioPlay         , spawn          , {.v = F08           }} , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { 0                  , XF86XK_AudioNext         , spawn          , {.v = F09           }} , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { ControlMask        , XF86XK_Eject             , spawn          , {.v = pow           }} , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { ControlMask        , XF86XK_PowerOff          , spawn          , {.v = pow           }} , */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* { ControlMask        , XF86XK_Suspend           , spawn          , {.v = pow           }} , */</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/* {MODKEY|ControlMask|ShiftMask , XK_l            , spawn ,           SHCMD(&quot;/home/gk/bin/hw lock&quot; ) }, */</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">TAGKEYS</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">XK_1</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">TAGKEYS</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">XK_2</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">TAGKEYS</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">XK_3</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">TAGKEYS</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">XK_4</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">TAGKEYS</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">XK_5</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">TAGKEYS</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">XK_6</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">TAGKEYS</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">XK_7</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">TAGKEYS</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">XK_8</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">TAGKEYS</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">XK_9</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"></span>
+
+<span class="p">};</span><span class="w"></span>
+
+<span class="cm">/* button definitions */</span><span class="w"></span>
+<span class="cm">/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="n">Button</span><span class="w"> </span><span class="n">buttons</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* click                event mask      button          function        argument */</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">ClkLtSymbol</span><span class="p">,</span><span class="w">          </span><span class="mi">0</span><span class="p">,</span><span class="w">              </span><span class="n">Button1</span><span class="p">,</span><span class="w">        </span><span class="n">setlayout</span><span class="p">,</span><span class="w">      </span><span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">ClkLtSymbol</span><span class="p">,</span><span class="w">          </span><span class="mi">0</span><span class="p">,</span><span class="w">              </span><span class="n">Button3</span><span class="p">,</span><span class="w">        </span><span class="n">setlayout</span><span class="p">,</span><span class="w">      </span><span class="p">{.</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">layouts</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">ClkWinTitle</span><span class="p">,</span><span class="w">          </span><span class="mi">0</span><span class="p">,</span><span class="w">              </span><span class="n">Button2</span><span class="p">,</span><span class="w">        </span><span class="n">zoom</span><span class="p">,</span><span class="w">           </span><span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">ClkStatusText</span><span class="p">,</span><span class="w">        </span><span class="mi">0</span><span class="p">,</span><span class="w">              </span><span class="n">Button2</span><span class="p">,</span><span class="w">        </span><span class="n">spawn</span><span class="p">,</span><span class="w">          </span><span class="n">SHCMD</span><span class="p">(</span><span class="s">&quot;st&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">ClkClientWin</span><span class="p">,</span><span class="w">         </span><span class="n">MODKEY</span><span class="p">,</span><span class="w">         </span><span class="n">Button1</span><span class="p">,</span><span class="w">        </span><span class="n">movemouse</span><span class="p">,</span><span class="w">      </span><span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">ClkClientWin</span><span class="p">,</span><span class="w">         </span><span class="n">MODKEY</span><span class="p">,</span><span class="w">         </span><span class="n">Button2</span><span class="p">,</span><span class="w">        </span><span class="n">togglefloating</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">ClkClientWin</span><span class="p">,</span><span class="w">         </span><span class="n">MODKEY</span><span class="p">,</span><span class="w">         </span><span class="n">Button3</span><span class="p">,</span><span class="w">        </span><span class="n">resizemouse</span><span class="p">,</span><span class="w">    </span><span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">ClkTagBar</span><span class="p">,</span><span class="w">            </span><span class="mi">0</span><span class="p">,</span><span class="w">              </span><span class="n">Button1</span><span class="p">,</span><span class="w">        </span><span class="n">view</span><span class="p">,</span><span class="w">           </span><span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">ClkTagBar</span><span class="p">,</span><span class="w">            </span><span class="mi">0</span><span class="p">,</span><span class="w">              </span><span class="n">Button3</span><span class="p">,</span><span class="w">        </span><span class="n">toggleview</span><span class="p">,</span><span class="w">     </span><span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">ClkTagBar</span><span class="p">,</span><span class="w">            </span><span class="n">MODKEY</span><span class="p">,</span><span class="w">         </span><span class="n">Button1</span><span class="p">,</span><span class="w">        </span><span class="n">tag</span><span class="p">,</span><span class="w">            </span><span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">ClkTagBar</span><span class="p">,</span><span class="w">            </span><span class="n">MODKEY</span><span class="p">,</span><span class="w">         </span><span class="n">Button3</span><span class="p">,</span><span class="w">        </span><span class="n">toggletag</span><span class="p">,</span><span class="w">      </span><span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<!-- id: 62fd440c0f9cead450d8de46b49de8ba -->
+
+<script>typeof start_lc === "undefined" ? 0 : start_lc() </script>
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<style>
+  .md-footer__link--next {
+    width: 75%;
+  }
+  .overlay_block {
+    position: relative;
+    width: 100%;
+  }
+  .overlay_block .overlay_link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .overlay_block .overlay_inner {
+    position: relative;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .overlay_block .overlay_inner a {
+    pointer-events: all;
+  }
+</style>
+
+<footer class="md-footer">
+  
+
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../about/" class="md-footer__link md-footer__link--prev" aria-label="Previous: About" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              About
+            </div>
+          </div>
+        </a>
+
+
+
+       
+      <div class="md-footer__link md-footer__link--next">
+        
+        <div class="overlay_block">
+          <a
+            class="overlay_link"
+            href="../st/"
+            rel="next"
+          ></a>
+          <div class="overlay_inner">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                
+                <a href="/blog/ll/apps/apps/">
+                    
+                  <small>🐧 LINUX</small> - 
+                </a>
+                
+                <a href="/blog/ll/sl/about/">
+                    
+                  <small>Suckless</small> - 
+                </a>
+                
+                <a href="/blog/ll/sl/st/">
+                     <span>st</span> 
+                </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-left: -2rem" class="md-footer__button md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+        </div>
+      </div>
+
+
+
+
+      
+    </nav>
+  </div>
+  
+
+
+
+
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Gunther Klessinger
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/axiros" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/fa_all.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm-addon-search.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm.4.9.0.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/Rx.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/tablesort.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/lc.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm-addon-fit.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/tables.js"></script>
+      
+    
+  </body>
+</html>

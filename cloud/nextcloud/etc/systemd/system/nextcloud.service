@@ -1,0 +1,21 @@
+[Unit]
+Description     = "nextcloud 25"
+Wants            = network-online.target
+StopWhenUnneeded = false
+
+[Service]
+Type             = simple
+ExecStart        = /usr/bin/systemd-nspawn -D /root/docker/nc25 --bind /mnt/HC_Volume_24241161/:/var/www/html/data /start
+#ExecStart        = /usr/bin/systemd-nspawn -D /root/docker/nc25 /start
+# sends clean kill to inside:
+ExecStop         = /usr/bin/machinectl kill nc25
+KillSignal       = SIGTERM
+PrivateTmp       = true
+Restart          = always
+RestartSec       = 5
+SendSIGKILL      = yes
+TimeoutStopSec   = 5
+SyslogIdentifier = nextcloud
+
+[Install]
+WantedBy = default.target

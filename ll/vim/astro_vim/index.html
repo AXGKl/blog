@@ -1,0 +1,2580 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Random Thoughts">
+      
+      
+      
+        <link rel="canonical" href="https://AXGKl.github.io/blog/ll/vim/astro_vim/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>AstroVim - AXGK Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../lcd/lp/css/xterm.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="black" data-md-color-accent="deep-purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#astro-vim" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="AXGK Blog" class="md-header__button md-logo" aria-label="AXGK Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AXGK Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AstroVim
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AXGKl/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AXGKl/blog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Overview
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../apps/apps/" class="md-tabs__link md-tabs__link--active">
+        🐧 LINUX
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cloud/dnsmasq/" class="md-tabs__link">
+        💭 CLOUD
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../programming/python/rx/" class="md-tabs__link">
+        💻 DEV
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../inet/videos/" class="md-tabs__link">
+      📺 VIDS
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../logbook/" class="md-tabs__link">
+      ✏️  LOG
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/changelog/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="AXGK Blog" class="md-nav__button md-logo" aria-label="AXGK Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    AXGK Blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AXGKl/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AXGKl/blog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          🐧 LINUX
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🐧 LINUX" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          🐧 LINUX
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/apps/" class="md-nav__link">
+        Apps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/tv_q8/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../distro/" class="md-nav__link">
+        Distros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arco/" class="md-nav__link">
+        Distros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../emacs/emacs/" class="md-nav__link">
+        Emacs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gimp/gimp/" class="md-nav__link">
+        Gimp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Hardware
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Hardware" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Hardware
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_7_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_1">
+          Input
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Input" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Input
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw/input/keyboard/" class="md-nav__link">
+        Keyboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw/input/k860/" class="md-nav__link">
+        K860
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw/input/corne/" class="md-nav__link">
+        Corne
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw/input/hp/" class="md-nav__link">
+        HP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mkdocs/mkdocs/" class="md-nav__link">
+        MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Suckless
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Suckless" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Suckless
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/dwm/" class="md-nav__link">
+        dwm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/st/" class="md-nav__link">
+        st
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_4" data-md-state="indeterminate" type="checkbox" id="__nav_2_9_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_4">
+          Statusbar Fun
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Statusbar Fun" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_9_4">
+          <span class="md-nav__icon md-icon"></span>
+          Statusbar Fun
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/status_bar_fun/2021.05.23_dwm_status_1_a_fancy_status_bar/" class="md-nav__link">
+        The Problem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/status_bar_fun/2021.05.24_dwm_status_2_never_call_xsession_within_dwm/" class="md-nav__link">
+        XFCE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/status_bar_fun/2021.05.24_dwm_status_3_xfce4_panel_in_dwm/" class="md-nav__link">
+        XFCE Panel in DWM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sl/status_bar_fun/2021.05.24_dwm_status_4_adding_our_monitor/" class="md-nav__link">
+        CPU Monitor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10">
+          Vim
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vim" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Vim
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          AstroVim
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        AstroVim
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cleaning-up" class="md-nav__link">
+    Cleaning Up
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conventional-folders-ftplugin-and-spell-symlinked" class="md-nav__link">
+    Conventional Folders: ftplugin and spell: Symlinked
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#own-lua-and-own-vimscript" class="md-nav__link">
+    Own Lua and Own Vimscript
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#colors" class="md-nav__link">
+    Colors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spell" class="md-nav__link">
+    Spell
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#telescope" class="md-nav__link">
+    Telescope
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lsp" class="md-nav__link">
+    LSP
+  </a>
+  
+    <nav class="md-nav" aria-label="LSP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#axblack" class="md-nav__link">
+    axblack
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-plugins" class="md-nav__link">
+    Special Plugins
+  </a>
+  
+    <nav class="md-nav" aria-label="Special Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#completion" class="md-nav__link">
+    Completion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gotchas" class="md-nav__link">
+    Gotchas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-dumps" class="md-nav__link">
+    Config Dumps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../astro_vim_null_ls_builtins/" class="md-nav__link">
+        AstroVimLspBuiltins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ultisnips/" class="md-nav__link">
+        Ultisnips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../todo/" class="md-nav__link">
+        Todo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          💭 CLOUD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💭 CLOUD" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          💭 CLOUD
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dnsmasq/" class="md-nav__link">
+        DNSMasq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/ci/github_actions/" class="md-nav__link">
+        Github Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kubernetes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/" class="md-nav__link">
+        Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/k9s/k9s/" class="md-nav__link">
+        K9s Terminal UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/1_hello_app/" class="md-nav__link">
+        First App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/k8s/2_hello_mysql/" class="md-nav__link">
+        With DB
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Terraform
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Terraform" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Terraform
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/resource_creation/" class="md-nav__link">
+        Basic Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/ansible/" class="md-nav__link">
+        TF And Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/k8s_on_do/" class="md-nav__link">
+        K8s Cluster Infra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/k8s_provider/do_k8s/" class="md-nav__link">
+        Attaching Using Token Only
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/terraform/k8s/k8s_provider/k8s_provider/" class="md-nav__link">
+        The K8s Provider
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          💻 DEV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💻 DEV" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          💻 DEV
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" data-md-state="indeterminate" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          🐍 Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🐍 Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          🐍 Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/rx/" class="md-nav__link">
+        Reactive Programming With RxPY
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2">
+          TermUIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TermUIs" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          TermUIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/prompt_toolkit/" class="md-nav__link">
+        Prompt Toolkit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/prompt_toolkit/dup2/" class="md-nav__link">
+        Stream Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" data-md-state="indeterminate" type="checkbox" id="__nav_4_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3">
+          Fun
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fun/unblockme/" class="md-nav__link">
+        UnblockMe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fun/einstein/" class="md-nav__link">
+        Einstein
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Electronics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Electronics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Electronics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/" class="md-nav__link">
+        Interacting with Real World
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_2">
+          Desk Cycling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Desk Cycling" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Desk Cycling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/intro/" class="md-nav__link">
+        Zwiftifying My DeskCycle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/powermeter/" class="md-nav__link">
+        Power Meters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/mechanical/" class="md-nav__link">
+        Know the Gear Position
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/electromagnet/" class="md-nav__link">
+        Electromagent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/deskcycle/generator/" class="md-nav__link">
+        Generating Power
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inet/videos/" class="md-nav__link">
+        📺 VIDS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../logbook/" class="md-nav__link">
+        ✏️  LOG
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/navigation/" class="md-nav__link">
+        Navigation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cleaning-up" class="md-nav__link">
+    Cleaning Up
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conventional-folders-ftplugin-and-spell-symlinked" class="md-nav__link">
+    Conventional Folders: ftplugin and spell: Symlinked
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#own-lua-and-own-vimscript" class="md-nav__link">
+    Own Lua and Own Vimscript
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#colors" class="md-nav__link">
+    Colors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spell" class="md-nav__link">
+    Spell
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#telescope" class="md-nav__link">
+    Telescope
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lsp" class="md-nav__link">
+    LSP
+  </a>
+  
+    <nav class="md-nav" aria-label="LSP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#axblack" class="md-nav__link">
+    axblack
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-plugins" class="md-nav__link">
+    Special Plugins
+  </a>
+  
+    <nav class="md-nav" aria-label="Special Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#completion" class="md-nav__link">
+    Completion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gotchas" class="md-nav__link">
+    Gotchas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-dumps" class="md-nav__link">
+    Config Dumps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="editor:///home/gk/repos/blog/docs/ll/vim/astro_vim.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<style>
+
+          @media only screen and (min-width: 76.25em) {
+            .md-main__inner {
+              max-width: none;
+            }
+            .md-sidebar--primary {
+              left: 0;
+            }
+            .md-sidebar--secondary {
+              right: 0;
+              margin-left: 0;
+              -webkit-transform: none;
+              transform: none;   
+            }
+          }
+
+</style>
+<h1 id="astro-vim">Astro Vim<a class="headerlink" href="#astro-vim" title="Permanent link">¤</a></h1>
+<p>[2022-03-20 18:58]</p>
+<p>This weekend I tested <a href="https://github.com/kabinspace/AstroVim">Astro Vim</a>, which is a pretty well tuned (and good looking) LSP configuration bundle for nvim.</p>
+<p>I like</p>
+<ul>
+<li>
+<p>the idea of having</p>
+</li>
+<li>
+<p>LSP</p>
+</li>
+<li>treesitter</li>
+<li>telescope</li>
+<li>floatterm</li>
+<li>(...)</li>
+</ul>
+<p>...out of the box - and out of the way from my local conf - also to throw it also on
+  servers with colleagues and point them to an "official" repo with docs. Those are not
+  easy to get right with so many variants.</p>
+<ul>
+<li>the full lua approach (but I'll have to have vim lang stuff, see below)</li>
+<li>Also, while mine became a bit laggy on big files, this one is still pretty
+  fast, <em>with</em> all the LSP goodies.</li>
+</ul>
+<p>Here my notes about the conversion:</p>
+<h2 id="cleaning-up">Cleaning Up<a class="headerlink" href="#cleaning-up" title="Permanent link">¤</a></h2>
+<ul>
+<li>
+<p>Backup and Remove:</p>
+</li>
+<li>
+<p><code>$HOME/.config/nvim</code></p>
+</li>
+<li><code>$HOME/.cache/nvim</code></li>
+<li><code>$HOME/.local/share/nvim</code></li>
+</ul>
+<h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">¤</a></h2>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/kabinspace/AstroVim ~/.config/nvim
+nvim +PackerSync # nice
+</code></pre></div>
+<p>then e.g.</p>
+<div class="highlight"><pre><span></span><code>:LspInstall pyright
+:TSInstall python # treesitter
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All user config is in <code>.config/nvim/lua/user</code>, from <code>init.lua</code> there.</p>
+</div>
+<h2 id="conventional-folders-ftplugin-and-spell-symlinked">Conventional Folders: ftplugin and spell: Symlinked<a class="headerlink" href="#conventional-folders-ftplugin-and-spell-symlinked" title="Permanent link">¤</a></h2>
+<p>Put my old ones into <code>lua/user/&lt;ftplugin|spell&gt;</code> and symlinked 2 directories up. Worked.</p>
+<h2 id="own-lua-and-own-vimscript">Own Lua and Own Vimscript<a class="headerlink" href="#own-lua-and-own-vimscript" title="Permanent link">¤</a></h2>
+<p>Besides a few declarative config possibilities, for own plugins, in init.lua
+there is a lua polish function, loaded at the end.</p>
+<p>There you hook in your stuff like this:</p>
+<div class="highlight"><pre><span></span><code>    <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;user.mymodule&#39;</span><span class="p">)</span>
+    <span class="c1">-- and vimscript like this:</span>
+    <span class="n">vim</span><span class="p">.</span><span class="n">cmd</span><span class="p">(</span><span class="s1">&#39;source $HOME/.config/nvim/lua/user/polish.vim&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>and in vimscript then back to lua in user folder like this: <code>nmap ,g viW"ay:lua require('user.utils').smart_open([[&lt;C-R&gt;a]])&lt;CR&gt;</code></p>
+<h2 id="colors">Colors<a class="headerlink" href="#colors" title="Permanent link">¤</a></h2>
+<p>The declarative approach with colorscheme via lua failed, loading it in my .vim file at the end.</p>
+<h2 id="spell">Spell<a class="headerlink" href="#spell" title="Permanent link">¤</a></h2>
+<p>It did not ask me to download german at <code>set spelllang=de</code>, so:</p>
+<div class="highlight"><pre><span></span><code>mkdir .config/nvim/spell <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span><span class="sb">`</span> <span class="o">&amp;&amp;</span> wget <span class="s1">&#39;http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl&#39;</span>
+</code></pre></div>
+<h2 id="telescope">Telescope<a class="headerlink" href="#telescope" title="Permanent link">¤</a></h2>
+<ul>
+<li>AstroVim Config: <a href="https://github.com/kabinspace/AstroVim/issues/141">https://github.com/kabinspace/AstroVim/issues/141</a></li>
+<li>Generic Telescope Tuning: <a href="https://github-wiki-see.page/m/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes">https://github-wiki-see.page/m/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes</a></li>
+</ul>
+<h2 id="lsp">LSP<a class="headerlink" href="#lsp" title="Permanent link">¤</a></h2>
+<p>Pretty straight forward, via their <a href="https://github.com/jose-elias-alvarez/null-ls.nvim">null_ls</a> LSP
+"hub", where nvim is the direct server for all languages and calls the actual programs behind the
+scenes.</p>
+<p>That way one can pick from a <a href="../astro_vim_null_ls_builtins/">huge</a> list of features and just
+install the binaries if required (<code>command</code>), done.</p>
+<p>LSP log as always in <code>$HOME/.cache/nvim/</code>, file <code>null_ls.log</code>.</p>
+<h3 id="axblack">axblack<a class="headerlink" href="#axblack" title="Permanent link">¤</a></h3>
+<p><code>null_ls</code> calls black with their <code>--stdin-filename</code> parameter. Had to <a href="https://github.com/axiros/axblack/commit/30f19e3ae7c10dfd995bd6fb1b031000282e6af7">add</a> that to axblack so that
+single quote formatting works, as a no op (not in use anyway for stdin/stdout based formatting).</p>
+<p>Edit: Found only later, that one can specify CLI args....</p>
+<h2 id="special-plugins">Special Plugins<a class="headerlink" href="#special-plugins" title="Permanent link">¤</a></h2>
+<h3 id="completion">Completion<a class="headerlink" href="#completion" title="Permanent link">¤</a></h3>
+<p>I use "uga-rosa/cmp-dictionary", with 10k words. </p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>For async the loading order is important (after cmp) - then the mpack import works.</p>
+<p>Edit: Nope. After a packer sync it failed again, same error (mpack.so missing - loads too eaerly
+again)</p>
+</div>
+<h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">¤</a></h2>
+<ul>
+<li>lsp: <code>~ ❯ tail -f .cache/nvim/null-ls.log</code> (set <code>lsp.debug = true</code>)</li>
+<li>tables: <code>lua U.dump(vim.lsp)</code></li>
+</ul>
+<h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">¤</a></h2>
+<ul>
+<li>
+<p>When trying cmp or lsp, always try on files which exist at vi start. Do NOT create new files,
+it will not work.</p>
+</li>
+<li>
+<p>The async flag at cmp_dictionary was behaving totally different after PackerSync calls, failed
+  with mpack not found, allthough working before... Had to switch it off.</p>
+</li>
+</ul>
+<h2 id="config-dumps">Config Dumps<a class="headerlink" href="#config-dumps" title="Permanent link">¤</a></h2>
+<details>
+<summary>My init.lua</summary>
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">cat</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">gk</span><span class="o">/</span><span class="p">.</span><span class="n">config</span><span class="o">/</span><span class="n">nvim</span><span class="p">.</span><span class="n">personal</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">lua</span>
+<span class="c1">-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#super-tab-like-mapping</span>
+<span class="c1">--</span>
+<span class="kd">local</span> <span class="n">cmp_setup</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
+	<span class="kd">local</span> <span class="n">_</span><span class="p">,</span> <span class="n">cmp</span> <span class="o">=</span> <span class="nb">pcall</span><span class="p">(</span><span class="nb">require</span><span class="p">,</span> <span class="s2">&quot;cmp&quot;</span><span class="p">)</span>
+	<span class="kd">local</span> <span class="n">_</span><span class="p">,</span> <span class="n">luasnip</span> <span class="o">=</span> <span class="nb">pcall</span><span class="p">(</span><span class="nb">require</span><span class="p">,</span> <span class="s2">&quot;luasnip&quot;</span><span class="p">)</span>
+	<span class="kd">local</span> <span class="n">has_words_before</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
+		<span class="kd">local</span> <span class="n">line</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">vim</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">nvim_win_get_cursor</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+		<span class="kd">local</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">vim</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">nvim_buf_get_lines</span>
+		<span class="kr">return</span> <span class="n">col</span> <span class="o">~=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">lines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">line</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="kc">true</span><span class="p">)[</span><span class="mi">1</span><span class="p">]:</span><span class="n">sub</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;%s&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">nil</span>
+	<span class="kr">end</span>
+	<span class="kr">return</span> <span class="p">{</span>
+		<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="p">[</span><span class="s2">&quot;&lt;Tab&gt;&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmp</span><span class="p">.</span><span class="n">mapping</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">fallback</span><span class="p">)</span>
+				<span class="kr">if</span> <span class="n">cmp</span><span class="p">.</span><span class="n">visible</span><span class="p">()</span> <span class="kr">then</span>
+					<span class="n">cmp</span><span class="p">.</span><span class="n">select_next_item</span><span class="p">()</span>
+				<span class="kr">elseif</span> <span class="n">luasnip</span><span class="p">.</span><span class="n">expand_or_jumpable</span><span class="p">()</span> <span class="kr">then</span>
+					<span class="n">luasnip</span><span class="p">.</span><span class="n">expand_or_jump</span><span class="p">()</span>
+				<span class="kr">elseif</span> <span class="n">has_words_before</span><span class="p">()</span> <span class="kr">then</span>
+					<span class="n">cmp</span><span class="p">.</span><span class="n">complete</span><span class="p">()</span>
+				<span class="kr">else</span>
+					<span class="n">fallback</span><span class="p">()</span>
+				<span class="kr">end</span>
+			<span class="kr">end</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span> <span class="p">}),</span>
+
+			<span class="p">[</span><span class="s2">&quot;&lt;S-Tab&gt;&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmp</span><span class="p">.</span><span class="n">mapping</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">fallback</span><span class="p">)</span>
+				<span class="kr">if</span> <span class="n">cmp</span><span class="p">.</span><span class="n">visible</span><span class="p">()</span> <span class="kr">then</span>
+					<span class="n">cmp</span><span class="p">.</span><span class="n">select_prev_item</span><span class="p">()</span>
+				<span class="kr">elseif</span> <span class="n">luasnip</span><span class="p">.</span><span class="n">jumpable</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="kr">then</span>
+					<span class="n">luasnip</span><span class="p">.</span><span class="n">jump</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+				<span class="kr">else</span>
+					<span class="n">fallback</span><span class="p">()</span>
+				<span class="kr">end</span>
+			<span class="kr">end</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span> <span class="p">}),</span>
+		<span class="p">},</span>
+	<span class="p">}</span>
+<span class="kr">end</span>
+
+<span class="kd">local</span> <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+
+	<span class="c1">-- Set colorscheme</span>
+	<span class="c1">-- colorscheme = &quot;default_theme&quot;,</span>
+	<span class="n">colorscheme</span> <span class="o">=</span> <span class="s2">&quot;kanagawa&quot;</span><span class="p">,</span>
+
+	<span class="c1">-- Default theme configuration</span>
+	<span class="n">default_theme</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="n">diagnostics_style</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+		<span class="c1">-- Modify the color table</span>
+		<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span> <span class="n">fg</span> <span class="o">=</span> <span class="s2">&quot;#abb2bf&quot;</span> <span class="p">},</span>
+		<span class="c1">-- Modify the highlight groups</span>
+		<span class="n">highlights</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">highlights</span><span class="p">)</span>
+			<span class="kd">local</span> <span class="n">C</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">&quot;default_theme.colors&quot;</span><span class="p">)</span>
+
+			<span class="n">highlights</span><span class="p">.</span><span class="n">Normal</span> <span class="o">=</span> <span class="p">{</span> <span class="n">fg</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">bg</span> <span class="p">}</span>
+			<span class="kr">return</span> <span class="n">highlights</span>
+		<span class="kr">end</span><span class="p">,</span>
+	<span class="p">},</span>
+
+	<span class="c1">-- Disable default plugins</span>
+	<span class="n">enabled</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="n">bufferline</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">nvim_tree</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">lualine</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">lspsaga</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">gitsigns</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">colorizer</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">toggle_term</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">comment</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">symbols_outline</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">indent_blankline</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">dashboard</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">which_key</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">neoscroll</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">ts_rainbow</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="n">ts_autotag</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+	<span class="p">},</span>
+	<span class="n">plugins</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="n">cmp</span> <span class="o">=</span> <span class="n">cmp_setup</span><span class="p">(),</span>
+		<span class="n">init</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="s2">&quot;ThePrimeagen/refactoring.nvim&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;arcticicestudio/nord-vim&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;godlygeek/tabular&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;iamcco/markdown-preview.nvim&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;kdheepak/lazygit.nvim&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;matsuuu/pinkmare&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;rebelot/kanagawa.nvim&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;tpope/vim-repeat&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;tpope/vim-surround&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;voldikss/vim-floaterm&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;rafamadriz/friendly-snippets&quot;</span><span class="p">,</span>
+			<span class="p">{</span>
+				<span class="s2">&quot;uga-rosa/cmp-dictionary&quot;</span><span class="p">,</span>
+				<span class="n">after</span> <span class="o">=</span> <span class="s2">&quot;nvim-cmp&quot;</span><span class="p">,</span>
+				<span class="n">config</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
+					<span class="kd">local</span> <span class="n">cmp</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">&quot;cmp&quot;</span><span class="p">)</span>
+					<span class="kd">local</span> <span class="n">config</span> <span class="o">=</span> <span class="n">cmp</span><span class="p">.</span><span class="n">get_config</span><span class="p">()</span>
+					<span class="nb">table.insert</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">sources</span><span class="p">,</span> <span class="p">{</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;dictionary&quot;</span><span class="p">,</span> <span class="n">keyword_length</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">})</span>
+					<span class="n">cmp</span><span class="p">.</span><span class="n">setup</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+				<span class="kr">end</span><span class="p">,</span>
+		<span class="nb">require</span><span class="p">(</span><span class="s2">&quot;cmp_dictionary&quot;</span><span class="p">).</span><span class="n">setup</span><span class="p">({</span>
+			<span class="n">dic</span> <span class="o">=</span> <span class="p">{</span>
+				<span class="p">[</span><span class="s2">&quot;markdown&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;/home/gk/.config/nvim.personal/10k.txt&quot;</span> <span class="p">},</span>
+				<span class="c1">--[&quot;markdown&quot;] = { &quot;/usr/share/dict/words&quot; },</span>
+				<span class="c1">-- [&quot;lua&quot;] = &quot;path/to/lua.dic&quot;,</span>
+				<span class="c1">-- [&quot;javascript,typescript&quot;] = { &quot;path/to/js.dic&quot;, &quot;path/to/js2.dic&quot; },</span>
+				<span class="c1">-- filename = {</span>
+				<span class="c1">-- 	[&quot;xmake.lua&quot;] = { &quot;path/to/xmake.dic&quot;, &quot;path/to/lua.dic&quot; },</span>
+				<span class="c1">-- },</span>
+				<span class="c1">-- filepath = {</span>
+				<span class="c1">-- 	[&quot;%.tmux.*%.conf&quot;] = &quot;path/to/tmux.dic&quot;,</span>
+				<span class="c1">-- },</span>
+			<span class="p">},</span>
+			<span class="c1">-- The following are default values, so you don&#39;t need to write them if you don&#39;t want to change them</span>
+			<span class="c1">-- exact = 2,</span>
+			<span class="c1">-- first_case_insensitive = false,</span>
+			<span class="c1">-- document = false,</span>
+			<span class="c1">-- document_command = &quot;wn %s -over&quot;,</span>
+			<span class="n">async</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+			<span class="c1">-- capacity = 5,</span>
+			<span class="c1">-- debug = false,</span>
+		<span class="p">})</span>
+
+			<span class="p">},</span>
+
+			<span class="c1">-- { &quot;andweeb/presence.nvim&quot; },</span>
+			<span class="c1">-- {</span>
+			<span class="c1">--   &quot;ray-x/lsp_signature.nvim&quot;,</span>
+			<span class="c1">--   event = &quot;BufRead&quot;,</span>
+			<span class="c1">--   config = function()</span>
+			<span class="c1">--     require(&quot;lsp_signature&quot;).setup()</span>
+			<span class="c1">--   end,</span>
+			<span class="c1">-- },</span>
+		<span class="p">},</span>
+		<span class="c1">-- All other entries override the setup() call for default plugins</span>
+		<span class="n">treesitter</span> <span class="o">=</span> <span class="p">{</span> <span class="n">ensure_installed</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;lua&quot;</span> <span class="p">}</span> <span class="p">},</span>
+		<span class="n">packer</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="n">compile_path</span> <span class="o">=</span> <span class="n">vim</span><span class="p">.</span><span class="n">fn</span><span class="p">.</span><span class="n">stdpath</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">)</span> <span class="o">..</span> <span class="s2">&quot;/lua/packer_compiled.lua&quot;</span><span class="p">,</span>
+		<span class="p">},</span>
+	<span class="p">},</span>
+
+	<span class="c1">-- Add paths for including more VS Code style snippets in luasnip</span>
+	<span class="n">luasnip</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="n">vscode_snippet_paths</span> <span class="o">=</span> <span class="p">{},</span>
+	<span class="p">},</span>
+
+	<span class="c1">-- Modify which-key registration</span>
+	<span class="p">[</span><span class="s2">&quot;which-key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="c1">-- Add bindings to the normal mode &lt;leader&gt; mappings</span>
+		<span class="c1">-- register_n_leader = {[&quot;N&quot;] = {&quot;&lt;cmd&gt;tabnew&lt;cr&gt;&quot;, &quot;New Buffer&quot;}}</span>
+	<span class="p">},</span>
+
+	<span class="c1">-- Extend LSP configuration</span>
+	<span class="n">lsp</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="c1">-- add to the server on_attach function</span>
+		<span class="c1">-- on_attach = function(client, bufnr)</span>
+		<span class="c1">-- end,</span>
+
+		<span class="c1">-- override the lsp installer server-registration function</span>
+		<span class="c1">-- server_registration = function(server, opts)</span>
+		<span class="c1">--   server:setup(opts)</span>
+		<span class="c1">-- end</span>
+
+		<span class="c1">-- Add overrides for LSP server settings, the keys are the name of the server</span>
+		<span class="p">[</span><span class="s2">&quot;server-settings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="c1">-- example for addings schemas to yamlls</span>
+			<span class="c1">-- yamlls = {</span>
+			<span class="c1">--   settings = {</span>
+			<span class="c1">--     yaml = {</span>
+			<span class="c1">--       schemas = {</span>
+			<span class="c1">--         [&quot;http://json.schemastore.org/github-workflow&quot;] = &quot;.github/workflows/*.{yml,yaml}&quot;,</span>
+			<span class="c1">--         [&quot;http://json.schemastore.org/github-action&quot;] = &quot;.github/action.{yml,yaml}&quot;,</span>
+			<span class="c1">--         [&quot;http://json.schemastore.org/ansible-stable-2.9&quot;] = &quot;roles/tasks/*.{yml,yaml}&quot;,</span>
+			<span class="c1">--       },</span>
+			<span class="c1">--     },</span>
+			<span class="c1">--   },</span>
+			<span class="c1">-- },</span>
+		<span class="p">},</span>
+	<span class="p">},</span>
+
+	<span class="c1">-- Diagnostics configuration (for vim.diagnostics.config({}))</span>
+	<span class="n">diagnostics</span> <span class="o">=</span> <span class="p">{</span> <span class="n">virtual_text</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">underline</span> <span class="o">=</span> <span class="kc">true</span> <span class="p">},</span>
+
+	<span class="c1">-- null-ls configuration</span>
+	<span class="p">[</span><span class="s2">&quot;null-ls&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
+		<span class="c1">-- Formatting and linting</span>
+		<span class="c1">-- https://github.com/jose-elias-alvarez/null-ls.nvim</span>
+		<span class="kd">local</span> <span class="n">status_ok</span><span class="p">,</span> <span class="n">null_ls</span> <span class="o">=</span> <span class="nb">pcall</span><span class="p">(</span><span class="nb">require</span><span class="p">,</span> <span class="s2">&quot;null-ls&quot;</span><span class="p">)</span>
+		<span class="kr">if</span> <span class="ow">not</span> <span class="n">status_ok</span> <span class="kr">then</span>
+			<span class="kr">return</span>
+		<span class="kr">end</span>
+
+		<span class="c1">-- Check supported formatters</span>
+		<span class="c1">-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting</span>
+
+		<span class="c1">-- Check supported linters</span>
+		<span class="c1">-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics</span>
+		<span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="n">null_ls</span><span class="p">.</span><span class="n">builtins</span>
+		<span class="kd">local</span> <span class="n">txt</span> <span class="o">=</span> <span class="p">{</span> <span class="n">filetypes</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span> <span class="p">}</span> <span class="p">}</span>
+
+		<span class="n">null_ls</span><span class="p">.</span><span class="n">setup</span><span class="p">({</span>
+			<span class="n">debug</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+			<span class="n">sources</span> <span class="o">=</span> <span class="p">{</span>
+				<span class="c1">-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md</span>
+				<span class="n">b</span><span class="p">.</span><span class="n">code_actions</span><span class="p">.</span><span class="n">refactoring</span><span class="p">,</span>
+				<span class="n">b</span><span class="p">.</span><span class="n">code_actions</span><span class="p">.</span><span class="n">shellcheck</span><span class="p">,</span>
+				<span class="n">b</span><span class="p">.</span><span class="n">completion</span><span class="p">.</span><span class="n">luasnip</span><span class="p">,</span>
+				<span class="n">b</span><span class="p">.</span><span class="n">completion</span><span class="p">.</span><span class="n">spell</span><span class="p">.</span><span class="n">with</span><span class="p">(</span><span class="n">txt</span><span class="p">),</span>
+				<span class="n">b</span><span class="p">.</span><span class="n">diagnostics</span><span class="p">.</span><span class="n">misspell</span><span class="p">.</span><span class="n">with</span><span class="p">(</span><span class="n">txt</span><span class="p">),</span>
+				<span class="n">b</span><span class="p">.</span><span class="n">diagnostics</span><span class="p">.</span><span class="n">shellcheck</span><span class="p">,</span>
+				<span class="n">b</span><span class="p">.</span><span class="n">diagnostics</span><span class="p">.</span><span class="n">write_good</span><span class="p">,</span>
+				<span class="n">b</span><span class="p">.</span><span class="n">formatting</span><span class="p">.</span><span class="n">black</span><span class="p">.</span><span class="n">with</span><span class="p">({</span> <span class="n">extra_args</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;--fast&quot;</span> <span class="p">}</span> <span class="p">}),</span>
+				<span class="n">b</span><span class="p">.</span><span class="n">formatting</span><span class="p">.</span><span class="n">prettier</span><span class="p">.</span><span class="n">with</span><span class="p">({</span> <span class="n">filetypes</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;yaml&quot;</span> <span class="p">}</span> <span class="p">}),</span>
+				<span class="n">b</span><span class="p">.</span><span class="n">formatting</span><span class="p">.</span><span class="n">shfmt</span><span class="p">,</span>
+				<span class="n">b</span><span class="p">.</span><span class="n">formatting</span><span class="p">.</span><span class="n">stylua</span><span class="p">,</span>
+				<span class="n">b</span><span class="p">.</span><span class="n">hover</span><span class="p">.</span><span class="n">dictionary</span><span class="p">.</span><span class="n">with</span><span class="p">(</span><span class="n">txt</span><span class="p">),</span> <span class="c1">-- shift-k is hover</span>
+			<span class="p">},</span>
+			<span class="c1">-- NOTE: You can remove this on attach function to disable format on save</span>
+			<span class="n">on_attach</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+				<span class="kr">if</span> <span class="n">client</span><span class="p">.</span><span class="n">resolved_capabilities</span><span class="p">.</span><span class="n">document_formatting</span> <span class="kr">then</span>
+					<span class="n">vim</span><span class="p">.</span><span class="n">cmd</span><span class="p">(</span><span class="s2">&quot;autocmd BufWritePre &lt;buffer&gt; lua vim.lsp.buf.formatting()&quot;</span><span class="p">)</span>
+				<span class="kr">end</span>
+			<span class="kr">end</span><span class="p">,</span>
+		<span class="p">})</span>
+	<span class="kr">end</span><span class="p">,</span>
+	<span class="n">polish</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
+		<span class="kd">local</span> <span class="n">opts</span> <span class="o">=</span> <span class="p">{</span> <span class="n">noremap</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">silent</span> <span class="o">=</span> <span class="kc">true</span> <span class="p">}</span>
+		<span class="kd">local</span> <span class="n">map</span> <span class="o">=</span> <span class="n">vim</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">nvim_set_keymap</span>
+		<span class="c1">-- Set options</span>
+		<span class="kd">local</span> <span class="n">set</span> <span class="o">=</span> <span class="n">vim</span><span class="p">.</span><span class="n">opt</span>
+		<span class="nb">require</span><span class="p">(</span><span class="s2">&quot;luasnip.loaders.from_snipmate&quot;</span><span class="p">).</span><span class="n">lazy_load</span><span class="p">()</span>
+		<span class="c1">-- cmp.formatting.fields = {&quot;kind&quot;}</span>
+		<span class="n">U</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">&quot;user.utils&quot;</span><span class="p">)</span> <span class="c1">-- allows :lua U.dump(vim.lsp)</span>
+		<span class="nb">require</span><span class="p">(</span><span class="s2">&quot;luasnip.loaders.from_vscode&quot;</span><span class="p">).</span><span class="n">lazy_load</span><span class="p">()</span>
+
+		<span class="n">set</span><span class="p">.</span><span class="n">shiftwidth</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1">-- Number of space inserted for indentation</span>
+		<span class="n">set</span><span class="p">.</span><span class="n">tabstop</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1">-- Number of spaces in a tab</span>
+		<span class="n">set</span><span class="p">.</span><span class="n">foldmethod</span> <span class="o">=</span> <span class="s2">&quot;indent&quot;</span>
+		<span class="n">set</span><span class="p">.</span><span class="n">foldlevel</span> <span class="o">=</span> <span class="mi">99</span> <span class="c1">-- open all</span>
+		<span class="n">set</span><span class="p">.</span><span class="n">relativenumber</span> <span class="o">=</span> <span class="kc">true</span>
+		<span class="c1">--set.dict = &quot;/usr/share/dict/words&quot; -- much more</span>
+		<span class="n">set</span><span class="p">.</span><span class="n">dict</span> <span class="o">=</span> <span class="s2">&quot;~/.config/nvim.personal/10k.txt&quot;</span>
+		<span class="c1">-- map(&quot;n&quot;, &quot;&lt;C-s&gt;&quot;, &quot;:w!&lt;CR&gt;&quot;, opts)</span>
+		<span class="n">vim</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">nvim_set_keymap</span><span class="p">(</span>
+			<span class="s2">&quot;v&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&lt;leader&gt;rr&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&lt;Esc&gt;&lt;cmd&gt;lua require(&#39;telescope&#39;).extensions.refactoring.refactors()&lt;CR&gt;&quot;</span><span class="p">,</span>
+			<span class="p">{</span> <span class="n">noremap</span> <span class="o">=</span> <span class="kc">true</span> <span class="p">}</span>
+		<span class="p">)</span>
+		<span class="n">map</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;,4&quot;</span><span class="p">,</span> <span class="s2">&quot;:ToggleTerm size=100 &lt;CR&gt;&quot;</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+		<span class="n">map</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;,D&quot;</span><span class="p">,</span> <span class="s2">&quot;:lua vim.diagnostic.config({virtual_text = false})&lt;CR&gt;&quot;</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+		<span class="c1">-- all viml:</span>
+		<span class="n">vim</span><span class="p">.</span><span class="n">cmd</span><span class="p">(</span><span class="s2">&quot;source $HOME/.config/nvim.personal/polish.vim&quot;</span><span class="p">)</span>
+		<span class="c1">-- do this only here so that require mpack works for async:</span>
+	<span class="kr">end</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="kr">return</span> <span class="n">config</span>
+</code></pre></div>
+<hr/>
+</details>
+<details>
+<summary>My polish.vim</summary>
+<div class="highlight"><pre><span></span><code>$ cat /home/gk/.config/nvim.personal/polish.vim
+&quot; this is simply ctrl-i:
+&quot;nnoremap &lt;Tab&gt;   za
+nnoremap &lt;C-i&gt;   za
+&quot;cnoremap &lt;silent&gt; x&lt;CR&gt;  :call ConfirmQuit(1)&lt;CR&gt;
+&quot;  &quot;Yank constent with D and C:
+nnoremap Y         y$
+nnoremap ,l        :LazyGit&lt;CR&gt;
+nnoremap ,q        :q!&lt;CR&gt;
+nnoremap ,Q        :Q!&lt;cr&gt;
+nnoremap ,d        :wq!&lt;CR&gt;
+nnoremap ,w        :w&lt;cr&gt;
+nnoremap ,1        :source ~/.config/nvim/init.lua&lt;CR&gt;
+nnoremap ,2        :edit ~/.config/nvim/lua/user/init.lua&lt;CR&gt;
+nnoremap ,c        :close&lt;CR&gt; &quot; close just a split or a tab
+nmap     ,f        za &quot;folds
+
+
+nnoremap &lt;silent&gt; ,3  :FloatermNew! --autoclose=2 --wintype=vsplit cd %:p:h&lt;CR&gt;
+
+&quot;&quot; Line join better, position cursor at join point:
+&quot; (J is 5 lines jumps)
+nnoremap gj $mx&lt;cmd&gt;join&lt;CR&gt;0$[`dmx
+
+&quot; Universal python scriptable file or browser opener over word:
+&quot;nmap ,g viW&quot;ay:lua require(&#39;utils&#39;).smart_open([[&lt;C-R&gt;a]])&lt;CR&gt;&lt;CR&gt;
+nmap ,g viW&quot;ay:lua require(&#39;user.utils&#39;).smart_open([[&lt;C-R&gt;a]])&lt;CR&gt;
+vmap ,g :lua require(&#39;user.utils&#39;).smart_open([[visualsel]])&lt;CR&gt;&lt;CR&gt;
+
+&quot; tabularize:
+nmap ga   :Tabularize/
+xmap ga   :Tabularize/
+nmap tt  vip:s:,,:\|:ge&lt;CR&gt;vip:Tabularize/\|&lt;CR&gt;
+&quot; markdown table
+nnoremap ,ta       vip:s/$/\|/ge&lt;CR&gt;vip:s:,,:\|:ge&lt;CR&gt;vip:s:^:\|:ge&lt;CR&gt;vip:s:\|\|:\|:ge&lt;CR&gt;vip:Tabularize/\|&lt;CR&gt; 
+
+nnoremap S :%s//gI&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;
+&quot; move between splits with alt-jk
+nnoremap &lt;M-j&gt; &lt;C-W&gt;&lt;C-W&gt;
+nnoremap &lt;M-k&gt; &lt;C-W&gt;&lt;C-W&gt;
+inoremap &lt;M-j&gt; &lt;ESC&gt;&lt;C-W&gt;&lt;C-W&gt;
+inoremap &lt;M-k&gt; &lt;ESC&gt;&lt;C-W&gt;&lt;C-W&gt;
+nnoremap &lt;C-L&gt; &lt;C-W&gt;&lt;C-J&gt;
+nnoremap &lt;C-H&gt; &lt;C-W&gt;&lt;C-K&gt;
+&quot; we often have old stuff at end of files:
+nnoremap  G      G?begin_archive&lt;CR&gt;
+
+
+nmap &lt;silent&gt; &lt;Leader&gt;&lt;Leader&gt; &lt;Leader&gt;ff
+nnoremap &lt;silent&gt; &lt;Leader&gt;j  :Telescope buffers&lt;cr&gt;
+nnoremap &lt;silent&gt; &lt;Leader&gt;g  :Telescope live_grep&lt;cr&gt;
+
+
+&quot; go to the position I was when last editing the file
+au BufReadPost * if line(&quot;&#39;\&quot;&quot;) &gt; 0 &amp;&amp; line(&quot;&#39;\&quot;&quot;) &lt;= line(&quot;$&quot;) | exe &quot;normal g&#39;\&quot;&quot; | endif
+
+&quot;colorscheme pinkmare&quot;colorscheme kanagawa
+
+&quot;&quot; AutoSave
+nmap ,s  :AutoSave&lt;CR&gt;
+function! s:autosave(enable)
+  augroup autosave
+    autocmd!
+    &quot; at $IDE we call this at ANY BufEnter, with enable=2
+    if a:enable == 2
+        if $IDE != &#39;true&#39;
+            return
+        endif
+    endif
+    if a:enable
+      autocmd TextChanged,InsertLeave &lt;buffer&gt;
+            \  if empty(&amp;buftype) &amp;&amp; !empty(bufname(&#39;&#39;))
+            \|   silent! update
+            \| endif
+    endif
+  augroup END
+endfunction
+command! -bang AutoSave call s:autosave(&lt;bang&gt;1)
+autocmd BufEnter *.* :call s:autosave(2) &quot; $IDE -&gt; always
+
+&quot;&quot; Yank hilite
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank({higroup=&quot;IncSearch&quot;, timeout=400})
+augroup END
+
+&quot;&quot; Packer
+augroup packer_conf
+  autocmd!
+  autocmd BufWritePost plugins.lua source &lt;afile&gt; | PackerSync
+augroup end
+</code></pre></div>
+<hr/>
+</details>
+
+<script>typeof start_lc === "undefined" ? 0 : start_lc() </script>
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<style>
+  .md-footer__link--next {
+    width: 75%;
+  }
+  .overlay_block {
+    position: relative;
+    width: 100%;
+  }
+  .overlay_block .overlay_link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .overlay_block .overlay_inner {
+    position: relative;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .overlay_block .overlay_inner a {
+    pointer-events: all;
+  }
+</style>
+
+<footer class="md-footer">
+  
+
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../vim/" class="md-footer__link md-footer__link--prev" aria-label="Previous: About" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              About
+            </div>
+          </div>
+        </a>
+
+
+
+       
+      <div class="md-footer__link md-footer__link--next">
+        
+        <div class="overlay_block">
+          <a
+            class="overlay_link"
+            href="../astro_vim_null_ls_builtins/"
+            rel="next"
+          ></a>
+          <div class="overlay_inner">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                
+                <a href="/blog/ll/apps/apps/">
+                    
+                  <small>🐧 LINUX</small> - 
+                </a>
+                
+                <a href="/blog/ll/vim/vim/">
+                    
+                  <small>Vim</small> - 
+                </a>
+                
+                <a href="/blog/ll/vim/astro_vim_null_ls_builtins/">
+                     <span>AstroVimLspBuiltins</span> 
+                </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-left: -2rem" class="md-footer__button md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+        </div>
+      </div>
+
+
+
+
+      
+    </nav>
+  </div>
+  
+
+
+
+
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Gunther Klessinger
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/axiros" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/fa_all.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm-addon-search.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm.4.9.0.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/Rx.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/tablesort.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/lc.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/xterm-addon-fit.min.js"></script>
+      
+        <script src="../../../lcd/lp/javascript/tables.js"></script>
+      
+    
+  </body>
+</html>
