@@ -15,6 +15,118 @@ shorts:
 
 dynu change nameservers: https://www.dynu.com/en-US/ControlPanel/DomainRegistrationNameServer?ATVPDKIKX0DER=SQBEAD0ANwAzADUANwA5ADQAMAA%7C
 
+### Using FontPatcher
+??? Gettting the nice icons
+[2023-04-23 20:10]
+"Patching" means: Adding all the icons to a font.
+1. You can download a fully patched font
+
+
+
+
+Download one from here: https://www.nerdfonts.com/font-downloads, unzip, move to
+.local/share/fonts, run `fc-cache`, then it should occur in `fc-list`.
+Then pick it e.g. in Alacritty config: `#family: "CaskaydiaCove Nerd Font Mono"`
+(alacritty applies after save, nice)
+
+
+2. I have Comic Code, i.e. I need to patch an existing font.
+
+
+
+`sudo dnf install fontforge` (and set PATH to my system python)
+-> Download patcher from here https://www.nerdfonts.com/#home
+`for k in /home/gk/.local/share/fonts/ComicCode/*.otf; do echo "$k"; ./font-patcher --fontawesome --fontawesomeextension --fontlogos --octicons --codicons --powersymbols --pomicons --powerline --powerlineextra --material --weather "$k"; done`
+
+Then move resulting patched fonts over: `mv Comic* $HOME/.local/share/fonts/ComicCode/
+(and select in Alacritty)
+
+
+### :web: Intercepting ALL XHR going on
+
+??? Also triggered from external libs not under our control
+[2023-01-03 20:10]
+
+    ```javascript
+    var open = window.XMLHttpRequest.prototype.open;
+    var send = window.XMLHttpRequest.prototype.send;
+
+    function openReplacement(method, url, async, user, password) {
+      this._url = url;
+      console.log('opening ', arguments)
+      return open.apply(this, arguments);
+    }
+
+    function sendReplacement(data) {
+      if (this.onreadystatechange) {
+        this._onreadystatechange = this.onreadystatechange;
+      }
+      this.onreadystatechange = onReadyStateChangeReplacement;
+      return send.apply(this, arguments);
+    }
+
+    function onReadyStateChangeReplacement() {
+      if (this.readyState == 4) {
+        console.log('this', JSON.parse(this.response)["content"])
+
+      }
+
+      if (this._onreadystatechange) {
+
+        return this._onreadystatechange.apply(this, arguments);
+      }
+    }
+
+    window.XMLHttpRequest.prototype.open = openReplacement;
+    window.XMLHttpRequest.prototype.send = sendReplacement;
+    ```
+
+### :linux: dwm all vertical layout
+
+??? Based on dwm-columns
+[2022-12-09 20:10]
+    
+    This keeps the slaves all vertical and moves out when < 500px wide
+
+    ```
+    void col(Monitor *m) {
+      unsigned int i, n, h, w, x, w1, x1, y, mw;
+      Client *c;
+
+      for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++)
+        ;
+      if (n == 0)
+        return;
+      w1 = 0;
+      x1 = 0;
+      if (n > m->nmaster)
+        mw = m->nmaster ? m->ww * m->mfact : 0;
+      else
+        mw = m->ww;
+      for (i = x = y = 0, c = nexttiled(m->clients); c;
+           c = nexttiled(c->next), i++) {
+        if (i < m->nmaster) {
+          // masters come first
+          w = (mw - x) / (MIN(n, m->nmaster) - i);
+          resize(c, x + m->wx, m->wy, w - (2 * c->bw), m->wh - (2 * c->bw), False);
+          x += WIDTH(c);
+          x1 = x;
+        } else {
+          w1 = m->ww - x1 - (2 * c->bw);
+          //  fprintf(stderr, "dwm: %d %d %d\n", w1, n, m->nmaster);
+          //  effects in a min. width and then move out the rightes window from the
+          //  screen:
+          w1 = MAX(500, w1 / (n - m->nmaster)) - (2 * c->bw);
+          resize(c, x + m->wx, m->wy + y, w1, m->wh - (2 * c->bw), False);
+          x += WIDTH(c);
+        }
+      }
+    }
+
+    ```
+
+
+
 ### CCC: Is this guy for real?
 
 ??? dev "**Optical** inspection of ROM to get to the data?! - WTF?!"
